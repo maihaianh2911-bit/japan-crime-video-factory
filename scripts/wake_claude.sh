@@ -11,7 +11,14 @@ set -u
   fi
   exit 0
 }
-WHY=$(printf '%s' "${1:-}" | python3 -c 'import json,sys;print(json.dumps({"text":sys.stdin.read()[:300]}))')
+# the shared task wakes for several repos: name this channel in the message ("Phiếu vụ án (Nhật) số 3: …"), from
+# prompts/channel.json, or from the repo name when the job checked out scripts/ only
+CH=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["lang"])' "$(dirname "$0")/../prompts/channel.json" 2>/dev/null || true)
+case "${CH:-${GITHUB_REPOSITORY:-}}" in ja|*japan-crime*) TAG=Nhật ;; de|*germany-crime*) TAG=Đức ;; *) TAG= ;; esac
+WHY=$(printf '%s' "${1:-}" | TAG="$TAG" python3 -c 'import json,os,sys
+t = sys.stdin.read()
+if os.environ["TAG"]: t = t.replace("vụ án", "vụ án (" + os.environ["TAG"] + ")", 1)
+print(json.dumps({"text": t[:300]}))')
 CODE=$(curl -s -o /tmp/wake.json -w '%{http_code}' --max-time 30 -X POST "$CLAUDE_TASK_URL" \
   -H "Authorization: Bearer $CLAUDE_TASK_TOKEN" \
   -H "anthropic-beta: experimental-cc-routine-2026-04-01" -H "anthropic-version: 2023-06-01" \

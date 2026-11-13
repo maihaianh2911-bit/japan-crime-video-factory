@@ -117,4 +117,4 @@ if '--still' in sys.argv:
     assert yellow.mean() > 0.01, 'no yellow caption'
     ty = int(layout.TITLE_Y / 2)
     assert (c[ty:ty + 40] > 200).all(axis=2).mean() > 0.01, 'no title'
-print(f'crime smoke test OK (ja):', round(plan['duration'], 1), 's,', len(caps), 'captions,', tmp)
+print(f'crime smoke test OK ({LANG}):', round(plan['duration'], 1), 's,', len(caps), 'captions,', tmp)

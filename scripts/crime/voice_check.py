@@ -35,14 +35,18 @@ def compare_ja(sent, heard):
 
 
 # ---------------------------------------------------------------- German
-MONTHS = 'Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember'
-NUM = re.compile(r'(?<![\w.,])(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d+))?(?:(\.)(?=\s+(?:[a-zäöüß]|\d|(?:' + MONTHS + r')\b)))?')
+# a dot after a number followed by a word is an ordinal ("am 1. Juli", "der 3. Exorzismus") when the captions
+# also read it so (captions.de_is_ordinal), else a sentence end
+NUM = re.compile(r'(?<![\w.,])(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d+))?(?:(\.)(?=\s+\S))?')
 SYMBOLS = (('%', ' Prozent '), ('€', ' Euro '), ('§', ' Paragraf '), ('$', ' Dollar '), ('&', ' und '))
 
 
 def spell_number(m):
     from num2words import num2words
     whole, frac, dot = m.group(1), m.group(2), m.group(3)
+    if dot:
+        before, after = m.string[:m.start()].split(), m.string[m.end():].split()
+        dot = captions.de_is_ordinal(before[-1] if before else '', after[0] if after else '')
     n = int(whole.replace('.', ''))
     if dot and not frac:
         return ' ' + num2words(n, lang='de', to='ordinal') + ' '

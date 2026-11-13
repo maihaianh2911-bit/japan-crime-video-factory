@@ -3,7 +3,7 @@
 
 Commands:
   balance                         -> print quota info
-  voices [--language Japanese]    -> write voices markdown list
+  voices [--language Japanese]    -> write voices markdown list (default: the channel's language)
   tts --text-file F --out DIR [--voice ID] [--speed 1.0]
        voice ids starting with "clone_" are sent to /clone.php, others to /tts.php
 
@@ -16,6 +16,10 @@ Safety rules (from the provider docs):
   * results are downloaded right away (MP3 kept only ~6 h on the provider side).
 """
 import argparse, http.client, json, os, sys, time, uuid, urllib.request, urllib.error
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crime'))
+from channel import LANG
+
+LANGUAGE = {'ja': 'Japanese', 'de': 'German'}[LANG]   # 11labs name of the channel's language (prompts/channel.json)
 
 BASE = os.environ.get('VN11_API_BASE', 'https://11labs.id.vn/api/external/v1')
 KEY = os.environ.get('VN11_API_KEY', '')
@@ -130,7 +134,7 @@ def cmd_tts(a):
         body, h = multipart({'text': text, 'clone_voice_id': voice})
         code, j = req('POST', 'clone.php', data=body, headers=h, timeout=120)
     else:
-        payload = {'text': text, 'voice_settings': {'language': 'Japanese', 'speed': a.speed, 'normalization': False, 'expressive_optimize': False}}
+        payload = {'text': text, 'voice_settings': {'language': LANGUAGE, 'speed': a.speed, 'normalization': False, 'expressive_optimize': False}}
         if voice: payload['voice_id'] = voice
         code, j = req('POST', 'tts.php', data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json'}, timeout=120)
     check_create(code, j)
@@ -164,7 +168,7 @@ if __name__ == '__main__':
     if not KEY: die('Thiếu secret VN11_API_KEY')
     p = argparse.ArgumentParser(); sp = p.add_subparsers(dest='cmd', required=True)
     sp.add_parser('balance')
-    v = sp.add_parser('voices'); v.add_argument('--language', default='Japanese'); v.add_argument('--out', default='voices.md')
+    v = sp.add_parser('voices'); v.add_argument('--language', default=LANGUAGE); v.add_argument('--out', default='voices.md')
     t = sp.add_parser('tts'); t.add_argument('--text-file', required=True); t.add_argument('--out', required=True)
     t.add_argument('--voice', default=''); t.add_argument('--speed', type=float, default=1.0); t.add_argument('--timeout', type=int, default=900)
     a = p.parse_args()

@@ -17,7 +17,7 @@ export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; titleS
   caps: Cap[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; fonts: FontChunk[] };
 
 // layout.py
-const SIDE = 24, TITLE_Y = 66, LABEL_Y = 196, CAP_Y = 1310, CAP_W = 940, CREDIT_Y = 1676;
+const SIDE = 24, TITLE_Y = 66, LABEL_Y = 196, CAP_Y = 1310, CAP_W = 1000, CREDIT_Y = 1676;
 const CAP = { ja: 78, de: 86 };
 const YELLOW = '#ffc81e', RED = '#d92a1c';
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
@@ -75,7 +75,8 @@ const Photo: React.FC<{ sh: Shot; t: number; tag: string; small: string }> = ({ 
             filter: 'drop-shadow(0 0 5px rgba(0,0,0,.7))' };
           return mk.shape === 'rect'
             ? <rect key={i} pathLength={1} x={X(a)} y={Y(b)} width={X(c) - X(a)} height={Y(d) - Y(b)} rx={6} style={st} />
-            : <ellipse key={i} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(b) + Y(d)) / 2} rx={(X(c) - X(a)) / 2} ry={(Y(d) - Y(b)) / 2}
+            // turned by -90° so the ring starts drawing at the top: its radii are swapped to keep the box's shape
+            : <ellipse key={i} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(b) + Y(d)) / 2} rx={(Y(d) - Y(b)) / 2} ry={(X(c) - X(a)) / 2}
                 transform={`rotate(-90 ${(X(a) + X(c)) / 2} ${(Y(b) + Y(d)) / 2})`} style={st} />;
         })}
       </svg>

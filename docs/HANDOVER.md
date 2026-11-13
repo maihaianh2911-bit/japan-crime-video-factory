@@ -24,12 +24,12 @@ Bố cục đo từ video mẫu: `scripts/crime/layout.py` (dùng chung cho vide
 
 ## Trạng thái (13/11/2026)
 
-- Mã đã viết và thử bằng dữ liệu giả cả tiếng Nhật và tiếng Đức (`tests/crime_units.py`, `tests/crime_smoke.py --still`). **Chưa có video thật nào**; chưa chạy trên GitHub.
+- Mã đã viết và thử bằng dữ liệu giả cả tiếng Nhật và tiếng Đức (`tests/crime_units.py`, `tests/crime_smoke.py --still`). Trên GitHub: workflow **Kiểm tra mã** chạy xanh, các nhãn `crime-*` đã tạo, tác vụ Claude chung (`AGENT_NIGHTLY.md` của `japan-video-factory`) đã kiểm tra phiếu vụ án của cả hai repo. **Chưa có video thật nào** (chưa có nhánh `renders`).
+- 13/11 (sửa sau kiểm tra): chữ vàng tiếng Nhật không còn cắt giữa từ (思いま|すか, できな|かった, chữ nhỏ ょ ở đầu cụm), một dòng chữ rộng hơn (12 chữ Nhật); chữ tiếng Đức giữ dấu chấm của số thứ tự và chữ viết tắt (`AM 1. JULI`, `DR. MÜLLER`); bản xem trước đặt tiêu đề, nhãn và chữ đúng chỗ như video, chữ Đức nghiêng như video; vòng đỏ hình bầu dục trong video không còn bị xoay sai hình.
 - Còn thiếu, theo thứ tự:
   1. Secrets (Settings → Secrets and variables → Actions): `VN11_API_KEY` (giọng đọc, như các repo khác), `CLAUDE_TASK_URL` + `CLAUDE_TASK_TOKEN` (cùng giá trị như `japan-video-factory`).
-  2. Khóa tạo ảnh AI — **chủ kênh chưa chọn**: một trong `OPENAI_API_KEY` (đẹp nhất, trả tiền theo ảnh), `GEMINI_API_KEY` (đẹp, trả tiền theo ảnh), hoặc `CF_ACCOUNT_ID` + `CF_API_TOKEN` (Cloudflare, miễn phí mỗi ngày một số ảnh, kém hơn). Chưa có khóa thì video chỉ dùng ảnh thật (và ảnh chủ kênh gửi kèm phiếu).
-  3. Tác vụ Claude chung (`AGENT_NIGHTLY.md` của `japan-video-factory`) phải biết repo này (thêm dòng kiểm tra `crime`).
-  4. Chạy workflow **Tạo nhãn** một lần.
+  2. Khóa tạo ảnh AI (không bắt buộc) — **chủ kênh chưa chọn**: một trong `OPENAI_API_KEY` (đẹp nhất, trả tiền theo ảnh), `GEMINI_API_KEY` (đẹp, trả tiền theo ảnh), hoặc `CF_ACCOUNT_ID` + `CF_API_TOKEN` (Cloudflare, miễn phí mỗi ngày một số ảnh, kém hơn). Chưa có khóa thì video chỉ dùng ảnh thật (và ảnh chủ kênh gửi kèm phiếu).
+  3. Video thật đầu tiên: mở một phiếu `[Vụ án] …`.
 - Sau video đầu tiên: đo lại tốc độ đọc trong `AGENT_CRIME.md`, xem cỡ chữ vàng và độ đậm của hiệu ứng ảnh cũ, hỏi chủ kênh.
 
 ## Lưu ý kỹ thuật

@@ -17,8 +17,9 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
 ## When the owner pastes a script in a chat
 1. Create one issue in `maihaianh2911-bit/japan-crime-video-factory`: title `[Vụ án] <case title in tiếng Nhật> — <main idea in Vietnamese>`, body with
    the sections of `docs/CHATGPT.md` (Vụ án / Kịch bản = the script exactly as pasted / Giọng đọc / Ghi chú =
-   wishes from the chat). No labels: the workflow adds them.
-2. Do Claude's steps of `AGENT_CRIME.md` for that issue right away (claim with `crime-busy` as written there):
+   wishes from the chat). No labels: the workflow adds them, and its start job wakes the Claude task at once.
+2. Right after creating the issue, add `crime-busy` (so that task leaves it to you; keep it while you work and wait
+   here, remove it when you stop), then do Claude's steps of `AGENT_CRIME.md` for that issue right away:
    `script.json` → wait for the voice and pictures (~15–25 min) → `picks.json`, with the framing preview → wait for
    the render (~15–25 min) → check the shot sheet → closing comment. While a machine step runs, say so in one line
    and wait; if the owner does not want to wait, stop after any step: the Claude task continues from the labels

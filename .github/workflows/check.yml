@@ -43,7 +43,7 @@ jobs:
           python3 -c "import json; [json.load(open(f'prompts/{f}.json', encoding='utf-8')) for f in ('readings', 'channel')]"
       - name: Cài bộ dựng
         run: |
-          pip install -q numpy scipy pillow pykakasi==2.3.0 imageio-ffmpeg==0.8.1
+          pip install -q numpy scipy pillow pykakasi==2.3.0 num2words==0.5.14 imageio-ffmpeg==0.8.1
           npm ci --no-audit --no-fund
           npx remotion browser ensure
           bash scripts/crime/get_fonts.sh "$FONTSOURCE"

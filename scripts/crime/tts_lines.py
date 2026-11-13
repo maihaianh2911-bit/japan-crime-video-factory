@@ -41,7 +41,9 @@ def main():
     ap.add_argument('script'); ap.add_argument('out'); ap.add_argument('--prev')
     a = ap.parse_args()
     script = json.load(open(a.script, encoding='utf-8'))
-    voice = script.get('voice') or VOICE
+    # the voice id only: "clone_190 (mặc định)" copied from the issue form → clone_190; "_No response_" → the channel's
+    m = re.match(r'[A-Za-z0-9][\w-]*', (script.get('voice') or '').strip())
+    voice = m.group(0) if m else VOICE
     if not voice:
         vn11.die('Chưa chọn giọng đọc: ghi "voice" vào prompts/channel.json hoặc script.json.')
     prev = {}

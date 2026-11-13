@@ -27,7 +27,7 @@ query fails does the script exit with an error. Stdlib + Pillow.
 import io, json, os, re, sys, time, urllib.parse, urllib.request
 from PIL import Image, ImageDraw
 
-UA = 'CrimeVideoFactory/0.1 (licence-checked picture search for documentary shorts)'
+UA = 'CrimeVideoFactory/0.1 (https://github.com/maihaianh2911-bit/japan-crime-video-factory; licence-checked picture search for documentary shorts)'
 SOURCES = ('commons', 'openverse', 'europeana', 'loc')
 MIN_SIDE = 400   # shorter side in pixels: smaller files only look blurred in the video
 KEEP = 8         # pictures kept per query

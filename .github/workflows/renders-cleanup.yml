@@ -27,11 +27,16 @@ jobs:
         run: |
           git init -q r && cd r
           git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          # no renders branch yet (no video made so far): nothing to clean
+          rc=0; git ls-remote --exit-code origin refs/heads/renders > /dev/null || rc=$?
+          if [ "$rc" = 2 ]; then echo "Chưa có nhánh renders: không có gì để dọn."; echo "NO_RENDERS=1" >> "$GITHUB_ENV"; exit 0; fi
+          [ "$rc" = 0 ] || exit "$rc"
           git fetch -q --depth 1 origin renders
           git checkout -q FETCH_HEAD
           git rev-parse FETCH_HEAD > ../old_sha
           du -sh --exclude=.git .
       - name: Xóa file của video cũ
+        if: env.NO_RENDERS != '1'
         working-directory: r
         run: |
           python3 - <<'PY'
@@ -60,6 +65,7 @@ jobs:
           PY
           du -sh --exclude=.git .
       - name: Thay lịch sử nhánh renders bằng một commit
+        if: env.NO_RENDERS != '1'
         working-directory: r
         run: |
           git checkout -q --orphan fresh

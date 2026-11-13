@@ -151,7 +151,7 @@ txt = 'Nguồn ảnh (ảnh CC BY và CC BY-SA phải ghi tên tác giả và gi
 if ai_rows:
     note = {'ja': '※一部の画像はAIで生成したイメージです（実際の写真ではありません）。',
             'de': 'Hinweis: Einige Bilder sind KI-generierte Illustrationen (keine echten Fotos).'}[LANG]
-    txt += f'\nẢnh minh họa tạo bằng AI (không phải ảnh thật, có chữ "イメージ（AI生成）" trên video). Nên ghi trong mô tả video:\n{note}\n\n' + '\n'.join(ai_rows) + '\n'
+    txt += f'\nẢnh minh họa tạo bằng AI (không phải ảnh thật, có chữ "{AI_TAG}" trên video). Nên ghi trong mô tả video:\n{note}\n\n' + '\n'.join(ai_rows) + '\n'
 open(f'{out}/credits.txt', 'w', encoding='utf-8').write(txt)
 shot_rows = []
 for sh, ps in zip(shots, shots_in):
