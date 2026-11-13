@@ -1,0 +1,34 @@
+name: 🔎 Video vụ án (tiếng Nhật)
+description: Dán kịch bản → máy làm video dọc giọng tiếng Nhật, ảnh kiểu ảnh cũ, chữ vàng chạy theo giọng, tiêu đề vụ án ở trên
+title: "[Vụ án] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Cách dùng:** dán kịch bản rồi bấm **Create**. Không cần làm gì thêm: Claude chia lời (dịch sang tiếng Nhật nếu cần), máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa (có ghi chữ "イメージ（AI生成）"), Claude xem và chọn ảnh cho từng câu, máy dựng video theo video mẫu, Claude kiểm tra lại từng cảnh. Link video hiện ở bình luận cuối.
+        Muốn sửa gì thì viết bình luận (ví dụ "cảnh 3 đổi ảnh khác", "câu 5 đọc sai tên").
+  - type: input
+    id: case
+    attributes:
+      label: Vụ án (không bắt buộc)
+      description: Tên vụ án, nơi xảy ra, năm — để tìm ảnh đúng hơn
+      placeholder: Anneliese Michel — Klingenberg am Main, 1976
+  - type: textarea
+    id: script
+    attributes:
+      label: Kịch bản (bắt buộc)
+      description: Tiếng Việt hoặc tiếng Nhật. Nếu là tiếng Việt, Claude dịch sang tiếng Nhật tự nhiên để đọc.
+    validations:
+      required: true
+  - type: dropdown
+    id: voice
+    attributes:
+      label: Giọng đọc
+      options:
+        - clone_190 (mặc định)
+  - type: textarea
+    id: notes
+    attributes:
+      label: Ghi chú (không bắt buộc)
+      description: Độ dài mong muốn, ảnh nên có hoặc nên tránh… Có thể kéo thả ảnh riêng (có nguồn) vào đây.

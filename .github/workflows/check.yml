@@ -1,0 +1,55 @@
+name: Kiểm tra mã
+
+# Runs only when code changes (not when Claude pushes a video's crime/<N>/ files): syntax, types, unit checks and a
+# smoke test of the crime pipeline on made-up data with three rendered frames. No 11labs, no picture search, no AI.
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'src/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - 'remotion.config.ts'
+      - '.github/workflows/check.yml'
+      - '.github/workflows/crime.yml'
+      - 'prompts/**'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      FONTSOURCE: /tmp/fontsource
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - name: Cú pháp
+        run: |
+          python3 -m compileall -q scripts tests
+          for f in scripts/*.sh scripts/crime/*.sh; do bash -n "$f"; done
+          node --check scripts/crime/stills.mjs
+          python3 -c "import json; [json.load(open(f'prompts/{f}.json', encoding='utf-8')) for f in ('readings', 'channel')]"
+      - name: Cài bộ dựng
+        run: |
+          pip install -q numpy scipy pillow pykakasi==2.3.0 imageio-ffmpeg==0.8.1
+          npm ci --no-audit --no-fund
+          npx remotion browser ensure
+          bash scripts/crime/get_fonts.sh "$FONTSOURCE"
+      - name: Kiểm tra kiểu
+        run: npm run check
+      - name: Kiểm tra từng phần (chia chữ, tạo ảnh AI giả lập)
+        run: python3 tests/crime_units.py
+      - name: Chạy thử dây chuyền vụ án (dữ liệu giả, dựng ba khung hình)
+        run: python3 tests/crime_smoke.py --still
