@@ -8,7 +8,7 @@ import layout as L
 FONTS = ['/usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc', '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc',
          '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc', '/usr/share/fonts/truetype/ipafont-gothic/ipag.ttf',
          '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc']
-YELLOW, RED = (255, 210, 26), (217, 42, 28)
+YELLOW, RED = (255, 200, 30), (217, 42, 28)
 _fonts, _chunks = {}, {}
 
 

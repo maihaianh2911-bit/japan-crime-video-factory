@@ -18,7 +18,7 @@ CAP_Y = 1310                 # top of the caption block (sample: glyph centres a
 CAP_W = 940                  # captions wrap to a second row beyond this width
 CREDIT_Y = 1676
 TITLE = {'ja': 78, 'de': 92}           # px, Noto Sans JP black / Anton
-CAP = {'ja': 88, 'de': 104}
+CAP = {'ja': 78, 'de': 86}            # the sample's caption: cap height ≈ 2.6 % of the frame
 
 
 def title_size(title, lang):

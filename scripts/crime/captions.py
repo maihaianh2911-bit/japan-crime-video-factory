@@ -9,7 +9,7 @@ import re
 
 JA_PUNCT = '、。，．…「」『』（）()'
 JA_PART = ('から', 'まで', 'より', 'ので', 'のに', 'けど', 'ても', 'でも', 'には', 'では', 'とは', 'へは', 'も', 'は', 'が', 'を', 'に', 'で', 'と', 'へ', 'の', 'や', 'て', 'た')
-DE_MAX_CH, DE_MAX_W = 20, 3     # characters / words per chunk (Anton 104 px: ~20 capitals fit one row)
+DE_MAX_CH, DE_MAX_W = 20, 3     # characters / words per chunk (Anton 86 px: ~24 capitals fit one row)
 JA_MIN, JA_MAX = 3, 9           # characters per chunk
 
 try:

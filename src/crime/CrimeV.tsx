@@ -18,8 +18,8 @@ export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; titleS
 
 // layout.py
 const SIDE = 24, TITLE_Y = 66, LABEL_Y = 196, CAP_Y = 1310, CAP_W = 940, CREDIT_Y = 1676;
-const CAP = { ja: 88, de: 104 };
-const YELLOW = '#ffd21a', RED = '#d92a1c';
+const CAP = { ja: 78, de: 86 };
+const YELLOW = '#ffc81e', RED = '#d92a1c';
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 const ease = (x: number) => { const p = clamp01(x); return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
 const easeOut = (x: number) => 1 - Math.pow(1 - clamp01(x), 3);
@@ -120,10 +120,10 @@ export const CrimeV: React.FC<PlanC> = (plan) => {
       <Photo sh={sh} t={t} tag={plan.aiTag} small={F.small} />
       {cap ? (
         <div style={{ position: 'absolute', left: 540 - CAP_W / 2, width: CAP_W, top: CAP_Y, textAlign: 'center',
-          transform: `scale(${0.86 + 0.14 * pop})`, transformOrigin: '50% 40%' }}>
+          transform: `scale(${0.86 + 0.14 * pop})${upper ? ' skewX(-7deg)' : ''}`, transformOrigin: '50% 40%' }}>
           <span style={{ fontFamily: F.cap, fontWeight: F.capWeight, fontSize: CAP[lang], lineHeight: 1.12, color: YELLOW,
             textTransform: upper ? 'uppercase' : 'none', letterSpacing: upper ? '0.01em' : '0.02em',
-            WebkitTextStroke: `${lang === 'ja' ? 14 : 12}px #000`, paintOrder: 'stroke fill',
+            WebkitTextStroke: `${lang === 'ja' ? 12 : 10}px #000`, paintOrder: 'stroke fill',
             textShadow: '0 6px 18px rgba(0,0,0,.85)' }}>{cap.text}</span>
         </div>
       ) : null}
