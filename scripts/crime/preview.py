@@ -17,8 +17,10 @@ pub = os.path.join(tmp, 'public'); base = os.path.join(pub, 'crime', 'P')
 os.makedirs(base); shutil.copytree(os.path.join(rend, 'voice'), os.path.join(base, 'voice'))
 imgsrc = os.path.join(tmp, 'img'); shutil.copytree(os.path.join(rend, 'img'), imgsrc)
 if os.path.isdir(os.path.join(job, 'own')): shutil.copytree(os.path.join(job, 'own'), os.path.join(imgsrc, 'own'), dirs_exist_ok=True)
-def run(*a):
-    if subprocess.run([sys.executable, *a], stdout=subprocess.DEVNULL).returncode: sys.exit(1)   # the step printed why
+def run(*a):   # the step prints why it stopped; its notes (lines starting with "chú ý") are passed on
+    r = subprocess.run([sys.executable, *a], stdout=subprocess.PIPE, text=True)
+    print(''.join(l + '\n' for l in r.stdout.splitlines() if l.startswith('chú ý')), end='')
+    if r.returncode: sys.exit(1)
 run(os.path.join(HERE, 'prep.py'), os.path.join(job, 'picks.json'), imgsrc, os.path.join(base, 'img'))
 run(os.path.join(HERE, 'build.py'), job, pub, 'P', imgsrc, os.path.join(tmp, 'out'))
 plan_p = os.path.join(tmp, 'out', 'plan.json')
@@ -29,22 +31,23 @@ shots = []
 for sc in plan['scenes']:
     ts = [sc['e'] - 0.15]
     if sc['e'] - sc['s'] > 7: ts.insert(0, (sc['s'] + sc['e']) / 2)
-    shots += [(sc['scene'], round(t, 2)) for t in ts]
-subprocess.run(['node', os.path.join(HERE, 'stills.mjs'), plan_p, pub, os.path.join(tmp, 'f'), *[f'{t:.2f}' for _, t in shots]],
+    shots += [(sc['scene'], round(t, 2), sc.get('edit', '')) for t in ts]
+subprocess.run(['node', os.path.join(HERE, 'stills.mjs'), plan_p, pub, os.path.join(tmp, 'f'), *[f'{t:.2f}' for _, t, _ in shots]],
                check=True, cwd=ROOT, stdout=subprocess.DEVNULL)
 TW, TH = 270, 480
 tiles = []
-for n, t in shots:
+for n, t, ed in shots:
     f = Image.open(os.path.join(tmp, f'f_{t:.2f}.jpg')).convert('RGB').resize((TW, TH), Image.LANCZOS)
     tile = Image.new('RGB', (TW, TH + 24), (10, 10, 12)); tile.paste(f, (0, 24))
-    ImageDraw.Draw(tile).text((4, 6), f"#{n}  {t:.1f}s", fill=(255, 210, 90))
+    ImageDraw.Draw(tile).text((4, 6), f"#{n}  {t:.1f}s{'  · ' + ed if ed else ''}", fill=(255, 210, 90))
     tiles.append(tile)
 cols = 6; rows = (len(tiles) + cols - 1) // cols
 sheet = Image.new('RGB', (cols * (TW + 8), rows * (TH + 32)), (0, 0, 0))
 for i, t in enumerate(tiles): sheet.paste(t, ((i % cols) * (TW + 8), (i // cols) * (TH + 32)))
 sheet.save(out, quality=85)
+shutil.copy(os.path.join(tmp, 'out', 'edits.md'), out + '.edits.md')
 json.dump({'duration': plan['duration'],
-           'scenes': [{'scene': sc['scene'], 's': sc['s'], 'e': sc['e'],
+           'scenes': [{'scene': sc['scene'], 's': sc['s'], 'e': sc['e'], 'edit': sc.get('edit', ''),
                        'items': [[i['k'], i['s'], i.get('text') or i.get('title') or i.get('num') or os.path.basename(i.get('src', ''))] for i in sc['items']]}
                       for sc in plan['scenes']],
            'subs': [[c['s'], c['text']] for c in plan['subs']]},

@@ -21,7 +21,7 @@ for sc in plan['scenes']:
     for t in ts:
         im = grab(t).resize((TW, TH), Image.LANCZOS)
         tile = Image.new('RGB', (TW, TH + 24), (10, 10, 12)); tile.paste(im, (0, 24))
-        ImageDraw.Draw(tile).text((4, 6), f"#{sc['scene']}  {t:.1f}s", fill=(255, 210, 90))
+        ImageDraw.Draw(tile).text((4, 6), f"#{sc['scene']}  {t:.1f}s{'  · ' + sc['edit'] if sc.get('edit') else ''}", fill=(255, 210, 90))
         tiles.append(tile)
 cols = 6; rows = (len(tiles) + cols - 1) // cols
 s = Image.new('RGB', (cols * (TW + 8), rows * (TH + 32)), (12, 12, 14))

@@ -7,7 +7,8 @@
   search   every crime/<N>/search-<r>.json whose round is not on renders yet → renders/crime/<N>/img/<r>/
            (crime-voice while it runs; then crime-pick, a comment and a call to Claude)
   render   pictures from picks.json, plan, fonts, Remotion render, loudness, shot sheet
-           → renders/crime/<N>/video.mp4, subtitles.srt, credits.txt, sources.json, sheet.jpg
+           → renders/crime/<N>/video.mp4, subtitles.srt, credits.txt, sources.json, sheet.jpg, edits.md (the scene
+           edit of every scene and why, for the owner)
 After prepare/search the issue waits for Claude (crime-pick) unless picks.json exists, then render runs too; not when
 prepare searched round 1 again with changed queries (the picks would point at other pictures).
 A video over 95 MB is encoded again at a bitrate that lands ~90 MB (GitHub refuses files over 100 MB).
@@ -249,8 +250,8 @@ def render():
         print(f'video now {mb:.1f} MB', flush=True)
         if mb > 100: raise SystemExit(f'video {mb:.1f} MB, vẫn quá 100 MB')
     sh(sys.executable, os.path.join(HERE, 'sheet.py'), video, os.path.join(out, 'plan.json'), os.path.join(WORK, 'sheet.jpg'))
-    for f in ('subtitles.srt', 'credits.txt', 'sources.json', 'plan.json'): shutil.copy(os.path.join(out, f), os.path.join(WORK, f))
-    publish(['video.mp4', 'sheet.jpg', 'subtitles.srt', 'credits.txt', 'sources.json', 'plan.json'], 'video')
+    for f in ('subtitles.srt', 'credits.txt', 'sources.json', 'plan.json', 'edits.md'): shutil.copy(os.path.join(out, f), os.path.join(WORK, f))
+    publish(['video.mp4', 'sheet.jpg', 'subtitles.srt', 'credits.txt', 'sources.json', 'plan.json', 'edits.md'], 'video')
     return plan['duration']
 
 
@@ -334,4 +335,4 @@ if __name__ == '__main__':
         w = wake(f'Phiếu vụ án số {N}: video đã dựng, chờ kiểm tra.')
         comment(f'🤖 Đã dựng xong bản video ({m} phút {s:02d} giây).'
                 + claude(w, ' Claude đang kiểm tra lại từng cảnh trước khi giao.') + '\n\n'
-                f'- Video: {link("video.mp4")}\n- Ảnh các cảnh: {link("sheet.jpg")}')
+                f'- Video: {link("video.mp4")}\n- Ảnh các cảnh: {link("sheet.jpg")}\n- Cách edit từng cảnh: {link("edits.md")}')
