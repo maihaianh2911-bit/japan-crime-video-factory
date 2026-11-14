@@ -4,6 +4,7 @@
   prepare  voice (one 11labs job per line, unchanged lines reused), voice check with word times, picture search
            and AI illustrations round 1 (only when the queries changed) → renders/crime/<N>/voice/, img/1/
   search   every crime/<N>/search-<r>.json whose round is not on renders yet → renders/crime/<N>/img/<r>/
+           (crime-voice while it runs; then crime-pick, a comment and a call to Claude)
   render   pictures from picks.json, plan, fonts, Remotion render, loudness, shot sheet
            → renders/crime/<N>/video.mp4, subtitles.srt, credits.txt, sources.json, sheet.jpg
 After prepare/search the issue waits for Claude (crime-pick) unless picks.json exists, then render runs too; not when
@@ -151,6 +152,7 @@ def find(d, q, env=None):
 
 
 def search():
+    """Every search round that is new or whose queries changed. Returns the folders made (['img/2', …])."""
     did = []
     for f in sorted(os.listdir(JOB)):
         if f.startswith('search-') and f.endswith('.json'):
@@ -167,6 +169,7 @@ def search():
             json.dump(q, open(os.path.join(d, 'queries.json'), 'w', encoding='utf-8'), ensure_ascii=False)
             did.append(f'img/{r}')
     if did: publish(did, 'tìm thêm ảnh')
+    return did
 
 
 MAX_MB, TARGET_MB = 95, 90   # GitHub refuses files over 100 MB
@@ -248,9 +251,19 @@ if __name__ == '__main__':
         elif 'render' not in steps:
             steps.append('render')
     if 'search' in steps:
-        search()
-        if 'render' not in steps:
+        # crime-voice while the machine searches (the issue must not look as if it waited for Claude, and AGENT_CRIME.md
+        # forbids a picks.json push under crime-voice); crime-pick, a comment and a call to Claude when it is done
+        waits = 'render' not in steps
+        if waits: labels(add=['crime-voice'], remove=['crime-pick'])
+        did = search()
+        if waits:
             labels(add=['crime-pick'], remove=['crime-voice'])
+            if did:
+                idx = [os.path.join(WORK, d, 'index.json') for d in did]
+                found = sum(len(g.get('results') or []) for f in idx if os.path.exists(f) for g in json.load(open(f, encoding='utf-8')))
+                w = wake(f'Phiếu vụ án số {N}: đã tìm thêm ảnh xong, chờ chọn ảnh.')
+                comment(f'🤖 Đã tìm thêm ảnh xong (đợt {", ".join(d.split("/")[-1] for d in did)}: {found} ảnh mới).'
+                        + claude(w, ' Claude sẽ xem và chọn ảnh.'))
     if 'render' in steps:
         if not os.path.exists(os.path.join(WORK, 'voice', 'lines.json')):
             raise SystemExit('chưa có giọng đọc cho phiếu này (cần script.json)')

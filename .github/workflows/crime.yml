@@ -86,7 +86,11 @@ jobs:
   work:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
-    timeout-minutes: 150   # no concurrency group: a pending run would be dropped when a third push arrives
+    timeout-minutes: 270   # up to 2 hours of waiting for earlier runs (step "Chờ lượt máy trước xong") + the work
+    permissions:
+      contents: write   # the renders branch
+      issues: write     # labels and comments
+      actions: read     # the list of runs, to wait for earlier ones
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
@@ -130,6 +134,27 @@ jobs:
           fi
           cat /tmp/todo.txt
           [ -s /tmp/todo.txt ] && echo "TODO=1" >> "$GITHUB_ENV" || echo "Không có việc."
+      # One machine run at a time: runs of this workflow that started before this one finish first, so a picks.json
+      # pushed while a search or the voice step is still running renders with that step's pictures and voice, and two
+      # runs never move the labels of one issue at the same time. Not a `concurrency:` group: GitHub keeps only one
+      # waiting run per group (a third push would drop the second), and the issue number is not known before the
+      # job starts, so a group per issue cannot be written.
+      - name: Chờ lượt máy trước xong
+        if: env.TODO == '1'
+        timeout-minutes: 125
+        run: |
+          ERR=0
+          for i in $(seq 1 220); do   # at most ~2 hours, then run anyway: an earlier run that hangs must not block for ever
+            B=$(gh api "repos/$GH_REPO/actions/workflows/crime.yml/runs?per_page=50" --jq "[.workflow_runs[] | select(.status != \"completed\" and .run_number < $GITHUB_RUN_NUMBER and (.event == \"push\" or .event == \"workflow_dispatch\"))] | length") || B=err
+            if [ "$B" = 0 ]; then break; fi
+            if [ "$B" = err ]; then
+              ERR=$((ERR + 1))
+              if [ "$ERR" -ge 5 ]; then echo "::warning::không đọc được danh sách lượt chạy, chạy tiếp"; break; fi
+            else
+              ERR=0; echo "còn $B lượt máy bắt đầu trước đang chạy, chờ…"
+            fi
+            sleep 30
+          done
       - name: Cài công cụ
         if: env.TODO == '1'
         run: |
