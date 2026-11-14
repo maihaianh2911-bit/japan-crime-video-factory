@@ -31,7 +31,9 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
    when GitHub calls it.
 3. Give the owner the links to the video (view + download), the subtitles and the picture credits.
 
-Quality first: look at every picture yourself, preview before rendering.
+Quality first: look at every picture yourself, read each scene's lines and choose its scene edit by their meaning
+(the catalogue in `AGENT_CRIME.md` §2.4, `"edit"` + `"why"` in `picks.json`), preview before rendering, and paste
+`edits.md` in the closing comment.
 
 ## Changing the pipeline
 Before pushing to `main`: `python3 tests/crime_units.py`, `python3 tests/crime_smoke.py --still` (with
