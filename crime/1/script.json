@@ -1,0 +1,137 @@
+{
+ "title": "世田谷一家殺害事件",
+ "voice": "clone_190",
+ "lines": [
+  "現場には、犯人の血、DNA、指紋が残されていた。",
+  "服も、靴の跡も、そして凶器までも。",
+  "それでも25年以上たった今、警察は犯人が誰か知らない。",
+  "東京・世田谷の一家殺害事件。",
+  "日本で最も有名な未解決事件の一つだ。",
+  "2000年12月30日の夜から、31日の未明。",
+  "宮澤みきおさん44歳、妻の泰子さん41歳。",
+  "8歳のにいなちゃん、6歳の礼くんが、自宅で殺害された。",
+  "犯人は犯行中に手をけがし、血を流していた。",
+  "血液型はA型。DNAも現場で採取された。",
+  "家族のものではない指紋と、一種類だけの靴の跡。",
+  "警察は早くから、犯人は一人だと考えた。",
+  "犯人のトレーナーは、全国で130着しか売られていなかった。",
+  "東京で売られたのは、わずか10着。",
+  "靴は韓国製のスラセンジャー、27.5センチ。",
+  "このサイズは当時、日本では正規に売られていなかった。",
+  "ウエストポーチから、腰回りは70〜75センチと推定された。",
+  "凶器は、関孫六銀寿の柳刃包丁。",
+  "前日に同じ包丁を買った男も、画像解析で特定された。",
+  "しかし、その男のDNAは一致しなかった。",
+  "そして犯人は、すぐには逃げなかった。",
+  "家で食べ物を食べ、トイレを使った。",
+  "家族の書類を触り、パソコンも操作した。",
+  "パソコンは午前1時18分と、朝10時ごろにネットにつながった。",
+  "ただ、朝の接続は意図しないものだった可能性もある。",
+  "警察には、犯人の血も、DNAも、指紋もある。",
+  "靴の跡も、服も、ポーチも、凶器もある。",
+  "ポーチの中の髪の毛も、犯人のDNAと一致した。",
+  "2025年、新しいDNA分析が報じられた。",
+  "犯行当時、犯人は30歳前後だった可能性があるという。",
+  "正しければ、今は50代から60代だ。",
+  "ただし、警察が確認した身元ではない。",
+  "2026年も、警視庁は遺留品を公開し、情報を求めている。",
+  "この事件の怖さは、犯人が何も残さなかったことではない。",
+  "犯人は、ほとんどすべてを残していった。",
+  "自分の名前を除いて。"
+ ],
+ "tts": {
+  "6": "2000年12月30日の夜から、31日のみめい。",
+  "7": "みやざわみきおさん44歳、妻のやすこさん41歳。",
+  "8": "8歳のにいなちゃん、6歳のれいくんが、自宅で殺害された。",
+  "11": "家族のものではない指紋と、ひとしゅるいだけの靴の跡。",
+  "15": "靴は韓国製のスラセンジャー、にじゅうななてんごセンチ。",
+  "17": "ウエストポーチから、腰回りはななじゅうからななじゅうごセンチと推定された。",
+  "18": "凶器は、せきまごろくぎんじゅのやなぎばぼうちょう。",
+  "24": "パソコンは午前いちじじゅうはっぷんと、朝10時ごろにネットにつながった。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 66,
+  "energy": 0.28
+ },
+ "queries": [
+  "commons: incategory:\"Setagaya family murder\"",
+  "commons: Setagaya family murder house",
+  "commons: incategory:\"Soshigaya Park\"",
+  "Soshigaya Park Setagaya",
+  "Kamisoshigaya Setagaya",
+  "commons: Seijo police station",
+  "commons: incategory:\"Metropolitan Police Department (Tokyo)\"",
+  "Metropolitan Police Department headquarters Tokyo",
+  "Setagaya Tokyo residential street night",
+  "Seki Gifu knife",
+  "yanagiba knife",
+  "Slazenger",
+  "fingerprint",
+  "DNA double helix model",
+  "CRT computer monitor 2000",
+  "police evidence bag",
+  "waist bag fanny pack",
+  "commons: Setagaya ward 2000"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a plain two-storey Japanese suburban house at night beside dark trees of a park, one window faintly lit, empty street, no people, year 2000",
+   "n": 2,
+   "aspect": "3:4"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a narrow dark hallway inside a Japanese house, a man standing far away seen from behind as a black silhouette against a dim doorway, face not visible",
+   "n": 2,
+   "aspect": "3:4"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a dark sweatshirt laid flat on a dark table as police evidence, a knitted cap beside it, top-down view, no people",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, the soles of a pair of sneakers seen from below, side by side, tread pattern clearly visible, dark background, no brand names, no text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a long thin Japanese sashimi knife (yanagiba) lying diagonally on a dark table, studio light, no blood, no text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a small black waist bag (hip pouch) on a dark table as evidence, top-down view, no text",
+   "n": 2,
+   "aspect": "1:1"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, an old beige CRT computer with keyboard glowing in a dark Japanese room at night, year 2000, no people, no readable text on screen",
+   "n": 2,
+   "aspect": "1:1"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, close-up of a single fingerprint, black ink on white card, macro, no text",
+   "n": 1,
+   "aspect": "1:1"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a small table in a dark Japanese kitchen at night, an opened container and a cup left on it, no people, no text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a black handkerchief folded on a dark table with a small slit cut in it, evidence photograph, no text",
+   "n": 1,
+   "aspect": "1:1"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a few short black hairs inside a clear plastic evidence bag on a dark table, close-up, no text, no labels",
+   "n": 1,
+   "aspect": "1:1"
+  }
+ ]
+}
