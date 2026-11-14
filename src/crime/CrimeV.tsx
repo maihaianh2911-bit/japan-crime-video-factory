@@ -124,7 +124,7 @@ const PhotoV: React.FC<{ p: Photo; t: number; e: number; tag: string; sans: stri
         ) : null}
       </div>
       {p.credit ? (
-        <div style={{ position: 'absolute', left: b, right: b, top: p.h + 2 * b + 6, fontFamily: `"${mono}"`, fontWeight: 400, fontSize: 17,
+        <div style={{ position: 'absolute', left: b, right: b, top: p.h + 2 * b + 6, fontFamily: `"${mono}", "${sans}"`, fontWeight: 400, fontSize: 17,
           color: 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.credit}</div>
       ) : null}
     </div>
@@ -139,7 +139,7 @@ const TagV: React.FC<{ g: Tag; F: Record<Role, string>; lang: 'ja' | 'de' }> = (
   const italic = g.font === 'serif' && lang === 'de';
   return (
     <div style={{ background: look.bg, color: look.fg, padding: `${g.size * 0.08}px ${g.size * 0.34}px`, whiteSpace: 'pre', textAlign: 'center',
-      fontFamily: `"${F[g.font]}"`, fontWeight: g.font === 'hand' ? (lang === 'de' ? 700 : 400) : look.weight, fontStyle: italic ? 'italic' : 'normal',
+      fontFamily: `"${F[g.font]}", "${F.sans}"`, fontWeight: g.font === 'hand' ? (lang === 'de' ? 700 : 400) : look.weight, fontStyle: italic ? 'italic' : 'normal',
       fontSize: g.size, lineHeight: 1.22, clipPath: torn(hash(g.text), 2.2), boxShadow: '0 4px 10px rgba(0,0,0,.45)',
       letterSpacing: g.font === 'mono' ? '0.04em' : '0.01em' }}>{g.text}</div>
   );
@@ -151,12 +151,12 @@ const HeaderV: React.FC<{ h: Header; t: number; F: Record<Role, string>; lang: '
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: h.size * 0.12 }}>
       {h.kicker ? (
-        <div style={{ background: '#121110', color: '#f1eee7', padding: `${h.size * 0.06}px ${h.size * 0.3}px`, fontFamily: `"${F.mono}"`, fontWeight: 700,
+        <div style={{ background: '#121110', color: '#f1eee7', padding: `${h.size * 0.06}px ${h.size * 0.3}px`, fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700,
           fontSize: h.size * 0.62, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'pre', minHeight: h.size * 0.75,
           minWidth: h.size * 0.62 * [...h.kicker].length * (lang === 'ja' ? 1.0 : 0.66) }}>{k}</div>
       ) : null}
       <div style={{ opacity: ti, transform: `translateX(${(1 - ti) * -40}px)`, background: '#ece9e2', color: INK, whiteSpace: 'pre',
-        padding: `${h.size * 0.06}px ${h.size * 0.32}px`, fontFamily: `"${F.serif}"`, fontWeight: 800, fontStyle: lang === 'de' ? 'italic' : 'normal',
+        padding: `${h.size * 0.06}px ${h.size * 0.32}px`, fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 800, fontStyle: lang === 'de' ? 'italic' : 'normal',
         fontSize: h.size, lineHeight: 1.25, clipPath: torn(hash(h.title) + 3, 1.6), boxShadow: '0 5px 12px rgba(0,0,0,.5)' }}>{h.title}</div>
     </div>
   );
@@ -174,7 +174,7 @@ const CardV: React.FC<{ c: Card; t: number; F: Record<Role, string> }> = ({ c, t
       padding: `${note ? lh * 0.6 : pad}px ${pad}px ${pad}px ${note ? c.size * 2.2 : pad}px`, boxSizing: 'border-box', overflow: 'hidden' }}>
       {note ? <div style={{ position: 'absolute', left: c.size * 1.6, top: 0, bottom: 0, width: 3, background: 'rgba(200,60,60,.45)' }} /> : null}
       {c.head ? (
-        <div style={{ fontFamily: `"${F.mono}"`, fontWeight: 700, fontSize: c.size * 0.9, color: '#2a2724', letterSpacing: '0.05em', whiteSpace: 'pre',
+        <div style={{ fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: c.size * 0.9, color: '#2a2724', letterSpacing: '0.05em', whiteSpace: 'pre',
           paddingBottom: c.size * 0.35, marginBottom: c.size * 0.5, borderBottom: '2px solid rgba(40,36,32,.55)', textTransform: 'uppercase' }}>{typed(c.head, t, c.s, 18)}</div>
       ) : null}
       {c.rows.filter((r) => t >= r.s).map((r, i) => {
@@ -183,9 +183,9 @@ const CardV: React.FC<{ c: Card; t: number; F: Record<Role, string> }> = ({ c, t
         return (
           <div key={i} style={{ position: 'relative', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: c.size * 0.5,
             minHeight: lh, lineHeight: `${lh}px` }}>
-            <span style={{ fontFamily: `"${note ? F.hand : r.right ? F.serif : F.mono}"`, fontWeight: note ? 400 : 700, fontSize: c.size, color: ink, whiteSpace: 'pre' }}>
+            <span style={{ fontFamily: `"${note ? F.hand : r.right ? F.serif : F.mono}", "${F.sans}"`, fontWeight: note ? 400 : 700, fontSize: c.size, color: ink, whiteSpace: 'pre' }}>
               {r.check ? '✓ ' : ''}{typed(r.text, t, r.s)}</span>
-            {r.right ? <span style={{ fontFamily: `"${F.mono}"`, fontWeight: 500, fontSize: c.size * 0.72, color: 'rgba(60,55,50,.7)', whiteSpace: 'pre' }}>
+            {r.right ? <span style={{ fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 500, fontSize: c.size * 0.72, color: 'rgba(60,55,50,.7)', whiteSpace: 'pre' }}>
               {typed(r.right, t, r.s + 0.25)}</span> : null}
             {st > 0 ? <div style={{ position: 'absolute', left: 0, top: lh * 0.52, height: 4, width: `${st * 100}%`, background: RED }} /> : null}
           </div>
@@ -196,7 +196,7 @@ const CardV: React.FC<{ c: Card; t: number; F: Record<Role, string> }> = ({ c, t
 };
 
 const StampV: React.FC<{ g: Stamp; F: Record<Role, string> }> = ({ g, F }) => (
-  <div style={{ border: `${g.size * 0.1}px solid ${RED}`, color: RED, padding: `${g.size * 0.12}px ${g.size * 0.4}px`, fontFamily: `"${F.mono}"`,
+  <div style={{ border: `${g.size * 0.1}px solid ${RED}`, color: RED, padding: `${g.size * 0.12}px ${g.size * 0.4}px`, fontFamily: `"${F.mono}", "${F.sans}"`,
     fontWeight: 700, fontSize: g.size, lineHeight: 1.15, textAlign: 'center', whiteSpace: 'pre', letterSpacing: '0.06em', textTransform: 'uppercase',
     opacity: 0.9, mixBlendMode: 'multiply', background: 'rgba(240,235,225,.06)' }}>{g.text}</div>
 );
@@ -208,7 +208,7 @@ const BigV: React.FC<{ g: Big; t: number; F: Record<Role, string> }> = ({ g, t, 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: g.size * 0.12 }}>
       <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: '#eeeae2', whiteSpace: 'nowrap', textShadow: '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
-      {g.text ? <span style={{ fontFamily: `"${F.serif}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: '#cbc4b8', whiteSpace: 'pre',
+      {g.text ? <span style={{ fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: '#cbc4b8', whiteSpace: 'pre',
         paddingTop: g.size * 0.25 }}>{g.text}</span> : null}
     </div>
   );
@@ -217,7 +217,7 @@ const BigV: React.FC<{ g: Big; t: number; F: Record<Role, string> }> = ({ g, t, 
 const TextV: React.FC<{ g: Text; t: number; F: Record<Role, string> }> = ({ g, t, F }) => (
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
     {g.rows.map((r, i) => (
-      <div key={i} style={{ fontFamily: `"${F.serif}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1.2, whiteSpace: 'pre', minHeight: g.size * 1.2,
+      <div key={i} style={{ fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1.2, whiteSpace: 'pre', minHeight: g.size * 1.2,
         color: r.color === 'red' ? '#d8333a' : '#efebe3', textShadow: '0 6px 20px rgba(0,0,0,.6)' }}>{t >= r.s ? typed(r.text, t, r.s, 14) : ''}</div>
     ))}
   </div>
