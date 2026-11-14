@@ -3,6 +3,7 @@
 
   prepare  voice (one 11labs job per line, unchanged lines reused), voice check with word times, picture search
            and AI illustrations round 1 (only when the queries changed) → renders/crime/<N>/voice/, img/1/
+           (when the voice or its check fails, the lines already read are kept in voice-partial/ for the next run)
   search   every crime/<N>/search-<r>.json whose round is not on renders yet → renders/crime/<N>/img/<r>/
            (crime-voice while it runs; then crime-pick, a comment and a call to Claude)
   render   pictures from picks.json, plan, fonts, Remotion render, loudness, shot sheet
@@ -50,11 +51,21 @@ def comment(body):
     gh('issue', 'comment', N, '--body', body)
 
 
-def fetch_renders():
-    """Current renders/crime/<N>/ → WORK (empty when nothing was published yet)."""
+def fetch_renders(tries=3):
+    """Current renders/crime/<N>/ → WORK (empty when nothing was published yet). Only a branch that does not exist
+    counts as "nothing yet": a fetch that keeps failing stops the run, because going on with an empty folder would
+    read (and pay for) the whole voice again and search round 1 again."""
     os.makedirs(WORK, exist_ok=True)
-    if subprocess.run(['git', 'fetch', '-q', '--depth', '1', URL, '+refs/heads/renders:refs/remotes/origin/renders'], cwd=ROOT).returncode:
-        return
+    for i in range(tries):
+        head = subprocess.run(['git', 'ls-remote', '--exit-code', URL, 'refs/heads/renders'], cwd=ROOT, capture_output=True)
+        if head.returncode == 2:   # no renders branch yet: the first video of this repo
+            return
+        if head.returncode == 0 and subprocess.run(['git', 'fetch', '-q', '--depth', '1', URL, '+refs/heads/renders:refs/remotes/origin/renders'], cwd=ROOT).returncode == 0:
+            break
+        print(f'renders: fetch failed (attempt {i + 1}/{tries})', file=sys.stderr, flush=True)
+        time.sleep(10 * (i + 1))
+    else:
+        raise SystemExit('không lấy được nhánh renders (lỗi mạng hoặc GitHub): dừng lại để không đọc lại giọng đã trả tiền')
     ls = subprocess.run(['git', 'ls-tree', '-r', '--name-only', 'origin/renders', f'crime/{N}/'], cwd=ROOT, capture_output=True, text=True).stdout
     if ls.strip():
         tar = subprocess.run(['git', 'archive', 'origin/renders', f'crime/{N}'], cwd=ROOT, capture_output=True, check=True).stdout
@@ -80,11 +91,11 @@ def renders_worktree(wt):
     return True
 
 
-def publish(paths, msg, tries=4):
+def publish(paths, msg, tries=4, remove=()):
     """Copy WORK-relative paths (files or folders) to renders/crime/<N>/ in one commit and push it. Every attempt
     starts again from the freshly fetched tip of renders (rebasing shallow history can conflict and then push a
     commit without this run's files). A folder replaces the published one, so no stale file stays next to a new
-    index.json."""
+    index.json. remove: published folders deleted in the same commit."""
     wt = os.path.join(ROOT, 'out', 'renders-wt')
     for i in range(tries):
         if i:
@@ -92,6 +103,8 @@ def publish(paths, msg, tries=4):
             time.sleep(5 * i)
         if not renders_worktree(wt):
             continue
+        for p in remove:
+            shutil.rmtree(os.path.join(wt, 'crime', N, p), ignore_errors=True)
         for p in paths:
             src, dst = os.path.join(WORK, p), os.path.join(wt, 'crime', N, p)
             if os.path.isdir(src):
@@ -111,18 +124,45 @@ def link(p):
     return f'https://github.com/maihaianh2911-bit/japan-crime-video-factory/blob/renders/crime/{N}/{p}'
 
 
+def keep_paid_lines(new, part):
+    """The voice step failed: the lines already read (paid) go to renders/crime/<N>/voice-partial/, where the next
+    run finds them (tts_lines.py --prev). The published voice/ stays as it was: a render must never see half a
+    voice or lines without their word times."""
+    try:
+        rows = json.load(open(os.path.join(new, 'lines.json'), encoding='utf-8'))
+        rows = [r for r in rows if os.path.exists(os.path.join(new, r['file']))]
+        if not rows:
+            return
+        shutil.rmtree(part, ignore_errors=True); os.makedirs(part)
+        for r in rows: shutil.copy(os.path.join(new, r['file']), os.path.join(part, r['file']))
+        json.dump(rows, open(os.path.join(part, 'lines.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        publish(['voice-partial'], f'giọng đọc dở ({len(rows)} câu đã đọc, giữ lại cho lần chạy sau)')
+    except (Exception, SystemExit) as e:   # never hide the error that stopped the voice step
+        print(f'voice-partial: could not keep the lines already read: {e}', file=sys.stderr, flush=True)
+
+
 def prepare():
     """Voice, then picture search round 1. Returns (lines.json rows, True when round 1 was searched again with
     changed queries, i.e. the pictures behind existing picks changed)."""
     script = json.load(open(os.path.join(JOB, 'script.json'), encoding='utf-8'))
     labels(add=['crime-voice'], remove=['crime-plan', 'crime-failed'])
-    prev = os.path.join(WORK, 'voice')
+    prev, part = os.path.join(WORK, 'voice'), os.path.join(WORK, 'voice-partial')
     new = os.path.join(ROOT, 'out', f'voice-{N}')
     shutil.rmtree(new, ignore_errors=True)
-    sh(sys.executable, os.path.join(HERE, 'tts_lines.py'), os.path.join(JOB, 'script.json'), new, '--prev', prev)
-    sh(sys.executable, os.path.join(HERE, 'voice_check.py'), new, os.path.join(new, 'check.md'))
+    try:
+        sh(sys.executable, os.path.join(HERE, 'tts_lines.py'), os.path.join(JOB, 'script.json'), new, '--prev', prev, '--prev', part)
+        for i in range(2):   # the check downloads the Whisper model: one more try before giving up
+            if subprocess.run([sys.executable, os.path.join(HERE, 'voice_check.py'), new, os.path.join(new, 'check.md')]).returncode == 0:
+                break
+            if i: raise SystemExit('kiểm tra giọng đọc (Whisper) lỗi hai lần; các câu đã đọc được giữ lại, chạy lại bước prepare sẽ không đọc lại')
+            time.sleep(20)
+    except (subprocess.CalledProcessError, SystemExit):
+        keep_paid_lines(new, part)
+        raise
     shutil.rmtree(prev, ignore_errors=True); shutil.copytree(new, prev)
-    publish(['voice'], 'giọng đọc')   # before the picture search: the paid voice is kept even if the search fails
+    had_part = os.path.isdir(part); shutil.rmtree(part, ignore_errors=True)
+    # before the picture search: the paid voice is kept even if the search fails
+    publish(['voice'], 'giọng đọc', remove=['voice-partial'] if had_part else ())
     q = (script.get('queries') or []) + (script.get('urls') or []) + (script.get('gen') or [])
     old = os.path.join(WORK, 'img', '1', 'queries.json')
     had = os.path.exists(old)

@@ -134,4 +134,56 @@ res, n, log = wake_sh(labels='crime crime-busy', busy_at=ago(1)); assert (res, n
 res, n, log = wake_sh(secrets=False, labels='crime crime-busy', busy_at=ago(1)); assert res == 'busy' and 'POST' not in log, (res, log)
 res, n, log = wake_sh(labels='crime crime-busy', busy_at=ago(3)); assert (res, n) == ('ok', 1), (res, n, log)        # a stale claim does not count
 res, n, log = wake_sh(labels='crime', busy_at=ago(1)); assert (res, n) == ('ok', 1), (res, n, log)                   # label removed: free
+# 11labs client: GET retried on a busy server, the create POST only when refused outright (429), never after a 5xx;
+# the balance around a paid job is information only
+import urllib.error, argparse
+import vn11 as V, tts_lines as T, ff
+class _Resp:
+    status = 200
+    def __init__(self, body): self.body = body
+    def read(self): return self.body
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+def fake_api(seq):
+    n = [0]
+    def urlopen(r, timeout=None):
+        x = seq[min(n[0], len(seq) - 1)]; n[0] += 1
+        if isinstance(x, int): raise urllib.error.HTTPError(r.full_url, x, 'x', {}, io.BytesIO(b'{"error": "busy"}'))
+        return _Resp(json.dumps(x).encode())
+    V.urllib.request.urlopen = urlopen
+    return n
+real_urlopen, real_sleep = V.urllib.request.urlopen, V.time.sleep
+V.time.sleep = lambda s: None
+try:
+    n = fake_api([502, 429, {'ok': 1}]); assert V.req('GET', 'status.php') == (200, {'ok': 1}) and n[0] == 3
+    n = fake_api([429, {'job_id': 'j'}]); assert V.req('POST', 'tts.php', data=b'{}') == (200, {'job_id': 'j'}) and n[0] == 2
+    n = fake_api([502, {'job_id': 'j'}]); assert V.req('POST', 'tts.php', data=b'{}')[0] == 502 and n[0] == 1
+    n = fake_api([500]); assert V.cmd_balance(None, soft=True) == {} and n[0] == 4
+    try: V.cmd_balance(None); raise AssertionError('a plain balance call must stop on an error')
+    except SystemExit: pass
+finally:
+    V.urllib.request.urlopen, V.time.sleep = real_urlopen, real_sleep
+
+# voice lines: a failure at line 3 leaves lines 1–2 on disk with their rows, and the next run reads only what is missing
+vd = tempfile.mkdtemp(prefix='crime-units-voice-')
+sj = os.path.join(vd, 'script.json'); json.dump({'voice': 'clone_1', 'lines': ['Eins.', 'Zwei.', 'Drei.', 'Vier.']}, open(sj, 'w'))
+jobs = []
+def fake_tts(a, fail=()):
+    text = open(a.text_file, encoding='utf-8').read(); jobs.append(text)
+    if text in fail: V.die('11labs: thử lỗi')
+    ff.run('-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.6', os.path.join(a.out, 'voice.mp3'))
+real_tts, argv = V.cmd_tts, sys.argv
+try:
+    V.cmd_tts = lambda a: fake_tts(a, fail=('Drei.',))
+    sys.argv = ['tts_lines.py', sj, os.path.join(vd, 'a'), '--prev', os.path.join(vd, 'none')]
+    try: T.main(); raise AssertionError('line 3 must stop the run')
+    except SystemExit: pass
+    part = json.load(open(os.path.join(vd, 'a', 'lines.json')))
+    assert [r['i'] for r in part] == [1, 2] and all(os.path.exists(os.path.join(vd, 'a', r['file'])) for r in part), part
+    V.cmd_tts = fake_tts; jobs.clear()
+    sys.argv = ['tts_lines.py', sj, os.path.join(vd, 'b'), '--prev', os.path.join(vd, 'none'), '--prev', os.path.join(vd, 'a')]
+    T.main()
+    assert jobs == ['Drei.', 'Vier.'] and [r['i'] for r in json.load(open(os.path.join(vd, 'b', 'lines.json')))] == [1, 2, 3, 4], jobs
+finally:
+    V.cmd_tts, sys.argv = real_tts, argv
 print('crime unit checks OK')

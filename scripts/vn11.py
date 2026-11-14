@@ -10,9 +10,11 @@ Commands:
 Safety rules (from the provider docs):
   * the key is read from the VN11_API_KEY env var only, never printed;
   * a create request is sent at most once; after that we only poll;
-  * 401/403 stop immediately (bad key / no quota); 500/503 on polling are retried;
-  * GET requests (balance, status, downloads) are retried on network errors and unreadable answers; the POST that
-    creates a job is never retried (after a timeout it may have been received and billed);
+  * 401/403 stop immediately (bad key / no quota); 429 and 5xx on polling are retried;
+  * GET requests (balance, status, downloads) are retried on network errors, unreadable answers, 429 and 5xx; the
+    POST that creates a job is retried only on 429 (refused before any work: nothing billed) and never after a
+    timeout, a network error or a 5xx (it may have been received and billed);
+  * the balance is only information: around a paid job a failed balance call is a warning, never a stop;
   * results are downloaded right away (MP3 kept only ~6 h on the provider side).
 """
 import argparse, http.client, json, os, sys, time, uuid, urllib.request, urllib.error
@@ -34,8 +36,11 @@ def die(msg, code=1):
 NET = (urllib.error.URLError, TimeoutError, ConnectionError, http.client.HTTPException)   # HTTPError is caught first
 
 
-def req(method, path, data=None, headers=None, raw=False, timeout=60, tries=None):
-    tries = tries or (4 if method == 'GET' else 1)
+BUSY = (429, 500, 502, 503, 504)   # the server is busy or its gateway failed: worth another try
+
+
+def req(method, path, data=None, headers=None, raw=False, timeout=60, tries=4):
+    again = BUSY if method == 'GET' else (429,)   # a create request: only when it was refused outright
     h = {'x-api-key': KEY, 'User-Agent': UA}
     h.update(headers or {})
     for i in range(tries):
@@ -50,9 +55,12 @@ def req(method, path, data=None, headers=None, raw=False, timeout=60, tries=None
                 j = json.loads(body)
             except Exception:
                 j = {'error': body[:300]}
+            if e.code in again and i < tries - 1:
+                print(f'::warning::11labs {method} {path.split("?")[0]}: HTTP {e.code}, thử lại', flush=True)
+                time.sleep(5 * (i + 1)); continue
             return e.code, j
         except (*NET, ValueError) as e:   # ValueError: JSONDecodeError, UnicodeDecodeError
-            if i == tries - 1:
+            if method != 'GET' or i == tries - 1:
                 raise
             print(f'::warning::11labs {method} {path.split("?")[0]}: {type(e).__name__}, thử lại', flush=True)
             time.sleep(5 * (i + 1))
@@ -82,7 +90,7 @@ def download(url, dest, tries=4):
                 body = resp.read()
             break
         except urllib.error.HTTPError as e:
-            if e.code < 500 or i == tries - 1: raise
+            if e.code not in BUSY or i == tries - 1: raise
             time.sleep(5 * (i + 1))
         except NET:
             if i == tries - 1: raise
@@ -93,9 +101,16 @@ def download(url, dest, tries=4):
     return os.path.getsize(dest)
 
 
-def cmd_balance(_):
-    code, j = req('GET', 'user.php')
-    if code != 200: die(f'11labs balance lỗi ({code}): {j.get("error", j)}')
+def cmd_balance(_, soft=False):
+    """Quota info. soft: a failure is a warning and {} (around a paid job the balance must never stop the work)."""
+    try:
+        code, j = req('GET', 'user.php')
+    except (*NET, ValueError) as e:
+        if not soft: raise
+        print(f'::warning::11labs balance: {type(e).__name__}, bỏ qua', flush=True); return {}
+    if code != 200:
+        if not soft: die(f'11labs balance lỗi ({code}): {j.get("error", j)}')
+        print(f'::warning::11labs balance lỗi ({code}), bỏ qua', flush=True); return {}
     info = {k: j.get(k) for k in ('quota_total', 'quota_used', 'remaining_quota', 'expires_at')}
     print(json.dumps(info, ensure_ascii=False))
     return info
@@ -128,7 +143,7 @@ def cmd_tts(a):
     text = open(a.text_file, encoding='utf-8').read().strip()
     if not text: die('Văn bản rỗng')
     os.makedirs(a.out, exist_ok=True)
-    before = cmd_balance(None)
+    before = cmd_balance(None, soft=True)
     voice = a.voice or os.environ.get('VN11_VOICE_ID') or ''
     if voice.startswith('clone_'):
         body, h = multipart({'text': text, 'clone_voice_id': voice})
@@ -145,7 +160,7 @@ def cmd_tts(a):
     while time.time() - t0 < a.timeout:
         time.sleep(4)
         code, st = req('GET', f'status.php?job_id={urllib.parse.quote(job)}')
-        if code in (500, 503): time.sleep(10); continue
+        if code in BUSY: time.sleep(10); continue
         if code != 200: die(f'11labs status lỗi ({code}): {st.get("error", st)}')
         s = st.get('status')
         if s == 'completed': break
@@ -156,8 +171,9 @@ def cmd_tts(a):
     if st.get('srt_url'):
         try: download(st['srt_url'], os.path.join(a.out, 'voice.srt'))
         except Exception as e: print(f'::warning::không tải được SRT: {e}')
-    after = cmd_balance(None)
-    used = (before.get('remaining_quota') or 0) - (after.get('remaining_quota') or 0)
+    after = cmd_balance(None, soft=True)   # the audio is paid and saved: a balance error must not lose it
+    known = before.get('remaining_quota') is not None and after.get('remaining_quota') is not None
+    used = before['remaining_quota'] - after['remaining_quota'] if known else None
     usage = {'job_id': job, 'voice': voice, 'chars_in_text': len(text), 'quota_used_this_job': used, 'remaining_quota': after.get('remaining_quota'), 'mp3_bytes': n}
     json.dump(usage, open(os.path.join(a.out, 'usage.json'), 'w'), ensure_ascii=False, indent=1)
     print(json.dumps(usage, ensure_ascii=False))
