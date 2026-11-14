@@ -3,9 +3,10 @@
 
 picks.json "images": {"<name>": {"src": "<round>/<file>" (picture search or AI illustration) or "own/<file>"
 (crime/<N>/own/), "rotate": 90 | -90 | 180 (optional, before the crop), "crop": [x0, y0, x1, y1] (0..1, optional:
-removes borders, captions, watermarks), "look": "aged" (default: the old print of the sample — faded warm colours,
-soft vignette, grain, dust and a few scratches) | "aged-bw" (the same in black and white, for old press photos and
-mugshots) | "clean" (true colours, for documents, maps and modern photos that should stay sharp),
+removes borders, captions, watermarks), "look": "print" (default: the evidence photograph of the owner's sample —
+black and white, hard contrast, deep blacks, grain) | "aged" (an old colour print: faded warm colours, dust,
+scratches) | "aged-bw" (an old faded black-and-white print) | "clean" (true colours, for documents, maps and scans
+that must stay readable),
 "blur": [[x0, y0, x1, y1], …] (optional: faces or details to blur — children, uninvolved people, names)}}
 → <out_dir>/<name>.jpg. The ageing is seeded by the name, so a picture looks the same in every render.
 """
@@ -54,6 +55,25 @@ def age(im, seed, bw=False):
     return out.filter(ImageFilter.GaussianBlur(0.35 * s))
 
 
+def print_look(im, seed):
+    """Evidence photograph of the sample: black and white, an S-curve (deep blacks, bright highlights), a soft dark
+    vignette and fine grain."""
+    rng = np.random.RandomState(seed)
+    W, H = im.size
+    a = np.asarray(im).astype(np.float32) / 255
+    l = 0.299 * a[..., 0] + 0.587 * a[..., 1] + 0.114 * a[..., 2]
+    lo, hi = np.percentile(l, 1.5), np.percentile(l, 99.2)
+    l = np.clip((l - lo) / max(0.05, hi - lo), 0, 1)
+    l = l * l * (3 - 2 * l)                                                # S-curve
+    l = 0.6 * l + 0.4 * l ** 1.25                                          # a little darker in the mids
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2)
+    l *= 1 - 0.45 * np.clip(r - 0.55, 0, None) ** 1.4
+    l += rng.normal(0, 0.035, (H, W))
+    a = np.clip(l, 0, 1)[..., None] * np.array([1.0, 0.99, 0.965]) + np.array([0.012, 0.012, 0.012])
+    return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.3 * max(W, H) / 1400))
+
+
 def prepare(it, root, name='x'):
     """One picture of picks.json "images", cropped, blurred where asked and aged (PIL image)."""
     im = Image.open(os.path.join(root, it['src'])).convert('RGB')
@@ -72,9 +92,11 @@ def prepare(it, root, name='x'):
         im = im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=50, threshold=2))
     if max(im.size) > 2600:
         k = 2600 / max(im.size); im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
-    look = it.get('look', 'aged')
+    look = it.get('look', 'print')
     if look == 'clean':
         return im
+    if look == 'print':
+        return print_look(im, zlib.crc32(name.encode()))
     return age(im, zlib.crc32(name.encode()), bw=look == 'aged-bw')
 
 

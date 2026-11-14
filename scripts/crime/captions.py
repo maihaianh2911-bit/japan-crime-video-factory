@@ -1,4 +1,5 @@
-"""Short on-screen captions, as the sample: 2–3 words at a time, timed to the voice.
+"""On-screen text timed to the voice. subs(): the subtitle box of the owner's sample (a clause at a time, punctuation
+kept) used by the video. chunks(): short captions of 2–3 words (the first sample; kept for the tests and as a measure).
 
 chunks(line, lang) splits one spoken line into caption chunks (display text without commas and full stops;
 ? and ! stay, and so does the dot of a German ordinal or abbreviation: "1.", "Dr."). weight(text, lang) is the
@@ -19,6 +20,7 @@ JA_BREAK = set('、。，．…？！?!」』）) 　')
 JA_WORD = ('こと', 'もの', 'ところ', 'でしょう', 'だろう', 'のです', 'でき', 'しまっ', 'しまう', 'しまい', 'ください',
            'いった', 'そんな', 'こんな', 'あんな', 'どう', 'ます', 'ません', 'ました')   # hiragana that starts a word
 JA_TAIL = ('す', 'ん', 'る', 'かっ', 'った', 'ら', 'れ')                                # hiragana that ends the word before
+SUB_JA_ROW, SUB_DE_CH = 18, 38   # subtitle box (the sample): one row of 18 full-width characters / 38 letters
 DE_MAX_CH, DE_MAX_W = 20, 3     # characters / words per chunk (Anton 86 px: ~25 capitals fit one row)
 DE_MONTHS = set('januar februar märz april mai juni juli august september oktober november dezember'.split())
 # words whose dot is no sentence end (shown on screen): titles, "z. B.", "Nr." …; single letters too (initials, "v. Chr.")
@@ -78,7 +80,7 @@ def _ends_de(words, i):
     return not (re.search(r'\.["“”»«)\]]?$', w) and de_dot_kept(words, i))
 
 
-def chunks_de(line):
+def chunks_de(line, max_ch=None, max_w=None, sub=False):
     """Best split into chunks of 1–3 words (≤ 20 characters shown; an ordinal "1." or a title "Dr." does not count
     as a word): a chunk ends at punctuation when it can, does not end on an article, a preposition, a title or an
     initial ("Dr.", "z.", "F.") or an ordinal (so "1. Juli" stays together), and single-word chunks are kept for long
@@ -94,11 +96,12 @@ def chunks_de(line):
     best = [(0.0, 0)] + [(float('inf'), 0)] * n
     for j in range(1, n + 1):
         for i in range(j - 1, -1, -1):
-            if sum(1 for m in range(i, j) if not light[m]) > DE_MAX_W: break
+            if sum(1 for m in range(i, j) if not light[m]) > (max_w or DE_MAX_W): break
             shown = ' '.join(shown_w[i:j])
-            if len(shown) > DE_MAX_CH and j - i > 1: break
+            if len(shown) > (max_ch or DE_MAX_CH) and j - i > 1: break
             c = 1.0
-            if j - i == 1: c += 0 if len(shown) >= 10 else 2.5
+            if sub: c += 0 if len(shown) >= 16 else 1.5 if len(shown) >= 8 else 4
+            elif j - i == 1: c += 0 if len(shown) >= 10 else 2.5
             if _ends_de(words, j - 1): c -= 2.0
             elif j < n and (ordinal[j - 1] or title[j - 1]): c += 8.0
             elif j < n and shown_w[j - 1].lower() in DE_FUNC: c += 4.0
@@ -109,7 +112,7 @@ def chunks_de(line):
     while j > 0:
         cuts.append(j); j = best[j][1]
     cuts = [0] + cuts[::-1]
-    return [(' '.join(words[a:b]), ' '.join(shown_w[a:b])) for a, b in zip(cuts, cuts[1:])]
+    return [(' '.join(words[a:b]), ' '.join(words[a:b] if sub else shown_w[a:b])) for a, b in zip(cuts, cuts[1:])]
 
 
 # ---------------------------------------------------------------- Japanese
@@ -161,10 +164,16 @@ def _ja_cut(t, b):
     return cost
 
 
-def _ja_chunk(s):
+def _ja_chunk(s, sub=False):
     """Cost of one chunk: short ones flicker, long ones read slowly, one wider than the row wraps."""
     w = _ja_width(_ja_shown(s))
     c = 2.0
+    if sub:   # a subtitle box: one row of SUB_JA_ROW, best 7–15 characters, a clause when it can
+        if w > SUB_JA_ROW: c += 50 + 10 * (w - SUB_JA_ROW)
+        if w < 4: c += 6
+        elif w < 7: c += 2
+        if w > 15: c += 1.0 * (w - 15)
+        return c
     if w > JA_ROW: c += 50 + 10 * (w - JA_ROW)
     if w < 1.5: c += 10
     elif w < 3: c += 4
@@ -173,7 +182,7 @@ def _ja_chunk(s):
     return c
 
 
-def chunks_ja(line):
+def chunks_ja(line, sub=False):
     """Best split into phrases of ~3–9 characters, never wider than one caption row (DP over the cut points): cut
     after punctuation or a particle; never before a small kana, ー or punctuation, inside a number, a katakana name
     (a name longer than the row is cut at its ・) or a word ending (思いま|すか, できな|かった); a short tail (か？)
@@ -187,18 +196,24 @@ def chunks_ja(line):
         if cut[j] is None: continue
         for i in range(j - 1, -1, -1):
             if cut[i] is None or best[i][0] == float('inf'): continue
-            c = best[i][0] + _ja_chunk(t[i:j]) + cut[j]
+            c = best[i][0] + _ja_chunk(t[i:j], sub) + cut[j]
             if c < best[j][0]: best[j] = (c, i)
     cuts, j = [], n
     while j > 0:
         cuts.append(j); j = best[j][1]
     cuts = [0] + cuts[::-1]
-    return [(p, _ja_shown(p)) for p in (t[a:b] for a, b in zip(cuts, cuts[1:])) if p.strip()]
+    return [(p, p.strip() if sub else _ja_shown(p)) for p in (t[a:b] for a, b in zip(cuts, cuts[1:])) if p.strip()]
 
 
 def chunks(line, lang):
     """[(spoken part, shown text)] covering the whole line in order."""
     return chunks_ja(line) if lang == 'ja' else chunks_de(line)
+
+
+def subs(line, lang):
+    """[(spoken part, shown text)] for the subtitle box of the sample (a white box under the board): a clause at a
+    time, punctuation kept — Japanese up to SUB_JA_ROW characters, German up to SUB_DE_CH characters / 8 words."""
+    return chunks_ja(line, sub=True) if lang == 'ja' else chunks_de(line, SUB_DE_CH, 8, sub=True)
 
 
 def weight(text, lang):

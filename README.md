@@ -1,6 +1,6 @@
 # japan-crime-video-factory
 
-Dây chuyền làm **video vụ án tiếng Nhật** khổ dọc 9:16 (1080×1920) cho Shorts / TikTok / Reels, theo video mẫu của chủ kênh ([`00-video-mau/MAU-VU-AN.mp4`](00-video-mau/MAU-VU-AN.mp4)): nền đen, ảnh kiểu **ảnh cũ** (màu phai, hạt, bụi, vết xước) phóng chậm, đổi ảnh mỗi 3–4 giây, **chữ vàng 2–3 từ** chạy đúng theo giọng đọc, **tiêu đề vụ án** ở trên cùng. Giọng đọc tiếng Nhật. Chạy hoàn toàn trên GitHub.
+Dây chuyền làm **video vụ án tiếng Nhật** khổ dọc 9:16 (1080×1920) cho Shorts / TikTok / Reels, theo video mẫu của chủ kênh ([`00-video-mau/MAU-VU-AN.mp4`](00-video-mau/MAU-VU-AN.mp4), mẫu mới 14/11/2026): kiểu **hồ sơ vụ án trên mặt bàn gỗ tối** — ảnh đen trắng viền trắng, nhãn vàng viết tay, tờ giấy ghi ngày tháng và tên tuổi, tiêu đề trên mảnh giấy xé, dấu đỏ, số lớn, dây đỏ nối các chứng cứ — mỗi thứ hiện ra đúng lúc giọng đọc nhắc tới; **phụ đề ô trắng nhỏ** ở dưới chạy theo giọng đọc. Giọng đọc tiếng Nhật. Chạy hoàn toàn trên GitHub.
 
 Repo song sinh: [`maihaianh2911-bit/germany-crime-video-factory`](https://github.com/maihaianh2911-bit/germany-crime-video-factory) làm cùng kiểu video bằng tiếng Đức.
 
@@ -15,7 +15,7 @@ Repo song sinh: [`maihaianh2911-bit/germany-crime-video-factory`](https://github
 
 - **Ảnh thật trước**: nơi xảy ra, nhà, nhà thờ, tòa án, báo cũ, tài liệu — chỉ ảnh được phép dùng trong video kiếm tiền (phạm vi công cộng, CC0, CC BY, CC BY-SA) từ Wikimedia Commons, Openverse (Flickr…), Europeana, Thư viện Quốc hội Mỹ.
 - **Ảnh AI minh họa** khi không có ảnh thật cho câu đó (căn phòng, buổi tối, phiên tòa…): luôn có chữ **"イメージ（AI生成）"** trên ảnh, **không vẽ mặt người thật**, không máu me, không chữ giả. Cần một khóa tạo ảnh (xem Cấu hình); chưa có khóa thì video chỉ dùng ảnh thật.
-- Mọi ảnh đều được làm thành **ảnh cũ** như mẫu (giấy tờ, báo thì giữ rõ nét).
+- Mọi ảnh đều được làm thành **ảnh đen trắng tương phản** như mẫu (giấy tờ, báo thì giữ rõ nét).
 
 ## Nhãn trên phiếu (máy tự gắn)
 

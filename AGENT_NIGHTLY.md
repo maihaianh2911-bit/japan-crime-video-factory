@@ -1,7 +1,7 @@
 # Claude task (started by GitHub) — entry point for crime issues
 
 You run unattended for `maihaianh2911-bit/japan-crime-video-factory`: vertical true-crime shorts in tiếng Nhật made from old photographs (real pictures
-first, labelled AI illustrations where none exists), a tiếng Nhật voice and short captions timed to it. Nobody will
+first, labelled AI illustrations where none exists), a tiếng Nhật voice and subtitles timed to it, laid out as a case file on a desk (the owner's sample). Nobody will
 answer questions.
 
 This repo has no Claude task of its own: the owner's shared task (the one of `japan-video-factory`, whose

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Download the fonts of the crime videos (npm packages, pinned) into <dir>/<package> for scripts/crime/fonts.py:
-# Japanese channel: @fontsource-variable/noto-sans-jp; German channel: @fontsource/anton (captions, title) and
-# @fontsource-variable/source-sans-3 (label, credit). The channel comes from prompts/channel.json.
+# Download the fonts of the crime videos (npm packages, pinned in scripts/crime/fonts.py FAMILIES: sans, serif, mono
+# and hand for the channel's language, from prompts/channel.json) into <dir>/<package> for scripts/crime/fonts.py.
 # Usage: scripts/crime/get_fonts.sh <dir>
 set -euo pipefail
-LANG_=$(python3 -c "import json;print(json.load(open('prompts/channel.json'))['lang'])")
+HERE=$(cd "$(dirname "$0")" && pwd)
+LANG_=$(python3 -c "import json;print(json.load(open('$HERE/../../prompts/channel.json'))['lang'])")
+PKGS=$(python3 "$HERE/fonts.py" --packages "$LANG_")
 mkdir -p "$1" && cd "$1"
-if [ "$LANG_" = ja ]; then PKGS="@fontsource-variable/noto-sans-jp@5.3.1"; else PKGS="@fontsource/anton@5.2.7 @fontsource-variable/source-sans-3@5.3.1"; fi
 for spec in $PKGS; do
   name=${spec%@*}; dir=${name##*/}
-  [ -f "$dir/index.css" ] && continue
+  [ -d "$dir/files" ] && continue
   npm pack -q "$spec" >/dev/null
   tgz=$(ls -t *.tgz | head -1)
   mkdir -p "$dir" && tar -xzf "$tgz" -C "$dir" --strip-components=1 && rm -f "$tgz"

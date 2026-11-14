@@ -1,7 +1,7 @@
 name: Kiểm tra mã
 
 # Runs only when code changes (not when Claude pushes a video's crime/<N>/ files): syntax, types, unit checks and a
-# smoke test of the crime pipeline on made-up data with three rendered frames. No 11labs, no picture search, no AI.
+# smoke test of the crime pipeline on made-up data with its preview and four rendered frames. No 11labs, no picture search, no AI.
 on:
   pull_request:
   push:

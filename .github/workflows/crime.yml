@@ -1,11 +1,11 @@
 name: Video vụ án
 
 # One issue "[Vụ án] …" = one vertical true-crime short (the channel's language: prompts/channel.json) laid out as
-# the owner's sample (00-video-mau/MAU-VU-AN.mp4): old photographs, short yellow captions timed to the voice, the
-# case title on top. Owner opens the issue → Claude writes crime/<N>/script.json → this workflow reads the voice
+# the owner's sample (00-video-mau/MAU-VU-AN.mp4): a case file on a dark desk, evidence laid down as the voice
+# names it, small white subtitles. Owner opens the issue → Claude writes crime/<N>/script.json → this workflow reads the voice
 # (11labs, one job per line), checks it with Whisper, searches free pictures and makes the AI illustrations Claude
 # asked for → Claude chooses the pictures (crime/<N>/picks.json) → this workflow renders → Claude checks every
-# shot → done. An owner comment → Claude fixes. Claude's side: AGENT_CRIME.md. Files: renders branch, crime/<N>/.
+# scene → done. An owner comment → Claude fixes. Claude's side: AGENT_CRIME.md. Files: renders branch, crime/<N>/.
 on:
   issues:
     types: [opened]

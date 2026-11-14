@@ -3,9 +3,10 @@
 Read `docs/HANDOVER.md` first (the owner, their standing decisions, the current state), then `AGENT_CRIME.md` (how
 a video is made). The owner is Vietnamese and not technical: answer in short, simple Vietnamese, no jargon.
 
-This repo makes one thing: vertical true-crime shorts with a **tiếng Nhật** voice and short yellow captions timed
-to it, laid out as the owner's sample `00-video-mau/MAU-VU-AN.mp4` (old photographs, a new picture every 3–4 s, the
-case title on top). Real pictures first; where none exists, AI illustrations, always tagged `イメージ（AI生成）` and never
+This repo makes one thing: vertical true-crime shorts with a **tiếng Nhật** voice and small white subtitles timed
+to it, laid out as the owner's sample `00-video-mau/MAU-VU-AN.mp4` (new sample of 14/11/2026: a case file on a dark
+desk — black-and-white photos with white borders, yellow hand-written tags, typed paper cards, torn-paper titles, red
+stamps — each laid down as the voice names it). Real pictures first; where none exists, AI illustrations, always tagged `イメージ（AI生成）` and never
 showing a real person's face. One issue `[Vụ án] …` = one video; the machine steps run on GitHub Actions
 (`crime.yml`), Claude's steps are in `AGENT_CRIME.md`. Its twin `maihaianh2911-bit/germany-crime-video-factory` makes the same videos in tiếng Đức; the
 code is the same, only `prompts/channel.json` (language, voice, AI tag) and `prompts/readings.json` differ.
@@ -21,7 +22,7 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
 2. Right after creating the issue, add `crime-busy` (so that task leaves it to you; keep it while you work and wait
    here, remove it when you stop), then do Claude's steps of `AGENT_CRIME.md` for that issue right away:
    `script.json` → wait for the voice and pictures (~15–25 min) → `picks.json`, with the framing preview → wait for
-   the render (~15–25 min) → check the shot sheet → closing comment. While a machine step runs, say so in one line
+   the render (~15–25 min) → check the scene sheet → closing comment. While a machine step runs, say so in one line
    and wait; if the owner does not want to wait, stop after any step: the Claude task continues from the labels
    when GitHub calls it.
 3. Give the owner the links to the video (view + download), the subtitles and the picture credits.

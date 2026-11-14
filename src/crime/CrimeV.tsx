@@ -1,136 +1,320 @@
 import React, { useEffect, useState } from 'react';
 import { AbsoluteFill, Audio, Img, Sequence, cancelRender, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
-// Vertical (1080×1920) true-crime short, laid out as the owner's sample (00-video-mau/MAU-VU-AN.mp4): black frame,
-// one old photograph almost the full width with a slow push-in, hard cuts every few seconds, short yellow captions
-// (2–3 words) in the lower part of the photograph, timed to the voice. The owner added (13/11/2026) the case title
-// on top for the whole video, with a small per-shot label under it. AI illustrations carry a tag on the picture.
-// Positions come from scripts/crime/layout.py via build.py.
+// Vertical (1080×1920) true-crime short laid out as the owner's sample (00-video-mau/MAU-VU-AN.mp4, a case file of
+// the Setagaya family murder): a dark wooden desk on which the evidence of each scene is laid down as the voice names
+// it — black-and-white photographs with a white print border, yellow tape labels written by hand, paper cards with
+// typed lines, torn-paper titles, red stamps, big numbers, red strings — dust and grain of old film over all, and the
+// voice in a small white subtitle box at the bottom. AI illustrations carry a tag on the picture.
+// The plan comes from scripts/crime/build.py (layout: scripts/crime/layout.py).
 type View = [number, number, number, number];
-export type Pic = { src: string; w: number; h: number; box: [number, number, number, number]; view: View;
-  zoom?: { to: View; s: number; e: number }; drift?: number };
-export type Mark = { s: number; box: View; shape: 'ellipse' | 'rect' };
-export type Shot = { s: number; e: number; shot: number; label: string; credit: string; ai: boolean; pic: Pic; marks: Mark[] };
-export type Cap = { s: number; e: number; text: string; line: number };
-type FontChunk = { family: string; file: string; range: string };
-export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; titleSize: number; aiTag: string; shots: Shot[];
-  caps: Cap[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; fonts: FontChunk[] };
+type Base = { s: number; e?: number; x: number; y: number; rot: number };
+export type Mark = { s: number; box: View; shape: 'ellipse' | 'rect'; color: 'yellow' | 'red' };
+export type Photo = Base & { k: 'photo'; src: string; iw: number; ih: number; w: number; h: number; view: View;
+  zoom?: { to: View; s: number; e: number }; drift: number; ai: boolean; credit: string; frame: 'white' | 'none'; marks: Mark[] };
+export type Tag = Base & { k: 'tag'; text: string; color: 'yellow' | 'red' | 'white' | 'black'; size: number; font: Role };
+export type Header = Base & { k: 'header'; title: string; kicker: string; size: number };
+export type Row = { s: number; text: string; right: string; color: string; check: boolean; strike?: number };
+export type Card = Base & { k: 'card'; style: 'paper' | 'note' | 'file'; head: string; rows: Row[]; w: number; h: number; size: number };
+export type Stamp = Base & { k: 'stamp'; text: string; size: number };
+export type Big = Base & { k: 'big'; num: string; text: string; size: number };
+export type Text = Base & { k: 'text'; rows: { s: number; text: string; color: string }[]; size: number };
+export type Line = Base & { k: 'line'; pts: [[number, number], [number, number]]; color: string };
+export type Item = Photo | Tag | Header | Card | Stamp | Big | Text | Line;
+export type Scene = { s: number; e: number; scene: number; bg: 'wood' | 'black'; push: number; items: Item[] };
+export type Sub = { s: number; e: number; text: string; line: number };
+type Role = 'sans' | 'serif' | 'mono' | 'hand';
+type FontChunk = { family: string; file: string; range: string; weight: string; style: string };
+export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; aiTag: string; bg: string; grain: string; scenes: Scene[];
+  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; fonts: FontChunk[];
+  families: Partial<Record<Role, string>> };
 
 // layout.py
-const SIDE = 24, TITLE_Y = 66, LABEL_Y = 196, CAP_Y = 1310, CAP_W = 1000, CREDIT_Y = 1676;
-const CAP = { ja: 78, de: 86 };
-const YELLOW = '#ffc81e', RED = '#d92a1c';
+const SUB_Y = 1588, SUB_MAX_W = 960, BORDER = 12;
+const SUB_SIZE = { ja: 40, de: 40 };
+const YELLOW = '#f1c232', RED = '#c9252c', PAPER = '#e5dfd2', INK = '#1b1a18';
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 const ease = (x: number) => { const p = clamp01(x); return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
 const easeOut = (x: number) => 1 - Math.pow(1 - clamp01(x), 3);
-const fontsOf = (lang: 'ja' | 'de') => lang === 'ja'
-  ? { head: '"Noto Sans JP", sans-serif', cap: '"Noto Sans JP", sans-serif', small: '"Noto Sans JP", sans-serif', capWeight: 900, headWeight: 900 }
-  : { head: '"Anton", "Source Sans 3", sans-serif', cap: '"Anton", "Source Sans 3", sans-serif', small: '"Source Sans 3", sans-serif', capWeight: 400, headWeight: 400 };
-
-let fontsLoading: Promise<void> | null = null;
-const useFonts = (fonts: FontChunk[], text: string, lang: 'ja' | 'de') => {
-  const [h] = useState(() => delayRender('fonts'));
-  useEffect(() => {
-    const f = fontsOf(lang);
-    (fontsLoading ??= (async () => {
-      for (const c of fonts)
-        document.fonts.add(new FontFace(c.family, `url(${staticFile(c.file)}) format('woff2')`, { weight: '100 900', unicodeRange: c.range }));
-      await Promise.all([900, 600, 400].flatMap((wt) => [f.head, f.small].map((fam) => document.fonts.load(`${wt} 60px ${fam}`, text))));
-    })()).then(() => continueRender(h)).catch((e) => cancelRender(e));
-  }, [h, fonts, text, lang]);
+const backOut = (x: number) => { const p = clamp01(x), c = 1.6; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); };
+// a fixed pseudo-random number in [0, 1) for a seed (the same in every frame and every render)
+const rnd = (n: number) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+const hash = (s: string) => { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 100003; return h; };
+const DEFAULT_FAM: Record<'ja' | 'de', Record<Role, string>> = {
+  ja: { sans: 'Noto Sans JP', serif: 'Noto Serif JP', mono: 'M PLUS 1 Code', hand: 'Yusei Magic' },
+  de: { sans: 'Source Sans 3', serif: 'Roboto Slab', mono: 'Space Mono', hand: 'Kalam' },
 };
 
-// region of the picture shown at time t: a zoom when asked for, else a slow push-in (by `drift` over the shot)
-export const viewAt = (p: Pic, t: number, s: number, e: number): View => {
+let fontsLoading: Promise<void> | null = null;
+const useFonts = (plan: PlanC, fam: Record<Role, string>) => {
+  const [h] = useState(() => delayRender('fonts'));
+  useEffect(() => {
+    const text = JSON.stringify(plan.scenes) + plan.subs.map((c) => c.text).join('') + plan.aiTag + '0123456789';
+    (fontsLoading ??= (async () => {
+      for (const c of plan.fonts)
+        document.fonts.add(new FontFace(c.family, `url(${staticFile(c.file)}) format('woff2')`, { weight: c.weight, style: c.style, unicodeRange: c.range }));
+      await Promise.all([900, 700, 500, 400].flatMap((wt) => Object.values(fam).map((f) => document.fonts.load(`${wt} 60px "${f}"`, text))));
+    })()).then(() => continueRender(h)).catch((e) => cancelRender(e));
+  }, [h, plan, fam]);
+};
+
+// text typed out from time s: characters shown at time t
+const typed = (text: string, t: number, s: number, cps = 22) => {
+  const n = [...text].length;
+  const k = Math.floor((t - s) * Math.max(cps, n / 0.9));
+  return k >= n ? text : [...text].slice(0, Math.max(0, k)).join('');
+};
+
+// torn paper edges: a polygon with jagged left and right sides (fixed per text)
+const torn = (seed: number, jag = 1.6) => {
+  const pts: string[] = [];
+  for (let i = 0; i <= 6; i++) pts.push(`${(rnd(seed + i) * jag).toFixed(2)}% ${(i * 100 / 6).toFixed(1)}%`);
+  for (let i = 6; i >= 0; i--) pts.push(`${(100 - rnd(seed + 50 + i) * jag).toFixed(2)}% ${(i * 100 / 6).toFixed(1)}%`);
+  return `polygon(${pts.join(',')})`;
+};
+
+// region of the picture shown at time t: a zoom when asked for, else a slow push-in (by `drift` over the scene)
+const viewAt = (p: Photo, t: number, e: number): View => {
   if (p.zoom) {
     const k = ease((t - p.zoom.s) / Math.max(0.1, p.zoom.e - p.zoom.s));
     return p.view.map((v, i) => v + (p.zoom!.to[i] - v) * k) as View;
   }
   if (!p.drift) return p.view;
-  const k = clamp01((t - s) / Math.max(0.5, e - s)) * p.drift / 2;
+  const k = clamp01((t - p.s) / Math.max(0.5, e - p.s)) * p.drift / 2;
   const [a, b, c, d] = p.view, w = c - a, h = d - b;
   return [a + w * k, b + h * k, c - w * k, d - h * k];
 };
 
-const Photo: React.FC<{ sh: Shot; t: number; tag: string; small: string }> = ({ sh, t, tag, small }) => {
-  const p = sh.pic;
-  const [x, y, bw, bh] = p.box;
-  const [v0, v1, v2, v3] = viewAt(p, t, sh.s, sh.e);
-  const sx = bw / ((v2 - v0) * p.w), sy = bh / ((v3 - v1) * p.h);
-  // a faint flicker of old film: brightness wanders by ±2 %
-  const flicker = 1 + 0.02 * Math.sin(t * 13.1) * Math.sin(t * 3.7 + 1.3);
+// an item enters: fades in and settles from a little larger / turned (photos drop onto the desk, tags slap on)
+const enter = (t: number, s: number, kind: Item['k']) => {
+  const d = kind === 'tag' || kind === 'stamp' ? 0.16 : kind === 'photo' || kind === 'card' ? 0.32 : 0.26;
+  const p = (t - s) / d;
+  const from = kind === 'stamp' ? 1.7 : kind === 'tag' ? 1.3 : kind === 'photo' || kind === 'card' ? 1.08 : 1.12;
+  const sc = kind === 'stamp' ? 1 + (from - 1) * (1 - easeOut(p)) : 1 + (from - 1) * (1 - backOut(p));
+  return { opacity: clamp01(p * 1.6), scale: sc, turn: (1 - easeOut(p)) * (kind === 'photo' ? 2.5 : kind === 'tag' ? -3 : 0) };
+};
+
+const PhotoV: React.FC<{ p: Photo; t: number; e: number; tag: string; sans: string; mono: string }> = ({ p, t, e, tag, sans, mono }) => {
+  const [v0, v1, v2, v3] = viewAt(p, t, e);
+  const sx = p.w / ((v2 - v0) * p.iw), sy = p.h / ((v3 - v1) * p.ih);
+  const b = p.frame === 'white' ? BORDER : 0;
   return (
-    <div style={{ position: 'absolute', left: x, top: y, width: bw, height: bh, overflow: 'hidden', background: '#000',
-      boxShadow: '0 0 0 2px rgba(225,210,180,.18), 0 20px 60px rgba(0,0,0,.8)', borderRadius: 3 }}>
-      <Img src={staticFile(p.src)} style={{ position: 'absolute', left: -v0 * p.w * sx, top: -v1 * p.h * sy, width: p.w * sx, height: p.h * sy,
-        maxWidth: 'none', filter: `brightness(${flicker.toFixed(4)})` }} />
-      {/* worn edges of the print */}
-      <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 70px rgba(20,12,4,.55), inset 0 0 14px rgba(240,225,195,.18)' }} />
-      <svg width={bw} height={bh} style={{ position: 'absolute', left: 0, top: 0 }}>
-        {sh.marks.filter((mk) => t >= mk.s).map((mk, i) => {
-          const X = (f: number) => ((f - v0) / (v2 - v0)) * bw, Y = (f: number) => ((f - v1) / (v3 - v1)) * bh;
-          const [a, b, c, d] = mk.box;
-          const draw = easeOut((t - mk.s) / 0.5);
-          const st = { fill: 'none', stroke: RED, strokeWidth: 7, strokeLinecap: 'round' as const, strokeDasharray: 1, strokeDashoffset: 1 - draw,
-            filter: 'drop-shadow(0 0 5px rgba(0,0,0,.7))' };
-          return mk.shape === 'rect'
-            ? <rect key={i} pathLength={1} x={X(a)} y={Y(b)} width={X(c) - X(a)} height={Y(d) - Y(b)} rx={6} style={st} />
-            // turned by -90° so the ring starts drawing at the top: its radii are swapped to keep the box's shape
-            : <ellipse key={i} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(b) + Y(d)) / 2} rx={(Y(d) - Y(b)) / 2} ry={(X(c) - X(a)) / 2}
-                transform={`rotate(-90 ${(X(a) + X(c)) / 2} ${(Y(b) + Y(d)) / 2})`} style={st} />;
-        })}
-      </svg>
-      {sh.ai ? (
-        <div style={{ position: 'absolute', right: 18, top: 18, padding: '6px 14px', borderRadius: 6, background: 'rgba(0,0,0,.55)',
-          color: 'rgba(255,255,255,.9)', fontFamily: small, fontWeight: 600, fontSize: 26, letterSpacing: '0.03em' }}>{tag}</div>
+    <div style={{ position: 'relative', width: p.w + 2 * b, height: p.h + 2 * b, background: '#e8e5de', padding: b, boxSizing: 'border-box',
+      boxShadow: '0 18px 40px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.5)' }}>
+      <div style={{ position: 'relative', width: p.w, height: p.h, overflow: 'hidden', background: '#000' }}>
+        <Img src={staticFile(p.src)} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, width: p.iw * sx, height: p.ih * sy, maxWidth: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 50px rgba(0,0,0,.45)' }} />
+        <svg width={p.w} height={p.h} style={{ position: 'absolute', left: 0, top: 0 }}>
+          {p.marks.filter((mk) => t >= mk.s).map((mk, i) => {
+            const X = (f: number) => ((f - v0) / (v2 - v0)) * p.w, Y = (f: number) => ((f - v1) / (v3 - v1)) * p.h;
+            const [a, bb, c, d] = mk.box;
+            const draw = easeOut((t - mk.s) / 0.5);
+            const st = { fill: 'none', stroke: mk.color === 'red' ? RED : YELLOW, strokeWidth: 6, strokeLinecap: 'round' as const,
+              strokeDasharray: 1, strokeDashoffset: 1 - draw, filter: 'drop-shadow(0 0 4px rgba(0,0,0,.7))' };
+            return mk.shape === 'rect'
+              ? <rect key={i} pathLength={1} x={X(a)} y={Y(bb)} width={X(c) - X(a)} height={Y(d) - Y(bb)} rx={6} style={st} />
+              // turned by -90° so the ring starts drawing at the top: its radii are swapped to keep the box's shape
+              : <ellipse key={i} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(bb) + Y(d)) / 2} rx={(Y(d) - Y(bb)) / 2} ry={(X(c) - X(a)) / 2}
+                  transform={`rotate(-90 ${(X(a) + X(c)) / 2} ${(Y(bb) + Y(d)) / 2})`} style={st} />;
+          })}
+        </svg>
+        {p.ai ? (
+          <div style={{ position: 'absolute', right: 10, bottom: 10, padding: '3px 10px', background: 'rgba(0,0,0,.6)', color: 'rgba(255,255,255,.92)',
+            fontFamily: `"${sans}"`, fontWeight: 500, fontSize: 21, letterSpacing: '0.02em', borderRadius: 3 }}>{tag}</div>
+        ) : null}
+      </div>
+      {p.credit ? (
+        <div style={{ position: 'absolute', left: b, right: b, top: p.h + 2 * b + 6, fontFamily: `"${mono}"`, fontWeight: 400, fontSize: 17,
+          color: 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.credit}</div>
       ) : null}
     </div>
   );
 };
 
+const TagV: React.FC<{ g: Tag; F: Record<Role, string>; lang: 'ja' | 'de' }> = ({ g, F, lang }) => {
+  const look = {
+    yellow: { bg: YELLOW, fg: INK, weight: 400 }, red: { bg: RED, fg: '#fff', weight: 700 },
+    white: { bg: '#eeebe4', fg: INK, weight: 800 }, black: { bg: '#141312', fg: '#f2efe8', weight: 700 },
+  }[g.color];
+  const italic = g.font === 'serif' && lang === 'de';
+  return (
+    <div style={{ background: look.bg, color: look.fg, padding: `${g.size * 0.08}px ${g.size * 0.34}px`, whiteSpace: 'pre', textAlign: 'center',
+      fontFamily: `"${F[g.font]}"`, fontWeight: g.font === 'hand' ? (lang === 'de' ? 700 : 400) : look.weight, fontStyle: italic ? 'italic' : 'normal',
+      fontSize: g.size, lineHeight: 1.22, clipPath: torn(hash(g.text), 2.2), boxShadow: '0 4px 10px rgba(0,0,0,.45)',
+      letterSpacing: g.font === 'mono' ? '0.04em' : '0.01em' }}>{g.text}</div>
+  );
+};
+
+const HeaderV: React.FC<{ h: Header; t: number; F: Record<Role, string>; lang: 'ja' | 'de' }> = ({ h, t, F, lang }) => {
+  const k = typed(h.kicker, t, h.s, 16);
+  const ti = easeOut((t - h.s - (h.kicker ? 0.35 : 0)) / 0.3);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: h.size * 0.12 }}>
+      {h.kicker ? (
+        <div style={{ background: '#121110', color: '#f1eee7', padding: `${h.size * 0.06}px ${h.size * 0.3}px`, fontFamily: `"${F.mono}"`, fontWeight: 700,
+          fontSize: h.size * 0.62, letterSpacing: '0.08em', textTransform: 'uppercase', whiteSpace: 'pre', minHeight: h.size * 0.75,
+          minWidth: h.size * 0.62 * [...h.kicker].length * (lang === 'ja' ? 1.0 : 0.66) }}>{k}</div>
+      ) : null}
+      <div style={{ opacity: ti, transform: `translateX(${(1 - ti) * -40}px)`, background: '#ece9e2', color: INK, whiteSpace: 'pre',
+        padding: `${h.size * 0.06}px ${h.size * 0.32}px`, fontFamily: `"${F.serif}"`, fontWeight: 800, fontStyle: lang === 'de' ? 'italic' : 'normal',
+        fontSize: h.size, lineHeight: 1.25, clipPath: torn(hash(h.title) + 3, 1.6), boxShadow: '0 5px 12px rgba(0,0,0,.5)' }}>{h.title}</div>
+    </div>
+  );
+};
+
+const CardV: React.FC<{ c: Card; t: number; F: Record<Role, string> }> = ({ c, t, F }) => {
+  const note = c.style === 'note', file = c.style === 'file';
+  const lh = c.size * 1.6;
+  const bg = note
+    ? `repeating-linear-gradient(180deg, transparent 0, transparent ${lh - 2}px, rgba(90,130,200,.35) ${lh - 2}px, rgba(90,130,200,.35) ${lh}px), #f4f2ec`
+    : `radial-gradient(ellipse 80% 70% at 50% 45%, ${file ? '#d8c69c' : '#ece7dc'} 0%, ${file ? '#c7b283' : PAPER} 60%, ${file ? '#a8946a' : '#c9c2b2'} 100%)`;
+  const pad = c.size * 0.9;
+  return (
+    <div style={{ position: 'relative', width: c.w, height: c.h, background: bg, boxShadow: '0 18px 40px rgba(0,0,0,.6), 0 2px 6px rgba(0,0,0,.4)',
+      padding: `${note ? lh * 0.6 : pad}px ${pad}px ${pad}px ${note ? c.size * 2.2 : pad}px`, boxSizing: 'border-box', overflow: 'hidden' }}>
+      {note ? <div style={{ position: 'absolute', left: c.size * 1.6, top: 0, bottom: 0, width: 3, background: 'rgba(200,60,60,.45)' }} /> : null}
+      {c.head ? (
+        <div style={{ fontFamily: `"${F.mono}"`, fontWeight: 700, fontSize: c.size * 0.9, color: '#2a2724', letterSpacing: '0.05em', whiteSpace: 'pre',
+          paddingBottom: c.size * 0.35, marginBottom: c.size * 0.5, borderBottom: '2px solid rgba(40,36,32,.55)', textTransform: 'uppercase' }}>{typed(c.head, t, c.s, 18)}</div>
+      ) : null}
+      {c.rows.filter((r) => t >= r.s).map((r, i) => {
+        const st = r.strike !== undefined ? easeOut((t - r.strike) / 0.35) : 0;
+        const ink = r.color === 'red' ? RED : note ? '#26398a' : '#23201d';
+        return (
+          <div key={i} style={{ position: 'relative', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: c.size * 0.5,
+            minHeight: lh, lineHeight: `${lh}px` }}>
+            <span style={{ fontFamily: `"${note ? F.hand : r.right ? F.serif : F.mono}"`, fontWeight: note ? 400 : 700, fontSize: c.size, color: ink, whiteSpace: 'pre' }}>
+              {r.check ? '✓ ' : ''}{typed(r.text, t, r.s)}</span>
+            {r.right ? <span style={{ fontFamily: `"${F.mono}"`, fontWeight: 500, fontSize: c.size * 0.72, color: 'rgba(60,55,50,.7)', whiteSpace: 'pre' }}>
+              {typed(r.right, t, r.s + 0.25)}</span> : null}
+            {st > 0 ? <div style={{ position: 'absolute', left: 0, top: lh * 0.52, height: 4, width: `${st * 100}%`, background: RED }} /> : null}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const StampV: React.FC<{ g: Stamp; F: Record<Role, string> }> = ({ g, F }) => (
+  <div style={{ border: `${g.size * 0.1}px solid ${RED}`, color: RED, padding: `${g.size * 0.12}px ${g.size * 0.4}px`, fontFamily: `"${F.mono}"`,
+    fontWeight: 700, fontSize: g.size, lineHeight: 1.15, textAlign: 'center', whiteSpace: 'pre', letterSpacing: '0.06em', textTransform: 'uppercase',
+    opacity: 0.9, mixBlendMode: 'multiply', background: 'rgba(240,235,225,.06)' }}>{g.text}</div>
+);
+
+const BigV: React.FC<{ g: Big; t: number; F: Record<Role, string> }> = ({ g, t, F }) => {
+  // the number counts up from 0 when it is a plain number
+  const n = Number(g.num.replace(/,/g, ''));
+  const shown = Number.isFinite(n) && /^[\d,]+$/.test(g.num) ? Math.round(n * easeOut((t - g.s) / 0.7)).toLocaleString('en-US') : g.num;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: g.size * 0.12 }}>
+      <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: '#eeeae2', textShadow: '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
+      {g.text ? <span style={{ fontFamily: `"${F.serif}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: '#cbc4b8', whiteSpace: 'pre',
+        paddingTop: g.size * 0.25 }}>{g.text}</span> : null}
+    </div>
+  );
+};
+
+const TextV: React.FC<{ g: Text; t: number; F: Record<Role, string> }> = ({ g, t, F }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+    {g.rows.map((r, i) => (
+      <div key={i} style={{ fontFamily: `"${F.serif}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1.2, whiteSpace: 'pre', minHeight: g.size * 1.2,
+        color: r.color === 'red' ? '#d8333a' : '#efebe3', textShadow: '0 6px 20px rgba(0,0,0,.6)' }}>{t >= r.s ? typed(r.text, t, r.s, 14) : ''}</div>
+    ))}
+  </div>
+);
+
+const ItemV: React.FC<{ it: Item; t: number; e: number; plan: PlanC; F: Record<Role, string> }> = ({ it, t, e, plan, F }) => {
+  if (t < it.s || (it.e !== undefined && t >= it.e)) return null;
+  if (it.k === 'line') {
+    const [[x0, y0], [x1, y1]] = it.pts;
+    const d = easeOut((t - it.s) / 0.45);
+    return (
+      <svg width={1080} height={1920} style={{ position: 'absolute', left: 0, top: 0 }}>
+        <line x1={x0} y1={y0} x2={x0 + (x1 - x0) * d} y2={y0 + (y1 - y0) * d} stroke={it.color === 'yellow' ? YELLOW : RED} strokeWidth={4}
+          strokeLinecap="round" style={{ filter: 'drop-shadow(0 2px 3px rgba(0,0,0,.6))' }} />
+        <circle cx={x0} cy={y0} r={7} fill={RED} />
+        {d >= 1 ? <circle cx={x1} cy={y1} r={7} fill={RED} /> : null}
+      </svg>
+    );
+  }
+  const a = enter(t, it.s, it.k);
+  const body = it.k === 'photo' ? <PhotoV p={it} t={t} e={e} tag={plan.aiTag} sans={F.sans} mono={F.mono} />
+    : it.k === 'tag' ? <TagV g={it} F={F} lang={plan.lang} />
+    : it.k === 'header' ? <HeaderV h={it} t={t} F={F} lang={plan.lang} />
+    : it.k === 'card' ? <CardV c={it} t={t} F={F} />
+    : it.k === 'stamp' ? <StampV g={it} F={F} />
+    : it.k === 'big' ? <BigV g={it} t={t} F={F} />
+    : <TextV g={it} t={t} F={F} />;
+  return (
+    <div style={{ position: 'absolute', left: it.x, top: it.y, width: 0, height: 0 }}>
+      <div style={{ position: 'absolute', left: 0, top: 0, transform: `translate(-50%, -50%) rotate(${it.rot + a.turn}deg) scale(${a.scale})`,
+        opacity: a.opacity }}>{body}</div>
+    </div>
+  );
+};
+
+const SceneV: React.FC<{ sc: Scene; t: number; plan: PlanC; F: Record<Role, string> }> = ({ sc, t, plan, F }) => {
+  const push = 1 + sc.push * clamp01((t - sc.s) / Math.max(1, sc.e - sc.s));
+  return (
+    <AbsoluteFill style={{ background: '#0b0a09', overflow: 'hidden' }}>
+      <AbsoluteFill style={{ transform: `scale(${push})`, transformOrigin: '50% 45%' }}>
+        {sc.bg === 'wood' ? <Img src={staticFile(plan.bg)} style={{ position: 'absolute', left: -54, top: -96, width: 1188, height: 2112 }} /> : null}
+        {sc.items.map((it, i) => <ItemV key={i} it={it} t={t} e={sc.e} plan={plan} F={F} />)}
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+// old film over everything: grain, dust specks, now and then a hair, a faint flicker
+const Film: React.FC<{ frame: number; grain: string }> = ({ frame, grain }) => {
+  const specks = Array.from({ length: 7 }, (_, i) => {
+    const r = (k: number) => rnd(frame * 13 + i * 7 + k);
+    return r(1) < 0.55 ? { x: r(2) * 1080, y: r(3) * 1920, s: 2 + r(4) * 5, o: 0.35 + r(5) * 0.5 } : null;
+  }).filter(Boolean) as { x: number; y: number; s: number; o: number }[];
+  const hairOn = rnd(Math.floor(frame / 9) * 3.3) < 0.28;   // a hair stays ~9 frames, about a third of the time
+  const hs = Math.floor(frame / 9);
+  const hx = rnd(hs + 1) * 900 + 90, hy = rnd(hs + 2) * 1700 + 110, hr = rnd(hs + 3) * 360;
+  const flick = 0.04 * rnd(frame * 0.7 + 5);
+  return (
+    <AbsoluteFill style={{ pointerEvents: 'none' }}>
+      <AbsoluteFill style={{ backgroundImage: `url(${staticFile(grain)})`, backgroundPosition: `${Math.floor(rnd(frame) * 512)}px ${Math.floor(rnd(frame + 0.5) * 512)}px`,
+        mixBlendMode: 'overlay', opacity: 0.22 }} />
+      <svg width={1080} height={1920} style={{ position: 'absolute', left: 0, top: 0 }}>
+        {specks.map((p, i) => <ellipse key={i} cx={p.x} cy={p.y} rx={p.s} ry={p.s * 0.7} fill={`rgba(245,242,235,${p.o})`} />)}
+        {hairOn ? <path d="M0 0 c 18 -22 34 -6 20 14 c -10 14 -30 22 -38 40 c -4 10 6 18 16 14" transform={`translate(${hx} ${hy}) rotate(${hr}) scale(1.5)`}
+          fill="none" stroke="rgba(235,232,225,.55)" strokeWidth={1.6} /> : null}
+      </svg>
+      <AbsoluteFill style={{ background: '#000', opacity: flick }} />
+      <AbsoluteFill style={{ boxShadow: 'inset 0 0 220px rgba(0,0,0,.75)' }} />
+    </AbsoluteFill>
+  );
+};
+
 export const CrimeV: React.FC<PlanC> = (plan) => {
   const lang = plan.lang || 'ja';
-  const F = fontsOf(lang);
-  useFonts(plan.fonts, plan.title + plan.aiTag + plan.shots.map((s) => s.label + s.credit).join('') + plan.caps.map((c) => c.text).join(''), lang);
+  const F = { ...DEFAULT_FAM[lang], ...(plan.families || {}) } as Record<Role, string>;
+  useFonts(plan, F);
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const t = frame / fps;
-  if (!plan.shots.length) return <AbsoluteFill style={{ backgroundColor: '#000' }} />;
-  const idx = Math.max(0, plan.shots.findIndex((s) => t >= s.s && t < s.e));
-  const sh = plan.shots.find((s) => t >= s.s && t < s.e) || plan.shots[plan.shots.length - 1];
-  const prev = idx > 0 ? plan.shots[idx - 1] : null;
-  const cap = plan.caps.find((c) => t >= c.s && t < c.e);
-  const speaking = (tt: number) => plan.caps.some((c) => tt >= c.s - 0.2 && tt < c.e + 0.2);
-  const labelIn = prev && prev.label === sh.label ? 1 : easeOut((t - sh.s) / 0.4);
-  const titleIn = easeOut(t / 0.6);
-  const pop = cap ? easeOut((t - cap.s) / 0.12) : 1;   // each caption chunk snaps in
-  const upper = lang === 'de';
+  if (!plan.scenes.length) return <AbsoluteFill style={{ backgroundColor: '#000' }} />;
+  const idx = Math.max(0, plan.scenes.findIndex((s) => t >= s.s && t < s.e));
+  const sc = plan.scenes[idx >= 0 && t < plan.scenes[plan.scenes.length - 1].e ? idx : plan.scenes.length - 1];
+  const prev = idx > 0 ? plan.scenes[idx - 1] : null;
+  const fade = prev ? clamp01((t - sc.s) / 0.22) : 1;   // a short dissolve between scenes
+  const sub = plan.subs.find((c) => t >= c.s && t < c.e);
+  const speaking = (tt: number) => plan.subs.some((c) => tt >= c.s - 0.2 && tt < c.e + 0.2);
   return (
-    <AbsoluteFill style={{ background: 'radial-gradient(ellipse 120% 80% at 50% 50%, #111 0%, #050505 70%, #000 100%)' }}>
-      {/* case title, the whole video */}
-      <div style={{ position: 'absolute', left: SIDE, right: SIDE, top: TITLE_Y, textAlign: 'center', opacity: titleIn,
-        fontFamily: F.head, fontWeight: F.headWeight, fontSize: plan.titleSize, lineHeight: 1.18, color: '#f5efe3',
-        textTransform: upper ? 'uppercase' : 'none', letterSpacing: upper ? '0.02em' : '0.04em', whiteSpace: 'nowrap',
-        textShadow: '0 3px 18px rgba(0,0,0,.9)' }}>{plan.title}</div>
-      <div style={{ position: 'absolute', left: 540 - 60, width: 120, top: LABEL_Y - 18, height: 4, background: RED, opacity: titleIn }} />
-      {sh.label ? (
-        <div style={{ position: 'absolute', left: SIDE, right: SIDE, top: LABEL_Y + (1 - labelIn) * 8, opacity: labelIn, textAlign: 'center',
-          fontFamily: F.small, fontWeight: 600, fontSize: 36, lineHeight: 1.25, color: '#bdb4a4', letterSpacing: upper ? '0.12em' : '0.06em',
-          textTransform: upper ? 'uppercase' : 'none', whiteSpace: 'nowrap' }}>{sh.label}</div>
-      ) : null}
-      <Photo sh={sh} t={t} tag={plan.aiTag} small={F.small} />
-      {cap ? (
-        <div style={{ position: 'absolute', left: 540 - CAP_W / 2, width: CAP_W, top: CAP_Y, textAlign: 'center',
-          transform: `scale(${0.86 + 0.14 * pop})${upper ? ' skewX(-7deg)' : ''}`, transformOrigin: '50% 40%' }}>
-          <span style={{ fontFamily: F.cap, fontWeight: F.capWeight, fontSize: CAP[lang], lineHeight: 1.12, color: YELLOW,
-            textTransform: upper ? 'uppercase' : 'none', letterSpacing: upper ? '0.01em' : '0.02em',
-            WebkitTextStroke: `${lang === 'ja' ? 12 : 10}px #000`, paintOrder: 'stroke fill',
-            textShadow: '0 6px 18px rgba(0,0,0,.85)' }}>{cap.text}</span>
+    <AbsoluteFill style={{ backgroundColor: '#0b0a09' }}>
+      {prev && fade < 1 ? <SceneV sc={prev} t={t} plan={plan} F={F} /> : null}
+      <AbsoluteFill style={{ opacity: prev ? fade : clamp01(t / 0.4) }}><SceneV sc={sc} t={t} plan={plan} F={F} /></AbsoluteFill>
+      <Film frame={frame} grain={plan.grain} />
+      {sub ? (
+        <div style={{ position: 'absolute', left: 540 - SUB_MAX_W / 2, width: SUB_MAX_W, top: SUB_Y, display: 'flex', justifyContent: 'center',
+          transform: 'translateY(-50%)' }}>
+          <div style={{ background: '#f7f5f0', color: '#111', padding: '8px 18px', borderRadius: 3, fontFamily: `"${F.sans}"`, fontWeight: 500,
+            fontSize: SUB_SIZE[lang], lineHeight: 1.3, textAlign: 'center', boxShadow: '0 3px 10px rgba(0,0,0,.35)' }}>{sub.text}</div>
         </div>
-      ) : null}
-      {sh.credit ? (
-        <div style={{ position: 'absolute', left: SIDE + 6, right: SIDE + 6, top: CREDIT_Y, fontFamily: F.small, fontWeight: 400, fontSize: 24,
-          lineHeight: 1.3, color: 'rgba(200,192,180,.7)', letterSpacing: '0.04em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{sh.credit}</div>
       ) : null}
       {plan.voice.map((v, i) => <Sequence key={i} from={Math.round(v.s * fps)}><Audio src={staticFile(v.src)} /></Sequence>)}
       {plan.music ? (

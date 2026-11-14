@@ -1,44 +1,24 @@
-"""Frame layout of a crime video, shared by build.py (the plan rendered by src/crime/CrimeV.tsx) and preview.py.
+"""Frame layout of a crime video, shared by build.py (the plan rendered by src/crime/CrimeV.tsx) and the tests.
 
-Measured on the owner's sample 00-video-mau/MAU-VU-AN.mp4 (576×1024, scaled ×1.875 to 1080×1920): black frame,
-one old photograph almost the full width (portrait 3:4, y ≈ 225–1690), short yellow captions of 2–3 words in the
-lower part of the photograph (centre y ≈ 1365). The owner asked (13/11/2026) for the case title on top for the whole
-video: it sits in the black band above the photograph, with a small per-shot label (place, date, kind of document)
-under it. The credit and, on AI illustrations, the tag sit at the foot of the photograph. Pixels of 1080×1920.
+Measured on the owner's sample 00-video-mau/MAU-VU-AN.mp4 (576×1024, scaled ×1.875 to 1080×1920; the case file of
+the Setagaya family murder, 2000): a dark wooden desk (the opening scene on black), on it the evidence of a scene —
+black-and-white photographs with a white print border, slightly turned; yellow tape labels written by hand; paper
+cards with typed lines; torn-paper titles; red stamps; big numbers — each laid down as the voice names it. A scene
+holds 5–15 s, the board pushes in slowly. The voice is shown in a small white subtitle box (black text, a clause at
+a time) centred at y ≈ 1588. Pixels of 1080×1920; items are placed by their centre (x, y).
 """
 W, H = 1080, 1920
-SIDE = 24                    # left/right margin of the photograph
-PIC_W = W - 2 * SIDE         # 1032
-PIC_Y, PIC_H = 282, 1376     # 3:4 photograph: y 282 → 1658
-PIC_CY = PIC_Y + PIC_H / 2
-TITLE_Y = 66                 # top of the title row
-TITLE_BOX = 1000             # the title stays on one row inside this width
-LABEL_Y = 196                # per-shot label under the title
-CAP_Y = 1310                 # top of the caption block (sample: glyph centres at ~71 % of the height)
-CAP_W = 1000                 # captions wrap to a second row beyond this width (Japanese: 12 characters)
-CREDIT_Y = 1676
-TITLE = {'ja': 78, 'de': 92}           # px, Noto Sans JP black / Anton
-CAP = {'ja': 78, 'de': 86}            # the sample's caption: cap height ≈ 2.6 % of the frame
+SUB_Y = 1588                 # centre of the subtitle box (sample: 82.7 % of the height)
+SUB_MAX_W = 960              # the box wraps beyond this width
+SUB_SIZE = {'ja': 40, 'de': 40}
+SAFE_TOP, SAFE_BOTTOM = 90, 1500   # items stay between these (app buttons on top, subtitle box below)
+PHOTO_BORDER = 12            # white print border, px
 
-
-def title_size(title, lang):
-    """Largest size ≤ the default that keeps the title on one row (full-width characters count 1, others ~0.5)."""
-    if lang == 'ja':
-        n = sum(0.55 if ord(c) < 0x2000 else 1.0 for c in (title or ''))
-        k = 1.02
-    else:   # Anton capitals are narrow: ~0.47 em per character, ~0.25 em per space
-        n = sum(0.25 if c == ' ' else 0.47 for c in (title or '').upper())
-        k = 1.0
-    return int(min(TITLE[lang], TITLE_BOX / max(1.0, n * k)))
-
-
-def pic_box(aspect, fit='cover'):
-    """Box [x, y, w, h] of the photograph. 'cover' (default): always the 3:4 photograph of the sample, the view is
-    cropped to it. 'contain': a landscape document keeps its shape (full width, centred on the same height)."""
-    if fit == 'contain' and aspect > PIC_W / PIC_H:
-        h = PIC_W / aspect
-        return [SIDE, round(PIC_CY - h / 2, 1), PIC_W, round(h, 1)]
-    return [SIDE, PIC_Y, PIC_W, PIC_H]
+# defaults of the items (centre x, y; size)
+DEF = {'photo': {'x': 540, 'y': 760, 'w': 760}, 'tag': {'x': 540, 'y': 1250, 'size': 46},
+       'header': {'x': 540, 'y': 300, 'size': 64}, 'card': {'x': 540, 'y': 820, 'w': 820, 'h': 980, 'size': 52},
+       'stamp': {'x': 700, 'y': 1180, 'size': 52}, 'big': {'x': 540, 'y': 1000, 'size': 160},
+       'text': {'x': 540, 'y': 900, 'size': 96}}
 
 
 def fit_view(view, aspect_px, img_w, img_h):
