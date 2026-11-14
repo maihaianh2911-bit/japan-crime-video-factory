@@ -40,14 +40,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { persist-credentials: false, sparse-checkout: scripts }
-      - name: Nhận phiếu
-        env: { GH_TOKEN: '${{ github.token }}', GH_REPO: '${{ github.repository }}', N: '${{ github.event.issue.number }}' }
+      # Claude is called first: the comment only promises Claude's steps when the call went through (or a Claude chat
+      # holds the issue with crime-busy); when it failed, wake_claude.sh has already told the owner what to do.
+      - name: Nhận phiếu, gọi Claude
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          N: ${{ github.event.issue.number }}
+          CLAUDE_TASK_URL: ${{ secrets.CLAUDE_TASK_URL }}
+          CLAUDE_TASK_TOKEN: ${{ secrets.CLAUDE_TASK_TOKEN }}
         run: |
           gh issue edit "$N" --add-label crime,crime-plan
-          gh issue comment "$N" --body "🤖 Đã nhận kịch bản. Claude chia lời (dịch nếu cần) và chọn từ khóa tìm ảnh, máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa, Claude xem và chọn ảnh, máy dựng video, Claude kiểm tra lại từng cảnh. Mỗi bước xong sẽ báo ở đây."
-      - name: Gọi Claude
-        env: { CLAUDE_TASK_URL: '${{ secrets.CLAUDE_TASK_URL }}', CLAUDE_TASK_TOKEN: '${{ secrets.CLAUDE_TASK_TOKEN }}' }
-        run: bash scripts/wake_claude.sh "Phiếu vụ án mới số ${{ github.event.issue.number }}."
+          bash scripts/wake_claude.sh "Phiếu vụ án mới số $N." "$N"
+          if [ "$(cat /tmp/wake_result 2>/dev/null)" != failed ]; then
+            gh issue comment "$N" --body "🤖 Đã nhận kịch bản. Claude chia lời (dịch nếu cần) và chọn từ khóa tìm ảnh, máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa, Claude xem và chọn ảnh, máy dựng video, Claude kiểm tra lại từng cảnh. Mỗi bước xong sẽ báo ở đây."
+          fi
 
   # 2) The owner comments on a crime issue → Claude reads it and fixes
   fix:
@@ -61,14 +68,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { persist-credentials: false, sparse-checkout: scripts }
-      - name: Nhận yêu cầu sửa
-        env: { GH_TOKEN: '${{ github.token }}', GH_REPO: '${{ github.repository }}', N: '${{ github.event.issue.number }}' }
+      - name: Nhận yêu cầu sửa, gọi Claude
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          N: ${{ github.event.issue.number }}
+          CLAUDE_TASK_URL: ${{ secrets.CLAUDE_TASK_URL }}
+          CLAUDE_TASK_TOKEN: ${{ secrets.CLAUDE_TASK_TOKEN }}
         run: |
           gh issue edit "$N" --add-label crime-fix --remove-label crime-done || true
-          gh issue comment "$N" --body "🤖 Đã nhận yêu cầu. Claude sẽ sửa và máy dựng lại."
-      - name: Gọi Claude
-        env: { CLAUDE_TASK_URL: '${{ secrets.CLAUDE_TASK_URL }}', CLAUDE_TASK_TOKEN: '${{ secrets.CLAUDE_TASK_TOKEN }}' }
-        run: bash scripts/wake_claude.sh "Chủ kênh yêu cầu sửa phiếu vụ án số ${{ github.event.issue.number }}."
+          bash scripts/wake_claude.sh "Chủ kênh yêu cầu sửa phiếu vụ án số $N." "$N"
+          if [ "$(cat /tmp/wake_result 2>/dev/null)" != failed ]; then
+            gh issue comment "$N" --body "🤖 Đã nhận yêu cầu. Claude sẽ sửa và máy dựng lại."
+          fi
 
   # 3) Claude pushed crime/<N>/… (or a manual run) → voice + pictures, or the video
   work:
@@ -137,8 +149,9 @@ jobs:
             if ! python3 scripts/crime/run.py "$N" $STEPS < /dev/null; then
               FAIL=1
               gh issue edit "$N" --add-label crime-failed --remove-label crime-voice --remove-label crime-render < /dev/null || true
-              gh issue comment "$N" --body "🤖 Máy gặp lỗi ở bước \`$STEPS\` — xem nhật ký: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID . Claude sẽ xem và sửa." < /dev/null || true
-              bash scripts/wake_claude.sh "Phiếu vụ án số $N bị lỗi ở bước $STEPS." < /dev/null || true
+              bash scripts/wake_claude.sh "Phiếu vụ án số $N bị lỗi ở bước $STEPS." "$N" < /dev/null || true
+              CLAUDE=" Claude sẽ xem và sửa."; [ "$(cat /tmp/wake_result 2>/dev/null)" != failed ] || CLAUDE=""   # no promise when Claude could not be called
+              gh issue comment "$N" --body "🤖 Máy gặp lỗi ở bước \`$STEPS\` — xem nhật ký: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID .$CLAUDE" < /dev/null || true
             fi
             echo "$N" >> /tmp/handled.txt
             echo "::endgroup::"
@@ -155,7 +168,8 @@ jobs:
             grep -qx "$N" /tmp/handled.txt && continue
             gh issue edit "$N" --add-label crime-failed < /dev/null || true
             gh issue edit "$N" --remove-label crime-voice --remove-label crime-render < /dev/null || true
-            gh issue comment "$N" --body "🤖 Máy dừng giữa chừng trước khi làm xong bước \`$STEPS\` (lỗi cài đặt, quá giờ hoặc bị hủy) — xem nhật ký: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID . Claude sẽ xem và chạy lại." < /dev/null || true
-            bash scripts/wake_claude.sh "Phiếu vụ án số $N: máy dừng giữa chừng ở bước $STEPS." < /dev/null || true
+            bash scripts/wake_claude.sh "Phiếu vụ án số $N: máy dừng giữa chừng ở bước $STEPS." "$N" < /dev/null || true
+            CLAUDE=" Claude sẽ xem và chạy lại."; [ "$(cat /tmp/wake_result 2>/dev/null)" != failed ] || CLAUDE=""
+            gh issue comment "$N" --body "🤖 Máy dừng giữa chừng trước khi làm xong bước \`$STEPS\` (lỗi cài đặt, quá giờ hoặc bị hủy) — xem nhật ký: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID .$CLAUDE" < /dev/null || true
           done < /tmp/todo.txt
           true

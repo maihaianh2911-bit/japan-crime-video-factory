@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Unit checks of the crime pipeline without network: caption chunks in both languages, caption timing from word
-times, and the AI illustration step with a fake generator. Run from the repo root: python3 tests/crime_units.py"""
+times, the AI illustration step with a fake generator, and the pipeline's safety nets (calling Claude, paid voice,
+picture sources). Run from the repo root: python3 tests/crime_units.py"""
 import json, os, re, sys, tempfile, io
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts', 'crime')); sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -98,4 +99,39 @@ assert os.path.exists(os.path.join(d, 'sheet_3.jpg')) and 'No text' in calls[0][
 G.provider = lambda: None
 d2 = tempfile.mkdtemp(prefix='crime-units-'); sys.argv = ['gen_images.py', d2, '--spec', spec]; G.main()
 assert all(g.get('error') and not g['results'] for g in json.load(open(os.path.join(d2, 'index.json'))))
+# wake_claude.sh with a fake curl and gh: three tries, the result word, a comment for the owner only when Claude could
+# not be called, and nothing at all while a Claude chat holds the issue (crime-busy added less than 2 hours ago)
+import subprocess, datetime, stat
+fb = tempfile.mkdtemp(prefix='crime-units-bin-')
+open(os.path.join(fb, 'curl'), 'w').write(r"""#!/usr/bin/env bash
+n=$(cat "$FAKE_DIR/curl_n" 2>/dev/null || echo 0); n=$((n + 1)); echo $n > "$FAKE_DIR/curl_n"
+while [ $# -gt 0 ]; do [ "$1" = -o ] && echo '{"claude_code_session_url": "https://example.invalid/s"}' > "$2"; shift; done
+set -- $FAKE_CODES; [ $n -le $# ] && shift $((n - 1)); printf '%s' "$1"
+""")
+open(os.path.join(fb, 'gh'), 'w').write(r"""#!/usr/bin/env bash
+echo "$*" >> "$FAKE_DIR/gh_log"
+case "$*" in *"/events"*) echo "$FAKE_BUSY_AT" ;; *"-X POST"*) ;; *) printf '%s\n' $FAKE_LABELS ;; esac
+""")
+for f in ('curl', 'gh'): os.chmod(os.path.join(fb, f), os.stat(os.path.join(fb, f)).st_mode | stat.S_IEXEC)
+def wake_sh(codes='200', secrets=True, issue='7', labels='crime crime-pick', busy_at=''):
+    fd = tempfile.mkdtemp(prefix='crime-units-wake-')
+    env = {k: v for k, v in os.environ.items() if not k.startswith(('CLAUDE_TASK', 'GITHUB_', 'GH_'))}
+    env.update(PATH=fb + os.pathsep + env['PATH'], FAKE_DIR=fd, FAKE_CODES=codes, FAKE_LABELS=labels, FAKE_BUSY_AT=busy_at,
+               WAKE_RESULT=os.path.join(fd, 'result'), WAKE_BACKOFF='0', GH_TOKEN='x', GH_REPO='o/r')
+    if secrets: env.update(CLAUDE_TASK_URL='https://example.invalid/fire', CLAUDE_TASK_TOKEN='t')
+    r = subprocess.run(['bash', os.path.join(ROOT, 'scripts', 'wake_claude.sh'), 'Phiếu vụ án số 7: thử.'] + ([issue] if issue else []),
+                       env=env, capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    read = lambda f: open(os.path.join(fd, f), encoding='utf-8').read() if os.path.exists(os.path.join(fd, f)) else ''
+    return read('result').strip(), int(read('curl_n') or 0), read('gh_log')
+ago = lambda h: (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=h)).strftime('%Y-%m-%dT%H:%M:%SZ')
+res, n, log = wake_sh('503 000 200'); assert (res, n) == ('ok', 3) and 'POST' not in log, (res, n, log)
+res, n, log = wake_sh('503 503 503'); assert (res, n) == ('failed', 3) and 'issues/7/comments' in log and '🤖' in log and 'wake.yml' in log, (res, n, log)
+res, n, log = wake_sh('401'); assert (res, n) == ('failed', 1) and 'issues/7/comments' in log, (res, n, log)       # a refused key is not retried
+res, n, log = wake_sh(secrets=False); assert (res, n) == ('failed', 0) and 'CLAUDE_TASK_URL' in log, (res, n, log)
+res, n, log = wake_sh(secrets=False, issue=''); assert (res, n, log) == ('failed', 0, ''), (res, n, log)              # the button: nothing to comment on
+res, n, log = wake_sh(labels='crime crime-busy', busy_at=ago(1)); assert (res, n) == ('busy', 0) and 'POST' not in log, (res, n, log)
+res, n, log = wake_sh(secrets=False, labels='crime crime-busy', busy_at=ago(1)); assert res == 'busy' and 'POST' not in log, (res, log)
+res, n, log = wake_sh(labels='crime crime-busy', busy_at=ago(3)); assert (res, n) == ('ok', 1), (res, n, log)        # a stale claim does not count
+res, n, log = wake_sh(labels='crime', busy_at=ago(1)); assert (res, n) == ('ok', 1), (res, n, log)                   # label removed: free
 print('crime unit checks OK')

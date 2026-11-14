@@ -210,7 +210,21 @@ def render():
 
 
 def wake(why):
-    subprocess.run(['bash', os.path.join(ROOT, 'scripts', 'wake_claude.sh'), why])
+    """Call the Claude task for this issue. Returns ok | busy (a Claude chat holds the issue) | failed (the script
+    then told the owner on the issue how to start Claude)."""
+    res = os.path.join(ROOT, 'out', f'wake-{N}.txt')
+    os.makedirs(os.path.dirname(res), exist_ok=True)
+    if os.path.exists(res): os.remove(res)
+    subprocess.run(['bash', os.path.join(ROOT, 'scripts', 'wake_claude.sh'), why, N], env={**os.environ, 'WAKE_RESULT': res})
+    try:
+        return open(res, encoding='utf-8').read().strip()
+    except OSError:
+        return 'failed'
+
+
+def claude(woken, text):
+    """A sentence about what Claude does next: only when Claude was really called (no promise after a failed call)."""
+    return text if woken != 'failed' else ''
 
 
 if __name__ == '__main__':
@@ -225,12 +239,12 @@ if __name__ == '__main__':
             # changed round-1 queries renumber the pictures: existing picks would now point at other pictures
             if 'render' in steps: steps.remove('render')
             labels(add=['crime-pick'], remove=['crime-voice'])
+            w = wake(f'Phiếu vụ án số {N}: ' + ('từ khóa ảnh đợt 1 đã đổi, phải chọn lại ảnh.' if requeried
+                                                 else 'giọng và ảnh đã sẵn sàng, chờ chọn ảnh.'))
             comment(f'🤖 Giọng đọc xong: {len(rows)} câu, {speech:.0f} giây lời đọc'
-                    f'{f" ({flagged} câu cần Claude nghe lại cách đọc)" if flagged else ""}. '
-                    + ('Từ khóa tìm ảnh đã đổi nên ảnh đợt 1 là ảnh mới: Claude phải chọn lại ảnh trước khi dựng video.'
-                       if requeried else 'Ảnh đã tìm xong. Claude sẽ xem và chọn ảnh cho từng cảnh.'))
-            wake(f'Phiếu vụ án số {N}: ' + ('từ khóa ảnh đợt 1 đã đổi, phải chọn lại ảnh.' if requeried
-                                             else 'giọng và ảnh đã sẵn sàng, chờ chọn ảnh.'))
+                    f'{f" ({flagged} câu cần nghe lại cách đọc)" if flagged else ""}. '
+                    + ('Từ khóa tìm ảnh đã đổi nên ảnh đợt 1 là ảnh mới: phải chọn lại ảnh trước khi dựng video.'
+                       if requeried else 'Ảnh đã tìm xong.' + claude(w, ' Claude sẽ xem và chọn ảnh cho từng cảnh.')))
         elif 'render' not in steps:
             steps.append('render')
     if 'search' in steps:
@@ -243,6 +257,7 @@ if __name__ == '__main__':
         length = render()
         labels(add=['crime-check'], remove=['crime-render', 'crime-voice'])
         m, s = divmod(round(length), 60)
-        comment(f'🤖 Đã dựng xong bản video ({m} phút {s:02d} giây). Claude đang kiểm tra lại từng cảnh trước khi giao.\n\n'
+        w = wake(f'Phiếu vụ án số {N}: video đã dựng, chờ kiểm tra.')
+        comment(f'🤖 Đã dựng xong bản video ({m} phút {s:02d} giây).'
+                + claude(w, ' Claude đang kiểm tra lại từng cảnh trước khi giao.') + '\n\n'
                 f'- Video: {link("video.mp4")}\n- Ảnh các cảnh: {link("sheet.jpg")}')
-        wake(f'Phiếu vụ án số {N}: video đã dựng, chờ kiểm tra.')

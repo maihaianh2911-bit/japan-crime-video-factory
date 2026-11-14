@@ -1,7 +1,8 @@
 name: Gọi Claude ngay
 
 # Manual button: starts the Claude task now. There is no hourly run, so press it when a step waits for Claude
-# (for example after the usage limit was reset, or after the secrets were added). Its log also shows whether the secrets CLAUDE_TASK_URL / CLAUDE_TASK_TOKEN work.
+# (for example after the usage limit was reset, or after the secrets were added). The run is red when Claude could
+# not be called (secrets CLAUDE_TASK_URL / CLAUDE_TASK_TOKEN missing or refused): its log says why.
 on: workflow_dispatch
 
 permissions:
@@ -18,3 +19,4 @@ jobs:
         env: { CLAUDE_TASK_URL: '${{ secrets.CLAUDE_TASK_URL }}', CLAUDE_TASK_TOKEN: '${{ secrets.CLAUDE_TASK_TOKEN }}' }
         run: |
           bash scripts/wake_claude.sh "Chủ kênh bấm gọi Claude, xem các phiếu vụ án đang chờ."
+          [ "$(cat /tmp/wake_result 2>/dev/null)" = ok ] || { echo "::error::Chưa gọi được Claude — xem dòng cảnh báo ở trên. Có thể làm tiếp bằng cách mở chat với Claude."; exit 1; }
