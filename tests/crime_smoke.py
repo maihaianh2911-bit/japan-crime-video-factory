@@ -53,10 +53,12 @@ ja = LANG == 'ja'
 json.dump({'images': {'street': {'src': '1/1-1.jpg'}, 'room': {'src': '1/2-1.jpg'},
                       'paper': {'src': '1/1-2.jpg', 'look': 'clean', 'blur': [[0.1, 0.1, 0.3, 0.3]]}},
            'scenes': [
-               {'at': 1, 'bg': 'black', 'items': [
-                   {'photo': 'street', 'w': 620, 'h': 820, 'rot': -1},
-                   {'tag': '1976', 'at': 1.5, 'x': 330, 'y': 1230},
-                   {'tag': ('ミシェル' if ja else 'Michel'), 'at': ('2:名前' if ja else '2:Name'), 'x': 760, 'y': 1230, 'color': 'red'}]},
+               # a scene edit: the catalogue (scripts/crime/edits.py) gives the black ground and the places of the photo and the
+               # tags; what Claude writes himself (here the photo's size) wins
+               {'at': 1, 'edit': 'hook', 'why': 'câu đầu là điều lạ của vụ án', 'items': [
+                   {'photo': 'street', 'w': 620, 'h': 820},
+                   {'tag': '1976', 'at': 1.5},
+                   {'tag': ('ミシェル' if ja else 'Michel'), 'at': ('2:名前' if ja else '2:Name'), 'color': 'red'}]},
                {'at': 2.6, 'items': [
                    {'header': title, 'kicker': ('ファイル 1976' if ja else 'AKTE 1976'), 'y': 260},
                    {'card': {'head': '1976', 'rows': [{'text': 'Anneliese', 'right': '23'}, {'text': 'Klingenberg', 'strike': 2.9}]}, 'y': 980, 'h': 900}]},
@@ -103,7 +105,17 @@ json.dump(bad, open(os.path.join(tmp, 'bad.json'), 'w'))
 shutil.copy(os.path.join(job, 'picks.json'), os.path.join(tmp, 'good.json')); shutil.copy(os.path.join(tmp, 'bad.json'), os.path.join(job, 'picks.json'))
 r = subprocess.run([sys.executable, os.path.join(S, 'build.py'), job, pub, N, imgsrc, os.path.join(tmp, 'out2')], capture_output=True, text=True, cwd=ROOT)
 assert r.returncode and 'sau khi cảnh kết thúc' in r.stderr, r.stderr
+bad = json.load(open(os.path.join(tmp, 'good.json'), encoding='utf-8')); bad['scenes'][2]['edit'] = 'no-such-edit'   # unknown scene edit
+json.dump(bad, open(os.path.join(job, 'picks.json'), 'w'))
+r = subprocess.run([sys.executable, os.path.join(S, 'build.py'), job, pub, N, imgsrc, os.path.join(tmp, 'out2')], capture_output=True, text=True, cwd=ROOT)
+assert r.returncode and 'cảnh 3' in r.stderr and 'hook' in r.stderr and 'ending' in r.stderr, r.stderr
 shutil.copy(os.path.join(tmp, 'good.json'), os.path.join(job, 'picks.json'))
+# scene edits: the name is in the plan, the template's places and ground are used, a scene without "edit" has no key,
+# and edits.md lists every scene with its edit and why for the owner
+assert sc[0]['edit'] == 'hook' and sc[0]['bg'] == 'black' and all('edit' not in x for x in sc[1:])
+assert (ph[0]['x'], ph[0]['y'], ph[0]['rot']) == (540, 640, -1) and (sc[0]['items'][1]['x'], sc[0]['items'][1]['y']) == (250, 1150) and tag2['x'] == 540
+md = open(os.path.join(out, 'edits.md'), encoding='utf-8').read()
+assert '`hook`' in md and 'câu đầu là điều lạ của vụ án' in md and '| 4 |' in md, md
 srt = open(os.path.join(out, 'subtitles.srt'), encoding='utf-8').read(); assert srt.count('-->') == len(lines)
 cred = open(os.path.join(out, 'credits.txt'), encoding='utf-8').read()
 assert 'Street.jpg' in cred and 'AI' in cred and 'a small bedroom' in cred
@@ -117,7 +129,7 @@ if '--still' in sys.argv:
     rend = os.path.join(tmp, 'renders'); os.makedirs(rend)
     shutil.copytree(voice, os.path.join(rend, 'voice')); shutil.copytree(imgsrc, os.path.join(rend, 'img'))
     run(sys.executable, os.path.join(S, 'preview.py'), job, rend, os.path.join(out, 'preview.jpg'))
-    assert Image.open(os.path.join(out, 'preview.jpg')).size[0] > 1000
+    assert Image.open(os.path.join(out, 'preview.jpg')).size[0] > 1000 and '`hook`' in open(os.path.join(out, 'preview.jpg.edits.md'), encoding='utf-8').read()
     t_ring = ph[1]['marks'][0]['s']
     ts = [f'{sc[0]["s"] + 0.6:.2f}', f'{t_ring - 0.3:.2f}', f'{t_ring + 0.6:.2f}', f'{sc[1]["e"] - 0.2:.2f}']
     run('node', os.path.join(S, 'stills.mjs'), plan_p, pub, os.path.join(out, 'still'), *ts)

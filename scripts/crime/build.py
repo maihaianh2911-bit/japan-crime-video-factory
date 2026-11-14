@@ -4,7 +4,7 @@
 Usage: build.py <job_dir crime/N> <public_dir> <N> <img_src_dir> <out_dir>
 Reads <job_dir>/script.json (title, lines), <job_dir>/picks.json (images, scenes), <public_dir>/crime/<N>/voice/
 lines.json (measured line lengths, Whisper word times) and the prepared pictures in <public_dir>/crime/<N>/img/.
-Writes <out_dir>/plan.json, subtitles.srt, credits.txt, sources.json and <public_dir>/crime/<N>/bed.wav, bg.jpg,
+Writes <out_dir>/plan.json, subtitles.srt, credits.txt, sources.json, edits.md and <public_dir>/crime/<N>/bed.wav, bg.jpg,
 grain.png.
 
 Layout of the owner's sample (scripts/crime/layout.py): a scene is a desk on which items are laid down one by one as
@@ -12,7 +12,8 @@ the voice names them — photo, tag, header, card, stamp, big, text, line (see A
 scene starts at its "at" (line number, fractional = part-way through the line) and lasts until the next one. An
 item's "at" is a line number, or "<line>:<words>" = the moment those words of that line are spoken (Whisper word
 times), or nothing = the start of its scene. The voice is shown in the subtitle box, a clause at a time
-(captions.subs).
+(captions.subs). A scene with "edit": "<name>" first gets the places of that scene edit (scripts/crime/edits.py, the
+catalogue); <out_dir>/edits.md lists every scene with its edit and Claude's "why" for the owner.
 
 Timing: every line starts after the previous one plus a pause (0.45 s after a sentence end, 0.25 s otherwise).
 """
@@ -23,6 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import music_gen as mg
 import layout as L
 import captions as C
+import edits as E
 import board
 from channel import LANG, AI_TAG
 
@@ -108,6 +110,7 @@ def main(job, pub, N, imgsrc, out):
     for j, sc in enumerate(scenes_in):
         s, e = bounds[j], bounds[j + 1]
         where = f'cảnh {j + 1}'
+        sc = E.apply(sc, j + 1, fail)   # "edit": the template's places for what Claude left out; untouched without it
         if e - s < 1.0: fail(f'{where} ("at" {sc.get("at")}): chỉ hiện {e - s:.2f} s (kiểm tra "at")')
         items = []
         for n, it in enumerate(sc.get('items') or []):
@@ -185,7 +188,10 @@ def main(job, pub, N, imgsrc, out):
                 o.update({'pts': [[x0, y0], [x1, y1]], 'color': it.get('color', 'red')})
             items.append(o)
         scenes.append({'s': round(s, 3), 'e': round(e, 3), 'scene': j + 1, 'bg': sc.get('bg', 'wood'),
-                       'push': sc.get('push', 0.04), 'items': items})
+                       'push': sc.get('push', 0.04), 'items': items, **({'edit': sc['edit']} if sc.get('edit') else {})})
+    open(f'{out}/edits.md', 'w', encoding='utf-8').write(E.listing(scenes_in, text, bounds))
+    if E.repeats(scenes_in):
+        print('chú ý: cảnh ' + ', '.join(map(str, E.repeats(scenes_in))) + ' dùng cùng kiểu edit với cảnh ngay trước nó (nên đổi kiểu)')
 
     # ---- music bed and desk textures
     mu = {'style': 'tension', 'key': 'D', 'mode': 'minor', 'bpm': 70, 'energy': 0.3, **spec.get('music', {})}
@@ -233,7 +239,7 @@ def main(job, pub, N, imgsrc, out):
     for sc in scenes:
         said = [c['text'] for c in subs if sc['s'] - 0.01 <= c['s'] < sc['e']]
         photos = [i for i in sc['items'] if i['k'] == 'photo']
-        scene_rows.append({'scene': sc['scene'], 'start': sc['s'], 'end': sc['e'], 'said': said,
+        scene_rows.append({'scene': sc['scene'], 'start': sc['s'], 'end': sc['e'], 'said': said, **({'edit': sc['edit']} if sc.get('edit') else {}),
                            'photos': [{'image': os.path.basename(p['src'])[:-4], 'ai': p['ai'], 'credit': p['credit'],
                                        'page': next((x['page'] for x in src_rows if x['name'] == os.path.basename(p['src'])[:-4]), '')} for p in photos],
                            'texts': [i.get('text') or i.get('title') or i.get('num') or '' for i in sc['items'] if i['k'] in ('tag', 'header', 'stamp', 'big')]})

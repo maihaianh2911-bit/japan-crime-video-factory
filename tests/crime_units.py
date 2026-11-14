@@ -2,7 +2,7 @@
 """Unit checks of the crime pipeline without network: caption chunks in both languages, caption timing from word
 times, the AI illustration step with a fake generator, and the pipeline's safety nets (calling Claude, paid voice,
 picture sources). Run from the repo root: python3 tests/crime_units.py"""
-import json, os, re, sys, tempfile, io
+import copy, json, os, re, sys, tempfile, io
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts', 'crime')); sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import captions as C
@@ -196,4 +196,30 @@ try:
     assert F.search('first') == [] and F.search('second') == [] and asked == ['first'] and F.REFUSED == {'loc'}, asked
 finally:
     F.FIND.clear(); F.FIND.update(real_find); F.REFUSED.clear()
+# scene edits (the catalogue scripts/crime/edits.py): every recipe builds, a scene without "edit" is left alone, the
+# template fills only what Claude left out, an unknown name or a missing item is refused with the names / the recipe,
+# the list for the owner marks a repeated edit, and AGENT_CRIME.md documents every name
+import edits as E
+def refuse(m): raise SystemExit(m)
+def refused(sc):
+    try: E.apply(sc, 3, refuse)
+    except SystemExit as e: return str(e)
+    raise AssertionError(f'not refused: {sc}')
+agent = open(os.path.join(ROOT, 'AGENT_CRIME.md'), encoding='utf-8').read()
+for name in E.names():
+    ed = E.EDITS[name]; made = E.apply(ed['recipe'], 1, refuse)
+    assert made['edit'] == name and made is not ed['recipe'] and all(ed.get(k) for k in ('vi', 'sample', 'look', 'use')), name
+    assert f'`{name}`' in agent and E.recipe(name).replace('|', '¦') in agent, f'AGENT_CRIME.md: edit {name} is missing or its recipe is old (python3 scripts/crime/edits.py)'
+plain = {'at': 1, 'items': [{'photo': 'a'}]}
+assert E.apply(plain, 1, refuse) is plain and plain == {'at': 1, 'items': [{'photo': 'a'}]}
+msg = refused({'at': 1, 'edit': 'nope'}); assert 'cảnh 3' in msg and all(n in msg for n in E.names()), msg
+msg = refused({'at': 1, 'edit': 'hook', 'items': []}); assert 'hook' in msg and 'Mẫu' in msg and '"edit": "hook"' in msg, msg
+hook = copy.deepcopy(E.EDITS['hook']['recipe']); slot = E.EDITS['hook']['slots']['photo'][0]; key = next(iter(slot))
+mine = 'wide' if key == 'pos' else slot[key] + 7
+hook['items'][0][key] = mine
+made = E.apply(hook, 1, refuse)
+assert made['items'][0][key] == mine and all(k in made['items'][1] for k in E.EDITS['hook']['slots']['tag' if 'tag' in E.KINDS else 'tape']['*'][0])
+rows = [{'at': 1, 'edit': 'hook', 'why': 'vì câu đầu | liệt kê'}, {'at': '2/x', 'edit': 'hook'}, {'at': 3}]
+md = E.listing(rows, {1: 'eins', 2: 'zwei', 3: 'drei'}, [0, 4, 8, 12])
+assert E.repeats(rows) == [2] and 'vì câu đầu / liệt kê' in md and '⚠️' in md and '| 3 | 8–12 s | drei | — |' in md and '`ending`' in md, md
 print('crime unit checks OK')

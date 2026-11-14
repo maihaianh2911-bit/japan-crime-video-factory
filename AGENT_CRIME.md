@@ -112,48 +112,77 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
 3. Open the full picture (`img/<r>/<k>-<n>.jpg`) before choosing it: it must show what the line says, be sharp,
    carry no watermark or burnt-in caption, and for AI: no recognisable face, no text, no extra fingers or broken
    objects, the right era (cars, clothes, furniture). A wrong AI picture → another prompt in the next round.
-4. **Scenes** (the sample): one scene per idea, 2–4 lines, ~5–15 s, so the whole video has ~1 scene per 8 s.
-   Lay each item down when the voice names it (`"at": "<line>:<words>"`), so the desk fills up while it is told.
-   Typical scenes of the sample:
-   - **opening** (`"bg": "black"`): the main photograph (the house, the place), tags for the evidence words as they
-     are spoken (`血痕` red, `DNA`, `指紋`, `足跡` yellow), a white tag with the hook (`25年以上`);
-   - **header**: the torn-paper title, kicker = kind of file and year (`ファイル 2000` + `世田谷一家`), then a paper
-     card with the date as `head` and one row per person (`宮澤みきお` / `44歳`) typed as each is named;
-   - **evidence**: one photo (the object), yellow tags around it naming its details, a big number for a count
-     (`130` + `着\n全国で`), a white tag for a measure (`27.5cm`), a red tag for the key fact;
-   - **the suspect / the night**: a silhouette photo, a note card (`style` `note`) with ✓ rows of what he did, a
-     time card with a row struck out (`strike`) when the voice corrects it;
-   - **comparison**: a card with two rows and a stamp (`不一致`), or several small photos joined by red `line`s;
-   - **ending**: the last photo or a `text` in two rows, the second red (`それでも、` / `名前はない。`).
-   Real victims: no photos of their bodies or wounds; a free portrait only if it was published by the family or
-   in the press and is freely licensed. Children and uninvolved people in real photos: blur their faces (`blur`).
+4. **Choose a scene edit for every scene ("bảng cách edit").** One scene per idea (2–4 lines). For each
+   scene: **read its lines first**, decide what they are *about* (a hook, a person, a place, a time, an object, a
+   number, an action, a comparison, an open question, the end), and take the edit whose "when" column says that —
+   by meaning, never by what looks nice. Write it in the scene as `"edit": "<name>"` with a short Vietnamese
+   `"why"` (what the lines say that made you choose it; the owner reads it, it is never drawn):
+   `{"at": 6, "edit": "who", "why": "câu 6–8 đọc tên và tuổi bốn nạn nhân", "items": [{"card": {"head": …, "rows": […]}}]}`
+   The edit is a named layout of the owner's sample (`00-video-mau/MAU-VU-AN.mp4`, the time in the table is where to see it): it
+   gives every photo, tag and card its place on the desk (`x`, `y`), its size, tilt and colour, so you list only the **content** — which picture, which words, and for each
+   the spoken word it appears on (`"at"`). Anything you do write (`x`, `y`, `w`, `h`, `rot`, `size`, `color`, `bg`) wins over the template; a template has a fixed number of places, so an item beyond them needs its own `x`, `y`. A scene that lacks what its edit is made of is refused with
+   the recipe; an unknown name is refused with the list of names.
+   Rules: **never the same edit for two scenes in a row** (the build prints `chú ý` and `edits.md` marks it ⚠️ —
+   change one of them); every item except the first carries an `"at"` on the word that names it; the order of the
+   items is the order they are spoken in; a scene that fits no edit may be written without `"edit"` (all positions
+   by hand, as before) — say why in your comment.
+
+| `edit` | Trông thế nào (mẫu, phút:giây) | Dùng KHI các câu của cảnh nói về… | Công thức (chép rồi thay nội dung) |
+|---|---|---|---|
+| `hook`<br>mở đầu | nền đen, một ảnh đứng lớn; nhãn dán dần thành hai hàng dưới ảnh, mỗi thứ giọng đọc kể một nhãn; nhãn trắng con số ở mép trên ảnh (0:00–0:11) | MỞ ĐẦU: 2–3 câu đầu kể điều lạ của vụ án, liệt kê những thứ để lại, rồi con số gây tò mò | `{"at": 1, "edit": "hook", "why": "…", "items": [{"photo": "house"}, {"tag": "血痕", "color": "red", "at": "2:血痕"}, {"tag": "DNA", "at": "2:DNA"}, {"tag": "指紋", "at": "2:指紋"}, {"tag": "25年以上", "color": "white", "at": "3:25年"}]}` |
+| `chapter`<br>tiêu đề chương | tiêu đề giấy xé một mình giữa mặt bàn, dòng nhỏ đánh máy ở trên (loại hồ sơ + năm) (0:12, 3:18) | CHUYỂN PHẦN: câu gọi tên vụ án, hoặc mở một phần mới (phân tích năm 2025, phiên tòa…) | `{"at": 4, "edit": "chapter", "why": "…", "items": [{"header": "世田谷一家", "kicker": "ファイル 2000"}]}` |
+| `where`<br>tiêu đề + ảnh nơi xảy ra | tiêu đề giấy xé ở trên, một ảnh ngang của nơi xảy ra; nhãn đen tên nơi chốn bên trái dưới ảnh, nhãn đỏ tình trạng bên phải (0:14–0:17) | NƠI CHỐN: câu nói vụ án xảy ra ở đâu (thành phố, khu, ngôi nhà) và tình trạng của nó (chưa có lời giải) | `{"at": 4, "edit": "where", "why": "…", "items": [{"header": "世田谷一家殺害事件", "kicker": "ファイル 2000"}, {"photo": "house"}, {"tag": "東京・世田谷区", "color": "black", "at": "4:東京"}, {"tag": "未解決", "color": "red", "at": "5:未解決"}]}` |
+| `who`<br>tờ giấy tên và tuổi | tờ giấy kem: dòng đầu đánh máy ngày giờ, rồi từng dòng tên + tuổi hiện ra khi được đọc; một nhãn đỏ ở góc dưới (0:18–0:31) | NGƯỜI / NGÀY THÁNG: câu giới thiệu nạn nhân, những người liên quan, tên, tuổi, ngày xảy ra | `{"at": 6, "edit": "who", "why": "…", "items": [{"card": {"head": "12月30日 → 31日", "rows": [{"text": "宮澤みきお", "right": "44歳", "at": "7:宮澤"}, {"text": "泰子", "right": "41歳", "at": "7:泰子"}]}}, {"tag": "自宅で", "color": "red", "at": "8:自宅"}]}` |
+| `place`<br>ảnh hiện trường + giờ | một ảnh ngang ở nửa trên; nhãn trắng giờ hoặc ngày ngay dưới ảnh bên trái, nhãn đỏ bên phải (0:32–0:35) | THỜI ĐIỂM / HIỆN TRƯỜNG: câu nói việc xảy ra lúc mấy giờ, ngày nào, ở chỗ nào của hiện trường; cơ quan điều tra hôm nay | `{"at": 9, "edit": "place", "why": "…", "items": [{"photo": "street"}, {"tag": "午後11時ごろ", "color": "white", "at": "9:11時"}, {"tag": "警視庁", "color": "black", "at": "9:警視庁"}]}` |
+| `figure`<br>bóng người | một ảnh đứng ở giữa (bóng người, hành lang); nhãn ở hai góc trên, nhãn trắng dưới ảnh, nhãn đỏ dưới cùng (0:36–0:43, 2:02–2:07) | CON NGƯỜI BÍ ẨN: câu nói về hung thủ chưa rõ mặt, nghi phạm, một nhận định về hắn (tàn bạo, bình tĩnh) | `{"at": 10, "edit": "figure", "why": "…", "items": [{"photo": "hall", "view": [0.2, 0, 0.8, 1]}, {"tag": "容疑者?", "color": "black", "at": "10:容疑"}, {"tag": "名前は不明", "color": "red", "at": "11:名前"}]}` |
+| `fact`<br>bằng chứng + chữ lớn | một ảnh rộng ở nửa trên; nhãn đỏ ở góc trên trái, rồi một chữ/số lớn bên dưới (kết quả), nhãn trắng ở góc dưới phải (0:44–0:51) | MỘT SỰ VIỆC CÓ BẰNG CHỨNG: câu nói điều gì đã xảy ra và cảnh sát tìm được gì (bị thương → máu → nhóm máu → DNA) | `{"at": 12, "edit": "fact", "why": "…", "items": [{"photo": "lab"}, {"tag": "手のけが", "color": "red", "at": "12:手"}, {"big": "A型", "text": "血液型", "at": "13:A型"}, {"tag": "DNA 採取", "color": "white", "at": "13:DNA"}]}` |
+| `pair`<br>ảnh lớn + ảnh nhỏ | một ảnh lớn, ảnh thứ hai nhỏ nghiêng đè lên góc dưới phải khi được nhắc; hai nhãn vàng bên trái, nhãn đỏ kết luận ở trên cùng (0:52–0:57) | HAI THỨ ĐI CÙNG NHAU: câu nêu hai dấu vết, hai người, hai nơi (vân tay và dấu giày) rồi rút ra một kết luận | `{"at": 14, "edit": "pair", "why": "…", "items": [{"photo": "dusting"}, {"photo": "finger", "at": "14:指紋"}, {"tag": "家族以外の指紋", "at": "14:指紋"}, {"tag": "足跡は1種類", "at": "14:一種類"}, {"tag": "犯人は1人", "color": "red", "at": "15:一人"}]}` |
+| `list`<br>ảnh + lưới nhãn | một ảnh ngang ở nửa trên; bên dưới là lưới nhãn ba cột, mỗi món được đọc hiện một nhãn; nhãn trắng ở dưới cùng (1:02–1:11) | LIỆT KÊ: câu đọc một dãy đồ vật hoặc chi tiết (áo, mũ, khăn, túi, giày…), từ 3 món trở lên | `{"at": 16, "edit": "list", "why": "…", "items": [{"photo": "clothes"}, {"tag": "トレーナー", "at": "16:トレーナー"}, {"tag": "帽子", "at": "16:帽子"}, {"tag": "マフラー", "at": "16:マフラー"}, {"tag": "ポーチ", "at": "17:ポーチ"}, {"tag": "靴は27.5cm", "color": "white", "at": "17:27.5"}]}` |
+| `number`<br>số lớn | nhãn trắng tên món đồ ở trên; các con số lớn hiện lần lượt bên dưới (đếm lên), mỗi số một dòng chú thích; nhãn đỏ ở góc dưới (1:12–1:23) | CON SỐ: câu có số đếm, số lượng, tỉ lệ (130 chiếc, 10 chiếc ở Tokyo) — tối đa 3 số | `{"at": 18, "edit": "number", "why": "…", "items": [{"tag": "犯人のトレーナー", "color": "white", "at": "18:トレーナー"}, {"big": "130", "text": "着\n全国", "at": "18:130"}, {"big": "10", "text": "着\n東京", "at": "19:10着"}, {"tag": "わずか", "color": "red", "at": "19:わずか"}]}` |
+| `object`<br>một đồ vật | một ảnh đồ vật lớn, hơi nghiêng; nhãn vàng tên gọi ở góc trên, nhãn trắng số đo hoặc tên riêng dưới ảnh, nhãn đỏ dưới cùng (1:38–1:49, 3:04–3:15) | MỘT ĐỒ VẬT: câu tả một vật chứng (con dao, cái túi, chiếc giày), tên gọi, kích thước, nơi sản xuất | `{"at": 20, "edit": "object", "why": "…", "items": [{"photo": "knife"}, {"tag": "柳刃包丁", "at": "20:柳刃"}, {"tag": "関孫六 銀寿", "color": "white", "at": "20:関孫六"}]}` |
+| `detail`<br>khoanh chi tiết | một ảnh lớn; vòng vàng (hoặc đỏ) khoanh chi tiết đúng lúc được nhắc; nhãn vàng dưới ảnh hai bên, nhãn trắng dưới cùng (1:50–2:01) | CHỈ VÀO MỘT CHI TIẾT: câu nói "trên đó có…", một vết, một chỗ đáng chú ý trong ảnh hoặc tài liệu | `{"at": 21, "edit": "detail", "why": "…", "items": [{"photo": "cloth", "marks": [{"at": "21:ハンカチ", "box": [0.1, 0.5, 0.45, 0.8]}]}, {"tag": "黒いハンカチ", "at": "21:ハンカチ"}, {"tag": "切れ目 約3cm", "color": "white", "at": "21:切れ目"}]}` |
+| `compare`<br>so sánh + dấu đỏ | tờ giấy kem với hai dòng đối chiếu hiện lần lượt, rồi dấu đỏ kết luận đóng xuống dưới tờ giấy (2:08–2:15) | SO SÁNH / MÂU THUẪN: câu đối chiếu hai thứ và có kết luận (DNA không trùng, lời khai không khớp, chưa xác nhận) | `{"at": 22, "edit": "compare", "why": "…", "items": [{"card": {"head": "DNA 鑑定", "rows": [{"text": "包丁を買った男", "at": "22:男"}, {"text": "現場のDNA", "at": "23:現場"}]}}, {"stamp": "不一致", "at": "23:一致"}]}` |
+| `statement`<br>một câu then chốt | mặt bàn trống, chỉ một nhãn đỏ to ở giữa (2:16–2:19) | CÂU CHUYỂN: một câu ngắn báo điều sắp tới, bước ngoặt ("そして犯人は、すぐには逃げなかった") — không có vật gì để cho xem | `{"at": 24, "edit": "statement", "why": "…", "items": [{"tag": "すぐには逃げなかった", "at": "24:すぐ"}]}` |
+| `actions`<br>giấy ghi việc hắn làm | nhãn đỏ ở trên; tờ giấy kẻ dòng chữ viết tay xanh, mỗi việc được đọc là một dòng có dấu ✓; có thể thêm một ảnh nhỏ ở góc dưới (2:20–2:35) | CHUỖI HÀNH ĐỘNG: câu kể lần lượt những việc một người đã làm (ăn, dùng máy tính, lục giấy tờ) | `{"at": 25, "edit": "actions", "why": "…", "items": [{"tag": "すぐには逃げなかった", "color": "red", "at": "25:すぐ"}, {"card": {"style": "note", "rows": [{"text": "食べ物を食べた", "check": true, "at": "26:食べ物"}, {"text": "トイレを使った", "check": true, "at": "26:トイレ"}]}}]}` |
+| `timeline`<br>ảnh + thẻ giờ giấc | một ảnh ở nửa trên; thẻ giấy nhỏ ở nửa dưới với từng mốc giờ, dòng bị gạch đỏ khi lời kể sửa lại; nhãn đỏ ở góc dưới (2:36–2:55) | MỐC THỜI GIAN: câu có hai mốc giờ hoặc ngày trở lên (01:18, khoảng 10:00), trình tự trước – sau, điều chưa chắc | `{"at": 27, "edit": "timeline", "why": "…", "items": [{"photo": "crt"}, {"card": {"rows": [{"text": "01:18", "right": "ネット接続", "at": "27:1時"}, {"text": "10:00ごろ", "right": "再び接続", "at": "27:朝10時", "strike": "28:意図"}]}}, {"tag": "意図しない接続?", "color": "red", "at": "28:意図"}]}` |
+| `span`<br>thẻ nhỏ khoảng thời gian | tiêu đề ở trên, một thẻ giấy nhỏ ở giữa với một hai dòng (dòng quan trọng màu đỏ); nhãn vàng ghi chú bên dưới (3:28–3:31, 3:42–3:45) | KHOẢNG THỜI GIAN / TUỔI / ƯỚC TÍNH: câu nói bao nhiêu năm đã qua, tuổi lúc đó và bây giờ, một ước tính | `{"at": 29, "edit": "span", "why": "…", "items": [{"header": "新しいDNA分析", "kicker": "2025"}, {"card": {"rows": [{"text": "犯行当時", "right": "30歳前後?", "at": "30:30歳"}, {"text": "現在", "right": "50〜60代?", "color": "red", "at": "31:50代"}]}}, {"tag": "報道による推定", "at": "31:推定"}]}` |
+| `board`<br>bàn chứng cứ nối dây đỏ | 3–6 ảnh nhỏ xếp hai cột, hiện từng cái khi được nhắc, nối nhau bằng dây đỏ; nhãn nhỏ dưới mỗi ảnh (2:56–3:03) | TỔNG HỢP CHỨNG CỨ: câu điểm lại nhiều thứ cảnh sát đang có (máu, DNA, vân tay, quần áo) — thường trước câu "nhưng không có tên" | `{"at": 32, "edit": "board", "why": "…", "items": [{"photo": "blood"}, {"photo": "finger", "at": "32:指紋"}, {"photo": "soles", "at": "33:靴"}, {"tag": "血", "at": "32:血"}, {"tag": "指紋", "at": "32:指紋"}, {"tag": "靴の跡", "at": "33:靴"}, {"line": [0, 1], "at": "32:指紋"}, {"line": [1, 2], "at": "33:靴"}]}` |
+| `question`<br>ảnh + câu hỏi / điều ngược lại | một ảnh lớn; nhãn trắng câu hỏi dưới ảnh, rồi nhãn đỏ câu trả lời bên dưới (3:58–4:05) | CÂU HỎI MỞ / ĐIỀU NGƯỢC LẠI: câu đặt câu hỏi cho người xem, hoặc lật lại điều vừa nói (không để lại gì? — ngược lại) | `{"at": 34, "edit": "question", "why": "…", "items": [{"photo": "house"}, {"tag": "何も残さなかった?", "color": "white", "at": "34:何も"}, {"tag": "すべてを残した", "color": "red", "at": "35:すべて"}]}` |
+| `ending`<br>kết: chữ lớn trắng + đỏ | nền đen, hai dòng chữ lớn gõ ra: dòng đầu trắng, dòng cuối đỏ (3:16–3:17) | KẾT: câu cuối — có gần như mọi thứ, trừ cái tên; câu hỏi còn bỏ ngỏ | `{"at": 36, "edit": "ending", "why": "…", "items": [{"text": ["自分の名前を", {"text": "除いて。", "color": "red"}]}]}` |
+
+   Real victims: no photos of their bodies or wounds; a portrait only if freely licensed and published by the
+   family or the press. Children and uninvolved people in real photos: blur their faces (`blur`).
 5. Format:
 ```json
 {"images": {"house": {"src": "1/1-2.jpg"},
             "sweater": {"src": "1/14-1.jpg"},
             "paper": {"src": "1/6-1.jpg", "look": "clean", "crop": [0.02, 0.03, 0.98, 0.97]}},
  "scenes": [
-  {"at": 1, "bg": "black", "items": [
+  {"at": 1, "edit": "hook", "why": "ba câu đầu kể những thứ hung thủ để lại", "bg": "black", "items": [
     {"photo": "house", "x": 540, "y": 760, "w": 600, "h": 860, "rot": -1},
     {"tag": "血痕", "at": "2:血痕", "x": 330, "y": 1250, "color": "red"},
     {"tag": "DNA", "at": "2:DNA", "x": 760, "y": 1250},
     {"tag": "25年以上", "at": "3:25年", "x": 540, "y": 330, "color": "white", "size": 60}]},
-  {"at": 4, "items": [
+  {"at": 4, "edit": "who", "why": "câu 4–5 gọi tên vụ án và đọc tên, tuổi nạn nhân", "items": [
     {"header": "世田谷一家", "kicker": "ファイル 2000", "y": 200},
     {"card": {"head": "12月30日 → 31日", "rows": [{"text": "宮澤みきお", "right": "44歳", "at": "5:みきお"},
                                                   {"text": "泰子", "right": "41歳", "at": "5:泰子"}]}, "y": 900}]},
-  {"at": 7, "items": [
+  {"at": 7, "edit": "fact", "why": "câu 7–9 nói về chiếc áo và con số 130", "items": [
     {"photo": "sweater", "y": 520, "w": 640, "rot": 1.5, "marks": [{"at": "8:帽子", "box": [0.6, 0.0, 0.95, 0.3]}]},
     {"big": "130", "text": "着\n全国で", "at": "8:130", "y": 1000},
     {"tag": "帽子", "at": "8:帽子", "x": 280, "y": 1260}, {"stamp": "不一致", "at": 9, "x": 760, "y": 1330}]},
-  {"at": 10, "items": [{"text": ["それでも、", {"text": "名前はない。", "color": "red"}], "y": 880}]}]}
+  {"at": 10, "edit": "ending", "why": "câu cuối: không có cái tên", "items": [{"text": ["それでも、", {"text": "名前はない。", "color": "red"}], "y": 880}]}]}
 ```
+   (This example writes most places by hand to show the fields; with an `edit` you normally leave `x`, `y`, `w`, `h`,
+   `rot` and `size` out.)
    - `images`: `src` = `<round>/<file>`, or `own/<file>` (a picture the owner attached, saved in `crime/<N>/own/`;
      then also give `title`, `artist`, `license`, `page`, and `"ai": true` if it is AI-made). `rotate` 90 / -90 /
      180, `crop` removes borders and burnt-in captions. `look`: `print` (default: the sample's evidence photo —
      black and white, hard contrast, grain; photos and AI pictures alike), `clean` (documents, maps, scans: stay
      readable), `aged` / `aged-bw` (a faded old print, when the picture is an old photograph). `blur`: boxes to blur.
-   - `scenes` in order; `at` = line where the scene starts (fractional: 3.5 = halfway through line 3); the first is
+   - `scenes` in order; each with `edit` (the scene edit of step 4; its places are used for every `x`, `y`, `w`,
+     `h`, `rot`, `size`, `color` and the scene's `bg` you leave out — the fields below are for the cases where you
+     place something yourself) and `why`; `at` = line where the scene starts (fractional: 3.5 = halfway through line 3); the first is
      `"at": 1`. A scene lasts until the next one (≥ 1 s), the desk pushes in slowly (`push`, default 0.04);
      `"bg": "black"` for a black ground instead of the desk.
    - `items` are drawn in order (later on top). Every item: `x`, `y` = its **centre** in pixels of 1080×1920,
@@ -176,14 +205,18 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
      - `stamp` (text): red rubber stamp, `size` (52), `rot` (−8).
      - `big` (number or short text): counts up when it is a number; `text` beside it (`\n` for two rows), `size` (160).
      - `text`: rows [text or {`text`, `color` `white`|`red`, `at`}] typed in big letters; `size` (96).
-     - `line`: [[x0, y0], [x1, y1]] a red string drawn between two items.
+     - `line`: [[x0, y0], [x1, y1]] a red string drawn between two items; in a scene with an `edit`, `[0, 2]` = from
+       the 1st to the 3rd photo of the scene.
 6. **Fit**: a scene holds 1 main photo (or a card) and up to ~6 small items; tags never over a face or the subject
    (place them beside the photo or on its border, as the sample); nothing under the subtitle box (y > 1500).
 7. **Preview before pushing** (a wrong picture found after the render costs a 20-minute render):
    `pip install -q numpy pillow scipy pykakasi==2.3.0`, `npm ci` and `bash scripts/crime/get_fonts.sh /tmp/fontsource`
    if missing, then `python3 scripts/crime/preview.py crime/<N> /tmp/r/crime/<N> /tmp/preview.jpg` (~1 min) and
    open the sheet: every scene rendered by the video's own code at its end (a scene over 7 s also in the middle),
-   with times; `/tmp/preview.jpg.plan.json` has the time of every item and subtitle. Check: the picture is the
+   with times and the edit's name; `/tmp/preview.jpg.plan.json` has the time of every item and subtitle, and
+   `/tmp/preview.jpg.edits.md` is the list scene → first line → edit → why (read it once more: does each edit fit
+   what its lines say? no ⚠️ left?). A photo takes the shape of its template box (the `view` is grown to it): when
+   that cuts the subject, set `view`, or `w`/`h` yourself. Check: the picture is the
    thing the line names, nothing important is cut or covered, no item off the desk or under the subtitle box, no
    recognisable face on an AI picture, tags appear on the right words. Fix and run again until all are right.
 8. Commit `picks.json` together with any `script.json`/readings fixes in **one** push as `[crime #<N>] chọn ảnh`
@@ -202,6 +235,9 @@ watermarked picture, an AI picture with a face or text), all fixes in one push. 
 - `subtitles.srt`, `credits.txt` (to paste into the video description: picture credits, and the AI note when AI
   illustrations were used) and `sources.json` (per scene: words, pictures, pages, credits, AI or not);
 - one line on the pictures used (how many real, how many AI); "bình luận nếu muốn sửa";
+- the table of `https://github.com/maihaianh2911-bit/japan-crime-video-factory/blob/renders/crime/<N>/edits.md`
+  pasted as it is (scene, first line, edit, why, and the list of edit names), so the owner can answer
+  "cảnh 5 đổi sang kiểu `number`";
 - one line on keeping it: "Hãy tải video về máy: sau 14 ngày phiếu không có hoạt động, máy sẽ dọn file trên GitHub
   (link hết hiệu lực) và khi đó muốn sửa phải mở phiếu mới." (`renders-cleanup.yml`, weekly).
 
@@ -210,6 +246,8 @@ watermarked picture, an AI picture with a face or text), all fixes in one push. 
   now (a second run would race it). Unattended: leave `crime-fix` and stop; you are woken when the step ends
   (`crime-pick` / `crime-check`), then do the fix. In a chat: say so in one line, wait until the label changes
   (check every minute), then do the fix.
+- `crime-fix` "cảnh 5 đổi sang kiểu X": set that scene's `"edit"` to X, remove the positions you had written by
+  hand, add the items X needs (its recipe in §2.4) with content from the scene's lines, update `why`, preview.
 - `crime-fix`: the request = owner comments after your last `🤖` comment. Text → `script.json` (changed lines are
   read again, the rest reused); pictures, crops, rings → `picks.json` (+ `search-<r>.json`). Push, one-line 🤖
   comment, remove `crime-fix`. Keep working in the same issue. A request that breaks the AI rules of §1 (a face of
