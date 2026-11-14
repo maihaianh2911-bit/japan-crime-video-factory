@@ -95,7 +95,7 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   Once round 1 exists (`img/1/` on renders), never change `queries`/`urls`/`gen` again: a new search renumbers round
   1 and the picks would point at other pictures (the machine then stops at `crime-pick`). Add searches and
   illustrations with `search-<r>.json`.
-Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures ~15–25 min; you are woken at `crime-pick`.)
+Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures ~15–25 min, ~22 s per line; you are woken at `crime-pick`.)
 
 ## 2. `crime-pick` → `crime/<N>/picks.json`
 1. `voice/check.md` lists lines where Whisper heard something different. Real misreadings: fix in `script.json`
@@ -187,7 +187,7 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
    thing the line names, nothing important is cut or covered, no item off the desk or under the subtitle box, no
    recognisable face on an AI picture, tags appear on the right words. Fix and run again until all are right.
 8. Commit `picks.json` together with any `script.json`/readings fixes in **one** push as `[crime #<N>] chọn ảnh`
-   (a push of `script.json` alone runs the voice step again), remove `crime-busy`. (Render ~15–25 min; you are
+   (a push of `script.json` alone runs the voice step again), remove `crime-busy`. (Render ~15–20 min for 2 minutes of video; you are
    woken at `crime-check`.)
 
 ## 3. `crime-check` → done

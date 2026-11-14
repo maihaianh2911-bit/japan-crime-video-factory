@@ -1,12 +1,12 @@
 name: 🔎 Video vụ án (tiếng Nhật)
-description: Dán kịch bản → máy làm video dọc giọng tiếng Nhật, ảnh kiểu ảnh cũ, chữ vàng chạy theo giọng, tiêu đề vụ án ở trên
+description: Dán kịch bản → máy làm video dọc giọng tiếng Nhật, kiểu hồ sơ vụ án (ảnh đen trắng, nhãn vàng, giấy ghi chép, phụ đề ô trắng)
 title: "[Vụ án] "
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        **Cách dùng:** dán kịch bản rồi bấm **Create**. Không cần làm gì thêm: Claude chia lời (dịch sang tiếng Nhật nếu cần), máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa (có ghi chữ "イメージ（AI生成）"), Claude xem và chọn ảnh cho từng câu, máy dựng video theo video mẫu, Claude kiểm tra lại từng cảnh. Link video hiện ở bình luận cuối.
+        **Cách dùng:** dán kịch bản rồi bấm **Create**. Không cần làm gì thêm: Claude chia lời (dịch sang tiếng Nhật nếu cần), máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa (có ghi chữ "イメージ（AI生成）"), Claude xem ảnh, xếp ảnh, nhãn và giấy ghi chép cho từng cảnh, máy dựng video theo video mẫu, Claude kiểm tra lại từng cảnh. Link video hiện ở bình luận cuối.
         Muốn sửa gì thì viết bình luận (ví dụ "cảnh 3 đổi ảnh khác", "câu 5 đọc sai tên").
   - type: input
     id: case

@@ -8,8 +8,11 @@ to it, laid out as the owner's sample `00-video-mau/MAU-VU-AN.mp4` (new sample o
 desk — black-and-white photos with white borders, yellow hand-written tags, typed paper cards, torn-paper titles, red
 stamps — each laid down as the voice names it). Real pictures first; where none exists, AI illustrations, always tagged `イメージ（AI生成）` and never
 showing a real person's face. One issue `[Vụ án] …` = one video; the machine steps run on GitHub Actions
-(`crime.yml`), Claude's steps are in `AGENT_CRIME.md`. Its twin `maihaianh2911-bit/germany-crime-video-factory` makes the same videos in tiếng Đức; the
-code is the same, only `prompts/channel.json` (language, voice, AI tag) and `prompts/readings.json` differ.
+(`crime.yml`), Claude's steps are in `AGENT_CRIME.md`. Its twin `maihaianh2911-bit/germany-crime-video-factory` makes true-crime videos in tiếng Đức. Each repo got **its own case-file style on
+14/11/2026** (from different sessions): the style code differs (`build.py`, `layout.py`, `prep.py`, `captions.py`, fonts,
+`preview.py`, `CrimeV.tsx`) and so does the `picks.json` format; the pipeline code (`run.py`, `vn11.py`, `tts_lines.py`,
+`find_images.py`, `wake_claude.sh`, the workflows) is the same. The owner has **not decided** whether the two
+styles become one: never port style code between them, and ask before unifying.
 
 ## When you were started by GitHub (a Claude task, nobody in the chat)
 Follow `AGENT_NIGHTLY.md` of this repo (its first check lists the `crime-*` issues waiting), then `AGENT_CRIME.md`.
@@ -20,9 +23,10 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
    the sections of `docs/CHATGPT.md` (Vụ án / Kịch bản = the script exactly as pasted / Giọng đọc / Ghi chú =
    wishes from the chat). No labels: the workflow adds them, and its start job wakes the Claude task at once.
 2. Right after creating the issue, add `crime-busy` (so that task leaves it to you; keep it while you work and wait
-   here, remove it when you stop), then do Claude's steps of `AGENT_CRIME.md` for that issue right away:
-   `script.json` → wait for the voice and pictures (~15–25 min) → `picks.json`, with the framing preview → wait for
-   the render (~15–25 min) → check the scene sheet → closing comment. While a machine step runs, say so in one line
+   here: the claim counts for 2 hours from when the label was
+   added, so on a longer chat remove and add it again; remove it when you stop), then do Claude's steps of `AGENT_CRIME.md` for that issue right away:
+   `script.json` → wait for the voice and pictures (~15–25 min; first video, 36 lines: 17 min) → `picks.json`, with the
+   framing preview → wait for the render (~15–20 min for 2 minutes of video) → check the scene sheet → closing comment. While a machine step runs, say so in one line
    and wait; if the owner does not want to wait, stop after any step: the Claude task continues from the labels
    when GitHub calls it.
 3. Give the owner the links to the video (view + download), the subtitles and the picture credits.
@@ -32,6 +36,7 @@ Quality first: look at every picture yourself, preview before rendering.
 ## Changing the pipeline
 Before pushing to `main`: `python3 tests/crime_units.py`, `python3 tests/crime_smoke.py --still` (with
 `FONTSOURCE` set and `bash scripts/crime/get_fonts.sh "$FONTSOURCE"`), `python3 -m compileall -q scripts tests`,
-`npm run check`. Code changes go to both crime repos (same files). Never touch secrets. Comments posted on GitHub
+`npm run check`. Until the owner decides on one style, code changes are made **in each repo separately** (a pipeline fix: the same
+change in both, by hand; style code: only in its own repo). Never touch secrets. Comments posted on GitHub
 start with 🤖 (they come from the owner's account). No pull requests unless asked. The session cannot delete
 branches or tags.
