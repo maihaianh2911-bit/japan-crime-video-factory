@@ -178,6 +178,9 @@ def commons(q, n):
     return out
 
 
+REFUSED = set()   # sources that answered 429 (too many requests) in this run: not asked again, see search()
+
+
 FIND = {'openverse': openverse, 'met': met, 'aic': aic, 'cleveland': cleveland, 'europeana': europeana, 'loc': loc, 'commons': commons}
 
 
@@ -190,8 +193,14 @@ def search(q):
         return FIND[m.group(1).lower()](m.group(2), 12)
     per, lists, errors = 8, [], []
     for s in SOURCES:   # one source down or slow must not stop the search
+        if s in REFUSED:
+            continue
         try: lists.append(FIND[s](q, per))
-        except Exception as e: print(f'  {s}: {str(e)[:100]}'); errors.append(f'{s}: {str(e)[:60]}')
+        except Exception as e:
+            print(f'  {s}: {str(e)[:100]}'); errors.append(f'{s}: {str(e)[:60]}')
+            # the Library of Congress refuses the runners for a whole run; every refused query costs ~50 s of retries
+            if s == 'loc' and isinstance(e, urllib.error.HTTPError) and e.code == 429:
+                REFUSED.add(s); print('  loc: bỏ qua nguồn này đến hết lượt chạy (429)')
     if not lists:       # every source failed: the query is recorded as failed, not as "nothing found"
         raise RuntimeError('; '.join(errors))
     mixed = []

@@ -186,4 +186,14 @@ try:
     assert jobs == ['Drei.', 'Vier.'] and [r['i'] for r in json.load(open(os.path.join(vd, 'b', 'lines.json')))] == [1, 2, 3, 4], jobs
 finally:
     V.cmd_tts, sys.argv = real_tts, argv
+# picture search: a source that answers 429 (Library of Congress on the runners) is asked once per run, not per query
+import find_images as F
+asked = []
+def refused(q, n): asked.append(q); raise urllib.error.HTTPError('https://www.loc.gov/', 429, 'Too Many Requests', {}, None)
+real_find = dict(F.FIND)
+try:
+    F.FIND.update({s: (lambda q, n: []) for s in F.SOURCES}); F.FIND['loc'] = refused; F.REFUSED.clear()
+    assert F.search('first') == [] and F.search('second') == [] and asked == ['first'] and F.REFUSED == {'loc'}, asked
+finally:
+    F.FIND.clear(); F.FIND.update(real_find); F.REFUSED.clear()
 print('crime unit checks OK')
