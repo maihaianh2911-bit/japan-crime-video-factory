@@ -201,7 +201,9 @@ watermarked picture, an AI picture with a face or text), all fixes in one push. 
   `https://github.com/maihaianh2911-bit/japan-crime-video-factory/raw/renders/crime/<N>/video.mp4`, its length;
 - `subtitles.srt`, `credits.txt` (to paste into the video description: picture credits, and the AI note when AI
   illustrations were used) and `sources.json` (per scene: words, pictures, pages, credits, AI or not);
-- one line on the pictures used (how many real, how many AI); "bình luận nếu muốn sửa".
+- one line on the pictures used (how many real, how many AI); "bình luận nếu muốn sửa";
+- one line on keeping it: "Hãy tải video về máy: sau 14 ngày phiếu không có hoạt động, máy sẽ dọn file trên GitHub
+  (link hết hiệu lực) và khi đó muốn sửa phải mở phiếu mới." (`renders-cleanup.yml`, weekly).
 
 ## 4. `crime-fix` and `crime-failed`
 - `crime-fix` while the issue still has `crime-voice` or `crime-render`: a machine step is running. Do **not** push
@@ -219,3 +221,8 @@ watermarked picture, an AI picture with a face or text), all fixes in one push. 
   `gh api -X POST repos/maihaianh2911-bit/japan-crime-video-factory/actions/workflows/crime.yml/dispatches -f ref=main -f 'inputs[issue]=<N>' -f 'inputs[steps]=render'`
   (or `prepare`, `search`), remove `crime-failed`. When the fix is a push under `crime/<N>/` (script.json,
   picks.json, search-<r>.json, own/), that push already starts the run: do not dispatch it by hand as well.
+- `crime-failed` where the machine's last 🤖 comment explains the stop itself (no log link): **the voice key is
+  missing** → nothing to fix; when the owner says the key is added, dispatch `prepare` and remove `crime-failed`
+  (and `crime-fix`). **The files were cleaned up** (no activity for 14 days; `picks.json` would no longer match
+  newly numbered pictures) → nothing can be run on this issue: remove `crime-failed` and `crime-fix`, and tell the
+  owner in one line to open a new issue with the script.

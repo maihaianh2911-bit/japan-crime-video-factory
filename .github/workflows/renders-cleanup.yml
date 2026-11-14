@@ -2,7 +2,8 @@ name: Dọn video cũ (nhánh renders)
 
 # Mỗi tuần: giữ file của các phiếu hoạt động trong KEEP_DAYS ngày gần đây (crime/<số phiếu>/), xóa file của phiếu cũ
 # hơn, và thay lịch sử nhánh renders bằng một commit duy nhất để GitHub dọn dung lượng cũ. Link tải của video cũ
-# hơn KEEP_DAYS ngày sẽ hết hiệu lực.
+# hơn KEEP_DAYS ngày sẽ hết hiệu lực. Giọng đọc và ảnh của phiếu đó cũng bị xóa: sau đó phiếu không sửa tiếp được
+# (scripts/crime/run.py từ chối và báo chủ kênh mở phiếu mới); Claude ghi điều này trong bình luận giao video.
 on:
   schedule:
     - cron: '17 20 * * 0'   # Chủ nhật 20:17 UTC = thứ Hai 3:17 sáng giờ VN

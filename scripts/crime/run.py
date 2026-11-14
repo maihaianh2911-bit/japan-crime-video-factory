@@ -13,7 +13,8 @@ prepare searched round 1 again with changed queries (the picks would point at ot
 A video over 95 MB is encoded again at a bitrate that lands ~90 MB (GitHub refuses files over 100 MB).
 Needs GH_TOKEN, GITHUB_REPOSITORY; prepare needs VN11_API_KEY; AI illustrations need one generator key
 (scripts/gen_images.py), without it they are skipped.
-Exit code 3: stopped before any work and the owner was told why on the issue (the voice key is missing).
+Exit code 3: stopped before any work and the owner was told why on the issue (the voice key is missing, or the
+issue's files were removed by renders-cleanup.yml after 14 days without activity and picks.json no longer fits).
 """
 import json, os, shutil, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -285,6 +286,13 @@ if __name__ == '__main__':
              'variables → Actions → New repository secret, tên `VN11_API_KEY`, giá trị là khóa giọng đọc (cùng khóa như các '
              'repo khác). Thêm xong thì viết một bình luận ở đây (ví dụ "đã thêm khóa") để máy chạy lại.')
     fetch_renders()
+    if os.path.exists(os.path.join(JOB, 'picks.json')) and not os.path.exists(os.path.join(WORK, 'voice', 'lines.json')):
+        # Pictures were chosen once, but the voice is gone from renders: renders-cleanup.yml removed this issue's files
+        # (no activity for 14 days). Making them again would number the pictures anew, and the old picks.json would
+        # then show other pictures than the ones Claude chose — so refuse instead of rendering.
+        stop('🤖 Không sửa tiếp được trên phiếu này: giọng đọc và ảnh của video đã được dọn (máy tự dọn file của phiếu '
+             'không hoạt động quá 14 ngày), nên các ảnh đã chọn không còn khớp. Hãy mở một phiếu mới với kịch bản (đã sửa) '
+             'để làm lại video.')
     if 'prepare' in steps:
         rows, requeried = prepare()
         flagged = sum(1 for r in rows if r.get('diff'))
