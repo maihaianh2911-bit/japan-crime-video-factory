@@ -207,7 +207,7 @@ const BigV: React.FC<{ g: Big; t: number; F: Record<Role, string> }> = ({ g, t, 
   const shown = Number.isFinite(n) && /^[\d,]+$/.test(g.num) ? Math.round(n * easeOut((t - g.s) / 0.7)).toLocaleString('en-US') : g.num;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: g.size * 0.12 }}>
-      <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: '#eeeae2', textShadow: '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
+      <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: '#eeeae2', whiteSpace: 'nowrap', textShadow: '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
       {g.text ? <span style={{ fontFamily: `"${F.serif}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: '#cbc4b8', whiteSpace: 'pre',
         paddingTop: g.size * 0.25 }}>{g.text}</span> : null}
     </div>
