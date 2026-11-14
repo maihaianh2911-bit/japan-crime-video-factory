@@ -13,6 +13,7 @@ prepare searched round 1 again with changed queries (the picks would point at ot
 A video over 95 MB is encoded again at a bitrate that lands ~90 MB (GitHub refuses files over 100 MB).
 Needs GH_TOKEN, GITHUB_REPOSITORY; prepare needs VN11_API_KEY; AI illustrations need one generator key
 (scripts/gen_images.py), without it they are skipped.
+Exit code 3: stopped before any work and the owner was told why on the issue (the voice key is missing).
 """
 import json, os, shutil, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -270,7 +271,19 @@ def claude(woken, text):
     return text if woken != 'failed' else ''
 
 
+EXPLAINED = 3   # exit code: stopped before any work, and the owner was told why on the issue (crime.yml adds no more)
+
+
+def stop(body):
+    comment(body)
+    sys.exit(EXPLAINED)
+
+
 if __name__ == '__main__':
+    if 'prepare' in steps and not os.environ.get('VN11_API_KEY'):
+        stop('🤖 Máy chưa tạo được giọng đọc vì repo này **chưa có khóa giọng đọc**. Cách thêm: Settings → Secrets and '
+             'variables → Actions → New repository secret, tên `VN11_API_KEY`, giá trị là khóa giọng đọc (cùng khóa như các '
+             'repo khác). Thêm xong thì viết một bình luận ở đây (ví dụ "đã thêm khóa") để máy chạy lại.')
     fetch_renders()
     if 'prepare' in steps:
         rows, requeried = prepare()

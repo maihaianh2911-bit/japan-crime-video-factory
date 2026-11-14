@@ -49,8 +49,13 @@ jobs:
           N: ${{ github.event.issue.number }}
           CLAUDE_TASK_URL: ${{ secrets.CLAUDE_TASK_URL }}
           CLAUDE_TASK_TOKEN: ${{ secrets.CLAUDE_TASK_TOKEN }}
+          HAS_VOICE_KEY: ${{ secrets.VN11_API_KEY != '' || secrets.VOICE != '' }}
         run: |
           gh issue edit "$N" --add-label crime,crime-plan
+          # told at once, not after Claude's first step: without this key the voice step can only fail
+          if [ "$HAS_VOICE_KEY" != true ]; then
+            gh issue comment "$N" --body "🤖 Repo này **chưa có khóa giọng đọc** nên máy chưa tạo được giọng cho video. Cách thêm: Settings → Secrets and variables → Actions → New repository secret, tên \`VN11_API_KEY\`, giá trị là khóa giọng đọc (cùng khóa như các repo khác). Thêm xong thì viết một bình luận ở đây (ví dụ \"đã thêm khóa\") để làm tiếp."
+          fi
           bash scripts/wake_claude.sh "Phiếu vụ án mới số $N." "$N"
           if [ "$(cat /tmp/wake_result 2>/dev/null)" != failed ]; then
             gh issue comment "$N" --body "🤖 Đã nhận kịch bản. Claude chia lời (dịch nếu cần) và chọn từ khóa tìm ảnh, máy tạo giọng đọc, tìm ảnh thật và tạo ảnh minh họa, Claude xem và chọn ảnh, máy dựng video, Claude kiểm tra lại từng cảnh. Mỗi bước xong sẽ báo ở đây."
@@ -94,7 +99,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      VN11_API_KEY: ${{ secrets.VN11_API_KEY }}
+      VN11_API_KEY: ${{ secrets.VN11_API_KEY || secrets.VOICE }}   # the owner saved the key as VOICE in the German repo (14/11/2026)
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
@@ -171,7 +176,13 @@ jobs:
           while read -r N STEPS; do
             echo "::group::phiếu #$N: $STEPS"
             # < /dev/null: nothing inside run.py may read the rest of the to-do list from the loop's stdin
-            if ! python3 scripts/crime/run.py "$N" $STEPS < /dev/null; then
+            RC=0; python3 scripts/crime/run.py "$N" $STEPS < /dev/null || RC=$?
+            if [ "$RC" = 3 ]; then
+              # run.py stopped before doing anything and told the owner why on the issue (a missing key, files cleaned
+              # up): nothing for Claude to repair, so no call and no second comment
+              FAIL=1
+              gh issue edit "$N" --add-label crime-failed < /dev/null || true
+            elif [ "$RC" != 0 ]; then
               FAIL=1
               gh issue edit "$N" --add-label crime-failed --remove-label crime-voice --remove-label crime-render < /dev/null || true
               bash scripts/wake_claude.sh "Phiếu vụ án số $N bị lỗi ở bước $STEPS." "$N" < /dev/null || true
