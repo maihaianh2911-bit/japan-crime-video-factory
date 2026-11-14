@@ -13,7 +13,7 @@ before.
 An entry: vi (Vietnamese name), sample (m:ss in the sample), look, use (WHEN: by the meaning of the scene's lines),
 needs / most ({"photo" | "card:note" …: count}), check (a function → error text), scene (defaults of the scene
 itself, e.g. the black ground), slots (defaults of the n-th item of a kind: a list, or for tags a dict by colour
-with "*" for the others), all (defaults of every item of a kind), recipe (the JSON Claude copies; AGENT_CRIME.md
+with "*" for the others), all (defaults of every item of a kind), fit (cards are as high as their rows need), recipe (the JSON Claude copies; AGENT_CRIME.md
 §2.4 prints the same table: python3 scripts/crime/edits.py). A template has a fixed number of places: an item beyond
 them must carry its own x and y. In a scene with an edit, {"line": [0, 2]} joins the 1st and 3rd photo of the scene
 with a red string (without an edit a line is two points, as before).
@@ -35,8 +35,36 @@ def style_of(it):
     return (c.get('style', 'paper') if isinstance(c, dict) else 'paper') if 'card' in it else None
 
 
-def finish(sc, n, fail):
-    """{"line": [0, 2]} → the red string between the 1st and 3rd photo of the scene (pinned near their top edge)."""
+W, MARGIN = 1080, 26
+
+
+def tag_width(text, size):
+    """Width in pixels of a tag as CrimeV.tsx draws it (an estimate: full-width characters are one em, others ~0.58)."""
+    em = max(sum(1.01 if ord(c) > 0x2E7F else 0.58 for c in row) for row in str(text).split('\n'))
+    return (em + 0.68) * size
+
+
+def card_height(card, size):
+    """Height that just holds a card's head and rows (CrimeV.tsx: rows of 1.6 × size, the head 2.05, the paddings)."""
+    rows = len(card.get('rows') or [])
+    if card.get('style') == 'note': return round((2.3 + 1.6 * rows) * size)
+    return round((2.3 + (2.05 if card.get('head') else 0) + 1.6 * rows) * size)
+
+
+def finish(sc, n, fail, given):
+    """What a template cannot know before it sees the content:
+    - a tag it placed stays inside the frame: moved inwards, and made smaller when it is wider than the frame;
+    - a card of an edit with "fit" is as high as its rows need (unless Claude gave "h");
+    - {"line": [0, 2]} → the red string between the 1st and 3rd photo of the scene (pinned near their top edge)."""
+    ed = EDITS[sc['edit']]
+    for it, mine in zip(sc.get('items') or [], given):
+        if 'tag' in it and 'x' in it and 'x' not in mine:
+            size = it.get('size', 46); w = tag_width(it['tag'], size)
+            if w > W - 2 * MARGIN and 'size' not in mine:
+                size = int(size * (W - 2 * MARGIN) / w); it['size'] = size; w = tag_width(it['tag'], size)
+            it['x'] = round(min(max(it['x'], MARGIN + w / 2), W - MARGIN - w / 2)) if w <= W - 2 * MARGIN else W // 2
+        if isinstance(it.get('card'), dict) and ed.get('fit') and 'h' not in mine:
+            it['h'] = max(260, card_height(it['card'], it.get('size', 52)))
     photos = [it for it in sc.get('items') or [] if 'photo' in it]
     for it in sc.get('items') or []:
         v = it.get('line')
@@ -95,8 +123,8 @@ EDITS = {
   'vi': 'tờ giấy tên và tuổi', 'sample': '0:18–0:31',
   'look': 'tờ giấy kem: dòng đầu đánh máy ngày giờ, rồi từng dòng tên + tuổi hiện ra khi được đọc; một nhãn đỏ ở góc dưới',
   'use': 'NGƯỜI / NGÀY THÁNG: câu giới thiệu nạn nhân, những người liên quan, tên, tuổi, ngày xảy ra',
-  'needs': {'card:paper': 1}, 'most': {'photo': 0},
-  'slots': {'header': [{'x': 540, 'y': 200}], 'card': [{'x': 540, 'y': 760, 'w': 860, 'h': 660, 'rot': -0.6}],
+  'needs': {'card:paper': 1}, 'most': {'photo': 0}, 'fit': True,
+  'slots': {'header': [{'x': 540, 'y': 200}], 'card': [{'x': 540, 'y': 740, 'w': 880, 'size': 60, 'rot': -0.6}],
             'tag': {'*': [{'x': 780, 'y': 1200}]}},
   'recipe': {'at': 6, 'edit': 'who', 'why': '…', 'items': [
       {'card': {'head': '12月30日 → 31日', 'rows': [{'text': '宮澤みきお', 'right': '44歳', 'at': '7:宮澤'}, {'text': '泰子', 'right': '41歳', 'at': '7:泰子'}]}},
@@ -199,8 +227,8 @@ EDITS = {
   'vi': 'giấy ghi việc hắn làm', 'sample': '2:20–2:35',
   'look': 'nhãn đỏ ở trên; tờ giấy kẻ dòng chữ viết tay xanh, mỗi việc được đọc là một dòng có dấu ✓; có thể thêm một ảnh nhỏ ở góc dưới',
   'use': 'CHUỖI HÀNH ĐỘNG: câu kể lần lượt những việc một người đã làm (ăn, dùng máy tính, lục giấy tờ)',
-  'needs': {'card:note': 1}, 'most': {'photo': 1},
-  'slots': {'card': [{'x': 540, 'y': 720, 'w': 820, 'h': 560, 'size': 50, 'rot': -1}], 'photo': [{'x': 800, 'y': 1230, 'w': 380, 'h': 300, 'rot': 4}],
+  'needs': {'card:note': 1}, 'most': {'photo': 1}, 'fit': True,
+  'slots': {'card': [{'x': 540, 'y': 720, 'w': 820, 'size': 54, 'rot': -1}], 'photo': [{'x': 800, 'y': 1230, 'w': 380, 'h': 300, 'rot': 4}],
             'tag': {'red': [{'x': 540, 'y': 250, 'size': 52}], '*': [{'x': 300, 'y': 1180}]}},
   'recipe': {'at': 25, 'edit': 'actions', 'why': '…', 'items': [
       {'tag': 'すぐには逃げなかった', 'color': 'red', 'at': '25:すぐ'},
@@ -317,6 +345,7 @@ def apply(sc, n, fail):
     if err: fail(f'cảnh {n}: kiểu edit "{name}": {err}. Mẫu: {recipe(name)}')
 
     slots, seen = ed.get('slots') or {}, {}
+    given = [set(it) for it in items]                # what Claude wrote himself, before the template adds to it
     pic_index = [k for k, it in enumerate(items) if kind_of(it) in PICS]
     for k, it in enumerate(items):
         kind = kind_of(it)
@@ -343,7 +372,7 @@ def apply(sc, n, fail):
                 if v[1] >= len(pic_index): continue
                 v = pic_index[v[1]]
             it.setdefault(g, v)
-    return finish(sc, n, fail) if finish else sc
+    return finish(sc, n, fail, given) if finish else sc
 
 
 def first_line(sc, default=1):

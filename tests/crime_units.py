@@ -222,4 +222,14 @@ assert made['items'][0][key] == mine and all(k in made['items'][1] for k in E.ED
 rows = [{'at': 1, 'edit': 'hook', 'why': 'vì câu đầu | liệt kê'}, {'at': '2/x', 'edit': 'hook'}, {'at': 3}]
 md = E.listing(rows, {1: 'eins', 2: 'zwei', 3: 'drei'}, [0, 4, 8, 12])
 assert E.repeats(rows) == [2] and 'vì câu đầu / liệt kê' in md and '⚠️' in md and '| 3 | 8–12 s | drei | — |' in md and '`ending`' in md, md
+# template details: a tag the template placed stays inside the frame (moved inwards, shrunk when wider than the frame),
+# a tag Claude placed is left alone; the card of "who" is as high as its rows need unless Claude gave "h"
+long_ = {'at': 1, 'edit': 'detail', 'items': [{'photo': 'a', 'marks': [{'box': [0, 0, 1, 1]}]}, {'tag': '関孫六'}, {'tag': '前日に同じ包丁を購入した男'},
+                                               {'tag': '前日に同じ包丁を購入して画像解析で特定されたという男', 'color': 'red'}, {'tag': '前日に同じ包丁を購入した男', 'x': 1000, 'y': 300}]}
+made = E.apply(long_, 1, refuse)['items']
+for it in made[1:4]:
+    w_ = E.tag_width(it['tag'], it.get('size', 46)); assert it['x'] - w_ / 2 >= E.MARGIN - 1 and it['x'] + w_ / 2 <= E.W - E.MARGIN + 1, it
+assert made[1]['x'] == 300 and made[2]['x'] < 770 and made[3]['size'] < 46 and made[4]['x'] == 1000
+who = lambda k, **kw: E.apply({'at': 1, 'edit': 'who', 'items': [{'card': {'head': 'x', 'rows': ['r'] * k}, **kw}]}, 1, refuse)['items'][0]
+assert who(2)['h'] < who(4)['h'] < who(6)['h'] and who(4)['h'] == E.card_height({'head': 'x', 'rows': ['r'] * 4}, 60) and who(4, h=900)['h'] == 900
 print('crime unit checks OK')

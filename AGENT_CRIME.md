@@ -120,7 +120,7 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
    `{"at": 6, "edit": "who", "why": "câu 6–8 đọc tên và tuổi bốn nạn nhân", "items": [{"card": {"head": …, "rows": […]}}]}`
    The edit is a named layout of the owner's sample (`00-video-mau/MAU-VU-AN.mp4`, the time in the table is where to see it): it
    gives every photo, tag and card its place on the desk (`x`, `y`), its size, tilt and colour, so you list only the **content** — which picture, which words, and for each
-   the spoken word it appears on (`"at"`). Anything you do write (`x`, `y`, `w`, `h`, `rot`, `size`, `color`, `bg`) wins over the template; a template has a fixed number of places, so an item beyond them needs its own `x`, `y`. A scene that lacks what its edit is made of is refused with
+   the spoken word it appears on (`"at"`). Anything you do write (`x`, `y`, `w`, `h`, `rot`, `size`, `color`, `bg`) wins over the template; a template has a fixed number of places, so an item beyond them needs its own `x`, `y`. A tag the template placed is moved inwards (and made smaller) when its text would leave the frame, and the card of `who` and `actions` is as high as its rows need — keep tags short all the same, two long ones side by side still overlap. A scene that lacks what its edit is made of is refused with
    the recipe; an unknown name is refused with the list of names.
    Rules: **never the same edit for two scenes in a row** (the build prints `chú ý` and `edits.md` marks it ⚠️ —
    change one of them); every item except the first carries an `"at"` on the word that names it; the order of the
