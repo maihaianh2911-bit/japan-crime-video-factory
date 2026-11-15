@@ -1,0 +1,565 @@
+{
+ "pictures": [
+  {
+   "name": "house_night",
+   "src": "1/1-1.jpg",
+   "title": "祖師谷公園 世田谷一家殺人事件現場 - Panoramio 63788090.jpg",
+   "artist": "珈琲牛乳",
+   "date": "Taken on 21 December 2011Upload date: 21 December 2011",
+   "license": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%A5%96%E5%B8%AB%E8%B0%B7%E5%85%AC%E5%9C%92_%E4%B8%96%E7%94%B0%E8%B0%B7%E4%B8%80%E5%AE%B6%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6%E7%8F%BE%E5%A0%B4_-_Panoramio_63788090.jpg",
+   "ai": false
+  },
+  {
+   "name": "house_trees",
+   "src": "1/1-2.jpg",
+   "title": "Setagaya-file2.jpg",
+   "artist": "Thirteen-fri",
+   "date": "2010-10-08",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Setagaya-file2.jpg",
+   "ai": false
+  },
+  {
+   "name": "house_day",
+   "src": "1/1-3.jpg",
+   "title": "Setagaya-file1.jpg",
+   "artist": "Thirteen-fri",
+   "date": "Taken on 8 October 2010",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Setagaya-file1.jpg",
+   "ai": false
+  },
+  {
+   "name": "mpd",
+   "src": "1/9-1.jpg",
+   "title": "Tōkyō Police Department, Sakuradamon (15711653149).jpg",
+   "artist": "x768",
+   "date": "2014-08-16 07:11",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:T%C5%8Dky%C5%8D_Police_Department,_Sakuradamon_(15711653149).jpg",
+   "ai": false
+  },
+  {
+   "name": "knife",
+   "src": "1/11-2.jpg",
+   "title": "YanagiBaKnifeBackFace.jpg",
+   "artist": "Kurosuke88 at English Wikipedia",
+   "date": "26 August 2009 (original upload date)",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:YanagiBaKnifeBackFace.jpg",
+   "ai": false
+  },
+  {
+   "name": "finger",
+   "src": "1/15-7.jpg",
+   "title": "Fingerprint (PSF).png",
+   "artist": "Pearson Scott Foresman",
+   "date": "",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Fingerprint_(PSF).png",
+   "ai": false
+  },
+  {
+   "name": "dna",
+   "src": "1/16-1.jpg",
+   "title": "DNA double helix horizontal.png",
+   "artist": "Jerome Walker",
+   "date": "2006-07-09",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:DNA_double_helix_horizontal.png",
+   "ai": false
+  },
+  {
+   "name": "crt",
+   "src": "1/17-1.jpg",
+   "title": "HP Pavilion v72 17 inch CRT Monitor front view IMG 9419.JPG",
+   "artist": "Scott A. Miller",
+   "date": "2012-10-28 16:09:35",
+   "license": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:HP_Pavilion_v72_17_inch_CRT_Monitor_front_view_IMG_9419.JPG",
+   "ai": false
+  },
+  {
+   "name": "bag",
+   "src": "1/19-1.jpg",
+   "title": "Fannypack1a.jpg",
+   "artist": "No machine-readable author provided. RJFJR assumed (based on copyright claims).",
+   "date": "6 December 2006 (original upload date)",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Fannypack1a.jpg",
+   "ai": false
+  },
+  {
+   "name": "soles",
+   "src": "2/1-8.jpg",
+   "title": "DMs shoe sole (Dr. Martens, England, 1990).jpeg",
+   "artist": "Mishimishimishi",
+   "date": "",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:DMs_shoe_sole_(Dr._Martens,_England,_1990).jpeg",
+   "ai": false
+  },
+  {
+   "name": "dusting",
+   "src": "2/10-4.jpg",
+   "title": "Dacty poederen.JPG",
+   "artist": "Arnij at Dutch Wikipedia",
+   "date": "7 May 2005 (original upload date)",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Dacty_poederen.JPG",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 9.962,
+   "said": [
+    "現場には、犯人の血、DNA、",
+    "指紋が残されていた。",
+    "服も、靴の跡も、",
+    "そして凶器までも。",
+    "それでも25年以上たった今、",
+    "警察は犯人が誰か知らない。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "house_night",
+     "ai": false,
+     "credit": "珈琲牛乳 / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E7%A5%96%E5%B8%AB%E8%B0%B7%E5%85%AC%E5%9C%92_%E4%B8%96%E7%94%B0%E8%B0%B7%E4%B8%80%E5%AE%B6%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6%E7%8F%BE%E5%A0%B4_-_Panoramio_63788090.jpg"
+    }
+   ],
+   "texts": [
+    "血",
+    "DNA",
+    "指紋",
+    "服",
+    "靴の跡",
+    "凶器",
+    "25年以上"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 9.962,
+   "end": 12.383,
+   "said": [
+    "東京・世田谷の一家殺害事件。"
+   ],
+   "edit": "chapter",
+   "photos": [],
+   "texts": [
+    "世田谷一家殺害事件"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 12.383,
+   "end": 15.354,
+   "said": [
+    "日本で最も",
+    "有名な未解決事件の一つだ。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "house_trees",
+     "ai": false,
+     "credit": "Thirteen-fri / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Setagaya-file2.jpg"
+    }
+   ],
+   "texts": [
+    "世田谷一家殺害事件",
+    "東京・世田谷区",
+    "未解決"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 15.354,
+   "end": 26.479,
+   "said": [
+    "2000年12月30日の",
+    "夜から、31日の未明。",
+    "宮澤みきおさん44歳、",
+    "妻の泰子さん41歳。",
+    "8歳のにいなちゃん、",
+    "6歳の礼くんが、",
+    "自宅で殺害された。"
+   ],
+   "edit": "who",
+   "photos": [],
+   "texts": [
+    "自宅で"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 26.479,
+   "end": 33.294,
+   "said": [
+    "犯人は犯行中に手をけがし、",
+    "血を流していた。",
+    "血液型はA型。DNAも",
+    "現場で採取された。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "dna",
+     "ai": false,
+     "credit": "Jerome Walker / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:DNA_double_helix_horizontal.png"
+    }
+   ],
+   "texts": [
+    "手のけが",
+    "血液型",
+    "DNA 採取"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 33.294,
+   "end": 39.571,
+   "said": [
+    "家族のものではない指紋と、",
+    "一種類だけの靴の跡。",
+    "警察は早くから、",
+    "犯人は一人だと考えた。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "dusting",
+     "ai": false,
+     "credit": "Arnij at Dutch Wikipedia / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Dacty_poederen.JPG"
+    },
+    {
+     "image": "finger",
+     "ai": false,
+     "credit": "Pearson Scott Foresman / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Fingerprint_(PSF).png"
+    }
+   ],
+   "texts": [
+    "家族以外の指紋",
+    "足跡は1種類",
+    "犯人は1人"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 39.571,
+   "end": 46.178,
+   "said": [
+    "犯人のトレーナーは、全国で",
+    "130着しか売られていなかった。",
+    "東京で売られたのは、",
+    "わずか10着。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "犯人のトレーナー",
+    "着\n全国",
+    "着\n東京",
+    "わずか"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 46.178,
+   "end": 53.102,
+   "said": [
+    "靴は韓国製のスラセンジャー、",
+    "27.5センチ。",
+    "このサイズは当時、",
+    "日本では正規に",
+    "売られていなかった。"
+   ],
+   "edit": "object",
+   "photos": [
+    {
+     "image": "soles",
+     "ai": false,
+     "credit": "Mishimishimishi / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:DMs_shoe_sole_(Dr._Martens,_England,_1990).jpeg"
+    }
+   ],
+   "texts": [
+    "韓国製",
+    "スラセンジャー",
+    "27.5cm",
+    "日本で正規販売なし"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 53.102,
+   "end": 57.725,
+   "said": [
+    "ウエストポーチから、",
+    "腰回りは",
+    "70〜75センチと推定された。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "bag",
+     "ai": false,
+     "credit": "No machine-readable author provided. RJFJR assumed (based on / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Fannypack1a.jpg"
+    }
+   ],
+   "texts": [
+    "ウエストポーチ",
+    "腰回り 70〜75cm"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 57.725,
+   "end": 60.577,
+   "said": [
+    "凶器は、関孫六銀寿の柳刃包丁。"
+   ],
+   "edit": "object",
+   "photos": [
+    {
+     "image": "knife",
+     "ai": false,
+     "credit": "Kurosuke88 at English Wikipedia / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:YanagiBaKnifeBackFace.jpg"
+    }
+   ],
+   "texts": [
+    "凶器",
+    "関孫六 銀寿",
+    "柳刃包丁"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 60.577,
+   "end": 66.96,
+   "said": [
+    "前日に同じ包丁を買った男も、",
+    "画像解析で特定された。",
+    "しかし、その男の",
+    "DNAは一致しなかった。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "DNA不一致"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 66.96,
+   "end": 69.288,
+   "said": [
+    "そして犯人は、",
+    "すぐには逃げなかった。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "すぐには逃げなかった"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 69.288,
+   "end": 74.606,
+   "said": [
+    "家で食べ物を食べ、",
+    "トイレを使った。",
+    "家族の書類を触り、",
+    "パソコンも操作した。"
+   ],
+   "edit": "actions",
+   "photos": [],
+   "texts": [
+    "犯人は家で…"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 74.606,
+   "end": 82.8,
+   "said": [
+    "パソコンは午前1時18分と、",
+    "朝10時ごろにネットにつながった。",
+    "ただ、朝の接続は",
+    "意図しないものだった可能性もある。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "crt",
+     "ai": false,
+     "credit": "Scott A. Miller / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:HP_Pavilion_v72_17_inch_CRT_Monitor_front_view_IMG_9419.JPG"
+    }
+   ],
+   "texts": [
+    "意図しない接続?"
+   ]
+  },
+  {
+   "scene": 15,
+   "start": 82.8,
+   "end": 91.886,
+   "said": [
+    "警察には、犯人の血も、",
+    "DNAも、指紋もある。",
+    "靴の跡も、服も、ポーチも、",
+    "凶器もある。",
+    "ポーチの中の髪の毛も、",
+    "犯人のDNAと一致した。"
+   ],
+   "edit": "board",
+   "photos": [
+    {
+     "image": "dna",
+     "ai": false,
+     "credit": "Jerome Walker / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:DNA_double_helix_horizontal.png"
+    },
+    {
+     "image": "finger",
+     "ai": false,
+     "credit": "Pearson Scott Foresman / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Fingerprint_(PSF).png"
+    },
+    {
+     "image": "soles",
+     "ai": false,
+     "credit": "Mishimishimishi / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:DMs_shoe_sole_(Dr._Martens,_England,_1990).jpeg"
+    },
+    {
+     "image": "bag",
+     "ai": false,
+     "credit": "No machine-readable author provided. RJFJR assumed (based on / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Fannypack1a.jpg"
+    },
+    {
+     "image": "knife",
+     "ai": false,
+     "credit": "Kurosuke88 at English Wikipedia / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:YanagiBaKnifeBackFace.jpg"
+    }
+   ],
+   "texts": [
+    "血・DNA",
+    "指紋",
+    "靴の跡",
+    "ポーチ",
+    "凶器",
+    "服",
+    "髪の毛 = 犯人のDNA"
+   ]
+  },
+  {
+   "scene": 16,
+   "start": 91.886,
+   "end": 95.002,
+   "said": [
+    "2025年、新しいDNA分析が報じられた。"
+   ],
+   "edit": "chapter",
+   "photos": [],
+   "texts": [
+    "新しいDNA分析"
+   ]
+  },
+  {
+   "scene": 17,
+   "start": 95.002,
+   "end": 104.512,
+   "said": [
+    "犯行当時、犯人は",
+    "30歳前後だった",
+    "可能性があるという。",
+    "正しければ、今は",
+    "50代から60代だ。",
+    "ただし、警察が確認した身元ではない。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "新しいDNA分析",
+    "警察は未確認"
+   ]
+  },
+  {
+   "scene": 18,
+   "start": 104.512,
+   "end": 108.705,
+   "said": [
+    "2026年も、警視庁は",
+    "遺留品を公開し、",
+    "情報を求めている。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "mpd",
+     "ai": false,
+     "credit": "x768 / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:T%C5%8Dky%C5%8D_Police_Department,_Sakuradamon_(15711653149).jpg"
+    }
+   ],
+   "texts": [
+    "警視庁 2026",
+    "遺留品を公開",
+    "情報提供を求む"
+   ]
+  },
+  {
+   "scene": 19,
+   "start": 108.705,
+   "end": 114.896,
+   "said": [
+    "この事件の怖さは、",
+    "犯人が何も",
+    "残さなかったことではない。",
+    "犯人は、ほとんどすべてを",
+    "残していった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "house_day",
+     "ai": false,
+     "credit": "Thirteen-fri / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Setagaya-file1.jpg"
+    }
+   ],
+   "texts": [
+    "何も残さなかった?",
+    "すべてを残した"
+   ]
+  },
+  {
+   "scene": 20,
+   "start": 114.896,
+   "end": 118.589,
+   "said": [
+    "自分の名前を除いて。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
