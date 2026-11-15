@@ -231,5 +231,15 @@ for it in made[1:4]:
     w_ = E.tag_width(it['tag'], it.get('size', 46)); assert it['x'] - w_ / 2 >= E.MARGIN - 1 and it['x'] + w_ / 2 <= E.W - E.MARGIN + 1, it
 assert made[1]['x'] == 300 and made[2]['x'] < 770 and made[3]['size'] < 46 and made[4]['x'] == 1000
 who = lambda k, **kw: E.apply({'at': 1, 'edit': 'who', 'items': [{'card': {'head': 'x', 'rows': ['r'] * k}, **kw}]}, 1, refuse)['items'][0]
-assert who(2)['h'] < who(4)['h'] < who(6)['h'] and who(4)['h'] == E.card_height({'head': 'x', 'rows': ['r'] * 4}, 60) and who(4, h=900)['h'] == 900
+assert who(2)['h'] < who(4)['h'] < who(6)['h'] and who(4)['h'] == E.card_height({'head': 'x', 'rows': ['r'] * 4}, who(4)['size']) and who(4, h=900)['h'] == 900
+# who / span: the tag the template placed sits just under the fitted card; board: a tag without its photo is dropped
+# with a note, the closing white tag follows the last row of photos
+w2, w6 = (E.apply({'at': 1, 'edit': 'who', 'items': [{'card': {'head': 'x', 'rows': ['r'] * k}}, {'tag': 't'}]}, 1, refuse)['items'] for k in (2, 6))
+assert w2[1]['y'] == round(w2[0]['y'] + w2[0]['h'] / 2 + 80) < w6[1]['y'] and w2[0]['y'] == w6[0]['y']
+import contextlib
+buf = io.StringIO()
+with contextlib.redirect_stdout(buf):
+    bd = E.apply({'at': 1, 'edit': 'board', 'items': [{'photo': 'a'}, {'photo': 'b'}, {'photo': 'c'}, {'tag': '1'}, {'tag': '2'}, {'tag': '3'}, {'tag': 'lonely'},
+                                                      {'tag': 'own', 'x': 500, 'y': 1300}, {'tag': 'end', 'color': 'white'}]}, 1, refuse)['items']
+assert 'lonely' in buf.getvalue() and buf.getvalue().startswith('chú ý') and [i['tag'] for i in bd if 'tag' in i] == ['1', '2', '3', 'own', 'end'] and bd[-1]['y'] == 790 + 145 + 150
 print('crime unit checks OK')

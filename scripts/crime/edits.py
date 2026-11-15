@@ -54,7 +54,9 @@ def card_height(card, size):
 def finish(sc, n, fail, given):
     """What a template cannot know before it sees the content:
     - a tag it placed stays inside the frame: moved inwards, and made smaller when it is wider than the frame;
-    - a card of an edit with "fit" is as high as its rows need (unless Claude gave "h");
+    - a card of an edit with "fit" is as high as its rows need (unless Claude gave "h"), and the tags the template
+      placed sit just under it, so the group stays together in the middle of the desk;
+    - on a board ("pairs") a tag whose photo is missing is dropped with a note in the preview;
     - {"line": [0, 2]} → the red string between the 1st and 3rd photo of the scene (pinned near their top edge)."""
     ed = EDITS[sc['edit']]
     for it, mine in zip(sc.get('items') or [], given):
@@ -65,6 +67,27 @@ def finish(sc, n, fail, given):
             it['x'] = round(min(max(it['x'], MARGIN + w / 2), W - MARGIN - w / 2)) if w <= W - 2 * MARGIN else W // 2
         if isinstance(it.get('card'), dict) and ed.get('fit') and 'h' not in mine:
             it['h'] = max(260, card_height(it['card'], it.get('size', 52)))
+    if ed.get('fit'):   # the tags the template placed follow the card: just under it, whatever its height
+        card = next((it for it in sc.get('items') or [] if isinstance(it.get('card'), dict)), None)
+        k = 0
+        for it, mine in zip(sc.get('items') or [], given):
+            if card and 'tag' in it and 'y' not in mine and it.get('color', COLOR0) not in (ed.get('slots') or {}).get('tag', {}):
+                it['y'] = round(card['y'] + card['h'] / 2 + 80 + 100 * k); k += 1
+    if ed.get('pairs'):   # board: the n-th tag belongs to the n-th photo; a tag without its photo is not drawn alone
+        pics = [it for it in sc.get('items') or [] if 'photo' in it]
+        low = max(it['y'] + it.get('h', 290) / 2 for it in pics)
+        k, keep = 0, []
+        for it, mine in zip(sc.get('items') or [], given):
+            placed = 'x' not in mine and 'y' not in mine
+            if 'tag' in it and it.get('color', COLOR0) == 'white':
+                if 'y' not in mine: it['y'] = round(min(1440, low + 150))   # the closing tag sits under the last row of photos
+            elif 'tag' in it and placed:
+                k += 1
+                if k > len(pics):
+                    print(f'chú ý: cảnh {n}: nhãn "{it["tag"]}" không có ảnh đi kèm (kiểu "{sc["edit"]}" có {len(pics)} ảnh) nên không được vẽ — thêm ảnh, hoặc tự ghi x, y cho nhãn')
+                    continue
+            keep.append(it)
+        sc['items'] = keep
     photos = [it for it in sc.get('items') or [] if 'photo' in it]
     for it in sc.get('items') or []:
         v = it.get('line')
@@ -124,8 +147,8 @@ EDITS = {
   'look': 'tờ giấy kem: dòng đầu đánh máy ngày giờ, rồi từng dòng tên + tuổi hiện ra khi được đọc; một nhãn đỏ ở góc dưới',
   'use': 'NGƯỜI / NGÀY THÁNG: câu giới thiệu nạn nhân, những người liên quan, tên, tuổi, ngày xảy ra',
   'needs': {'card:paper': 1}, 'most': {'photo': 0}, 'fit': True,
-  'slots': {'header': [{'x': 540, 'y': 200}], 'card': [{'x': 540, 'y': 740, 'w': 880, 'size': 60, 'rot': -0.6}],
-            'tag': {'*': [{'x': 780, 'y': 1200}]}},
+  'slots': {'header': [{'x': 540, 'y': 200}], 'card': [{'x': 540, 'y': 780, 'w': 880, 'size': 62, 'rot': -0.6}],
+            'tag': {'*': [{'x': 760, 'y': 1200}]}},
   'recipe': {'at': 6, 'edit': 'who', 'why': '…', 'items': [
       {'card': {'head': '12月30日 → 31日', 'rows': [{'text': '宮澤みきお', 'right': '44歳', 'at': '7:宮澤'}, {'text': '泰子', 'right': '41歳', 'at': '7:泰子'}]}},
       {'tag': '自宅で', 'color': 'red', 'at': '8:自宅'}]}},
@@ -183,7 +206,7 @@ EDITS = {
   'use': 'CON SỐ: câu có số đếm, số lượng, tỉ lệ (130 chiếc, 10 chiếc ở Tokyo) — tối đa 3 số',
   'needs': {'big': 1}, 'most': {'photo': 0, 'big': 3},
   'slots': {'big': [{'x': 500, 'y': 640}, {'x': 480, 'y': 940}, {'x': 480, 'y': 1230}],
-            'tag': {'white': [{'x': 540, 'y': 320, 'size': 58}], 'red': [{'x': 820, 'y': 1400}], '*': [{'x': 800, 'y': 460}]}},
+            'tag': {'white': [{'x': 540, 'y': 320, 'size': 58}], 'red': [{'x': 830, 'y': 1085}], '*': [{'x': 800, 'y': 460}]}},
   'recipe': {'at': 18, 'edit': 'number', 'why': '…', 'items': [
       {'tag': '犯人のトレーナー', 'color': 'white', 'at': '18:トレーナー'}, {'big': '130', 'text': '着\n全国', 'at': '18:130'},
       {'big': '10', 'text': '着\n東京', 'at': '19:10着'}, {'tag': 'わずか', 'color': 'red', 'at': '19:わずか'}]}},
@@ -228,8 +251,8 @@ EDITS = {
   'look': 'nhãn đỏ ở trên; tờ giấy kẻ dòng chữ viết tay xanh, mỗi việc được đọc là một dòng có dấu ✓; có thể thêm một ảnh nhỏ ở góc dưới',
   'use': 'CHUỖI HÀNH ĐỘNG: câu kể lần lượt những việc một người đã làm (ăn, dùng máy tính, lục giấy tờ)',
   'needs': {'card:note': 1}, 'most': {'photo': 1}, 'fit': True,
-  'slots': {'card': [{'x': 540, 'y': 720, 'w': 820, 'size': 54, 'rot': -1}], 'photo': [{'x': 800, 'y': 1230, 'w': 380, 'h': 300, 'rot': 4}],
-            'tag': {'red': [{'x': 540, 'y': 250, 'size': 52}], '*': [{'x': 300, 'y': 1180}]}},
+  'slots': {'card': [{'x': 540, 'y': 800, 'w': 840, 'size': 56, 'rot': -1}], 'photo': [{'x': 800, 'y': 1260, 'w': 380, 'h': 300, 'rot': 4}],
+            'tag': {'red': [{'x': 540, 'y': 400, 'size': 54}], '*': [{'x': 300, 'y': 1180}]}},
   'recipe': {'at': 25, 'edit': 'actions', 'why': '…', 'items': [
       {'tag': 'すぐには逃げなかった', 'color': 'red', 'at': '25:すぐ'},
       {'card': {'style': 'note', 'rows': [{'text': '食べ物を食べた', 'check': True, 'at': '26:食べ物'}, {'text': 'トイレを使った', 'check': True, 'at': '26:トイレ'}]}}]}},
@@ -248,9 +271,9 @@ EDITS = {
   'vi': 'thẻ nhỏ khoảng thời gian', 'sample': '3:28–3:31, 3:42–3:45',
   'look': 'tiêu đề ở trên, một thẻ giấy nhỏ ở giữa với một hai dòng (dòng quan trọng màu đỏ); nhãn vàng ghi chú bên dưới',
   'use': 'KHOẢNG THỜI GIAN / TUỔI / ƯỚC TÍNH: câu nói bao nhiêu năm đã qua, tuổi lúc đó và bây giờ, một ước tính',
-  'needs': {'card': 1}, 'most': {'photo': 0, 'stamp': 0},
-  'slots': {'header': [{'x': 540, 'y': 230, 'size': 60}], 'card': [{'x': 540, 'y': 720, 'w': 820, 'h': 360, 'size': 54, 'rot': 0.8}],
-            'tag': {'*': [{'x': 760, 'y': 1010}]}},
+  'needs': {'card': 1}, 'most': {'photo': 0, 'stamp': 0}, 'fit': True,
+  'slots': {'header': [{'x': 540, 'y': 420, 'size': 64}], 'card': [{'x': 540, 'y': 800, 'w': 860, 'size': 64, 'rot': 0.8}],
+            'tag': {'*': [{'x': 740, 'y': 1010, 'size': 50}]}},
   'recipe': {'at': 29, 'edit': 'span', 'why': '…', 'items': [
       {'header': '新しいDNA分析', 'kicker': '2025'},
       {'card': {'rows': [{'text': '犯行当時', 'right': '30歳前後?', 'at': '30:30歳'}, {'text': '現在', 'right': '50〜60代?', 'color': 'red', 'at': '31:50代'}]}},
@@ -259,7 +282,7 @@ EDITS = {
   'vi': 'bàn chứng cứ nối dây đỏ', 'sample': '2:56–3:03',
   'look': '3–6 ảnh nhỏ xếp hai cột, hiện từng cái khi được nhắc, nối nhau bằng dây đỏ; nhãn nhỏ dưới mỗi ảnh',
   'use': 'TỔNG HỢP CHỨNG CỨ: câu điểm lại nhiều thứ cảnh sát đang có (máu, DNA, vân tay, quần áo) — thường trước câu "nhưng không có tên"',
-  'needs': {'photo': 3}, 'most': {'photo': 6},
+  'needs': {'photo': 3}, 'most': {'photo': 6}, 'pairs': True,
   'slots': {'photo': BOARD, 'tag': {'white': [{'x': 540, 'y': 1440, 'size': 54}],
                                     '*': [{'x': b['x'], 'y': b['y'] + 168, 'size': 38} for b in BOARD]}},
   'recipe': {'at': 32, 'edit': 'board', 'why': '…', 'items': [
