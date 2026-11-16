@@ -1,0 +1,1922 @@
+{
+ "duration": 67.879,
+ "lang": "ja",
+ "title": "八王子スーパー強盗殺人事件",
+ "aiTag": "イメージ（AI生成）",
+ "bg": "crime/4/bg.jpg",
+ "grain": "crime/4/grain.png",
+ "scenes": [
+  {
+   "s": 0.0,
+   "e": 5.945,
+   "scene": 1,
+   "bg": "black",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 0.0,
+     "x": 540,
+     "y": 640,
+     "rot": -1,
+     "src": "crime/4/img/suburb.jpg",
+     "iw": 1920,
+     "ih": 1446,
+     "w": 700,
+     "h": 880,
+     "view": [
+      0.20046,
+      0.0,
+      0.79954,
+      1.0
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "Syced / CC0"
+    },
+    {
+     "k": "tag",
+     "s": 0.32,
+     "x": 250,
+     "y": 1150,
+     "rot": 0,
+     "text": "小さな事務所",
+     "color": "yellow",
+     "size": 46,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 1.005,
+     "x": 540,
+     "y": 1150,
+     "rot": 0,
+     "text": "3人の女性",
+     "color": "red",
+     "size": 46,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 3.5,
+     "x": 540,
+     "y": 215,
+     "rot": 0,
+     "text": "金庫は手つかず",
+     "color": "white",
+     "size": 60,
+     "font": "serif"
+    }
+   ],
+   "edit": "hook"
+  },
+  {
+   "s": 5.945,
+   "e": 11.359,
+   "scene": 2,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "header",
+     "s": 5.945,
+     "x": 540,
+     "y": 230,
+     "rot": 0,
+     "title": "八王子スーパー事件",
+     "kicker": "ファイル 1995",
+     "size": 62
+    },
+    {
+     "k": "photo",
+     "s": 5.945,
+     "x": 540,
+     "y": 780,
+     "rot": 1.2,
+     "src": "crime/4/img/station.jpg",
+     "iw": 1920,
+     "ih": 1440,
+     "w": 780,
+     "h": 560,
+     "view": [
+      0.0,
+      0.02137,
+      1.0,
+      0.97863
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "Syced / CC0"
+    },
+    {
+     "k": "tag",
+     "s": 9.843,
+     "x": 290,
+     "y": 1150,
+     "rot": 0,
+     "text": "東京・八王子",
+     "color": "black",
+     "size": 46,
+     "font": "mono"
+    },
+    {
+     "k": "tag",
+     "s": 5.985,
+     "x": 792,
+     "y": 1180,
+     "rot": 0,
+     "text": "1995年7月30日 夜",
+     "color": "red",
+     "size": 56,
+     "font": "hand"
+    }
+   ],
+   "edit": "where"
+  },
+  {
+   "s": 11.359,
+   "e": 22.536,
+   "scene": 3,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "card",
+     "s": 11.359,
+     "x": 540,
+     "y": 780,
+     "rot": -0.6,
+     "style": "paper",
+     "head": "7月30日 21:00 閉店",
+     "rows": [
+      {
+       "s": 18.611,
+       "text": "高校生アルバイト",
+       "right": "17歳",
+       "color": "",
+       "check": false
+      },
+      {
+       "s": 19.351,
+       "text": "高校生アルバイト",
+       "right": "16歳",
+       "color": "",
+       "check": false
+      },
+      {
+       "s": 20.819,
+       "text": "従業員",
+       "right": "47歳",
+       "color": "",
+       "check": false
+      }
+     ],
+     "w": 880,
+     "h": 567,
+     "size": 62
+    },
+    {
+     "k": "tag",
+     "s": 13.952,
+     "x": 760,
+     "y": 1144,
+     "rot": 0,
+     "text": "2階の事務所",
+     "color": "red",
+     "size": 46,
+     "font": "hand"
+    }
+   ],
+   "edit": "who"
+  },
+  {
+   "s": 22.536,
+   "e": 25.786,
+   "scene": 4,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "tag",
+     "s": 22.576,
+     "x": 540,
+     "y": 820,
+     "rot": -2,
+     "text": "わずか数分後",
+     "color": "red",
+     "size": 76,
+     "font": "hand"
+    }
+   ],
+   "edit": "statement"
+  },
+  {
+   "s": 25.786,
+   "e": 30.794,
+   "scene": 5,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 25.786,
+     "x": 540,
+     "y": 620,
+     "rot": -1,
+     "src": "crime/4/img/inside.jpg",
+     "iw": 1920,
+     "ih": 1440,
+     "w": 820,
+     "h": 600,
+     "view": [
+      0.0,
+      0.0122,
+      1.0,
+      0.9878
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "Yuya Tamai / CC BY 2.0"
+    },
+    {
+     "k": "tag",
+     "s": 26.433,
+     "x": 330,
+     "y": 1020,
+     "rot": 0,
+     "text": "物音を聞いた人なし",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
+    },
+    {
+     "k": "tag",
+     "s": 29.552,
+     "x": 740,
+     "y": 1130,
+     "rot": 0,
+     "text": "目撃者なし",
+     "color": "red",
+     "size": 54,
+     "font": "hand"
+    }
+   ],
+   "edit": "place"
+  },
+  {
+   "s": 30.794,
+   "e": 36.483,
+   "scene": 6,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 30.794,
+     "x": 540,
+     "y": 640,
+     "rot": -1,
+     "src": "crime/4/img/safe.jpg",
+     "iw": 1727,
+     "ih": 2600,
+     "w": 820,
+     "h": 820,
+     "view": [
+      0.0,
+      0.16788,
+      1.0,
+      0.83212
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [
+      {
+       "s": 32.289,
+       "box": [
+        0.15,
+        0.45,
+        0.85,
+        0.8
+       ],
+       "shape": "ellipse",
+       "color": "yellow"
+      }
+     ],
+     "credit": "Joe Mabel / CC BY-SA 4.0"
+    },
+    {
+     "k": "tag",
+     "s": 32.289,
+     "x": 300,
+     "y": 1160,
+     "rot": 0,
+     "text": "金庫",
+     "color": "yellow",
+     "size": 46,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 32.633,
+     "x": 770,
+     "y": 1160,
+     "rot": 0,
+     "text": "開けられず",
+     "color": "yellow",
+     "size": 46,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 34.794,
+     "x": 330,
+     "y": 1300,
+     "rot": 0,
+     "text": "お金は手つかず",
+     "color": "white",
+     "size": 54,
+     "font": "serif"
+    }
+   ],
+   "edit": "detail"
+  },
+  {
+   "s": 36.483,
+   "e": 39.067,
+   "scene": 7,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "tag",
+     "s": 37.364,
+     "x": 540,
+     "y": 820,
+     "rot": -2,
+     "text": "何のために来たのか",
+     "color": "red",
+     "size": 76,
+     "font": "hand"
+    }
+   ],
+   "edit": "statement"
+  },
+  {
+   "s": 39.067,
+   "e": 42.247,
+   "scene": 8,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 39.067,
+     "x": 540,
+     "y": 680,
+     "rot": 2,
+     "src": "crime/4/img/revolver.jpg",
+     "iw": 1670,
+     "ih": 1010,
+     "w": 820,
+     "h": 620,
+     "view": [
+      0.10006,
+      0.0,
+      0.89994,
+      1.0
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "The Smithsonian Institution / Public domain"
+    },
+    {
+     "k": "tag",
+     "s": 39.107,
+     "x": 540,
+     "y": 1130,
+     "rot": 0,
+     "text": "弾丸から判明",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
+    },
+    {
+     "k": "tag",
+     "s": 40.322,
+     "x": 300,
+     "y": 270,
+     "rot": 0,
+     "text": "回転式の拳銃",
+     "color": "yellow",
+     "size": 46,
+     "font": "hand"
+    }
+   ],
+   "edit": "object"
+  },
+  {
+   "s": 42.247,
+   "e": 45.872,
+   "scene": 9,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "tag",
+     "s": 42.287,
+     "x": 540,
+     "y": 320,
+     "rot": 0,
+     "text": "捜査",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
+    },
+    {
+     "k": "big",
+     "s": 44.12,
+     "x": 500,
+     "y": 640,
+     "rot": 0,
+     "num": "数千",
+     "text": "の\n手がかり",
+     "size": 160
+    },
+    {
+     "k": "tag",
+     "s": 45.163,
+     "x": 830,
+     "y": 1085,
+     "rot": 0,
+     "text": "犯人は不明",
+     "color": "red",
+     "size": 46,
+     "font": "hand"
+    }
+   ],
+   "edit": "number"
+  },
+  {
+   "s": 45.872,
+   "e": 51.956,
+   "scene": 10,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "header",
+     "s": 45.872,
+     "x": 540,
+     "y": 420,
+     "rot": 0,
+     "title": "時効廃止",
+     "kicker": "2010",
+     "size": 64
+    },
+    {
+     "k": "card",
+     "s": 45.872,
+     "x": 540,
+     "y": 800,
+     "rot": 0.8,
+     "style": "paper",
+     "head": "",
+     "rows": [
+      {
+       "s": 46.122,
+       "text": "事件",
+       "right": "1995.7.30",
+       "color": "",
+       "check": false
+      },
+      {
+       "s": 48.316,
+       "text": "時効",
+       "right": "廃止（2010年）",
+       "color": "red",
+       "check": false
+      }
+     ],
+     "w": 860,
+     "h": 352,
+     "size": 64
+    },
+    {
+     "k": "tag",
+     "s": 50.944,
+     "x": 740,
+     "y": 1056,
+     "rot": 0,
+     "text": "今も捜査中",
+     "color": "yellow",
+     "size": 50,
+     "font": "hand"
+    }
+   ],
+   "edit": "span"
+  },
+  {
+   "s": 51.956,
+   "e": 57.319,
+   "scene": 11,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 51.956,
+     "x": 540,
+     "y": 640,
+     "rot": -2,
+     "src": "crime/4/img/police.jpg",
+     "iw": 1500,
+     "ih": 1125,
+     "w": 860,
+     "h": 560,
+     "view": [
+      0.0,
+      0.06589,
+      1.0,
+      0.93411
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "Hanasakijijii / CC BY-SA 3.0"
+    },
+    {
+     "k": "big",
+     "s": 51.996,
+     "x": 430,
+     "y": 1080,
+     "rot": 0,
+     "num": "30年+",
+     "text": "経過",
+     "size": 150
+    },
+    {
+     "k": "tag",
+     "s": 53.928,
+     "x": 300,
+     "y": 330,
+     "rot": 0,
+     "text": "懸賞金",
+     "color": "red",
+     "size": 46,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 55.231,
+     "x": 780,
+     "y": 1280,
+     "rot": 0,
+     "text": "情報提供を",
+     "color": "white",
+     "size": 46,
+     "font": "serif"
+    }
+   ],
+   "edit": "fact"
+  },
+  {
+   "s": 57.319,
+   "e": 60.95,
+   "scene": 12,
+   "bg": "wood",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "photo",
+     "s": 57.319,
+     "x": 540,
+     "y": 680,
+     "rot": -1,
+     "src": "crime/4/img/tape.jpg",
+     "iw": 1500,
+     "ih": 1125,
+     "w": 780,
+     "h": 760,
+     "view": [
+      0.11513,
+      0.0,
+      0.88487,
+      1.0
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "くーさん / CC BY 2.0"
+    },
+    {
+     "k": "tag",
+     "s": 57.359,
+     "x": 540,
+     "y": 1200,
+     "rot": 0,
+     "text": "何も奪えなかった強盗",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
+    },
+    {
+     "k": "tag",
+     "s": 59.159,
+     "x": 540,
+     "y": 1310,
+     "rot": 0,
+     "text": "3人の命",
+     "color": "red",
+     "size": 56,
+     "font": "hand"
+    }
+   ],
+   "edit": "question"
+  },
+  {
+   "s": 60.95,
+   "e": 67.879,
+   "scene": 13,
+   "bg": "black",
+   "push": 0.04,
+   "items": [
+    {
+     "k": "text",
+     "s": 60.95,
+     "x": 540,
+     "y": 860,
+     "rot": 0,
+     "rows": [
+      {
+       "s": 60.95,
+       "text": "引き金を引いた人物は",
+       "color": "white"
+      },
+      {
+       "s": 61.45,
+       "text": "今もどこかに。",
+       "color": "red"
+      }
+     ],
+     "size": 82
+    }
+   ],
+   "edit": "ending"
+  }
+ ],
+ "subs": [
+  {
+   "s": 0.3,
+   "e": 1.035,
+   "text": "小さな事務所で、",
+   "line": 1
+  },
+  {
+   "s": 1.035,
+   "e": 3.05,
+   "text": "3人の女性が殺された。",
+   "line": 1
+  },
+  {
+   "s": 3.2,
+   "e": 4.35,
+   "text": "だが、金庫のお金は、",
+   "line": 2
+  },
+  {
+   "s": 4.35,
+   "e": 5.815,
+   "text": "そのまま残されていた。",
+   "line": 2
+  },
+  {
+   "s": 5.965,
+   "e": 9.563,
+   "text": "1995年7月30日の夜。",
+   "line": 3
+  },
+  {
+   "s": 9.563,
+   "e": 11.229,
+   "text": "東京・八王子のスーパー。",
+   "line": 3
+  },
+  {
+   "s": 11.379,
+   "e": 12.409,
+   "text": "店は夜9時に、",
+   "line": 4
+  },
+  {
+   "s": 12.409,
+   "e": 13.782,
+   "text": "閉店したばかりだった。",
+   "line": 4
+  },
+  {
+   "s": 13.932,
+   "e": 14.726,
+   "text": "2階の事務所には、",
+   "line": 5
+  },
+  {
+   "s": 14.726,
+   "e": 17.381,
+   "text": "3人の女性従業員が残っていた。",
+   "line": 5
+  },
+  {
+   "s": 17.531,
+   "e": 18.641,
+   "text": "アルバイトの高校生、",
+   "line": 6
+  },
+  {
+   "s": 18.641,
+   "e": 20.213,
+   "text": "17歳と16歳。",
+   "line": 6
+  },
+  {
+   "s": 20.363,
+   "e": 22.406,
+   "text": "そして、47歳の女性。",
+   "line": 7
+  },
+  {
+   "s": 22.556,
+   "e": 24.192,
+   "text": "わずか数分後、3人は銃で",
+   "line": 8
+  },
+  {
+   "s": 24.192,
+   "e": 25.656,
+   "text": "撃たれ、命を奪われた。",
+   "line": 8
+  },
+  {
+   "s": 25.806,
+   "e": 26.975,
+   "text": "はっきりした物音を",
+   "line": 9
+  },
+  {
+   "s": 26.975,
+   "e": 28.125,
+   "text": "聞いた人はいない。",
+   "line": 9
+  },
+  {
+   "s": 28.275,
+   "e": 29.582,
+   "text": "犯人が立ち去る姿を",
+   "line": 10
+  },
+  {
+   "s": 29.582,
+   "e": 30.664,
+   "text": "見た人もいない。",
+   "line": 10
+  },
+  {
+   "s": 30.814,
+   "e": 32.319,
+   "text": "最も不可解なのは、",
+   "line": 11
+  },
+  {
+   "s": 32.319,
+   "e": 34.124,
+   "text": "金庫が開けられていなかったことだ。",
+   "line": 11
+  },
+  {
+   "s": 34.274,
+   "e": 36.353,
+   "text": "犯人は、お金を手にしていない。",
+   "line": 12
+  },
+  {
+   "s": 36.503,
+   "e": 38.257,
+   "text": "では、犯人は何のためにそこへ",
+   "line": 13
+  },
+  {
+   "s": 38.257,
+   "e": 38.937,
+   "text": "来たのか。",
+   "line": 13
+  },
+  {
+   "s": 39.087,
+   "e": 39.9,
+   "text": "弾丸から、",
+   "line": 14
+  },
+  {
+   "s": 39.9,
+   "e": 41.003,
+   "text": "凶器は回転式の",
+   "line": 14
+  },
+  {
+   "s": 41.003,
+   "e": 42.117,
+   "text": "拳銃と分かった。",
+   "line": 14
+  },
+  {
+   "s": 42.267,
+   "e": 44.15,
+   "text": "警察は数多くの人を調べ、",
+   "line": 15
+  },
+  {
+   "s": 44.15,
+   "e": 45.742,
+   "text": "何千もの手がかりを追った。",
+   "line": 15
+  },
+  {
+   "s": 45.892,
+   "e": 48.023,
+   "text": "2010年、日本は殺人事件の",
+   "line": 16
+  },
+  {
+   "s": 48.023,
+   "e": 49.212,
+   "text": "時効を廃止した。",
+   "line": 16
+  },
+  {
+   "s": 49.362,
+   "e": 50.974,
+   "text": "だから、この事件は今も",
+   "line": 17
+  },
+  {
+   "s": 50.974,
+   "e": 51.826,
+   "text": "終わっていない。",
+   "line": 17
+  },
+  {
+   "s": 51.976,
+   "e": 53.302,
+   "text": "30年以上たった今も、",
+   "line": 18
+  },
+  {
+   "s": 53.302,
+   "e": 55.211,
+   "text": "警察は懸賞金をかけ、",
+   "line": 18
+  },
+  {
+   "s": 55.211,
+   "e": 57.189,
+   "text": "情報の提供を呼びかけている。",
+   "line": 19
+  },
+  {
+   "s": 57.339,
+   "e": 59.189,
+   "text": "何も奪えなかった強盗のために、",
+   "line": 20
+  },
+  {
+   "s": 59.189,
+   "e": 60.82,
+   "text": "3人の命が奪われた。",
+   "line": 20
+  },
+  {
+   "s": 60.97,
+   "e": 62.993,
+   "text": "そして、引き金を引いた人物は、",
+   "line": 21
+  },
+  {
+   "s": 62.993,
+   "e": 64.533,
+   "text": "今も日本のどこかで、",
+   "line": 22
+  },
+  {
+   "s": 64.533,
+   "e": 65.879,
+   "text": "生きているのかもしれない。",
+   "line": 22
+  }
+ ],
+ "voice": [
+  {
+   "s": 0.4,
+   "src": "crime/4/voice/line_01.mp3"
+  },
+  {
+   "s": 3.3,
+   "src": "crime/4/voice/line_02.mp3"
+  },
+  {
+   "s": 6.065,
+   "src": "crime/4/voice/line_03.mp3"
+  },
+  {
+   "s": 11.479,
+   "src": "crime/4/voice/line_04.mp3"
+  },
+  {
+   "s": 14.032,
+   "src": "crime/4/voice/line_05.mp3"
+  },
+  {
+   "s": 17.631,
+   "src": "crime/4/voice/line_06.mp3"
+  },
+  {
+   "s": 20.463,
+   "src": "crime/4/voice/line_07.mp3"
+  },
+  {
+   "s": 22.656,
+   "src": "crime/4/voice/line_08.mp3"
+  },
+  {
+   "s": 25.906,
+   "src": "crime/4/voice/line_09.mp3"
+  },
+  {
+   "s": 28.375,
+   "src": "crime/4/voice/line_10.mp3"
+  },
+  {
+   "s": 30.914,
+   "src": "crime/4/voice/line_11.mp3"
+  },
+  {
+   "s": 34.374,
+   "src": "crime/4/voice/line_12.mp3"
+  },
+  {
+   "s": 36.603,
+   "src": "crime/4/voice/line_13.mp3"
+  },
+  {
+   "s": 39.187,
+   "src": "crime/4/voice/line_14.mp3"
+  },
+  {
+   "s": 42.367,
+   "src": "crime/4/voice/line_15.mp3"
+  },
+  {
+   "s": 45.992,
+   "src": "crime/4/voice/line_16.mp3"
+  },
+  {
+   "s": 49.462,
+   "src": "crime/4/voice/line_17.mp3"
+  },
+  {
+   "s": 52.076,
+   "src": "crime/4/voice/line_18.mp3"
+  },
+  {
+   "s": 55.311,
+   "src": "crime/4/voice/line_19.mp3"
+  },
+  {
+   "s": 57.439,
+   "src": "crime/4/voice/line_20.mp3"
+  },
+  {
+   "s": 61.07,
+   "src": "crime/4/voice/line_21.mp3"
+  },
+  {
+   "s": 63.093,
+   "src": "crime/4/voice/line_22.mp3"
+  }
+ ],
+ "music": "crime/4/bed.wav",
+ "musicVolume": 0.16,
+ "fonts": [
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-59-wght-normal.woff2",
+   "range": "U+a1-a4,U+a6-a7,U+aa,U+ac-ad,U+b5-b6,U+b8-ba,U+bc-c8,U+ca-cc,U+ce-d5,U+d9-db,U+dd-df,U+e6,U+ee,U+f0,U+f5,U+f7,U+f9,U+fb,U+fe-102,U+110-113,U+11a-11b,U+128-12b,U+143-144,U+147-148,U+14c,U+14e-14f,U+152-153,U+168-16d,U+192,U+1a0-1a1,U+1af,U+1cd-1dc,U+1f8-1f9,U+251,U+261,U+2bb,U+2c7,U+2c9,U+2ea-2eb,U+304,U+307,U+30c,U+1e3e-1e3f,U+1ea0-1ebe,U+1ec0-1ec6,U+1ec8-1ef9,U+2011-2012,U+2016,U+2018-201a,U+201e,U+2021,U+2030,U+2033,U+2035,U+2042,U+2047,U+2051,U+2074,U+20a9,U+20ab-20ac,U+20dd-20de,U+2100",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-60-wght-normal.woff2",
+   "range": "U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-72-wght-normal.woff2",
+   "range": "U+4e91,U+508d,U+50e7,U+514e,U+51f6,U+5446,U+5504,U+584a,U+59a8,U+59d3,U+5a46,U+5ac9,U+6020,U+60a6,U+6148,U+621a,U+6234,U+64c1,U+6523,U+675c,U+67d1,U+6953,U+6ccc,U+6df5,U+6e13,U+6f06,U+723a,U+7325,U+74e6,U+758e,U+75ab,U+75d9,U+7a40,U+8096,U+82fa,U+8587,U+8594,U+8a6b,U+8ab9,U+8b17,U+8b83,U+937c,U+963b,U+9673,U+96db,U+9ce9,U+9f4b,U+ff67,U+ff82,U+ff93",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-79-wght-normal.woff2",
+   "range": "U+25b3,U+30f5,U+4eae,U+4f46,U+4f51,U+5203,U+52ff,U+55a7,U+564c,U+565b,U+57f9,U+5805,U+5b64,U+5e06,U+5f70,U+5f90,U+60e8,U+6182,U+62f3,U+62fe,U+63aa,U+64a4,U+65d7,U+673a,U+6851,U+68cb,U+68df,U+6d1e,U+6e58,U+6e9d,U+77b3,U+7832,U+7c3f,U+7db4,U+7f70,U+80aa,U+80c6,U+8105,U+819d,U+8276,U+8679,U+8986,U+8c9d,U+8fc5,U+916c,U+9665,U+9699,U+96c0,U+9a19,U+ff8b",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-80-wght-normal.woff2",
+   "range": "U+2463,U+25a1,U+4ef0,U+5076,U+5098,U+51fd,U+5302,U+5448,U+54c9,U+570b,U+583a,U+5893,U+58a8,U+58ee,U+5949,U+5bdb,U+5f26,U+5f81,U+6052,U+6170,U+61c7,U+631f,U+635c,U+664b,U+69fb,U+6f01,U+7070,U+722a,U+745e,U+755c,U+76c6,U+78c1,U+79e4,U+7bb8,U+7d0b,U+81a8,U+82d7,U+8b5c,U+8f14,U+8fb1,U+8fbb,U+9283,U+9298,U+9a30,U+ff03,U+ff50,U+ff59,U+ff7b,U+ff8e-ff8f",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-86-wght-normal.woff2",
+   "range": "U+24,U+2022,U+2212,U+221f,U+2665,U+4ecf,U+5100,U+51cd,U+52d8,U+5378,U+53f6,U+574a,U+5982,U+5996,U+5c1a,U+5e1d,U+5f84,U+609f,U+61a7,U+61f8,U+6398,U+63ee,U+6676,U+6691,U+6eb6,U+7126,U+71e5,U+7687,U+7965,U+7d17,U+80a1,U+8107,U+8266,U+85a6,U+8987,U+8ca2,U+8cab,U+8e0a,U+9042,U+95c7,U+9810,U+9867,U+98fc,U+ff52-ff54,U+ff61,U+ff77,U+ff98-ff99",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-87-wght-normal.woff2",
+   "range": "U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-92-wght-normal.woff2",
+   "range": "U+2460,U+4e5f,U+4e7e,U+4ed9,U+501f,U+502b,U+5968,U+5974,U+5ac1,U+5b99,U+5ba3,U+5be7,U+5be9,U+5c64,U+5cb8,U+5ec3,U+5f1f,U+616e,U+6297,U+62e0,U+62ec,U+6368,U+642d,U+65e6,U+6717,U+676f,U+6b04,U+732e,U+7652,U+76ca,U+76d7,U+7802,U+7e70,U+7f6a,U+8133,U+81e8,U+866b,U+878d,U+88f8,U+8a5e,U+8cdb,U+8d08,U+907a,U+90e1,U+96f2,U+9f8d,U+ff35,U+ff37,U+ff40,U+ff9d",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-96-wght-normal.woff2",
+   "range": "U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-97-wght-normal.woff2",
+   "range": "U+7e,U+b4,U+25c6,U+2661,U+4e92,U+4eee,U+4ffa,U+5144,U+5237,U+5287,U+52b4,U+58c1,U+5bff,U+5c04,U+5c06,U+5e95,U+5f31,U+5f93,U+63c3,U+640d,U+6557,U+6614,U+662f,U+67d3,U+690d,U+6bba,U+6e6f,U+72af,U+732b,U+7518,U+7ae0,U+7ae5,U+7af6,U+822a,U+89e6,U+8a3a,U+8a98,U+8cb8,U+8de1,U+8e8d,U+95d8,U+961c,U+96a3,U+96ea,U+9bae,U+ff20,U+ff22,U+ff29,U+ff2b-ff2c",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-98-wght-normal.woff2",
+   "range": "U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-99-wght-normal.woff2",
+   "range": "U+2191,U+505c,U+52e4,U+5305,U+535a,U+56e0,U+59bb,U+5acc,U+5b09,U+5b87,U+5c90,U+5df1,U+5e2d,U+5e33,U+5f3e,U+6298,U+6383,U+653b,U+6697,U+6804,U+6a39,U+6cca,U+6e90,U+6f2b,U+702c,U+7206,U+7236,U+7559,U+7565,U+7591,U+75c7,U+75db,U+7b4b,U+7bb1,U+7d99,U+7fbd,U+8131,U+885b,U+8b1d,U+8ff7,U+9003,U+9045,U+96a0,U+9732,U+990a,U+99d0,U+9e97,U+9f62,U+ff25,U+ff2d",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-101-wght-normal.woff2",
+   "range": "U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-102-wght-normal.woff2",
+   "range": "U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-103-wght-normal.woff2",
+   "range": "U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-104-wght-normal.woff2",
+   "range": "U+4e01,U+4e21,U+4e38,U+52a9,U+547d,U+592e,U+5931,U+5b63,U+5c40,U+5dde,U+5e78,U+5efa,U+5fa1,U+604b,U+6075,U+62c5,U+632f,U+6a19,U+6c0f,U+6c11,U+6c96,U+6e05,U+70ba,U+71b1,U+7387,U+7403,U+75c5,U+77ed,U+795d,U+7b54,U+7cbe,U+7d19,U+7fa4,U+8089,U+81f4,U+8208,U+8336,U+8457,U+8a33,U+8c4a,U+8ca0,U+8ca8,U+8cc0,U+9014,U+964d,U+9803,U+983c,U+98db,U+ff17,U+ff21",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-105-wght-normal.woff2",
+   "range": "U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-106-wght-normal.woff2",
+   "range": "U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-107-wght-normal.woff2",
+   "range": "U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-108-wght-normal.woff2",
+   "range": "U+2605-2606,U+301c,U+4e57,U+4fee,U+5065,U+52df,U+533b,U+5357,U+57df,U+58eb,U+58f0,U+591c,U+592a-592b,U+5948,U+5b85,U+5d0e,U+5ea7,U+5ff5,U+6025,U+63a1,U+63a5,U+63db,U+643a,U+65bd,U+671d,U+68ee,U+6982,U+6b73,U+6bd4,U+6d88,U+7570,U+7b11,U+7d76,U+8077,U+8217,U+8c37,U+8c61,U+8cc7,U+8d85,U+901f,U+962a,U+9802,U+9806,U+9854,U+98f2,U+9928,U+99c5,U+9ed2",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-109-wght-normal.woff2",
+   "range": "U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-110-wght-normal.woff2",
+   "range": "U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-111-wght-normal.woff2",
+   "range": "U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-112-wght-normal.woff2",
+   "range": "U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-113-wght-normal.woff2",
+   "range": "U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-114-wght-normal.woff2",
+   "range": "U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-115-wght-normal.woff2",
+   "range": "U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-116-wght-normal.woff2",
+   "range": "U+a9,U+3010-3011,U+30e2,U+4e0b,U+4eca,U+4ed6,U+4ed8,U+4f53,U+4f5c,U+4f7f,U+53d6,U+540d,U+54c1,U+5730,U+5916,U+5b50,U+5c0f,U+5f8c,U+624b,U+6570,U+6587,U+6599,U+691c,U+696d,U+6cd5,U+7269,U+7279,U+7406,U+767a-767b,U+77e5,U+7d04,U+7d22,U+8005,U+80fd,U+81ea,U+8868,U+8981,U+89a7,U+901a,U+9023,U+90e8,U+91d1,U+9332,U+958b,U+96c6,U+9ad8,U+ff1a,U+ff1f",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-117-wght-normal.woff2",
+   "range": "U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-118-wght-normal.woff2",
+   "range": "U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-119-wght-normal.woff2",
+   "range": "U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Sans JP",
+   "file": "crime/fonts/noto-sans-jp-latin-wght-normal.woff2",
+   "range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-59-wght-normal.woff2",
+   "range": "U+a1-a4,U+a6-a7,U+aa,U+ac-ad,U+b5-b6,U+b8-ba,U+bc-c8,U+ca-cc,U+ce-d5,U+d9-db,U+dd-df,U+e6,U+ee,U+f0,U+f5,U+f7,U+f9,U+fb,U+fe-102,U+110-113,U+11a-11b,U+128-12b,U+143-144,U+147-148,U+14c,U+14e-14f,U+152-153,U+168-16d,U+192,U+1a0-1a1,U+1af,U+1cd-1dc,U+1f8-1f9,U+251,U+261,U+2bb,U+2c7,U+2c9,U+2ea-2eb,U+304,U+307,U+30c,U+1e3e-1e3f,U+1ea0-1ebe,U+1ec0-1ec6,U+1ec8-1ef9,U+2011-2012,U+2016,U+2018-201a,U+201e,U+2021,U+2030,U+2033,U+2035,U+2042,U+2047,U+2051,U+2074,U+20a9,U+20ab-20ac,U+20dd-20de,U+2100",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-60-wght-normal.woff2",
+   "range": "U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-72-wght-normal.woff2",
+   "range": "U+4e91,U+508d,U+50e7,U+514e,U+51f6,U+5446,U+5504,U+584a,U+59a8,U+59d3,U+5a46,U+5ac9,U+6020,U+60a6,U+6148,U+621a,U+6234,U+64c1,U+6523,U+675c,U+67d1,U+6953,U+6ccc,U+6df5,U+6e13,U+6f06,U+723a,U+7325,U+74e6,U+758e,U+75ab,U+75d9,U+7a40,U+8096,U+82fa,U+8587,U+8594,U+8a6b,U+8ab9,U+8b17,U+8b83,U+937c,U+963b,U+9673,U+96db,U+9ce9,U+9f4b,U+ff67,U+ff82,U+ff93",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-79-wght-normal.woff2",
+   "range": "U+25b3,U+30f5,U+4eae,U+4f46,U+4f51,U+5203,U+52ff,U+55a7,U+564c,U+565b,U+57f9,U+5805,U+5b64,U+5e06,U+5f70,U+5f90,U+60e8,U+6182,U+62f3,U+62fe,U+63aa,U+64a4,U+65d7,U+673a,U+6851,U+68cb,U+68df,U+6d1e,U+6e58,U+6e9d,U+77b3,U+7832,U+7c3f,U+7db4,U+7f70,U+80aa,U+80c6,U+8105,U+819d,U+8276,U+8679,U+8986,U+8c9d,U+8fc5,U+916c,U+9665,U+9699,U+96c0,U+9a19,U+ff8b",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-80-wght-normal.woff2",
+   "range": "U+2463,U+25a1,U+4ef0,U+5076,U+5098,U+51fd,U+5302,U+5448,U+54c9,U+570b,U+583a,U+5893,U+58a8,U+58ee,U+5949,U+5bdb,U+5f26,U+5f81,U+6052,U+6170,U+61c7,U+631f,U+635c,U+664b,U+69fb,U+6f01,U+7070,U+722a,U+745e,U+755c,U+76c6,U+78c1,U+79e4,U+7bb8,U+7d0b,U+81a8,U+82d7,U+8b5c,U+8f14,U+8fb1,U+8fbb,U+9283,U+9298,U+9a30,U+ff03,U+ff50,U+ff59,U+ff7b,U+ff8e-ff8f",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-86-wght-normal.woff2",
+   "range": "U+24,U+2022,U+2212,U+221f,U+2665,U+4ecf,U+5100,U+51cd,U+52d8,U+5378,U+53f6,U+574a,U+5982,U+5996,U+5c1a,U+5e1d,U+5f84,U+609f,U+61a7,U+61f8,U+6398,U+63ee,U+6676,U+6691,U+6eb6,U+7126,U+71e5,U+7687,U+7965,U+7d17,U+80a1,U+8107,U+8266,U+85a6,U+8987,U+8ca2,U+8cab,U+8e0a,U+9042,U+95c7,U+9810,U+9867,U+98fc,U+ff52-ff54,U+ff61,U+ff77,U+ff98-ff99",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-87-wght-normal.woff2",
+   "range": "U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-92-wght-normal.woff2",
+   "range": "U+2460,U+4e5f,U+4e7e,U+4ed9,U+501f,U+502b,U+5968,U+5974,U+5ac1,U+5b99,U+5ba3,U+5be7,U+5be9,U+5c64,U+5cb8,U+5ec3,U+5f1f,U+616e,U+6297,U+62e0,U+62ec,U+6368,U+642d,U+65e6,U+6717,U+676f,U+6b04,U+732e,U+7652,U+76ca,U+76d7,U+7802,U+7e70,U+7f6a,U+8133,U+81e8,U+866b,U+878d,U+88f8,U+8a5e,U+8cdb,U+8d08,U+907a,U+90e1,U+96f2,U+9f8d,U+ff35,U+ff37,U+ff40,U+ff9d",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-96-wght-normal.woff2",
+   "range": "U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-97-wght-normal.woff2",
+   "range": "U+7e,U+b4,U+25c6,U+2661,U+4e92,U+4eee,U+4ffa,U+5144,U+5237,U+5287,U+52b4,U+58c1,U+5bff,U+5c04,U+5c06,U+5e95,U+5f31,U+5f93,U+63c3,U+640d,U+6557,U+6614,U+662f,U+67d3,U+690d,U+6bba,U+6e6f,U+72af,U+732b,U+7518,U+7ae0,U+7ae5,U+7af6,U+822a,U+89e6,U+8a3a,U+8a98,U+8cb8,U+8de1,U+8e8d,U+95d8,U+961c,U+96a3,U+96ea,U+9bae,U+ff20,U+ff22,U+ff29,U+ff2b-ff2c",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-98-wght-normal.woff2",
+   "range": "U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-99-wght-normal.woff2",
+   "range": "U+2191,U+505c,U+52e4,U+5305,U+535a,U+56e0,U+59bb,U+5acc,U+5b09,U+5b87,U+5c90,U+5df1,U+5e2d,U+5e33,U+5f3e,U+6298,U+6383,U+653b,U+6697,U+6804,U+6a39,U+6cca,U+6e90,U+6f2b,U+702c,U+7206,U+7236,U+7559,U+7565,U+7591,U+75c7,U+75db,U+7b4b,U+7bb1,U+7d99,U+7fbd,U+8131,U+885b,U+8b1d,U+8ff7,U+9003,U+9045,U+96a0,U+9732,U+990a,U+99d0,U+9e97,U+9f62,U+ff25,U+ff2d",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-101-wght-normal.woff2",
+   "range": "U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-102-wght-normal.woff2",
+   "range": "U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-103-wght-normal.woff2",
+   "range": "U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-104-wght-normal.woff2",
+   "range": "U+4e01,U+4e21,U+4e38,U+52a9,U+547d,U+592e,U+5931,U+5b63,U+5c40,U+5dde,U+5e78,U+5efa,U+5fa1,U+604b,U+6075,U+62c5,U+632f,U+6a19,U+6c0f,U+6c11,U+6c96,U+6e05,U+70ba,U+71b1,U+7387,U+7403,U+75c5,U+77ed,U+795d,U+7b54,U+7cbe,U+7d19,U+7fa4,U+8089,U+81f4,U+8208,U+8336,U+8457,U+8a33,U+8c4a,U+8ca0,U+8ca8,U+8cc0,U+9014,U+964d,U+9803,U+983c,U+98db,U+ff17,U+ff21",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-105-wght-normal.woff2",
+   "range": "U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-106-wght-normal.woff2",
+   "range": "U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-107-wght-normal.woff2",
+   "range": "U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-108-wght-normal.woff2",
+   "range": "U+2605-2606,U+301c,U+4e57,U+4fee,U+5065,U+52df,U+533b,U+5357,U+57df,U+58eb,U+58f0,U+591c,U+592a-592b,U+5948,U+5b85,U+5d0e,U+5ea7,U+5ff5,U+6025,U+63a1,U+63a5,U+63db,U+643a,U+65bd,U+671d,U+68ee,U+6982,U+6b73,U+6bd4,U+6d88,U+7570,U+7b11,U+7d76,U+8077,U+8217,U+8c37,U+8c61,U+8cc7,U+8d85,U+901f,U+962a,U+9802,U+9806,U+9854,U+98f2,U+9928,U+99c5,U+9ed2",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-109-wght-normal.woff2",
+   "range": "U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-110-wght-normal.woff2",
+   "range": "U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-111-wght-normal.woff2",
+   "range": "U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-112-wght-normal.woff2",
+   "range": "U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-113-wght-normal.woff2",
+   "range": "U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-114-wght-normal.woff2",
+   "range": "U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-115-wght-normal.woff2",
+   "range": "U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-116-wght-normal.woff2",
+   "range": "U+a9,U+3010-3011,U+30e2,U+4e0b,U+4eca,U+4ed6,U+4ed8,U+4f53,U+4f5c,U+4f7f,U+53d6,U+540d,U+54c1,U+5730,U+5916,U+5b50,U+5c0f,U+5f8c,U+624b,U+6570,U+6587,U+6599,U+691c,U+696d,U+6cd5,U+7269,U+7279,U+7406,U+767a-767b,U+77e5,U+7d04,U+7d22,U+8005,U+80fd,U+81ea,U+8868,U+8981,U+89a7,U+901a,U+9023,U+90e8,U+91d1,U+9332,U+958b,U+96c6,U+9ad8,U+ff1a,U+ff1f",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-117-wght-normal.woff2",
+   "range": "U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-118-wght-normal.woff2",
+   "range": "U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-119-wght-normal.woff2",
+   "range": "U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "Noto Serif JP",
+   "file": "crime/fonts/noto-serif-jp-latin-wght-normal.woff2",
+   "range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+   "weight": "200 900",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-59-wght-normal.woff2",
+   "range": "U+a1-a4,U+a6-a7,U+aa,U+ac-ad,U+b5-b6,U+b8-ba,U+bc-c8,U+ca-cc,U+ce-d5,U+d9-db,U+dd-df,U+e6,U+ee,U+f0,U+f5,U+f7,U+f9,U+fb,U+fe-102,U+110-113,U+11a-11b,U+128-12b,U+143-144,U+147-148,U+14c,U+14e-14f,U+152-153,U+168-16d,U+192,U+1a0-1a1,U+1af,U+1cd-1dc,U+1f8-1f9,U+251,U+261,U+2bb,U+2c7,U+2c9,U+2ea-2eb,U+304,U+307,U+30c,U+1e3e-1e3f,U+1ea0-1ebe,U+1ec0-1ec6,U+1ec8-1ef9,U+2011-2012,U+2016,U+2018-201a,U+201e,U+2021,U+2030,U+2033,U+2035,U+2042,U+2047,U+2051,U+2074,U+20a9,U+20ab-20ac,U+20dd-20de,U+2100",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-60-wght-normal.woff2",
+   "range": "U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-72-wght-normal.woff2",
+   "range": "U+4e91,U+508d,U+50e7,U+514e,U+51f6,U+5446,U+5504,U+584a,U+59a8,U+59d3,U+5a46,U+5ac9,U+6020,U+60a6,U+6148,U+621a,U+6234,U+64c1,U+6523,U+675c,U+67d1,U+6953,U+6ccc,U+6df5,U+6e13,U+6f06,U+723a,U+7325,U+74e6,U+758e,U+75ab,U+75d9,U+7a40,U+8096,U+82fa,U+8587,U+8594,U+8a6b,U+8ab9,U+8b17,U+8b83,U+937c,U+963b,U+9673,U+96db,U+9ce9,U+9f4b,U+ff67,U+ff82,U+ff93",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-79-wght-normal.woff2",
+   "range": "U+25b3,U+30f5,U+4eae,U+4f46,U+4f51,U+5203,U+52ff,U+55a7,U+564c,U+565b,U+57f9,U+5805,U+5b64,U+5e06,U+5f70,U+5f90,U+60e8,U+6182,U+62f3,U+62fe,U+63aa,U+64a4,U+65d7,U+673a,U+6851,U+68cb,U+68df,U+6d1e,U+6e58,U+6e9d,U+77b3,U+7832,U+7c3f,U+7db4,U+7f70,U+80aa,U+80c6,U+8105,U+819d,U+8276,U+8679,U+8986,U+8c9d,U+8fc5,U+916c,U+9665,U+9699,U+96c0,U+9a19,U+ff8b",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-80-wght-normal.woff2",
+   "range": "U+2463,U+25a1,U+4ef0,U+5076,U+5098,U+51fd,U+5302,U+5448,U+54c9,U+570b,U+583a,U+5893,U+58a8,U+58ee,U+5949,U+5bdb,U+5f26,U+5f81,U+6052,U+6170,U+61c7,U+631f,U+635c,U+664b,U+69fb,U+6f01,U+7070,U+722a,U+745e,U+755c,U+76c6,U+78c1,U+79e4,U+7bb8,U+7d0b,U+81a8,U+82d7,U+8b5c,U+8f14,U+8fb1,U+8fbb,U+9283,U+9298,U+9a30,U+ff03,U+ff50,U+ff59,U+ff7b,U+ff8e-ff8f",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-86-wght-normal.woff2",
+   "range": "U+24,U+2022,U+2212,U+221f,U+2665,U+4ecf,U+5100,U+51cd,U+52d8,U+5378,U+53f6,U+574a,U+5982,U+5996,U+5c1a,U+5e1d,U+5f84,U+609f,U+61a7,U+61f8,U+6398,U+63ee,U+6676,U+6691,U+6eb6,U+7126,U+71e5,U+7687,U+7965,U+7d17,U+80a1,U+8107,U+8266,U+85a6,U+8987,U+8ca2,U+8cab,U+8e0a,U+9042,U+95c7,U+9810,U+9867,U+98fc,U+ff52-ff54,U+ff61,U+ff77,U+ff98-ff99",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-87-wght-normal.woff2",
+   "range": "U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-92-wght-normal.woff2",
+   "range": "U+2460,U+4e5f,U+4e7e,U+4ed9,U+501f,U+502b,U+5968,U+5974,U+5ac1,U+5b99,U+5ba3,U+5be7,U+5be9,U+5c64,U+5cb8,U+5ec3,U+5f1f,U+616e,U+6297,U+62e0,U+62ec,U+6368,U+642d,U+65e6,U+6717,U+676f,U+6b04,U+732e,U+7652,U+76ca,U+76d7,U+7802,U+7e70,U+7f6a,U+8133,U+81e8,U+866b,U+878d,U+88f8,U+8a5e,U+8cdb,U+8d08,U+907a,U+90e1,U+96f2,U+9f8d,U+ff35,U+ff37,U+ff40,U+ff9d",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-96-wght-normal.woff2",
+   "range": "U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-97-wght-normal.woff2",
+   "range": "U+7e,U+b4,U+25c6,U+2661,U+4e92,U+4eee,U+4ffa,U+5144,U+5237,U+5287,U+52b4,U+58c1,U+5bff,U+5c04,U+5c06,U+5e95,U+5f31,U+5f93,U+63c3,U+640d,U+6557,U+6614,U+662f,U+67d3,U+690d,U+6bba,U+6e6f,U+72af,U+732b,U+7518,U+7ae0,U+7ae5,U+7af6,U+822a,U+89e6,U+8a3a,U+8a98,U+8cb8,U+8de1,U+8e8d,U+95d8,U+961c,U+96a3,U+96ea,U+9bae,U+ff20,U+ff22,U+ff29,U+ff2b-ff2c",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-98-wght-normal.woff2",
+   "range": "U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-99-wght-normal.woff2",
+   "range": "U+2191,U+505c,U+52e4,U+5305,U+535a,U+56e0,U+59bb,U+5acc,U+5b09,U+5b87,U+5c90,U+5df1,U+5e2d,U+5e33,U+5f3e,U+6298,U+6383,U+653b,U+6697,U+6804,U+6a39,U+6cca,U+6e90,U+6f2b,U+702c,U+7206,U+7236,U+7559,U+7565,U+7591,U+75c7,U+75db,U+7b4b,U+7bb1,U+7d99,U+7fbd,U+8131,U+885b,U+8b1d,U+8ff7,U+9003,U+9045,U+96a0,U+9732,U+990a,U+99d0,U+9e97,U+9f62,U+ff25,U+ff2d",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-101-wght-normal.woff2",
+   "range": "U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-102-wght-normal.woff2",
+   "range": "U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-103-wght-normal.woff2",
+   "range": "U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-104-wght-normal.woff2",
+   "range": "U+4e01,U+4e21,U+4e38,U+52a9,U+547d,U+592e,U+5931,U+5b63,U+5c40,U+5dde,U+5e78,U+5efa,U+5fa1,U+604b,U+6075,U+62c5,U+632f,U+6a19,U+6c0f,U+6c11,U+6c96,U+6e05,U+70ba,U+71b1,U+7387,U+7403,U+75c5,U+77ed,U+795d,U+7b54,U+7cbe,U+7d19,U+7fa4,U+8089,U+81f4,U+8208,U+8336,U+8457,U+8a33,U+8c4a,U+8ca0,U+8ca8,U+8cc0,U+9014,U+964d,U+9803,U+983c,U+98db,U+ff17,U+ff21",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-105-wght-normal.woff2",
+   "range": "U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-106-wght-normal.woff2",
+   "range": "U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-107-wght-normal.woff2",
+   "range": "U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-108-wght-normal.woff2",
+   "range": "U+2605-2606,U+301c,U+4e57,U+4fee,U+5065,U+52df,U+533b,U+5357,U+57df,U+58eb,U+58f0,U+591c,U+592a-592b,U+5948,U+5b85,U+5d0e,U+5ea7,U+5ff5,U+6025,U+63a1,U+63a5,U+63db,U+643a,U+65bd,U+671d,U+68ee,U+6982,U+6b73,U+6bd4,U+6d88,U+7570,U+7b11,U+7d76,U+8077,U+8217,U+8c37,U+8c61,U+8cc7,U+8d85,U+901f,U+962a,U+9802,U+9806,U+9854,U+98f2,U+9928,U+99c5,U+9ed2",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-109-wght-normal.woff2",
+   "range": "U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-110-wght-normal.woff2",
+   "range": "U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-111-wght-normal.woff2",
+   "range": "U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-112-wght-normal.woff2",
+   "range": "U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-113-wght-normal.woff2",
+   "range": "U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-114-wght-normal.woff2",
+   "range": "U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-115-wght-normal.woff2",
+   "range": "U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-116-wght-normal.woff2",
+   "range": "U+a9,U+3010-3011,U+30e2,U+4e0b,U+4eca,U+4ed6,U+4ed8,U+4f53,U+4f5c,U+4f7f,U+53d6,U+540d,U+54c1,U+5730,U+5916,U+5b50,U+5c0f,U+5f8c,U+624b,U+6570,U+6587,U+6599,U+691c,U+696d,U+6cd5,U+7269,U+7279,U+7406,U+767a-767b,U+77e5,U+7d04,U+7d22,U+8005,U+80fd,U+81ea,U+8868,U+8981,U+89a7,U+901a,U+9023,U+90e8,U+91d1,U+9332,U+958b,U+96c6,U+9ad8,U+ff1a,U+ff1f",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-117-wght-normal.woff2",
+   "range": "U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-118-wght-normal.woff2",
+   "range": "U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-119-wght-normal.woff2",
+   "range": "U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "M PLUS 1 Code",
+   "file": "crime/fonts/m-plus-1-code-latin-wght-normal.woff2",
+   "range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+   "weight": "100 700",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-59-400-normal.woff2",
+   "range": "U+a1-a4,U+a6-a7,U+aa,U+ac-ad,U+b5-b6,U+b8-ba,U+bc-c8,U+ca-cc,U+ce-d5,U+d9-db,U+dd-df,U+e6,U+ee,U+f0,U+f5,U+f7,U+f9,U+fb,U+fe-102,U+110-113,U+11a-11b,U+128-12b,U+143-144,U+147-148,U+14c,U+14e-14f,U+152-153,U+168-16d,U+192,U+1a0-1a1,U+1af,U+1cd-1dc,U+1f8-1f9,U+251,U+261,U+2bb,U+2c7,U+2c9,U+2ea-2eb,U+304,U+307,U+30c,U+1e3e-1e3f,U+1ea0-1ebe,U+1ec0-1ec6,U+1ec8-1ef9,U+2011-2012,U+2016,U+2018-201a,U+201e,U+2021,U+2030,U+2033,U+2035,U+2042,U+2047,U+2051,U+2074,U+20a9,U+20ab-20ac,U+20dd-20de,U+2100",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-60-400-normal.woff2",
+   "range": "U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-72-400-normal.woff2",
+   "range": "U+4e91,U+508d,U+50e7,U+514e,U+51f6,U+5446,U+5504,U+584a,U+59a8,U+59d3,U+5a46,U+5ac9,U+6020,U+60a6,U+6148,U+621a,U+6234,U+64c1,U+6523,U+675c,U+67d1,U+6953,U+6ccc,U+6df5,U+6e13,U+6f06,U+723a,U+7325,U+74e6,U+758e,U+75ab,U+75d9,U+7a40,U+8096,U+82fa,U+8587,U+8594,U+8a6b,U+8ab9,U+8b17,U+8b83,U+937c,U+963b,U+9673,U+96db,U+9ce9,U+9f4b,U+ff67,U+ff82,U+ff93",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-79-400-normal.woff2",
+   "range": "U+25b3,U+30f5,U+4eae,U+4f46,U+4f51,U+5203,U+52ff,U+55a7,U+564c,U+565b,U+57f9,U+5805,U+5b64,U+5e06,U+5f70,U+5f90,U+60e8,U+6182,U+62f3,U+62fe,U+63aa,U+64a4,U+65d7,U+673a,U+6851,U+68cb,U+68df,U+6d1e,U+6e58,U+6e9d,U+77b3,U+7832,U+7c3f,U+7db4,U+7f70,U+80aa,U+80c6,U+8105,U+819d,U+8276,U+8679,U+8986,U+8c9d,U+8fc5,U+916c,U+9665,U+9699,U+96c0,U+9a19,U+ff8b",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-80-400-normal.woff2",
+   "range": "U+2463,U+25a1,U+4ef0,U+5076,U+5098,U+51fd,U+5302,U+5448,U+54c9,U+570b,U+583a,U+5893,U+58a8,U+58ee,U+5949,U+5bdb,U+5f26,U+5f81,U+6052,U+6170,U+61c7,U+631f,U+635c,U+664b,U+69fb,U+6f01,U+7070,U+722a,U+745e,U+755c,U+76c6,U+78c1,U+79e4,U+7bb8,U+7d0b,U+81a8,U+82d7,U+8b5c,U+8f14,U+8fb1,U+8fbb,U+9283,U+9298,U+9a30,U+ff03,U+ff50,U+ff59,U+ff7b,U+ff8e-ff8f",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-86-400-normal.woff2",
+   "range": "U+24,U+2022,U+2212,U+221f,U+2665,U+4ecf,U+5100,U+51cd,U+52d8,U+5378,U+53f6,U+574a,U+5982,U+5996,U+5c1a,U+5e1d,U+5f84,U+609f,U+61a7,U+61f8,U+6398,U+63ee,U+6676,U+6691,U+6eb6,U+7126,U+71e5,U+7687,U+7965,U+7d17,U+80a1,U+8107,U+8266,U+85a6,U+8987,U+8ca2,U+8cab,U+8e0a,U+9042,U+95c7,U+9810,U+9867,U+98fc,U+ff52-ff54,U+ff61,U+ff77,U+ff98-ff99",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-87-400-normal.woff2",
+   "range": "U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-92-400-normal.woff2",
+   "range": "U+2460,U+4e5f,U+4e7e,U+4ed9,U+501f,U+502b,U+5968,U+5974,U+5ac1,U+5b99,U+5ba3,U+5be7,U+5be9,U+5c64,U+5cb8,U+5ec3,U+5f1f,U+616e,U+6297,U+62e0,U+62ec,U+6368,U+642d,U+65e6,U+6717,U+676f,U+6b04,U+732e,U+7652,U+76ca,U+76d7,U+7802,U+7e70,U+7f6a,U+8133,U+81e8,U+866b,U+878d,U+88f8,U+8a5e,U+8cdb,U+8d08,U+907a,U+90e1,U+96f2,U+9f8d,U+ff35,U+ff37,U+ff40,U+ff9d",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-96-400-normal.woff2",
+   "range": "U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-97-400-normal.woff2",
+   "range": "U+7e,U+b4,U+25c6,U+2661,U+4e92,U+4eee,U+4ffa,U+5144,U+5237,U+5287,U+52b4,U+58c1,U+5bff,U+5c04,U+5c06,U+5e95,U+5f31,U+5f93,U+63c3,U+640d,U+6557,U+6614,U+662f,U+67d3,U+690d,U+6bba,U+6e6f,U+72af,U+732b,U+7518,U+7ae0,U+7ae5,U+7af6,U+822a,U+89e6,U+8a3a,U+8a98,U+8cb8,U+8de1,U+8e8d,U+95d8,U+961c,U+96a3,U+96ea,U+9bae,U+ff20,U+ff22,U+ff29,U+ff2b-ff2c",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-98-400-normal.woff2",
+   "range": "U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-99-400-normal.woff2",
+   "range": "U+2191,U+505c,U+52e4,U+5305,U+535a,U+56e0,U+59bb,U+5acc,U+5b09,U+5b87,U+5c90,U+5df1,U+5e2d,U+5e33,U+5f3e,U+6298,U+6383,U+653b,U+6697,U+6804,U+6a39,U+6cca,U+6e90,U+6f2b,U+702c,U+7206,U+7236,U+7559,U+7565,U+7591,U+75c7,U+75db,U+7b4b,U+7bb1,U+7d99,U+7fbd,U+8131,U+885b,U+8b1d,U+8ff7,U+9003,U+9045,U+96a0,U+9732,U+990a,U+99d0,U+9e97,U+9f62,U+ff25,U+ff2d",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-101-400-normal.woff2",
+   "range": "U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-102-400-normal.woff2",
+   "range": "U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-103-400-normal.woff2",
+   "range": "U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-104-400-normal.woff2",
+   "range": "U+4e01,U+4e21,U+4e38,U+52a9,U+547d,U+592e,U+5931,U+5b63,U+5c40,U+5dde,U+5e78,U+5efa,U+5fa1,U+604b,U+6075,U+62c5,U+632f,U+6a19,U+6c0f,U+6c11,U+6c96,U+6e05,U+70ba,U+71b1,U+7387,U+7403,U+75c5,U+77ed,U+795d,U+7b54,U+7cbe,U+7d19,U+7fa4,U+8089,U+81f4,U+8208,U+8336,U+8457,U+8a33,U+8c4a,U+8ca0,U+8ca8,U+8cc0,U+9014,U+964d,U+9803,U+983c,U+98db,U+ff17,U+ff21",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-105-400-normal.woff2",
+   "range": "U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-106-400-normal.woff2",
+   "range": "U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-107-400-normal.woff2",
+   "range": "U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-108-400-normal.woff2",
+   "range": "U+2605-2606,U+301c,U+4e57,U+4fee,U+5065,U+52df,U+533b,U+5357,U+57df,U+58eb,U+58f0,U+591c,U+592a-592b,U+5948,U+5b85,U+5d0e,U+5ea7,U+5ff5,U+6025,U+63a1,U+63a5,U+63db,U+643a,U+65bd,U+671d,U+68ee,U+6982,U+6b73,U+6bd4,U+6d88,U+7570,U+7b11,U+7d76,U+8077,U+8217,U+8c37,U+8c61,U+8cc7,U+8d85,U+901f,U+962a,U+9802,U+9806,U+9854,U+98f2,U+9928,U+99c5,U+9ed2",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-109-400-normal.woff2",
+   "range": "U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-110-400-normal.woff2",
+   "range": "U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-111-400-normal.woff2",
+   "range": "U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-112-400-normal.woff2",
+   "range": "U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-113-400-normal.woff2",
+   "range": "U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-114-400-normal.woff2",
+   "range": "U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-115-400-normal.woff2",
+   "range": "U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-116-400-normal.woff2",
+   "range": "U+a9,U+3010-3011,U+30e2,U+4e0b,U+4eca,U+4ed6,U+4ed8,U+4f53,U+4f5c,U+4f7f,U+53d6,U+540d,U+54c1,U+5730,U+5916,U+5b50,U+5c0f,U+5f8c,U+624b,U+6570,U+6587,U+6599,U+691c,U+696d,U+6cd5,U+7269,U+7279,U+7406,U+767a-767b,U+77e5,U+7d04,U+7d22,U+8005,U+80fd,U+81ea,U+8868,U+8981,U+89a7,U+901a,U+9023,U+90e8,U+91d1,U+9332,U+958b,U+96c6,U+9ad8,U+ff1a,U+ff1f",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-117-400-normal.woff2",
+   "range": "U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-118-400-normal.woff2",
+   "range": "U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-119-400-normal.woff2",
+   "range": "U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "Yusei Magic",
+   "file": "crime/fonts/yusei-magic-latin-400-normal.woff2",
+   "range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+   "weight": "400",
+   "style": "normal"
+  }
+ ],
+ "families": {
+  "sans": "Noto Sans JP",
+  "serif": "Noto Serif JP",
+  "mono": "M PLUS 1 Code",
+  "hand": "Yusei Magic"
+ }
+}

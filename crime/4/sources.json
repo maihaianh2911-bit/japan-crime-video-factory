@@ -1,0 +1,334 @@
+{
+ "pictures": [
+  {
+   "name": "station",
+   "src": "1/4-2.jpg",
+   "title": "Hachioji station, evening 2.jpg",
+   "artist": "Syced",
+   "date": "Taken on 24 July 2021, 19:28 (according to Exif data)",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hachioji_station,_evening_2.jpg",
+   "ai": false
+  },
+  {
+   "name": "inside",
+   "src": "2/4-6.jpg",
+   "title": "Japanese Supermarket.jpg",
+   "artist": "Yuya Tamai",
+   "date": "Taken on 18 March 2012",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Japanese_Supermarket.jpg",
+   "ai": false
+  },
+  {
+   "name": "safe",
+   "src": "2/1-2.jpg",
+   "title": "Seattle Assay Office safe 03.jpg",
+   "artist": "Joe Mabel",
+   "date": "2016-01-26",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Seattle_Assay_Office_safe_03.jpg",
+   "ai": false
+  },
+  {
+   "name": "revolver",
+   "src": "1/10-4.jpg",
+   "title": "Hi-Standard R-106 Sentinel Deluxe Revolver-NMAH-AHB2015q025847.jpg",
+   "artist": "The Smithsonian Institution",
+   "date": "2015-04-01 23:01:59",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Hi-Standard_R-106_Sentinel_Deluxe_Revolver-NMAH-AHB2015q025847.jpg",
+   "ai": false
+  },
+  {
+   "name": "police",
+   "src": "1/6-1.jpg",
+   "title": "Hachioji Police Station.jpg",
+   "artist": "Hanasakijijii",
+   "date": "2013-05-13",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hachioji_Police_Station.jpg",
+   "ai": false
+  },
+  {
+   "name": "tape",
+   "src": "1/15-1.jpg",
+   "title": "規制線 (1591573056).jpg",
+   "artist": "くーさん",
+   "date": "2007-09-25 18:45",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E8%A6%8F%E5%88%B6%E7%B7%9A_(1591573056).jpg",
+   "ai": false
+  },
+  {
+   "name": "suburb",
+   "src": "1/2-5.jpg",
+   "title": "Landscapes seen from JR中央本線 train between 小淵沢 and Takao (42529).jpg",
+   "artist": "Syced",
+   "date": "4 January 2025 (according to Exif data)",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Landscapes_seen_from_JR%E4%B8%AD%E5%A4%AE%E6%9C%AC%E7%B7%9A_train_between_%E5%B0%8F%E6%B7%B5%E6%B2%A2_and_Takao_(42529).jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.945,
+   "said": [
+    "小さな事務所で、",
+    "3人の女性が殺された。",
+    "だが、金庫のお金は、",
+    "そのまま残されていた。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "suburb",
+     "ai": false,
+     "credit": "Syced / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Landscapes_seen_from_JR%E4%B8%AD%E5%A4%AE%E6%9C%AC%E7%B7%9A_train_between_%E5%B0%8F%E6%B7%B5%E6%B2%A2_and_Takao_(42529).jpg"
+    }
+   ],
+   "texts": [
+    "小さな事務所",
+    "3人の女性",
+    "金庫は手つかず"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 5.945,
+   "end": 11.359,
+   "said": [
+    "1995年7月30日の夜。",
+    "東京・八王子のスーパー。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "station",
+     "ai": false,
+     "credit": "Syced / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Hachioji_station,_evening_2.jpg"
+    }
+   ],
+   "texts": [
+    "八王子スーパー事件",
+    "東京・八王子",
+    "1995年7月30日 夜"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 11.359,
+   "end": 22.536,
+   "said": [
+    "店は夜9時に、",
+    "閉店したばかりだった。",
+    "2階の事務所には、",
+    "3人の女性従業員が残っていた。",
+    "アルバイトの高校生、",
+    "17歳と16歳。",
+    "そして、47歳の女性。"
+   ],
+   "edit": "who",
+   "photos": [],
+   "texts": [
+    "2階の事務所"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 22.536,
+   "end": 25.786,
+   "said": [
+    "わずか数分後、3人は銃で",
+    "撃たれ、命を奪われた。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "わずか数分後"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 25.786,
+   "end": 30.794,
+   "said": [
+    "はっきりした物音を",
+    "聞いた人はいない。",
+    "犯人が立ち去る姿を",
+    "見た人もいない。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "inside",
+     "ai": false,
+     "credit": "Yuya Tamai / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Japanese_Supermarket.jpg"
+    }
+   ],
+   "texts": [
+    "物音を聞いた人なし",
+    "目撃者なし"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 30.794,
+   "end": 36.483,
+   "said": [
+    "最も不可解なのは、",
+    "金庫が開けられていなかったことだ。",
+    "犯人は、お金を手にしていない。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "safe",
+     "ai": false,
+     "credit": "Joe Mabel / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Seattle_Assay_Office_safe_03.jpg"
+    }
+   ],
+   "texts": [
+    "金庫",
+    "開けられず",
+    "お金は手つかず"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 36.483,
+   "end": 39.067,
+   "said": [
+    "では、犯人は何のためにそこへ",
+    "来たのか。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "何のために来たのか"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 39.067,
+   "end": 42.247,
+   "said": [
+    "弾丸から、",
+    "凶器は回転式の",
+    "拳銃と分かった。"
+   ],
+   "edit": "object",
+   "photos": [
+    {
+     "image": "revolver",
+     "ai": false,
+     "credit": "The Smithsonian Institution / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Hi-Standard_R-106_Sentinel_Deluxe_Revolver-NMAH-AHB2015q025847.jpg"
+    }
+   ],
+   "texts": [
+    "弾丸から判明",
+    "回転式の拳銃"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 42.247,
+   "end": 45.872,
+   "said": [
+    "警察は数多くの人を調べ、",
+    "何千もの手がかりを追った。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "捜査",
+    "の\n手がかり",
+    "犯人は不明"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 45.872,
+   "end": 51.956,
+   "said": [
+    "2010年、日本は殺人事件の",
+    "時効を廃止した。",
+    "だから、この事件は今も",
+    "終わっていない。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "時効廃止",
+    "今も捜査中"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 51.956,
+   "end": 57.319,
+   "said": [
+    "30年以上たった今も、",
+    "警察は懸賞金をかけ、",
+    "情報の提供を呼びかけている。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "police",
+     "ai": false,
+     "credit": "Hanasakijijii / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Hachioji_Police_Station.jpg"
+    }
+   ],
+   "texts": [
+    "経過",
+    "懸賞金",
+    "情報提供を"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 57.319,
+   "end": 60.95,
+   "said": [
+    "何も奪えなかった強盗のために、",
+    "3人の命が奪われた。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "tape",
+     "ai": false,
+     "credit": "くーさん / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E8%A6%8F%E5%88%B6%E7%B7%9A_(1591573056).jpg"
+    }
+   ],
+   "texts": [
+    "何も奪えなかった強盗",
+    "3人の命"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 60.95,
+   "end": 67.879,
+   "said": [
+    "そして、引き金を引いた人物は、",
+    "今も日本のどこかで、",
+    "生きているのかもしれない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
