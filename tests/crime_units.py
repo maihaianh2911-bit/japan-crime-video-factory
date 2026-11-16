@@ -244,7 +244,7 @@ with contextlib.redirect_stdout(buf):
 assert 'lonely' in buf.getvalue() and buf.getvalue().startswith('chú ý') and [i['tag'] for i in bd if 'tag' in i] == ['1', '2', '3', 'own', 'end'] and bd[-1]['y'] == 790 + 145 + 150
 # posting caption (caption.txt): the checks, the workflow's to-do for a push of caption.txt alone (no voice, no
 # search, no render), and the caption step of run.py (published beside the video, link in a comment)
-import caption as CAP, yaml, subprocess as sp_
+import caption as CAP, subprocess as sp_
 de_ok = 'Der Täter ließ fast alles zurück – nur keinen Namen\nVier Menschen starben. Bis heute fehlt ein Name.\n\n#TrueCrime #Kriminalfall #Ungelöst #Japan #Mordfall #shorts\n\nBildquellen: siehe credits.txt'
 ja_ok = '犯人はほぼすべてを残した――名前を除いて\n2000年の大みそか、東京・世田谷で一家4人が殺害された。犯人は今も分かっていない。\n\n#未解決事件 #事件 #世田谷 #日本の事件 #ミステリー #shorts\n\n画像出典: Wikimedia Commons ほか'
 assert CAP.problems(de_ok, 'de', 'KI-Illustration', False) == [] and CAP.problems(ja_ok, 'ja', 'イメージ（AI生成）', False) == []
@@ -255,8 +255,9 @@ assert CAP.problems(de_ok + '\nEinige Bilder: KI-Illustration', 'de', 'KI-Illust
 assert CAP.problems(de_ok.replace('siehe credits.txt', '珈琲牛乳 (CC BY 3.0)'), 'de', 'KI-Illustration', False) == []   # a name in the credit line
 assert any('#shorts' in p for p in CAP.problems(de_ok.replace(' #shorts', ''), 'de', 'KI-Illustration', False))
 assert any('2000' in p for p in CAP.problems(de_ok + 'x' * 2000, 'de', 'KI-Illustration', False)) and CAP.problems('', 'de', '', False)
-wf = yaml.safe_load(open(os.path.join(ROOT, '.github', 'workflows', 'crime.yml'), encoding='utf-8'))
-todo_py = next(s_['run'] for s_ in wf['jobs']['work']['steps'] if s_.get('name') == 'Việc cần làm').split("python3 -c '", 1)[1].split("' < /tmp/files.txt")[0]
+wf = open(os.path.join(ROOT, '.github', 'workflows', 'crime.yml'), encoding='utf-8').read()   # no yaml module on the runner
+todo_py = wf.split("python3 -c '", 1)[1].split("' < /tmp/files.txt")[0]
+todo_py = '\n'.join(l[10:] if l.startswith(' ' * 10) else l for l in todo_py.split('\n'))   # the block's indentation in the YAML
 todo = lambda files: sp_.run([sys.executable, '-c', todo_py], input='\0'.join(files).encode(), capture_output=True).stdout.decode().strip()
 assert todo(['crime/3/caption.txt']) == '3 caption' and todo(['crime/3/picks.json', 'crime/3/caption.txt']) == '3 render caption'
 assert todo(['crime/3/caption.txt', 'crime/4/caption.txt']) == '3 caption\n4 caption'
