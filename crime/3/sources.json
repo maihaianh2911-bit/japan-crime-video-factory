@@ -1,0 +1,467 @@
+{
+ "pictures": [
+  {
+   "name": "glicosign",
+   "src": "1/5-2.jpg",
+   "title": "Glico signs in Dotonbori at night,18th August 2014.JPG",
+   "artist": "Tokumeigakarinoaoshima",
+   "date": "Taken on 18 August 2014, 19:14:38",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Glico_signs_in_Dotonbori_at_night,18th_August_2014.JPG",
+   "ai": false
+  },
+  {
+   "name": "nishi",
+   "src": "1/7-1.jpg",
+   "title": "Nishinomiya City Scenery.jpg",
+   "artist": "Jared Williams",
+   "date": "21 October 2011 (upload date)",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Nishinomiya_City_Scenery.jpg",
+   "ai": false
+  },
+  {
+   "name": "gold",
+   "src": "1/20-7.jpg",
+   "title": "Gold bullion bars.jpg",
+   "artist": "Stevebidmead",
+   "date": "2018-06-17",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Gold_bullion_bars.jpg",
+   "ai": false
+  },
+  {
+   "name": "typewriter",
+   "src": "1/16-1.jpg",
+   "title": "Japanese typewriter SH-280.jpg",
+   "artist": "miya",
+   "date": "(forgot)",
+   "license": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Japanese_typewriter_SH-280.jpg",
+   "ai": false
+  },
+  {
+   "name": "papers",
+   "src": "2/8-4.jpg",
+   "title": "Newspaper 2017-03 (33252434745).jpg",
+   "artist": "bangdoll from Taipei,Taiwan",
+   "date": "2017-03-04 15:16",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Newspaper_2017-03_(33252434745).jpg",
+   "ai": false
+  },
+  {
+   "name": "caramel",
+   "src": "2/1-1.jpg",
+   "title": "Ezaki Glico Almond Glico.jpg",
+   "artist": "毒島みるく",
+   "date": "2019-01-15",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Ezaki_Glico_Almond_Glico.jpg",
+   "ai": false
+  },
+  {
+   "name": "cyanide",
+   "src": "1/11-1.jpg",
+   "title": "Kaliumcyanid.jpg",
+   "artist": "morienus (uploaded by de:Benutzer:BXXXD from de:wiki)",
+   "date": "2005-05-27",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Kaliumcyanid.jpg",
+   "ai": false
+  },
+  {
+   "name": "fox",
+   "src": "2/10-6.jpg",
+   "title": "Bright Fox Eyes (31515661042).jpg",
+   "artist": "Jacob Dawson",
+   "date": "2013-06-06 11:44",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Bright_Fox_Eyes_(31515661042).jpg",
+   "ai": false
+  },
+  {
+   "name": "patrol",
+   "src": "1/12-2.jpg",
+   "title": "Shiga prefectural police patrol car.jpg",
+   "artist": "W-nexco",
+   "date": "2009-06-12",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Shiga_prefectural_police_patrol_car.jpg",
+   "ai": false
+  },
+  {
+   "name": "osakapol",
+   "src": "1/18-5.jpg",
+   "title": "Headquarters of Osaka Prefectural Police.jpg",
+   "artist": "Tokumeigakarinoaoshima",
+   "date": "Taken on 29 October 2014, 13:52:37",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Headquarters_of_Osaka_Prefectural_Police.jpg",
+   "ai": false
+  },
+  {
+   "name": "glicohq",
+   "src": "1/3-7.jpg",
+   "title": "Glico Osaka Office (1).jpg",
+   "artist": "MASA (talk)",
+   "date": "2010-12",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Glico_Osaka_Office_(1).jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 3.863,
+   "said": [
+    "日本中が、",
+    "お菓子を食べるのを",
+    "怖がった時代があった。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "glicosign",
+     "ai": false,
+     "credit": "Tokumeigakarinoaoshima / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Glico_signs_in_Dotonbori_at_night,18th_August_2014.JPG"
+    }
+   ],
+   "texts": [
+    "1984〜85",
+    "お菓子",
+    "日本中が恐怖"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 3.863,
+   "end": 13.673,
+   "said": [
+    "1984年3月18日の夜。",
+    "銃を持った覆面の男たちが、",
+    "グリコ社長の家に押し入った。",
+    "兵庫県西宮市。社長は、",
+    "そのまま連れ去られた。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "nishi",
+     "ai": false,
+     "credit": "Jared Williams / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Nishinomiya_City_Scenery.jpg"
+    }
+   ],
+   "texts": [
+    "グリコ・森永事件",
+    "兵庫県西宮市",
+    "社長誘拐"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 13.673,
+   "end": 17.184,
+   "said": [
+    "犯人の要求は、",
+    "現金10億円と金塊100キロ。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "gold",
+     "ai": false,
+     "credit": "Stevebidmead / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Gold_bullion_bars.jpg"
+    }
+   ],
+   "texts": [
+    "身代金",
+    "円\n現金",
+    "金塊 100kg"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 17.184,
+   "end": 20.816,
+   "said": [
+    "3日後、社長は大阪の倉庫から、",
+    "自力で逃げ出した。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "社長、脱出",
+    "大阪の倉庫から"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 20.816,
+   "end": 23.122,
+   "said": [
+    "だが、事件はここから始まった。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "ここから始まった"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 23.122,
+   "end": 26.459,
+   "said": [
+    "「かい人21面相」と",
+    "名乗るグループが、現れた。"
+   ],
+   "edit": "chapter",
+   "photos": [],
+   "texts": [
+    "かい人21面相"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 26.459,
+   "end": 32.166,
+   "said": [
+    "グリコに脅迫状を送り、",
+    "新聞社には手紙を送った。",
+    "手紙は、警察をあざ笑っていた。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "typewriter",
+     "ai": false,
+     "credit": "miya / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Japanese_typewriter_SH-280.jpg"
+    },
+    {
+     "image": "papers",
+     "ai": false,
+     "credit": "bangdoll from Taipei,Taiwan / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Newspaper_2017-03_(33252434745).jpg"
+    }
+   ],
+   "texts": [
+    "脅迫状",
+    "新聞社へ手紙",
+    "警察をあざ笑う"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 32.166,
+   "end": 40.16,
+   "said": [
+    "製品に毒を入れる、",
+    "と脅した。",
+    "グリコのお菓子は、",
+    "店の棚から消えた。",
+    "次の標的は森永。そして、",
+    "ほかの食品会社も。"
+   ],
+   "edit": "list",
+   "photos": [
+    {
+     "image": "caramel",
+     "ai": false,
+     "credit": "毒島みるく / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Ezaki_Glico_Almond_Glico.jpg"
+    }
+   ],
+   "texts": [
+    "毒を入れる",
+    "グリコ",
+    "森永",
+    "ほかの食品会社"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 40.16,
+   "end": 47.446,
+   "said": [
+    "1984年10月、店の棚で",
+    "青酸入りのお菓子が見つかった。",
+    "そこには、",
+    "「どくいり きけん",
+    "たべたら 死ぬで」。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "cyanide",
+     "ai": false,
+     "credit": "morienus (uploaded by de:Benutzer:BXXXD from de:wiki) / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Kaliumcyanid.jpg"
+    }
+   ],
+   "texts": [
+    "青酸入り",
+    "1984年10月",
+    "どくいり きけん\nたべたら 死ぬで"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 47.446,
+   "end": 54.807,
+   "said": [
+    "現金の受け渡しの場で、",
+    "警察はある男を見ていた。",
+    "キツネのような目をした男だった。",
+    "だが、男は逃げ切った。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "fox",
+     "ai": false,
+     "credit": "Jacob Dawson / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Bright_Fox_Eyes_(31515661042).jpg"
+    }
+   ],
+   "texts": [
+    "受け渡しの場",
+    "キツネ目の男",
+    "逃げ切った"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 54.807,
+   "end": 62.29,
+   "said": [
+    "1984年11月、滋賀県。",
+    "不審な車が、パトカーに",
+    "声をかけられた。",
+    "車はそのまま逃げ去り、消えた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "patrol",
+     "ai": false,
+     "credit": "W-nexco / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Shiga_prefectural_police_patrol_car.jpg"
+    }
+   ],
+   "texts": [
+    "1984年11月 滋賀県",
+    "不審な車が逃走"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 62.29,
+   "end": 67.07,
+   "said": [
+    "1985年8月、",
+    "滋賀県警の本部長が、",
+    "自ら命を絶った。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "滋賀県警本部長の死"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 67.07,
+   "end": 75.551,
+   "said": [
+    "その数日後、21面相は",
+    "最後の手紙を送った。",
+    "食品会社をいじめるのは、",
+    "もうやめる、と。",
+    "そして、二度と現れなかった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "glicohq",
+     "ai": false,
+     "credit": "MASA (talk) / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Glico_Osaka_Office_(1).jpg"
+    }
+   ],
+   "texts": [
+    "最後の手紙",
+    "二度と現れず"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 75.551,
+   "end": 78.627,
+   "said": [
+    "2000年2月、すべての",
+    "時効が成立した。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "時効",
+    "未解決のまま"
+   ]
+  },
+  {
+   "scene": 15,
+   "start": 78.627,
+   "end": 82.632,
+   "said": [
+    "100通を超える手紙、",
+    "数十万人の捜査員、",
+    "キツネ目の男。"
+   ],
+   "edit": "board",
+   "photos": [
+    {
+     "image": "typewriter",
+     "ai": false,
+     "credit": "miya / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Japanese_typewriter_SH-280.jpg"
+    },
+    {
+     "image": "osakapol",
+     "ai": false,
+     "credit": "Tokumeigakarinoaoshima / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Headquarters_of_Osaka_Prefectural_Police.jpg"
+    },
+    {
+     "image": "fox",
+     "ai": false,
+     "credit": "Jacob Dawson / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Bright_Fox_Eyes_(31515661042).jpg"
+    }
+   ],
+   "texts": [
+    "100通超の手紙",
+    "数十万人の捜査員",
+    "キツネ目の男"
+   ]
+  },
+  {
+   "scene": 16,
+   "start": 82.632,
+   "end": 86.708,
+   "said": [
+    "それでも、",
+    "名前はひとつもない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
