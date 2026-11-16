@@ -1,0 +1,383 @@
+{
+ "pictures": [
+  {
+   "name": "street68",
+   "src": "2/9-4.jpg",
+   "title": "1968年の秋 砧線吉沢駅付近より.jpg",
+   "artist": "大勝庵・玉電と郷土の歴史館 大塚勝利",
+   "date": "Autumn 1968",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:1968%E5%B9%B4%E3%81%AE%E7%A7%8B_%E7%A0%A7%E7%B7%9A%E5%90%89%E6%B2%A2%E9%A7%85%E4%BB%98%E8%BF%91%E3%82%88%E3%82%8A.jpg",
+   "ai": false
+  },
+  {
+   "name": "street68b",
+   "src": "2/9-3.jpg",
+   "title": "1968年の秋 砧線吉沢駅付近の踏切.jpg",
+   "artist": "大勝庵・玉電と郷土の歴史館 大塚勝利",
+   "date": "Autumn 1968",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:1968%E5%B9%B4%E3%81%AE%E7%A7%8B_%E7%A0%A7%E7%B7%9A%E5%90%89%E6%B2%A2%E9%A7%85%E4%BB%98%E8%BF%91%E3%81%AE%E8%B8%8F%E5%88%87.jpg",
+   "ai": false
+  },
+  {
+   "name": "wall",
+   "src": "1/3-3.jpg",
+   "title": "府中刑務所 - panoramio.jpg",
+   "artist": "kanesue",
+   "date": "Taken on 4 May 2012",
+   "license": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%9C%E4%B8%AD%E5%88%91%E5%8B%99%E6%89%80_-_panoramio.jpg",
+   "ai": false
+  },
+  {
+   "name": "wallnight",
+   "src": "1/3-8.jpg",
+   "title": "府中刑務所 - panoramio (2).jpg",
+   "artist": "KOJI MISUMI",
+   "date": "Taken on 26 December 2015",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%9C%E4%B8%AD%E5%88%91%E5%8B%99%E6%89%80_-_panoramio_(2).jpg",
+   "ai": false
+  },
+  {
+   "name": "toshiba",
+   "src": "1/6-4.jpg",
+   "title": "Toshiba fuchu factory south gate tokyo 2009.JPG",
+   "artist": "User:Kentin",
+   "date": "2009-03",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Toshiba_fuchu_factory_south_gate_tokyo_2009.JPG",
+   "ai": false
+  },
+  {
+   "name": "car64",
+   "src": "1/13-6.jpg",
+   "title": "Toyota cars imported by Korpivaara Ltd 1964 (JOKAUAS2 12237-2).tif",
+   "artist": "U. A. Saarinen",
+   "date": "1964",
+   "license": "CC BY 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyota_cars_imported_by_Korpivaara_Ltd_1964_(JOKAUAS2_12237-2).tif",
+   "ai": false
+  },
+  {
+   "name": "bike",
+   "src": "1/10-2.jpg",
+   "title": "Yamaha Sports 250S YDS-1.jpg",
+   "artist": "Rikita",
+   "date": "2011-02-18 14:58:50",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Yamaha_Sports_250S_YDS-1.jpg",
+   "ai": false
+  },
+  {
+   "name": "flare",
+   "src": "2/6-4.jpg",
+   "title": "Smoke Bomb (173822838).jpg",
+   "artist": "Martin Cathrae",
+   "date": "2006-06-19",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Smoke_Bomb_(173822838).jpg",
+   "ai": false
+  },
+  {
+   "name": "magnet",
+   "src": "2/4-5.jpg",
+   "title": "MagnetEZ.jpg",
+   "artist": "Eurico Zimbres FGEL/UERJ",
+   "date": "created 2005",
+   "license": "CC BY-SA 2.0 br",
+   "page": "https://commons.wikimedia.org/wiki/File:MagnetEZ.jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 6.824,
+   "said": [
+    "日本史上最大の現金強奪は、",
+    "5分もかからなかった。",
+    "銃声もなく、けが人も",
+    "一人もいなかった。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "street68",
+     "ai": false,
+     "credit": "大勝庵・玉電と郷土の歴史館 大塚勝利 / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:1968%E5%B9%B4%E3%81%AE%E7%A7%8B_%E7%A0%A7%E7%B7%9A%E5%90%89%E6%B2%A2%E9%A7%85%E4%BB%98%E8%BF%91%E3%82%88%E3%82%8A.jpg"
+    }
+   ],
+   "texts": [
+    "5分以内",
+    "現金強奪",
+    "銃声なし",
+    "けが人0人"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 6.824,
+   "end": 10.445,
+   "said": [
+    "1968年12月10日の朝、",
+    "東京・府中。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "wall",
+     "ai": false,
+     "credit": "kanesue / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%9C%E4%B8%AD%E5%88%91%E5%8B%99%E6%89%80_-_panoramio.jpg"
+    }
+   ],
+   "texts": [
+    "三億円事件",
+    "1968年12月10日 朝",
+    "東京・府中"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 10.445,
+   "end": 17.141,
+   "said": [
+    "銀行の車が、",
+    "約3億円を運んでいた。",
+    "東芝府中工場で働く人たちの、",
+    "冬のボーナスだった。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "car64",
+     "ai": false,
+     "credit": "U. A. Saarinen / CC BY 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Toyota_cars_imported_by_Korpivaara_Ltd_1964_(JOKAUAS2_12237-2).tif"
+    },
+    {
+     "image": "toshiba",
+     "ai": false,
+     "credit": "User:Kentin / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Toshiba_fuchu_factory_south_gate_tokyo_2009.JPG"
+    }
+   ],
+   "texts": [
+    "約3億円",
+    "冬のボーナス",
+    "東芝府中工場"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 17.141,
+   "end": 24.434,
+   "said": [
+    "その途中、白バイの",
+    "警察官が車を止めた。",
+    "「支店長の家が爆破された。」",
+    "「この車にも、",
+    "爆弾があるかもしれない。」"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "bike",
+     "ai": false,
+     "credit": "Rikita / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Yamaha_Sports_250S_YDS-1.jpg"
+    }
+   ],
+   "texts": [
+    "白バイの警官?",
+    "支店長宅が爆破",
+    "爆弾がある?"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 24.434,
+   "end": 35.024,
+   "said": [
+    "男は車の下にもぐりこんだ。",
+    "そして、煙が上がった。",
+    "「爆発するぞ！逃げろ！」",
+    "4人の銀行員は、",
+    "車から逃げ出した。",
+    "男は車に乗り込み、",
+    "お金ごと走り去った。"
+   ],
+   "edit": "actions",
+   "photos": [
+    {
+     "image": "flare",
+     "ai": false,
+     "credit": "Martin Cathrae / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Smoke_Bomb_(173822838).jpg"
+    }
+   ],
+   "texts": [
+    "「爆発するぞ！」"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 35.024,
+   "end": 37.273,
+   "said": [
+    "だが、男は警察官ではなかった。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "警察官ではなかった"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 37.273,
+   "end": 43.201,
+   "said": [
+    "白バイも、",
+    "普通のバイクを",
+    "白く塗った偽物だった。",
+    "爆弾の煙は、",
+    "ただの発炎筒だった。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "偽装"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 43.201,
+   "end": 49.227,
+   "said": [
+    "犯人は、120点以上の",
+    "遺留品を残した。",
+    "偽の白バイ、帽子、",
+    "レインコート、磁石……。"
+   ],
+   "edit": "list",
+   "photos": [
+    {
+     "image": "magnet",
+     "ai": false,
+     "credit": "Eurico Zimbres FGEL/UERJ / CC BY-SA 2.0 br",
+     "page": "https://commons.wikimedia.org/wiki/File:MagnetEZ.jpg"
+    }
+   ],
+   "texts": [
+    "偽の白バイ",
+    "帽子",
+    "レインコート",
+    "磁石",
+    "遺留品 120点以上"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 49.227,
+   "end": 55.176,
+   "said": [
+    "警察は、犯人のモンタージュ写真を",
+    "公開した。",
+    "その顔は、",
+    "日本中の誰もが",
+    "知る顔になった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "street68b",
+     "ai": false,
+     "credit": "大勝庵・玉電と郷土の歴史館 大塚勝利 / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:1968%E5%B9%B4%E3%81%AE%E7%A7%8B_%E7%A0%A7%E7%B7%9A%E5%90%89%E6%B2%A2%E9%A7%85%E4%BB%98%E8%BF%91%E3%81%AE%E8%B8%8F%E5%88%87.jpg"
+    }
+   ],
+   "texts": [
+    "モンタージュ写真",
+    "日本中が知る顔"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 55.176,
+   "end": 63.167,
+   "said": [
+    "数十万人が捜査の対象になった。",
+    "何万人もの警察官が動員された。",
+    "それでも、",
+    "奪われたお金は一度も",
+    "見つかっていない。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "捜査の規模",
+    "人\n捜査対象",
+    "人\n警察官",
+    "お金は見つからず"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 63.167,
+   "end": 70.108,
+   "said": [
+    "1975年12月10日、",
+    "時効が成立した。",
+    "犯人が捕まらないまま、",
+    "事件は終わった。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "時効",
+    "犯人は捕まらず"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 70.108,
+   "end": 73.927,
+   "said": [
+    "男は約3億円を奪い、",
+    "誰も傷つけず、永遠に消えた。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "wallnight",
+     "ai": false,
+     "credit": "KOJI MISUMI / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%9C%E4%B8%AD%E5%88%91%E5%8B%99%E6%89%80_-_panoramio_(2).jpg"
+    }
+   ],
+   "texts": [
+    "誰も傷つけず",
+    "永遠に消えた"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 73.927,
+   "end": 80.764,
+   "said": [
+    "そして日本中が",
+    "覚えたあの顔は、",
+    "犯人の本当の",
+    "顔ではなかったのかもしれない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
