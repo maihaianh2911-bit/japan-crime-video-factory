@@ -8,7 +8,9 @@
            (crime-voice while it runs; then crime-pick, a comment and a call to Claude)
   render   pictures from picks.json, plan, fonts, Remotion render, loudness, shot sheet
            → renders/crime/<N>/video.mp4, subtitles.srt, credits.txt, sources.json, sheet.jpg, edits.md (the scene
-           edit of every scene and why, for the owner)
+           edit of every scene and why, for the owner), caption.txt (the posting caption, when crime/<N>/ has one)
+  caption  only crime/<N>/caption.txt changed: checked and copied beside the published video, a comment with its link
+           (no voice, no search, no render)
 After prepare/search the issue waits for Claude (crime-pick) unless picks.json exists, then render runs too; not when
 prepare searched round 1 again with changed queries (the picks would point at other pictures).
 A video over 95 MB is encoded again at a bitrate that lands ~90 MB (GitHub refuses files over 100 MB).
@@ -21,6 +23,8 @@ import json, os, shutil, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 import ff
+import caption as CAP
+from channel import LANG, AI_TAG
 
 N, steps = sys.argv[1], sys.argv[2:]
 JOB = os.path.join(ROOT, 'crime', N)
@@ -251,8 +255,37 @@ def render():
         if mb > 100: raise SystemExit(f'video {mb:.1f} MB, vẫn quá 100 MB')
     sh(sys.executable, os.path.join(HERE, 'sheet.py'), video, os.path.join(out, 'plan.json'), os.path.join(WORK, 'sheet.jpg'))
     for f in ('subtitles.srt', 'credits.txt', 'sources.json', 'plan.json', 'edits.md'): shutil.copy(os.path.join(out, f), os.path.join(WORK, f))
-    publish(['video.mp4', 'sheet.jpg', 'subtitles.srt', 'credits.txt', 'sources.json', 'plan.json', 'edits.md'], 'video')
+    files = ['video.mp4', 'sheet.jpg', 'subtitles.srt', 'credits.txt', 'sources.json', 'plan.json', 'edits.md']
+    bad = caption_problems()   # a faulty caption never costs the render: the video goes out, the caption waits for a fix
+    if bad is None: pass
+    elif not bad: files.append('caption.txt')
+    else: CAPTION_NOTE.append('Lời đăng chưa đưa lên vì: ' + '; '.join(bad) + '.')
+    publish(files, 'video')
     return plan['duration']
+
+
+CAPTION_NOTE = []
+
+
+def caption_problems():
+    """crime/<N>/caption.txt → WORK/caption.txt and its problems (a list, empty = fine); None when there is none."""
+    src = os.path.join(JOB, 'caption.txt')
+    if not os.path.exists(src):
+        return None
+    shutil.copy(src, os.path.join(WORK, 'caption.txt'))
+    return CAP.problems(open(src, encoding='utf-8').read(), LANG, AI_TAG, CAP.uses_ai(os.path.join(WORK, 'sources.json')))
+
+
+def caption_only():
+    """Only the caption changed: check it, publish it beside the video that is already there, comment its link."""
+    if not os.path.exists(os.path.join(WORK, 'video.mp4')):   # no video yet: the render publishes it later
+        print(f'crime/{N}: caption.txt kept for the render (no video yet)'); return
+    bad = caption_problems()
+    if bad:
+        stop('🤖 Lời đăng (caption.txt) chưa đưa lên được: ' + '; '.join(bad) + '. Claude sẽ sửa rồi đẩy lại.')
+    publish(['caption.txt'], 'lời đăng')
+    comment(f'🤖 Đã cập nhật lời đăng của video (chép khi đăng video): {link("caption.txt")}\n\n'
+            f'- Video: {link("video.mp4")}\n- Tải về: {link("video.mp4").replace("/blob/", "/raw/")}\n- Phụ đề: {link("subtitles.srt")}')
 
 
 def wake(why):
@@ -335,4 +368,8 @@ if __name__ == '__main__':
         w = wake(f'Phiếu vụ án số {N}: video đã dựng, chờ kiểm tra.')
         comment(f'🤖 Đã dựng xong bản video ({m} phút {s:02d} giây).'
                 + claude(w, ' Claude đang kiểm tra lại từng cảnh trước khi giao.') + '\n\n'
-                f'- Video: {link("video.mp4")}\n- Ảnh các cảnh: {link("sheet.jpg")}\n- Cách edit từng cảnh: {link("edits.md")}')
+                f'- Video: {link("video.mp4")}\n- Ảnh các cảnh: {link("sheet.jpg")}\n- Cách edit từng cảnh: {link("edits.md")}'
+                + (f'\n- Lời đăng: {link("caption.txt")}' if os.path.exists(os.path.join(WORK, 'caption.txt')) and not CAPTION_NOTE else '')
+                + ''.join('\n\n' + x for x in CAPTION_NOTE))
+    elif 'caption' in steps:
+        caption_only()

@@ -42,7 +42,8 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
    framing preview → wait for the render (~15–20 min for 2 minutes of video) → check the scene sheet → closing comment. While a machine step runs, say so in one line
    and wait; if the owner does not want to wait, stop after any step: the Claude task continues from the labels
    when GitHub calls it.
-3. Give the owner the links to the video (view + download), the subtitles and the picture credits.
+3. Give the owner the links to the video (view + download), the subtitles, the posting caption (`caption.txt`, owner
+   16/11/2026: every video comes with it) and the picture credits.
 
 Quality first: look at every picture yourself, read each scene's lines and choose its scene edit by their meaning
 (the catalogue in `AGENT_CRIME.md` §2.4, `"edit"` + `"why"` in `picks.json`), preview before rendering, and paste
