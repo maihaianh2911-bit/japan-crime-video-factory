@@ -1,0 +1,320 @@
+{
+ "images": {
+  "station": {
+   "src": "1/4-2.jpg"
+  },
+  "inside": {
+   "src": "2/4-6.jpg"
+  },
+  "safe": {
+   "src": "2/1-2.jpg"
+  },
+  "revolver": {
+   "src": "1/10-4.jpg"
+  },
+  "police": {
+   "src": "1/6-1.jpg"
+  },
+  "tape": {
+   "src": "1/15-1.jpg"
+  },
+  "suburb": {
+   "src": "1/2-5.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "hook",
+   "why": "câu 1–2 mở đầu bằng điều lạ: ba người bị giết nhưng két sắt còn nguyên",
+   "items": [
+    {
+     "photo": "suburb"
+    },
+    {
+     "tag": "小さな事務所",
+     "at": "1:小さな"
+    },
+    {
+     "tag": "3人の女性",
+     "at": "1:3人",
+     "color": "red"
+    },
+    {
+     "tag": "金庫は手つかず",
+     "at": "2:金庫",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "where",
+   "why": "câu 3 nói ngày và nơi xảy ra: siêu thị ở Hachioji, Tokyo",
+   "items": [
+    {
+     "header": "八王子スーパー事件",
+     "kicker": "ファイル 1995"
+    },
+    {
+     "photo": "station"
+    },
+    {
+     "tag": "東京・八王子",
+     "at": "3:八王子",
+     "color": "black"
+    },
+    {
+     "tag": "1995年7月30日 夜",
+     "at": "3:1995",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 4,
+   "edit": "who",
+   "why": "câu 4–7 giới thiệu giờ đóng cửa và ba nhân viên còn lại (chỉ tuổi, không tên)",
+   "items": [
+    {
+     "card": {
+      "head": "7月30日 21:00 閉店",
+      "rows": [
+       {
+        "text": "高校生アルバイト",
+        "right": "17歳",
+        "at": "6:17歳"
+       },
+       {
+        "text": "高校生アルバイト",
+        "right": "16歳",
+        "at": "6:16歳"
+       },
+       {
+        "text": "従業員",
+        "right": "47歳",
+        "at": "7:47歳"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "2階の事務所",
+     "at": "5:2階",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 8,
+   "edit": "statement",
+   "why": "câu 8 là bước ngoặt: chỉ vài phút sau, cả ba bị bắn chết",
+   "items": [
+    {
+     "tag": "わずか数分後",
+     "at": "8:わずか"
+    }
+   ]
+  },
+  {
+   "at": 9,
+   "edit": "place",
+   "why": "câu 9–10: không ai nghe thấy, không ai thấy hung thủ đi",
+   "items": [
+    {
+     "photo": "inside"
+    },
+    {
+     "tag": "物音を聞いた人なし",
+     "at": "9:物音",
+     "color": "white"
+    },
+    {
+     "tag": "目撃者なし",
+     "at": "10:見た",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 11,
+   "edit": "detail",
+   "why": "câu 11–12 chỉ vào chi tiết lạ nhất: két sắt không bị mở",
+   "items": [
+    {
+     "photo": "safe",
+     "marks": [
+      {
+       "at": "11:金庫",
+       "box": [
+        0.15,
+        0.45,
+        0.85,
+        0.8
+       ],
+       "color": "yellow"
+      }
+     ]
+    },
+    {
+     "tag": "金庫",
+     "at": "11:金庫"
+    },
+    {
+     "tag": "開けられず",
+     "at": "11:開け"
+    },
+    {
+     "tag": "お金は手つかず",
+     "at": "12:お金",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 13,
+   "edit": "statement",
+   "why": "câu 13 là câu hỏi mở: hắn đến đó để làm gì?",
+   "items": [
+    {
+     "tag": "何のために来たのか",
+     "at": "13:何のため"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "object",
+   "why": "câu 14 tả hung khí: súng lục ổ quay, biết được từ viên đạn",
+   "items": [
+    {
+     "photo": "revolver"
+    },
+    {
+     "tag": "弾丸から判明",
+     "at": "14:弾丸",
+     "color": "white"
+    },
+    {
+     "tag": "回転式の拳銃",
+     "at": "14:回転式"
+    }
+   ]
+  },
+  {
+   "at": 15,
+   "edit": "number",
+   "why": "câu 15 có con số của cuộc điều tra: hàng nghìn đầu mối",
+   "items": [
+    {
+     "tag": "捜査",
+     "at": "15:警察",
+     "color": "white"
+    },
+    {
+     "big": "数千",
+     "text": "の\n手がかり",
+     "at": "15:何千"
+    },
+    {
+     "tag": "犯人は不明",
+     "at": "15:追った",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "span",
+   "why": "câu 16–17: năm 2010 bỏ thời hiệu, vụ án chưa khép lại",
+   "items": [
+    {
+     "header": "時効廃止",
+     "kicker": "2010"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "事件",
+        "right": "1995.7.30"
+       },
+       {
+        "text": "時効",
+        "right": "廃止（2010年）",
+        "color": "red",
+        "at": "16:廃止"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "今も捜査中",
+     "at": "17:終わって"
+    }
+   ]
+  },
+  {
+   "at": 18,
+   "edit": "fact",
+   "why": "câu 18–19: hơn 30 năm, cảnh sát vẫn treo thưởng, kêu gọi thông tin",
+   "items": [
+    {
+     "photo": "police"
+    },
+    {
+     "big": "30年+",
+     "text": "経過",
+     "at": "18:30年"
+    },
+    {
+     "tag": "懸賞金",
+     "at": "18:懸賞金",
+     "color": "red"
+    },
+    {
+     "tag": "情報提供を",
+     "at": "19:情報",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "question",
+   "why": "câu 20 lật lại: một vụ cướp không lấy được gì đã cướp ba mạng người",
+   "items": [
+    {
+     "photo": "tape"
+    },
+    {
+     "tag": "何も奪えなかった強盗",
+     "at": "20:何も",
+     "color": "white"
+    },
+    {
+     "tag": "3人の命",
+     "at": "20:3人",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 21,
+   "edit": "ending",
+   "why": "hai câu cuối: kẻ bóp cò có thể vẫn đang sống ở đâu đó",
+   "items": [
+    {
+     "text": [
+      "引き金を引いた人物は",
+      {
+       "text": "今もどこかに。",
+       "color": "red"
+      }
+     ],
+     "size": 82
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,364 @@
+{
+ "images": {
+  "street68": {
+   "src": "2/9-4.jpg"
+  },
+  "street68b": {
+   "src": "2/9-3.jpg"
+  },
+  "wall": {
+   "src": "1/3-3.jpg"
+  },
+  "wallnight": {
+   "src": "1/3-8.jpg"
+  },
+  "toshiba": {
+   "src": "1/6-4.jpg"
+  },
+  "car64": {
+   "src": "1/13-6.jpg"
+  },
+  "bike": {
+   "src": "1/10-2.jpg"
+  },
+  "flare": {
+   "src": "2/6-4.jpg"
+  },
+  "magnet": {
+   "src": "2/4-5.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "hook",
+   "why": "câu 1–2 nói điều lạ của vụ án: cướp lớn nhất mà không tiếng súng, không ai bị thương",
+   "items": [
+    {
+     "photo": "street68"
+    },
+    {
+     "tag": "5分以内",
+     "at": "1:5分",
+     "color": "white"
+    },
+    {
+     "tag": "現金強奪",
+     "at": "1:現金",
+     "color": "red"
+    },
+    {
+     "tag": "銃声なし",
+     "at": "2:銃声"
+    },
+    {
+     "tag": "けが人0人",
+     "at": "2:けが人"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "where",
+   "why": "câu 3 nói ngày và nơi xảy ra: Fuchu, Tokyo",
+   "items": [
+    {
+     "header": "三億円事件",
+     "kicker": "ファイル 1968"
+    },
+    {
+     "photo": "wall"
+    },
+    {
+     "tag": "1968年12月10日 朝",
+     "at": "3:1968",
+     "color": "red"
+    },
+    {
+     "tag": "東京・府中",
+     "at": "3:府中",
+     "color": "black"
+    }
+   ]
+  },
+  {
+   "at": 4,
+   "edit": "pair",
+   "why": "câu 4–5 nêu hai thứ đi cùng: chiếc xe chở 3 trăm triệu yên và nhà máy Toshiba nhận tiền thưởng",
+   "items": [
+    {
+     "photo": "car64"
+    },
+    {
+     "photo": "toshiba",
+     "at": "5:東芝"
+    },
+    {
+     "tag": "約3億円",
+     "at": "4:約3億円"
+    },
+    {
+     "tag": "冬のボーナス",
+     "at": "5:ボーナス"
+    },
+    {
+     "tag": "東芝府中工場",
+     "at": "5:東芝",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 6,
+   "edit": "figure",
+   "why": "câu 6–8 nói về người cảnh sát mô tô bí ẩn và lời nói dối về quả bom",
+   "items": [
+    {
+     "photo": "bike"
+    },
+    {
+     "tag": "白バイの警官?",
+     "at": "6:白バイ",
+     "color": "black"
+    },
+    {
+     "tag": "支店長宅が爆破",
+     "at": "7:支店長",
+     "color": "white"
+    },
+    {
+     "tag": "爆弾がある?",
+     "at": "8:爆弾",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 9,
+   "edit": "actions",
+   "why": "câu 9–12 kể lần lượt những việc hắn làm: chui xuống gầm, khói, hét, lái xe đi",
+   "items": [
+    {
+     "card": {
+      "style": "note",
+      "rows": [
+       {
+        "text": "車の下にもぐる",
+        "check": true,
+        "at": "9:もぐり"
+       },
+       {
+        "text": "煙が上がる",
+        "check": true,
+        "at": "9:煙"
+       },
+       {
+        "text": "4人が逃げる",
+        "check": true,
+        "at": "11:4人"
+       },
+       {
+        "text": "車ごと走り去る",
+        "check": true,
+        "at": "12:走り"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "「爆発するぞ！」",
+     "at": "10:爆発",
+     "color": "red"
+    },
+    {
+     "photo": "flare",
+     "at": "9:煙"
+    }
+   ]
+  },
+  {
+   "at": 13,
+   "edit": "statement",
+   "why": "câu 13 là bước ngoặt: người đó không phải cảnh sát",
+   "items": [
+    {
+     "tag": "警察官ではなかった",
+     "at": "13:警察官"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "compare",
+   "why": "câu 14–15 đối chiếu cái tưởng là thật với sự thật: mô tô giả, khói là pháo sáng",
+   "items": [
+    {
+     "card": {
+      "head": "正体",
+      "rows": [
+       {
+        "text": "白バイ",
+        "right": "塗っただけの偽物",
+        "at": "14:白バイ"
+       },
+       {
+        "text": "爆弾の煙",
+        "right": "ただの発炎筒",
+        "at": "15:煙"
+       }
+      ]
+     }
+    },
+    {
+     "stamp": "偽装",
+     "at": "15:発炎筒"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "list",
+   "why": "câu 16–17 liệt kê đồ hung thủ để lại",
+   "items": [
+    {
+     "photo": "magnet"
+    },
+    {
+     "tag": "偽の白バイ",
+     "at": "17:偽"
+    },
+    {
+     "tag": "帽子",
+     "at": "17:帽子"
+    },
+    {
+     "tag": "レインコート",
+     "at": "17:レインコート"
+    },
+    {
+     "tag": "磁石",
+     "at": "17:磁石"
+    },
+    {
+     "tag": "遺留品 120点以上",
+     "at": "16:120点",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 18,
+   "edit": "place",
+   "why": "câu 18–19 nói về bức ảnh chân dung cả nước Nhật từng biết (không đưa khuôn mặt)",
+   "items": [
+    {
+     "photo": "street68b"
+    },
+    {
+     "tag": "モンタージュ写真",
+     "at": "18:モンタージュ",
+     "color": "white"
+    },
+    {
+     "tag": "日本中が知る顔",
+     "at": "19:日本中",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "number",
+   "why": "câu 20–22 có các con số của cuộc điều tra",
+   "items": [
+    {
+     "tag": "捜査の規模",
+     "at": "20:数十万",
+     "color": "white"
+    },
+    {
+     "big": "数十万",
+     "text": "人\n捜査対象",
+     "at": "20:数十万"
+    },
+    {
+     "big": "数万",
+     "text": "人\n警察官",
+     "at": "21:何万"
+    },
+    {
+     "tag": "お金は見つからず",
+     "at": "22:お金",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 23,
+   "edit": "span",
+   "why": "câu 23–24 nói khoảng thời gian từ vụ án đến khi hết thời hiệu",
+   "items": [
+    {
+     "header": "時効",
+     "kicker": "1975"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "事件",
+        "right": "1968.12.10"
+       },
+       {
+        "text": "時効成立",
+        "right": "1975.12.10",
+        "color": "red",
+        "at": "23:時効"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "犯人は捕まらず",
+     "at": "24:捕まらない"
+    }
+   ]
+  },
+  {
+   "at": 25,
+   "edit": "question",
+   "why": "câu 25 lật lại: lấy 3 trăm triệu mà không ai đổ máu, rồi biến mất",
+   "items": [
+    {
+     "photo": "wallnight"
+    },
+    {
+     "tag": "誰も傷つけず",
+     "at": "25:誰も",
+     "color": "white"
+    },
+    {
+     "tag": "永遠に消えた",
+     "at": "25:永遠",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 26,
+   "edit": "ending",
+   "why": "hai câu cuối: khuôn mặt cả nước nhớ có thể không phải mặt thật",
+   "items": [
+    {
+     "text": [
+      "日本中が覚えた顔は",
+      {
+       "text": "本当の顔ではない？",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
