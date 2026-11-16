@@ -1,0 +1,97 @@
+{
+ "title": "三億円事件",
+ "voice": "clone_190",
+ "lines": [
+  "日本史上最大の現金強奪は、5分もかからなかった。",
+  "銃声もなく、けが人も一人もいなかった。",
+  "1968年12月10日の朝、東京・府中。",
+  "銀行の車が、約3億円を運んでいた。",
+  "東芝府中工場で働く人たちの、冬のボーナスだった。",
+  "その途中、白バイの警察官が車を止めた。",
+  "「支店長の家が爆破された。」",
+  "「この車にも、爆弾があるかもしれない。」",
+  "男は車の下にもぐりこんだ。そして、煙が上がった。",
+  "「爆発するぞ！逃げろ！」",
+  "4人の銀行員は、車から逃げ出した。",
+  "男は車に乗り込み、お金ごと走り去った。",
+  "だが、男は警察官ではなかった。",
+  "白バイも、普通のバイクを白く塗った偽物だった。",
+  "爆弾の煙は、ただの発炎筒だった。",
+  "犯人は、120点以上の遺留品を残した。",
+  "偽の白バイ、帽子、レインコート、磁石……。",
+  "警察は、犯人のモンタージュ写真を公開した。",
+  "その顔は、日本中の誰もが知る顔になった。",
+  "数十万人が捜査の対象になった。",
+  "何万人もの警察官が動員された。",
+  "それでも、奪われたお金は一度も見つかっていない。",
+  "1975年12月10日、時効が成立した。",
+  "犯人が捕まらないまま、事件は終わった。",
+  "男は約3億円を奪い、誰も傷つけず、永遠に消えた。",
+  "そして日本中が覚えたあの顔は、",
+  "犯人の本当の顔ではなかったのかもしれない。"
+ ],
+ "tts": {
+  "3": "1968年12月10日の朝、東京・ふちゅう。",
+  "4": "銀行の車が、やくさんおくえんを運んでいた。",
+  "5": "とうしばふちゅうこうじょうで働く人たちの、冬のボーナスだった。",
+  "6": "その途中、しろバイの警察官が車を止めた。",
+  "14": "しろバイも、普通のバイクを白く塗った偽物だった。",
+  "15": "爆弾の煙は、ただのはつえんとうだった。",
+  "16": "犯人は、ひゃくにじゅってん以上のいりゅうひんを残した。",
+  "17": "偽のしろバイ、帽子、レインコート、磁石……。",
+  "23": "せんきゅうひゃくななじゅうごねん12月10日、時効が成立した。",
+  "25": "男はやくさんおくえんを奪い、誰も傷つけず、永遠に消えた。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 66,
+  "energy": 0.28
+ },
+ "queries": [
+  "commons: 300 million yen robbery",
+  "commons: 三億円事件",
+  "commons: incategory:\"Fuchu Prison\"",
+  "commons: Fuchu Prison wall",
+  "commons: 府中刑務所",
+  "commons: Toshiba Fuchu",
+  "commons: Fuchu Tokyo 1960s",
+  "commons: Gakuen-dori Fuchu",
+  "commons: Japanese police motorcycle 1960s",
+  "commons: Yamaha YDS motorcycle",
+  "commons: Showa 1968 Tokyo",
+  "commons: Nissan Cedric 1960s",
+  "commons: Toyota Crown 1960s",
+  "commons: Japanese banknotes 1960s",
+  "commons: Itagaki Taisuke 100 yen note",
+  "commons: road flare",
+  "commons: Japanese police 1960s",
+  "commons: Kokubunji 1960s",
+  "commons: rain coat 1960s",
+  "commons: duralumin case"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a 1960s Japanese police motorcycle parked on an empty road beside a long prison wall in the rain, no people",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, 1960s Japanese sedan with smoke rising from underneath on a wet road, no people, no license plate text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, three metal cash boxes in the back seat of an old car, no text",
+   "n": 1,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a road flare burning on wet asphalt at dawn, smoke, no people",
+   "n": 1,
+   "aspect": "1:1"
+  }
+ ]
+}

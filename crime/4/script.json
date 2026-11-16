@@ -1,0 +1,79 @@
+{
+ "title": "八王子スーパー強盗殺人事件",
+ "voice": "clone_190",
+ "lines": [
+  "小さな事務所で、3人の女性が殺された。",
+  "だが、金庫のお金は、そのまま残されていた。",
+  "1995年7月30日の夜。東京・八王子のスーパー。",
+  "店は夜9時に、閉店したばかりだった。",
+  "2階の事務所には、3人の女性従業員が残っていた。",
+  "アルバイトの高校生、17歳と16歳。",
+  "そして、47歳の女性。",
+  "わずか数分後、3人は銃で撃たれ、命を奪われた。",
+  "はっきりした物音を聞いた人はいない。",
+  "犯人が立ち去る姿を見た人もいない。",
+  "最も不可解なのは、金庫が開けられていなかったことだ。",
+  "犯人は、お金を手にしていない。",
+  "では、犯人は何のためにそこへ来たのか。",
+  "弾丸から、凶器は回転式の拳銃と分かった。",
+  "警察は数多くの人を調べ、何千もの手がかりを追った。",
+  "2010年、日本は殺人事件の時効を廃止した。",
+  "だから、この事件は今も終わっていない。",
+  "30年以上たった今も、警察は懸賞金をかけ、",
+  "情報の提供を呼びかけている。",
+  "何も奪えなかった強盗のために、3人の命が奪われた。",
+  "そして、引き金を引いた人物は、",
+  "今も日本のどこかで、生きているのかもしれない。"
+ ],
+ "tts": {
+  "3": "1995年7月30日の夜。東京・はちおうじのスーパー。",
+  "7": "そして、よんじゅうななさいの女性。",
+  "14": "弾丸から、凶器はかいてんしきの拳銃と分かった。",
+  "18": "30年以上たった今も、警察はけんしょうきんをかけ、"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 66,
+  "energy": 0.28
+ },
+ "queries": [
+  "commons: Hachioji",
+  "commons: incategory:\"Hachiōji, Tokyo\"",
+  "commons: Owada Hachioji",
+  "commons: Hachioji night",
+  "commons: Hachioji station 1990s",
+  "commons: Hachioji Police Station",
+  "commons: Japanese supermarket night",
+  "commons: supermarket closed night",
+  "commons: safe vault old",
+  "commons: revolver",
+  "commons: bullet cartridge",
+  "commons: office stairs dark",
+  "commons: office desk 1990s",
+  "commons: Tokyo Metropolitan Police wanted poster",
+  "commons: police tape Japan",
+  "commons: Asakawa river Hachioji",
+  "commons: Japanese suburb night street",
+  "commons: clock 9 pm"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, an empty small back office of a 1990s Japanese supermarket at night, a closed metal safe in the corner, fluorescent light, no people",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a narrow staircase to a second floor office at night, dim light, no people",
+   "n": 2,
+   "aspect": "3:4"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, the outside of a small closed Japanese supermarket at night in 1995, shutters half down, no people, no readable signs",
+   "n": 2,
+   "aspect": "4:3"
+  }
+ ]
+}

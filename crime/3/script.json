@@ -1,0 +1,96 @@
+{
+ "title": "グリコ・森永事件",
+ "voice": "clone_190",
+ "lines": [
+  "日本中が、お菓子を食べるのを怖がった時代があった。",
+  "1984年3月18日の夜。",
+  "銃を持った覆面の男たちが、グリコ社長の家に押し入った。",
+  "兵庫県西宮市。社長は、そのまま連れ去られた。",
+  "犯人の要求は、現金10億円と金塊100キロ。",
+  "3日後、社長は大阪の倉庫から、自力で逃げ出した。",
+  "だが、事件はここから始まった。",
+  "「かい人21面相」と名乗るグループが、現れた。",
+  "グリコに脅迫状を送り、新聞社には手紙を送った。",
+  "手紙は、警察をあざ笑っていた。",
+  "製品に毒を入れる、と脅した。",
+  "グリコのお菓子は、店の棚から消えた。",
+  "次の標的は森永。そして、ほかの食品会社も。",
+  "1984年10月、店の棚で青酸入りのお菓子が見つかった。",
+  "そこには、「どくいり きけん たべたら 死ぬで」。",
+  "現金の受け渡しの場で、警察はある男を見ていた。",
+  "キツネのような目をした男だった。",
+  "だが、男は逃げ切った。",
+  "1984年11月、滋賀県。",
+  "不審な車が、パトカーに声をかけられた。",
+  "車はそのまま逃げ去り、消えた。",
+  "1985年8月、滋賀県警の本部長が、自ら命を絶った。",
+  "その数日後、21面相は最後の手紙を送った。",
+  "食品会社をいじめるのは、もうやめる、と。",
+  "そして、二度と現れなかった。",
+  "2000年2月、すべての時効が成立した。",
+  "100通を超える手紙、数十万人の捜査員、キツネ目の男。",
+  "それでも、名前はひとつもない。"
+ ],
+ "tts": {
+  "3": "銃を持ったふくめんの男たちが、グリコ社長の家に押し入った。",
+  "4": "兵庫県にしのみやし。社長は、そのまま連れ去られた。",
+  "5": "犯人の要求は、現金10億円ときんかいひゃっキロ。",
+  "8": "「かい人にじゅういちめんそう」と名乗るグループが、現れた。",
+  "14": "1984年10月、店の棚でせいさん入りのお菓子が見つかった。",
+  "22": "1985年8月、しがけんけいのほんぶちょうが、自ら命を絶った。",
+  "23": "その数日後、にじゅういちめんそうは最後の手紙を送った。",
+  "27": "ひゃっつうを超える手紙、数十万人の捜査員、キツネ目の男。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 66,
+  "energy": 0.28
+ },
+ "queries": [
+  "commons: Glico-Morinaga case",
+  "commons: グリコ・森永事件",
+  "commons: Ezaki Glico headquarters",
+  "commons: incategory:\"Ezaki Glico\"",
+  "commons: Glico sign Dotonbori",
+  "commons: Morinaga Milk Caramel",
+  "commons: Nishinomiya Hyogo",
+  "commons: Osaka 1980s",
+  "commons: Japanese supermarket shelf candy",
+  "commons: Pocky box",
+  "commons: potassium cyanide",
+  "commons: Shiga Prefectural Police",
+  "commons: Meishin Expressway Shiga",
+  "commons: Japanese police car 1980s",
+  "commons: Kitsune mask",
+  "commons: typewriter Japanese",
+  "commons: letters envelopes",
+  "commons: Osaka Prefectural Police headquarters",
+  "commons: newspaper Japan 1984",
+  "commons: gold bars"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a dark warehouse interior in Osaka, 1980s, one small window, no people",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a pile of handwritten letters and envelopes on a dark desk, writing not readable",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a candy box on a supermarket shelf in 1984 Japan, dim light, no brand names, no text",
+   "n": 2,
+   "aspect": "1:1"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a man seen from behind wearing a cap in a crowded 1980s Japanese train station, face not visible",
+   "n": 2,
+   "aspect": "3:4"
+  }
+ ]
+}
