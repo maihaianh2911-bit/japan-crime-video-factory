@@ -252,6 +252,7 @@ assert any('tiếng Đức' in p for p in CAP.problems(ja_ok, 'de', 'KI-Illustra
 assert any('tiếng Nhật' in p for p in CAP.problems(de_ok, 'ja', 'イメージ（AI生成）', False))
 assert any('KI-Illustration' in p for p in CAP.problems(de_ok, 'de', 'KI-Illustration', True))
 assert CAP.problems(de_ok + '\nEinige Bilder: KI-Illustration', 'de', 'KI-Illustration', True) == []
+assert CAP.problems(de_ok.replace('siehe credits.txt', '珈琲牛乳 (CC BY 3.0)'), 'de', 'KI-Illustration', False) == []   # a name in the credit line
 assert any('#shorts' in p for p in CAP.problems(de_ok.replace(' #shorts', ''), 'de', 'KI-Illustration', False))
 assert any('2000' in p for p in CAP.problems(de_ok + 'x' * 2000, 'de', 'KI-Illustration', False)) and CAP.problems('', 'de', '', False)
 wf = yaml.safe_load(open(os.path.join(ROOT, '.github', 'workflows', 'crime.yml'), encoding='utf-8'))

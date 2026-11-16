@@ -9,7 +9,8 @@ facts are Claude's to check against the script.
 import json, os, re
 
 MAX, TITLE_MAX = 2000, 80
-CJK = re.compile(r'[぀-ヿ㐀-鿿]')
+CJK = re.compile(r'[\u3040-\u30ff\u3400-\u9fff]')
+CREDIT = ('Bildquellen', '画像出典')
 
 
 def problems(text, lang, ai_tag, uses_ai):
@@ -21,7 +22,8 @@ def problems(text, lang, ai_tag, uses_ai):
     if len(text) > MAX: out.append(f'lời đăng dài {len(text)} ký tự, tối đa {MAX}')
     title = text.splitlines()[0].strip()
     if len(title) > TITLE_MAX: out.append(f'dòng tiêu đề dài {len(title)} ký tự, tối đa {TITLE_MAX}')
-    cjk = len(CJK.findall(text))
+    # the credit line may name a photographer in any script (a Japanese user name on a German caption)
+    cjk = len(CJK.findall('\n'.join(l for l in text.splitlines() if not l.startswith(CREDIT))))
     if lang == 'ja' and cjk < 10: out.append('lời đăng phải viết bằng tiếng Nhật (kênh tiếng Nhật)')
     if lang == 'de' and cjk: out.append('lời đăng của kênh tiếng Đức có chữ Nhật/Trung: phải viết bằng tiếng Đức')
     tags = re.findall(r'#\w+', text)
