@@ -51,13 +51,15 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
 - `voice`: the voice **id only** (`clone_190`), never the dropdown text of the form (`clone_190 (mặc định)`); leave it
   out when the form says `_No response_` (the channel's voice in `prompts/channel.json` is used).
 ```json
-{"title": "アンネリーゼ・ミシェル事件", "voice": "clone_190",
- "lines": ["1976年、ドイツで23歳の女性が亡くなった。", "彼女の名前は、アンネリーゼ・ミシェル。", "自宅の小さな部屋で、悪魔祓いが続けられていた。"],
+{"title": "三億円事件", "voice": "clone_190",
+ "lines": ["1968年12月10日の朝、東京・府中。", "銀行の車が、約3億円を運んでいた。", "その途中、白バイの警察官が車を止めた。"],
  "tts": {},
  "music": {"style": "tension", "key": "D", "mode": "minor", "bpm": 70, "energy": 0.3},
- "queries": ["Klingenberg am Main", "commons: Anneliese Michel grave Klingenberg", "Aschaffenburg Landgericht", "europeana: Exorzismus 1976"],
+ "queries": ["wiki: 三億円事件", "wiki: 府中刑務所", "wiki: 府中市 (東京都)", "geo: 35.6861,139.473 600",
+             {"q": "police motorcycle", "want": "a white Japanese police motorcycle on a street"},
+             {"q": "road flare", "want": "a burning road flare with smoke on asphalt"}],
  "urls": [],
- "gen": [{"gen": "1970s amateur colour photograph, a small plain bedroom in a German village house, wooden bed, crucifixes on the wall, dim window light, no people", "n": 2}]}
+ "gen": [{"gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a 1960s Japanese sedan with smoke rising from underneath on a wet road, no people", "n": 2, "aspect": "4:3"}]}
 ```
 - `title`: the case title shown on top for the whole video, in the channel's language, one row: ≤ 14 full-width characters (`アンネリーゼ・ミシェル事件`, `三億円事件`, `名古屋妊婦切り裂き殺人事件` is too long → `名古屋妊婦殺人事件`).
 - `lines`: one spoken sentence each. ≤ ~32 characters (one breath; one subtitle box holds ≤ 18 characters, a line makes 1–2 boxes). Plain である / だ narration as the sample's tone, or です / ます if the owner's text is polite. Vietnamese script → translate into natural spoken
@@ -69,7 +71,7 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   pauses between lines shrink in step. The owner asked on 17/11/2026 for a **20 % faster pace**: write `"speed": 1.2`
   unless the owner says otherwise. Faster speech means a shorter video: estimate the length at ~9.5 characters/s
   (8 × 1.2) and keep it over 60 s (iron rule 2 of CLAUDE.md).
-- `tts`: kana for names and rare readings the voice may misread (`{"2": "かのじょのなまえは、アンネリーゼ・ミシェル。"}`) (`prompts/readings.json` is applied to every line).
+- `tts`: kana for names and rare readings the voice may misread (`{"3": "その途中、しろバイの警察官が車を止めた。"}`) (`prompts/readings.json` is applied to every line).
 - `music`: dark, quiet bed under the voice. `style` `tension` (default) or `documentary`, minor key, `energy`
   0.2–0.4. `music_volume` (default 0.16) only if the owner asks.
 - Subtitles need nothing from you: the machine cuts every line into clauses (Japanese ≤ 18 characters, cut after
@@ -77,13 +79,46 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   it is spoken (Whisper word times).
 - `title`: also the case name for the torn-paper header of the first scene (`picks.json`).
 - **Pictures** — the owner's decision (13/11/2026): **real pictures first, AI illustrations only where no real
-  picture fits, always labelled.** Ask for both in round 1:
-  - `queries` (12–20, in **English**; Japanese queries find little in these catalogues; for a place, a building or
-    a person on Commons add `incategory:"…"`, e.g. `commons: incategory:"Klingenberg am Main"`): the town, the street, the house,
-    the church, the court building, the prison, the region, contemporary press and documents, public people of the
-    case (only on free licences), objects of the time. Without a prefix a query searches Wikimedia Commons,
-    Openverse (Flickr …), Europeana and the Library of Congress at once; a prefix searches one: `commons:`,
-    `openverse:`, `europeana:`, `loc:`, `met:`, `aic:`, `cleveland:`; `File:<name>` fetches one Commons file.
+  picture fits, always labelled.** A video should show about as many different pictures as it has scenes (11–20):
+  ask for all of them in round 1:
+  - `queries` (16–24): what the machine searches (`scripts/find_images.py`, rewritten 17/11/2026 after the owner
+    found the videos short of pictures: videos #1–#9 of this channel show 5–11 different pictures in 11–20 scenes).
+    Three kinds, in this order:
+    1. **`wiki: <name>`: everything about one thing** — the case itself first, then every place, building,
+       institution and public person the script names: `"wiki: 三億円事件"`, `"wiki: 府中刑務所"`. Write the name as its
+       Japanese Wikipedia article is called (or the English one: this channel's Wikipedia is ja, then en). The
+       machine finds the Wikidata item (index.json says which: check it is the right one; a name that fits several
+       things takes the full article title, `"wiki: 府中市 (東京都)"`, or the item, `"wiki: Q4634328"`) and brings its
+       main picture, the pictures of its Japanese and English Wikipedia articles, the files of its Commons category
+       and photos taken within 400 m of its coordinates: up to 24, the most to the point first. **This is where the
+       real pictures of a case are.** Never skip it. A Japanese case itself has few free pictures (press photos are
+       not free; in a trial on 17/11/2026 `wiki: 三億円事件` brought 7: one from its English article and six photos
+       taken within 400 m of the item's coordinates, two of them a road along the prison wall), so its **places,
+       buildings and people carry the video**: one `wiki:` for each of them (`wiki: 府中刑務所` had 21 candidates in
+       the same trial).
+    2. **`geo: <lat>,<lon> <metres>`**: Commons photos taken around a point, whatever they are called (the street
+       of the crime, the river bank, the station square): `"geo: 35.6861,139.473 600"`. For a wider circle than
+       the 400 m of `wiki:`, or a point that has no article. The coordinates of a `wiki:` item are in index.json
+       (`wikidata.coord`).
+    3. **A picture described, for what has no article** (the symbol pictures: a police motorcycle, a road flare,
+       a safe, a dark stairwell, a car of the time): `{"q": "police motorcycle", "want": "a white Japanese police
+       motorcycle on a street"}`. `q`: one or two words **in English**, as an archive would file it (`road flare`,
+       `office safe`, `miso barrel`) — every extra word loses pictures, and Japanese words find little in these
+       archives. `want`: what the picture must show, **always in English** (the machine's eye, CLIP, reads
+       English only). The machine asks Commons, Openverse and Europeana for 20 each, scores every one against
+       `want` and keeps the 8 that show it best (`"keep": 12` for more); pictures that do not show it (score under
+       0.18) are dropped, so a group can come back small or empty: then ask another word. The score says the
+       picture shows the thing, not that it is Japanese or of the right year (the trial's `police motorcycle`
+       kept motorcycles from Vietnam, Australia and Finland beside the Japanese one): you still look.
+       A plain string (`"Fuchu Prison wall"`) still works and is ranked against its own words, but dates and
+       several words in one query bring paintings and portraits: prefer `wiki:` for names and `q` + `want` for
+       things. A string in Japanese (`"commons: 上祖師谷"`) is not ranked — the archive's first 8 are kept as before
+       — unless it has a `want`: `{"q": "commons: 上祖師谷", "want": "a quiet residential street in Tokyo"}`.
+       A prefix searches one archive: `commons:` (`commons: incategory:"Fuchu Prison"` = one Commons category),
+       `openverse:`, `europeana:`, `loc:` (the Library of Congress: slow, and it refuses the runners — only when
+       asked for by name), `met:`, `aic:`, `cleveland:`; `File:<name>` fetches one Commons file.
+    The contact sheet shows the score (`~0.31`: it shows the thing; `~0.20`: doubtful) next to the source
+    (`commons/wiki` = from the item or its articles, `commons/category`, `commons/geo`).
   - `urls`: pictures you found yourself on a page that states a free licence (direct image URL + page + title +
     author + licence). Check the licence on the page. Press photos (dpa, Getty …) are **not** free: never.
   - `gen`: AI illustrations for the lines no real picture can show (the room, the night, the ritual, the hospital
@@ -113,17 +148,36 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
 1. `voice/check.md` lists lines where Whisper heard something different. Real misreadings: fix in `script.json`
    `tts` (only changed lines are read again) and add the word to `prompts/readings.json`. Whisper mishearings
    (names, foreign words, digits) are dismissed.
-2. Open every `img/<r>/sheet_<k>.jpg` (tiles: `#n 1024x683 CC BY 2.0` + source + date, `AI` for illustrations;
-   `img/<r>/index.json` has titles, authors, dates, licences, pages, and `"ai": true` on illustrations). A group with
-   an `"error"` has no sheet: repeat it in the next round. A line without a fitting picture → write
+2. Open every `img/<r>/sheet_<k>.jpg` (tiles: `#n 1024x683 CC BY 2.0` + source + date + the score `~0.31` of a
+   ranked query, `AI` for illustrations; `img/<r>/index.json` has titles, authors, dates, licences, pages, `match`
+   (the score), `candidates` (how many pictures the query found before the best were kept), and `"ai": true` on
+   illustrations). For a `wiki:` group read `wikidata` in index.json first (id, name and description of the item
+   the machine took the name for): another thing of the same name → ask again with the full article title or the
+   Q-number. A group with an `"error"` has no sheet: repeat it in the next round. Missing pictures → write
    `crime/<N>/search-<r>.json` `{"queries": […], "urls": […], "gen": […]}` (r = 2, 3…), push. The issue is
-   `crime-voice` while the machine searches (a plain query takes up to ~1 min, a `commons:` one a few seconds) and
-   comes back to `crime-pick` with a 🤖 comment. Unattended: remove `crime-busy` right after the push and stop; you
+   `crime-voice` while the machine searches (about 10–20 s a query, measured in the twin repo; not yet measured
+   here) and comes back to `crime-pick` with a 🤖 comment. Unattended: remove `crime-busy` right after the push and stop; you
    are woken at `crime-pick`. In a chat: keep `crime-busy`, wait for that comment (check every minute), then view
    `img/<r>/`.
 3. Open the full picture (`img/<r>/<k>-<n>.jpg`) before choosing it: it must show what the line says, be sharp,
    carry no watermark or burnt-in caption, and for AI: no recognisable face, no text, no extra fingers or broken
    objects, the right era (cars, clothes, furniture). A wrong AI picture → another prompt in the next round.
+   **Enough pictures, and the real ones first** (owner, 17/11/2026: the videos were short of pictures; videos
+   #1–#9 of this channel show 5–11 different pictures in 11–20 scenes, #8 only 5 in 11):
+   - every real picture of the case and its places (the `wiki:` and `geo:` groups: the scene, the building, a
+     document, the memorial; people only as the rule on real victims under the table allows) is used before any
+     symbol picture or AI illustration of the same thing; a symbol picture never stands for a thing of which a
+     real picture was found (the real wall of 府中刑務所, not "a prison wall");
+   - a picture appears **at most twice** in a video (a second time only as another crop, e.g. in a `detail`, or
+     small in a `board`);
+   - count before you write the scenes: at least **3 different pictures for every 4 scenes**. The edits that lay
+     several pictures down help: `pair` (2), `board` (3–6), the small photo `actions` may carry. Fewer → a second
+     round (`search-2.json`: `wiki:` for the places and people not asked yet, `geo:` around the scene, more `q` +
+     `want`) before any scene is left with text alone; scenes with text alone (`statement`, `chapter`, `ending`)
+     stay under one in six.
+   `build.py` prints the count (`ảnh: 9 ảnh khác nhau cho 13 cảnh …`), every picture shown in more than two scenes
+   and the scenes with text alone when they are too many; the same line closes `edits.md` (and the preview's
+   `.edits.md`), so the owner reads it in your closing comment.
 4. **Choose a scene edit for every scene ("bảng cách edit").** One scene per idea (2–4 lines). For each
    scene: **read its lines first**, decide what they are *about* (a hook, a person, a place, a time, an object, a
    number, an action, a comparison, an open question, the end), and take the edit whose "when" column says that —
@@ -227,7 +281,7 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
    open the sheet: every scene rendered by the video's own code at its end (a scene over 7 s also in the middle),
    with times and the edit's name; `/tmp/preview.jpg.plan.json` has the time of every item and subtitle, and
    `/tmp/preview.jpg.edits.md` is the list scene → first line → edit → why (read it once more: does each edit fit
-   what its lines say? no ⚠️ left?). A photo takes the shape of its template box (the `view` is grown to it): when
+   what its lines say? no ⚠️ left?) and, in its last line, the picture count of step 3. A photo takes the shape of its template box (the `view` is grown to it): when
    that cuts the subject, set `view`, or `w`/`h` yourself. Check: the picture is the
    thing the line names, nothing important is cut or covered, no item off the desk or under the subtitle box, no
    recognisable face on an AI picture, tags appear on the right words. Fix and run again until all are right.

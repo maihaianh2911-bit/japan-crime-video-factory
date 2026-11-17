@@ -166,9 +166,21 @@ jobs:
             fi
             sleep 30
           done
+      # the picture search ranks its results with CLIP (scripts/find_images.py): the model file (600 MB) is kept between runs
+      - name: Mô hình chấm điểm ảnh
+        if: env.TODO == '1'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/find-images
+          key: clip-vit-b-32-quickgelu-laion400m-e32
       - name: Cài công cụ
         if: env.TODO == '1'
         run: |
+          # picture ranking, only for the steps that search; optional: without it the search keeps the first pictures of every archive
+          if grep -qE ' (prepare|search)' /tmp/todo.txt; then
+            { pip install -q torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -q open_clip_torch; } \
+              || echo "::warning::không cài được bộ chấm điểm ảnh: tìm ảnh chạy không xếp hạng"
+          fi
           # pinned to the versions tested together (PyAV 19 breaks faster-whisper 1.2: "metadata_errors")
           pip install -q numpy scipy pillow pykakasi==2.3.0 num2words==0.5.14 faster-whisper==1.1.1 av==13.1.0 imageio-ffmpeg==0.8.1
           npm ci --no-audit --no-fund

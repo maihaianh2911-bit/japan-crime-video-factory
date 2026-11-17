@@ -4,41 +4,79 @@
 Usage: find_images.py <out_dir> "<query 1>" "<query 2>" ...      or      find_images.py <out_dir> --spec <file.json>
 
 Sources (crime channels: places, buildings, people of the time, newspapers, court and police records):
+  wiki       every picture ABOUT one thing (a case, a place, a person, a building), found through its Wikidata item:
+             its main picture, the pictures of its Wikipedia articles (channel language and English), the files of its
+             Wikimedia Commons category (and sub-categories), the photos taken at its coordinates. `wiki: 三億円事件`,
+             `wiki: 府中刑務所` or `wiki: Q4634328`. This is where the real pictures of a case are: ask it first.
+  geo        Commons photos taken around a point, whatever they are called: `geo: 35.6861,139.473 600` (metres)
+  commons    Wikimedia Commons, full-text search
   openverse  Openverse: Flickr, museums, science sites … (CC0, public domain, CC BY, CC BY-SA; Wikimedia excluded)
+  europeana  Europeana: European libraries, archives, museums (CC0, public domain, CC BY, CC BY-SA)
   met        The Metropolitan Museum of Art, open access (CC0)
   aic        Art Institute of Chicago (public domain works)
   cleveland  Cleveland Museum of Art, open access (CC0)
-  europeana  Europeana: European libraries, archives, museums (CC0, public domain, CC BY, CC BY-SA)
-  loc        Library of Congress, photos, prints and maps ("No known restrictions on publication" only)
-  commons    Wikimedia Commons (places, buildings, people and newspapers of real cases)
-A query without prefix searches commons, openverse, europeana and loc and mixes the results; `met: …` searches one.
+  loc        Library of Congress, photos, prints and maps ("No known restrictions on publication" only; slow, and it
+             refuses the GitHub runners: only when asked for by name)
+A query without prefix searches commons, openverse and europeana and mixes the results; `met: …` searches one.
 Write queries in English (or the language of the archive). `File:<name>` fetches one exact Commons file.
-With --spec, the JSON list may also hold pictures from any page Claude checked (journal figures under CC BY, a
-museum page …): {"url": "<direct image url>", "page": "<page that states the licence>", "title": "...",
-"artist": "...", "license": "CC BY 4.0", "date": "..."} — each becomes its own group with one picture.
+With --spec, the JSON list may also hold
+  {"q": "<query>", "want": "<what the picture must show, in English>", "keep": 12}   a query with its own wish
+  {"url": "<direct image url>", "page": "<page that states the licence>", "title": "...", "artist": "...",
+   "license": "CC BY 4.0", "date": "..."}   a picture from any page Claude checked (journal figures under CC BY, a
+   museum page …): its own group with one picture.
 
-For every query: up to 8 pictures, keeping only licences that allow use in a monetised video, dropping files under
-400 px and duplicate scans of the same picture (also across earlier rounds listed in FIND_SEEN). Writes
-<out_dir>/<k>-<n>.jpg (up to 4000 px), <out_dir>/index.json (query, source, page, licence, author, date, size) and
+Ranking (17/11/2026). A free-text query asks each archive for 20 pictures, not 8, looks at a small version of every
+one and keeps the 8 that fit the words best: CLIP (open_clip ViT-B/32, MIT; weights from its GitHub release) scores
+picture against text ("want", else the query), and the archive's own order counts a little too. The score is
+"match" in index.json and `~0.31` on the contact sheet (about 0.30 and more: it shows the thing; under 0.22: it does not).
+Without torch/open_clip installed, or with FIND_RANK=0, the first 8 are kept as before; so are the results of a query
+in another script (Japanese …) without a "want": CLIP reads English, so a query in Japanese is only ranked when it
+has a "want". `wiki:` and `geo:` results keep their order (they are about the thing by construction) unless the
+query has a "want".
+
+For every query: up to 8 pictures (24 for wiki, 12 for geo, or "keep"), only licences that allow use in a monetised
+video, no files under 400 px, no duplicate scans of the same picture (also across earlier rounds listed in
+FIND_SEEN). Commons pictures are taken in the standard sizes (https://w.wiki/GHai). Downloads run a few at a time
+and give up on a dead host after two short tries. Writes <out_dir>/<k>-<n>.jpg (up to 4000 px),
+<out_dir>/index.json (query, source, page, licence, author, date, size, match; for wiki the item found) and
 <out_dir>/sheet_<k>.jpg (contact sheet with numbers and source) so Claude can choose. A query whose search fails
 (every source down, a timeout …) is logged and kept with no results and an "error" in index.json; only when every
-query fails does the script exit with an error. Stdlib + Pillow.
+query fails does the script exit with an error. An archive that answers 429 (too many requests) is not asked again
+in the same run. Stdlib + Pillow (+ torch and open_clip_torch for the ranking).
 """
 import io, json, os, re, sys, time, urllib.parse, urllib.request
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from PIL import Image, ImageDraw
 
 UA = 'CrimeVideoFactory/0.1 (https://github.com/maihaianh2911-bit/japan-crime-video-factory; licence-checked picture search for documentary shorts)'
-SOURCES = ('commons', 'openverse', 'europeana', 'loc')
+SOURCES = ('commons', 'openverse', 'europeana')   # a query without prefix; loc is slow and refuses the runners
 MIN_SIDE = 400   # shorter side in pixels: smaller files only look blurred in the video
-KEEP = 8         # pictures kept per query
+KEEP, KEEP_WIKI, KEEP_GEO = 8, 24, 12   # pictures kept per query: free text, wiki:, geo:
+DEEP = 20        # pictures asked from each archive when the results are ranked (else 8)
+MATCH_MIN = 0.18 # a query with a "want": pictures that fit it less are dropped (about 0.30: shows it; 0.15: something else)
+STD = (960, 1280, 1920, 3840)   # Commons serves these widths freely; other sizes and originals are rate-limited
+try:             # the channel's language: its Wikipedia is read first by wiki:
+    LANG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'prompts', 'channel.json'), encoding='utf-8'))['lang']
+except Exception:
+    LANG = 'en'
+LANGS = tuple(dict.fromkeys((LANG, 'en')))   # Wikipedias and labels read by wiki:, in this order
 
 
-def get(url, tries=4, raw=True):
+WIKIMEDIA = threading.BoundedSemaphore(2)   # Wikimedia asks for few requests at a time, whatever runs in parallel here
+
+
+def get(url, tries=4, raw=True, timeout=60):
+    gentle = urllib.parse.urlsplit(url).netloc.endswith('wikimedia.org')
     for i in range(tries):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=60) as r:
-                b = r.read()
-                return b if raw else json.loads(b)
+            if gentle: WIKIMEDIA.acquire()
+            try:
+                with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=timeout) as r:
+                    b = r.read()
+            finally:
+                if gentle: time.sleep(0.05); WIKIMEDIA.release()
+            return b if raw else json.loads(b)
         except urllib.error.HTTPError as e:
             if e.code in (429, 500, 502, 503, 504) and i < tries - 1:
                 time.sleep(8 * (i + 1)); continue
@@ -57,10 +95,12 @@ def strip(html):
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', html or '')).strip()
 
 
-def item(source, title, page, url, license, artist='', date='', description='', width=None, height=None):
+def item(source, title, page, url, license, artist='', date='', description='', width=None, height=None, preview=None):
+    """One result. thumb: the picture to keep; preview: a small version of it (for the ranking, and the fallback
+    when the big one cannot be had)."""
     return {'source': source, 'title': strip(str(title or ''))[:160], 'page': page, 'thumb': url, 'license': license,
             'artist': strip(str(artist or ''))[:160], 'date': strip(str(date or ''))[:60], 'description': strip(str(description or ''))[:300],
-            'width': width, 'height': height}
+            'width': width, 'height': height, 'preview': preview or url}
 
 
 # ---- sources: each returns up to n results, newest API shapes checked 12/11/2026
@@ -70,7 +110,7 @@ def openverse(q, n):
     for r in js('https://api.openverse.org/v1/images/?' + urllib.parse.urlencode(p)).get('results', []):
         lic = {'cc0': 'CC0', 'pdm': 'Public domain'}.get(r['license'], f"CC {r['license'].upper()} {r.get('license_version') or ''}".strip())
         out.append(item(f"openverse/{r.get('source')}", r.get('title') or r['url'].rsplit('/', 1)[-1], r.get('foreign_landing_url'), r['url'], lic,
-                        r.get('creator'), '', '', r.get('width'), r.get('height')))
+                        r.get('creator'), '', '', r.get('width'), r.get('height'), r.get('thumbnail')))
     return out
 
 
@@ -122,7 +162,7 @@ def eu_licence(u):
 
 
 def europeana(q, n):
-    p = {'wskey': 'api2demo', 'query': q, 'reusability': 'open', 'media': 'true', 'qf': 'TYPE:IMAGE', 'rows': n * 2, 'profile': 'rich'}
+    p = {'wskey': 'api2demo', 'query': q, 'reusability': 'open', 'media': 'true', 'qf': 'TYPE:IMAGE', 'rows': min(100, n * 2), 'profile': 'rich'}
     out = []
     for r in js('https://api.europeana.eu/record/v2/search.json?' + urllib.parse.urlencode(p)).get('items', []):
         if len(out) >= n: break
@@ -130,7 +170,8 @@ def europeana(q, n):
         if not lic or not url: continue
         cr = [c for c in r.get('dcCreator') or [] if not c.startswith('http')]
         out.append(item('europeana', (r.get('title') or [''])[0], (r.get('guid') or '').split('?')[0], url, lic,
-                        ', '.join(cr[:2]) or ', '.join((r.get('dataProvider') or [])[:1]), (r.get('year') or [''])[0], ', '.join((r.get('dataProvider') or [])[:1])))
+                        ', '.join(cr[:2]) or ', '.join((r.get('dataProvider') or [])[:1]), (r.get('year') or [''])[0], ', '.join((r.get('dataProvider') or [])[:1]),
+                        preview=(r.get('edmPreview') or [None])[0]))
     return out
 
 
@@ -152,65 +193,253 @@ def loc(q, n):
 
 
 COMMONS = 'https://commons.wikimedia.org/w/api.php'
+WIKIDATA = 'https://www.wikidata.org/w/api.php'
 OK = re.compile(r'^(public domain|pd|cc0|cc[- ]by(-sa)?[- ]?\d|cc[- ]by(-sa)?$)', re.I)
+SMALL = 330   # the small version looked at for the ranking (a standard Commons width)
+INFO = {'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': SMALL}
+# the last part of a Commons thumbnail address: "330px-Name.jpg", and "lossy-page1-330px-Name.tif.jpg" for a TIFF scan
+THUMB = re.compile(r'/((?:lossy-)?(?:page\d+-)?)\d+px-([^/]+)$')
+# page furniture of Wikipedia articles and maps that show no place: never a picture of the thing
+ICON = re.compile(r'(?i)(commons-logo|wik\w*[- ]logo|qsicon|oojs|red pog|loca\w+ map|\bicon\b|flag of|disambig|padlock|'
+                  r'question book|ambox|edit-ltr|symbol \w+ vote|speaker|nuvola|crystal clear|\.svg$)')
 
 
-def commons(q, n):
-    if q.startswith('File:'):   # one exact file; standard thumbnail sizes only (https://w.wiki/GHai)
-        p = {'action': 'query', 'format': 'json', 'titles': q, 'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': 3840}
+def commons_items(pages, source='commons', exact=False, order=None):
+    """Results from the pages of a Commons answer asked with INFO (a small version of every file). The picture kept
+    is the largest standard size up to 1920 px (3840 for an exact file); a file under 960 px is taken whole."""
+    pages = list(pages)
+    if order:   # a list of titles: the API answers in its own order
+        pos = {t.replace('_', ' '): i for i, t in enumerate(order)}
+        pages.sort(key=lambda pg: pos.get(pg.get('title', ''), 1e9))
     else:
-        p = {'action': 'query', 'format': 'json', 'generator': 'search', 'gsrsearch': q, 'gsrnamespace': 6, 'gsrlimit': n,
-             'prop': 'imageinfo', 'iiprop': 'url|extmetadata|size|mime', 'iiurlwidth': 1920}
-    d = js(COMMONS + '?' + urllib.parse.urlencode(p))
+        pages.sort(key=lambda pg: pg.get('index', 0))
     out = []
-    for pg in sorted((d.get('query') or {}).get('pages', {}).values(), key=lambda x: x.get('index', 0)):
+    for pg in pages:
         ii = (pg.get('imageinfo') or [{}])[0]
         if ii.get('mime') not in ('image/jpeg', 'image/png', 'image/tiff'): continue
         md = ii.get('extmetadata') or {}
         lic = strip((md.get('LicenseShortName') or {}).get('value'))
         if not OK.search(lic): continue
-        url = ii.get('thumburl') or ii.get('url')
-        if 'unscaled' in url and (ii.get('width') or 0) > 1920:   # originals are rate-limited: take the standard 1920 px size
-            u = ii['url'].split('?')[0]; url = u.replace('/commons/', '/commons/thumb/', 1) + '/1920px-' + u.rsplit('/', 1)[1]
-        out.append(item('commons', pg['title'][5:], ii.get('descriptionurl'), url, lic,
+        small = (ii.get('thumburl') or ii.get('url') or '').split('?')[0]
+        w = ii.get('width') or 0
+        if THUMB.search(small):   # a real thumbnail: the same file in another standard width
+            top = [x for x in STD if x <= w and x <= (3840 if exact else 1920)]
+            url = THUMB.sub(lambda m: f'/{m.group(1)}{top[-1]}px-{m.group(2)}', small) if top else ii['url'].split('?')[0]
+        else:
+            url = small
+        out.append(item(source, pg['title'][5:], ii.get('descriptionurl'), url, lic,
                         (md.get('Artist') or {}).get('value'), (md.get('DateTimeOriginal') or {}).get('value'),
-                        (md.get('ImageDescription') or {}).get('value'), ii.get('width'), ii.get('height')))
+                        (md.get('ImageDescription') or {}).get('value'), ii.get('width'), ii.get('height'), small))
     return out
+
+
+def commons_api(host=COMMONS, **p):
+    return js(host + '?' + urllib.parse.urlencode({'action': 'query', 'format': 'json', **p}))
+
+
+def commons(q, n):
+    if q.startswith('File:'):   # one exact file
+        d = commons_api(titles=q, **INFO)
+        return commons_items((d.get('query') or {}).get('pages', {}).values(), exact=True)
+    d = commons_api(generator='search', gsrsearch=q, gsrnamespace=6, gsrlimit=min(50, n), **INFO)
+    return commons_items((d.get('query') or {}).get('pages', {}).values())
+
+
+def commons_files(titles, source):
+    """Results for a list of Commons file titles, in that order (files that are not on Commons, e.g. a non-free
+    picture kept on one Wikipedia only, simply do not come back)."""
+    out = []
+    for i in range(0, len(titles), 50):
+        d = commons_api(titles='|'.join(titles[i:i + 50]), **INFO)
+        out += commons_items((d.get('query') or {}).get('pages', {}).values(), source, order=titles[i:i + 50])
+    return out
+
+
+def geo(q, n):
+    """Commons photos taken around a point: "<lat>,<lon> [<radius in metres>]" (default 500 m, 10 km at most)."""
+    m = re.match(r'^\s*(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)(?:\s+(\d+))?\s*m?\s*$', q)
+    if not m: raise ValueError(f'geo: expects "<lat>,<lon> [<metres>]", got "{q}"')
+    rad = min(10000, max(10, int(m.group(3) or 500)))
+    d = commons_api(generator='geosearch', ggscoord=f'{m.group(1)}|{m.group(2)}', ggsradius=rad, ggsnamespace=6,
+                    ggslimit=min(100, n * 2), **INFO)
+    out, series = [], set()
+    for r in commons_items((d.get('query') or {}).get('pages', {}).values(), 'commons/geo'):
+        key = re.sub(r'\d+', '#', r['title'])   # survey tiles and photo series differ in their numbers only: one of each
+        if key in series: continue
+        series.add(key); out.append(r)
+    return out
+
+
+WIKI_FOUND = {}   # query -> the Wikidata item it was read as (for index.json: Claude checks it is the right thing)
+
+
+def wiki(q, n):
+    """Every picture about one thing, through its Wikidata item (see the module text). Most to the point first: the
+    item's own pictures, the pictures of its Wikipedia articles, its Commons category, then photos taken there."""
+    q = q.strip()
+    qid = q if re.fullmatch(r'Q\d+', q) else None
+    for lang in LANGS:   # the exact title of a Wikipedia article first: "府中市 (東京都)"
+        if qid: break
+        try:
+            d = commons_api(f'https://{lang}.wikipedia.org/w/api.php', titles=q, prop='pageprops', redirects=1)
+        except Exception:
+            continue
+        for pg in (d.get('query') or {}).get('pages', {}).values():
+            pp = pg.get('pageprops') or {}
+            if pp.get('wikibase_item') and 'disambiguation' not in pp: qid = pp['wikibase_item']
+    for lang in LANGS:   # else the item called so
+        if qid: break
+        hits = js(WIKIDATA + '?' + urllib.parse.urlencode({'action': 'wbsearchentities', 'search': q, 'language': lang, 'uselang': lang,
+                                                           'type': 'item', 'limit': 3, 'format': 'json'})).get('search', [])
+        if hits: qid = hits[0]['id']
+    if not qid:
+        raise RuntimeError(f'wiki: no Wikidata item named "{q}" (try the name of its Wikipedia article, or commons: {q})')
+    e = js(WIKIDATA + '?' + urllib.parse.urlencode({'action': 'wbgetentities', 'ids': qid, 'props': 'claims|sitelinks|labels|descriptions',
+                                                    'languages': '|'.join(LANGS), 'format': 'json'}))['entities'][qid]
+    claims, links = e.get('claims') or {}, e.get('sitelinks') or {}
+    val = lambda p: [c['mainsnak']['datavalue']['value'] for c in claims.get(p, []) if c.get('mainsnak', {}).get('datavalue')]
+    first = lambda d: next((d[l]['value'] for l in LANGS if l in d), '')
+    coord = (val('P625') or [None])[0]
+    WIKI_FOUND[q] = {'id': qid, 'label': first(e.get('labels') or {}), 'description': first(e.get('descriptions') or {}),
+                     **({'coord': [round(coord['latitude'], 5), round(coord['longitude'], 5)]} if coord else {})}
+    own = ['File:' + v for p in ('P18', 'P1442', 'P5775', 'P8592', 'P3451') for v in val(p) if isinstance(v, str)]
+    article = []
+    for site in (l + 'wiki' for l in LANGS):
+        if site not in links: continue
+        try:
+            d = commons_api(f'https://{site[:-4]}.wikipedia.org/w/api.php', titles=links[site]['title'], prop='images', imlimit=500, redirects=1)
+        except Exception as ex:
+            print(f'  wiki: {site} {str(ex)[:80]}'); continue
+        for pg in (d.get('query') or {}).get('pages', {}).values():
+            article += ['File:' + i['title'].split(':', 1)[1] for i in pg.get('images', [])]
+    cat = (val('P373') or [links.get('commonswiki', {}).get('title', '')[9:] if links.get('commonswiki', {}).get('title', '').startswith('Category:') else ''])[0]
+    members = lambda c, t, lim: [x['title'] for x in (commons_api(list='categorymembers', cmtitle='Category:' + c, cmtype=t, cmlimit=lim).get('query') or {}).get('categorymembers', [])]
+    filed = []
+    if cat:
+        filed = members(cat, 'file', 100)
+        for sub in members(cat, 'subcat', 12):
+            if len(filed) >= 150: break
+            filed += members(sub[9:], 'file', 50)
+    groups = [(own, 'commons/wiki'), (article, 'commons/wiki'), (filed, 'commons/category')]
+    seen, out = set(), []
+    for titles, source in groups:
+        titles = [t for t in dict.fromkeys(titles) if t.replace('_', ' ') not in seen and not ICON.search(t)]
+        seen.update(t.replace('_', ' ') for t in titles)
+        out += commons_files(titles[:150], source)
+    if coord:   # the place itself, whatever the photos are called
+        try: out += [r for r in geo(f"{coord['latitude']},{coord['longitude']} 400", 20) if 'File:' + r['title'] not in seen]
+        except Exception as ex: print(f'  wiki: geo {str(ex)[:80]}')
+    return out[:max(n, 60)]
 
 
 REFUSED = set()   # sources that answered 429 (too many requests) in this run: not asked again, see search()
 
 
-FIND = {'openverse': openverse, 'met': met, 'aic': aic, 'cleveland': cleveland, 'europeana': europeana, 'loc': loc, 'commons': commons}
+FIND = {'openverse': openverse, 'met': met, 'aic': aic, 'cleveland': cleveland, 'europeana': europeana, 'loc': loc, 'commons': commons,
+        'wiki': wiki, 'geo': geo}
+ABOUT = ('wiki', 'geo')   # sources whose results are about the thing by construction: kept in their order
 
 
-def search(q):
-    """Results of one query string, in the order to show them."""
+class Clip:
+    """Scores how well a picture fits a text (open_clip ViT-B/32, weights from its GitHub release, on the CPU)."""
+    URL = 'https://github.com/mlfoundations/open_clip/releases/download/v0.2-weights/vit_b_32-quickgelu-laion400m_e32-46683a32.pt'
+    # what a documentary for a general audience must not show by accident (Flickr has everything): pictures that look
+    # like one of these (0.21 and more; ordinary pictures stay under 0.18) are dropped from ranked results
+    UNFIT = ('a nude person', 'a woman in lingerie or underwear', 'an erotic photo')
+    model = None; failed = False; unfit = None
+
+    @classmethod
+    def ready(cls):
+        if cls.model is None and not cls.failed:
+            try:
+                if os.environ.get('FIND_RANK', '1') == '0': raise RuntimeError('FIND_RANK=0')
+                import torch, open_clip
+                path = os.environ.get('CLIP_MODEL') or os.path.expanduser('~/.cache/find-images/vit_b_32-quickgelu-laion400m_e32.pt')
+                if not os.path.exists(path):
+                    os.makedirs(os.path.dirname(path), exist_ok=True)
+                    urllib.request.urlretrieve(cls.URL, path + '.part'); os.replace(path + '.part', path)
+                model, _, pre = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained=path)
+                cls.model, cls.pre, cls.tok, cls.torch = model.eval(), pre, open_clip.get_tokenizer('ViT-B-32-quickgelu'), torch
+            except Exception as e:
+                cls.failed = True; print(f'ranking off, the first pictures of every archive are kept ({str(e)[:90]})')
+        return cls.model is not None
+
+    @classmethod
+    def scores(cls, images, text):
+        """For every picture: how well it fits the text, and how much it looks like something not to show."""
+        t = cls.torch
+        with t.no_grad():
+            fi = t.cat([cls.model.encode_image(t.stack([cls.pre(im) for im in images[i:i + 32]])) for i in range(0, len(images), 32)])
+            fi /= fi.norm(dim=-1, keepdim=True)
+            ft = cls.model.encode_text(cls.tok([text, 'a photo of ' + text])); ft /= ft.norm(dim=-1, keepdim=True)
+            if cls.unfit is None:
+                cls.unfit = cls.model.encode_text(cls.tok(list(cls.UNFIT))); cls.unfit /= cls.unfit.norm(dim=-1, keepdim=True)
+            return (fi @ ft.T).max(dim=1).values.tolist(), (fi @ cls.unfit.T).max(dim=1).values.tolist()
+
+
+def picture(url, tries=2, timeout=20):   # a dead host costs 45 s at most, not minutes
+    return Image.open(io.BytesIO(get(url, tries=tries, timeout=timeout))).convert('RGB')
+
+
+def ranked(found, text):
+    """The results ordered by how well their small version fits the text (CLIP), the archive's own order counting
+    a little (0.004 per place: it decides between pictures CLIP finds alike, as for a name it does not know).
+    Results whose small version cannot be loaded go last; pictures that look unsuitable (Clip.UNFIT) are left out.
+    Sets r['match']. Returns (results, number left out)."""
+    def small(r):
+        try:
+            im = picture(r['preview'], tries=1, timeout=15); im.thumbnail((448, 448)); return im   # one try: a slow host only loses its place
+        except Exception:
+            return None
+    with ThreadPoolExecutor(6) as ex:
+        ims = list(ex.map(small, found))
+    ok = [(r, im) for r, im in zip(found, ims) if im is not None]
+    if not ok: return found, 0
+    fit, unfit = Clip.scores([im for _, im in ok], text)
+    for (r, _), sc in zip(ok, fit):
+        r['match'] = round(sc, 3)
+    out = [r for (r, _), u in zip(ok, unfit) if u >= 0.21]
+    best = sorted((r for r, _ in ok if r not in out), key=lambda r: -(r['match'] - 0.004 * r.get('rank', 0)))
+    return best + [r for r, im in zip(found, ims) if im is None], len(out)
+
+
+def source_of(q):
+    """(source name or None, the words) of a query string: "wiki: X" -> ("wiki", "X")."""
+    m = re.match(r'^(\w+):\s*(.+)$', q)
+    return (m.group(1).lower(), m.group(2)) if m and m.group(1).lower() in FIND else (None, q)
+
+
+def search(q, deep=False):
+    """Results of one query string, in the order to show them. deep: ask for more than are kept (they are ranked)."""
     if q.startswith('File:'):
         return commons(q, 1)
-    m = re.match(r'^(\w+):\s*(.+)$', q)
-    if m and m.group(1).lower() in FIND:
-        return FIND[m.group(1).lower()](m.group(2), 12)
-    per, lists, errors = 8, [], []
+    src, words = source_of(q)
+    if src:
+        found = FIND[src](words, 60 if src in ABOUT else 30 if deep else 12)
+        for i, r in enumerate(found): r['rank'] = i
+        return found
+    per, lists, errors = DEEP if deep else 8, [], []
     for s in SOURCES:   # one source down or slow must not stop the search
         if s in REFUSED:
             continue
         try: lists.append(FIND[s](q, per))
         except Exception as e:
             print(f'  {s}: {str(e)[:100]}'); errors.append(f'{s}: {str(e)[:60]}')
-            # the Library of Congress refuses the runners for a whole run; every refused query costs ~50 s of retries
-            if s == 'loc' and isinstance(e, urllib.error.HTTPError) and e.code == 429:
-                REFUSED.add(s); print('  loc: bỏ qua nguồn này đến hết lượt chạy (429)')
-    if not lists:       # every source failed: the query is recorded as failed, not as "nothing found"
+            # an archive that refuses (too many requests) does so for the whole run; every refused query costs ~50 s of retries
+            if isinstance(e, urllib.error.HTTPError) and e.code == 429:
+                REFUSED.add(s); print(f'  {s}: bỏ qua nguồn này đến hết lượt chạy (429)')
+    if not lists and errors:   # every source failed: the query is recorded as failed, not as "nothing found"
         raise RuntimeError('; '.join(errors))
     mixed = []
     for i in range(per):
-        mixed += [l[i] for l in lists if i < len(l)]
+        for l in lists:
+            if i < len(l): l[i]['rank'] = i; mixed.append(l[i])
     return mixed
 
 
 def outside(q):
     """A picture from any page, described by Claude (licence checked on its page)."""
+    if not q.get('url'): raise ValueError('an outside picture needs "url": the direct address of the image file')
     return item('page', q.get('title') or q['url'].rsplit('/', 1)[-1], q.get('page', ''), q['url'], q.get('license', '?'),
                 q.get('artist', ''), q.get('date', ''), q.get('description', ''))
 
@@ -266,55 +495,87 @@ def main():
     if queries[:1] == ['--spec']:
         queries = json.load(open(queries[1], encoding='utf-8'))
     os.makedirs(out, exist_ok=True)
-    index, kept_hashes, dropped = [], seen_hashes(), {'small': 0, 'duplicate': 0}
+    index, kept_hashes, dropped = [], seen_hashes(), {'small': 0, 'duplicate': 0, 'unfit': 0, 'unsuitable': 0}
     for k, q in enumerate(queries, 1):
+        want = keep = None
+        if isinstance(q, dict) and q.get('q'):   # a query with its own wish
+            want, keep, q = q.get('want'), q.get('keep'), q['q']
         exact = isinstance(q, dict) or q.startswith('File:')
-        err = None
+        src = None if exact else source_of(q)[0]
+        keep = int(keep or (KEEP_WIKI if src == 'wiki' else KEEP_GEO if src == 'geo' else KEEP))
+        # ranked against "want", else against the query's own words when CLIP can read them (it reads English and
+        # other Latin-script words; a query in Japanese or Cyrillic keeps the archive's order)
+        readable = bool(want) or not re.search(r'[^\x00-\u024f\u2000-\u206f]', source_of(q)[1] if not exact else '')
+        rank = not exact and (bool(want) or src not in ABOUT) and readable and Clip.ready()
+        err, n_found = None, 0
         try:
-            found = [outside(q)] if isinstance(q, dict) else search(q)
+            found = [outside(q)] if isinstance(q, dict) else search(q, deep=rank)
         except Exception as e:
             err = str(e)[:200]; print(f'{k}. {q}: lỗi {err[:120]}'); found = []
-        if isinstance(q, dict): q = q.get('title') or q['url']
-        kept = []   # [(result, image, hash)] in search order; a duplicate inside this query keeps the bigger file
-        for r in found:
-            if len(kept) >= KEEP:
-                break
-            if not exact and r.get('width') and r.get('height') and min(r['width'], r['height']) < MIN_SIDE:
-                dropped['small'] += 1; continue
-            try:
-                im = Image.open(io.BytesIO(get(r['thumb']))).convert('RGB')
+        if isinstance(q, dict): q = q.get('title') or q.get('url') or q.get('page') or '?'
+        if not exact:
+            small = [r for r in found if r.get('width') and r.get('height') and min(r['width'], r['height']) < MIN_SIDE]
+            dropped['small'] += len(small); found = [r for r in found if r not in small]
+        n_found = len(found)
+        if rank and len(found) > 1:
+            found, n_out = ranked(found, want or source_of(q)[1]); dropped['unsuitable'] += n_out
+            if want:   # asked for by a description: what does not show it is no use (CLIP under 0.18: something else)
+                poor = [r for r in found if r.get('match', 1) < MATCH_MIN]
+                dropped['unfit'] += len(poor); found = [r for r in found if r not in poor]
+
+        def full(r):   # the picture to keep; when it cannot be had (a rate limit, a dead host), its small version
+            try: return picture(r['thumb'])
             except Exception as e:
-                r['error'] = str(e)[:120]; continue
-            finally:
-                time.sleep(0.5)
-            if not exact and min(im.size) < MIN_SIDE:
-                dropped['small'] += 1; continue
-            r['width'], r['height'] = max(r.get('width') or 0, im.width), max(r.get('height') or 0, im.height)
-            h = dhash(im)
-            if not exact and any(same(h, x) for x in kept_hashes):   # an exact file asked for is always kept
-                dropped['duplicate'] += 1; continue
-            twin = next((i for i, (_, _, kh) in enumerate(kept) if same(h, kh)), None)
-            if twin is not None:
-                dropped['duplicate'] += 1
-                if im.width * im.height > kept[twin][1].width * kept[twin][1].height:
-                    kept[twin] = (r, im, h)
-                continue
-            kept.append((r, im, h))
+                r['error'] = str(e)[:120]
+                if r.get('preview') and r['preview'] != r['thumb']:
+                    try: return picture(r['preview'], timeout=20)
+                    except Exception: pass
+                return None
+        kept = []   # [(result, image, hash)] in search order; a duplicate inside this query keeps the bigger file
+        for i in range(0, len(found), 6):
+            if len(kept) >= keep:
+                break
+            batch = found[i:i + 6]
+            with ThreadPoolExecutor(3) as ex:   # a few at a time: the archives ask for it
+                ims = list(ex.map(full, batch))
+            for r, im in zip(batch, ims):
+                if len(kept) >= keep:
+                    break
+                if im is None:
+                    continue
+                if not exact and min(im.size) < MIN_SIDE:
+                    dropped['small'] += 1; continue
+                r['width'], r['height'] = max(r.get('width') or 0, im.width), max(r.get('height') or 0, im.height)
+                h = dhash(im)
+                if not exact and any(same(h, x) for x in kept_hashes):   # an exact file asked for is always kept
+                    dropped['duplicate'] += 1; continue
+                twin = next((i for i, (_, _, kh) in enumerate(kept) if same(h, kh)), None)
+                if twin is not None:
+                    dropped['duplicate'] += 1
+                    if im.width * im.height > kept[twin][1].width * kept[twin][1].height:
+                        kept[twin] = (r, im, h)
+                    continue
+                kept.append((r, im, h))
         files, labels, results = [], {}, []
         for n, (r, im, h) in enumerate(kept, 1):
             im.thumbnail((4000, 4000))   # enough for crops of a detail; keeps the renders branch small
             p = f'{out}/{k}-{n}.jpg'; im.save(p, quality=90)
-            r['file'] = p[len(out) + 1:]; files.append(p); results.append(r)
+            r['file'] = p[len(out) + 1:]; files.append(p)
+            results.append({key: v for key, v in r.items() if key not in ('preview', 'rank', 'error')})
             lic = re.sub(r'(?i)public domain', 'PD', r['license']).split(' (')[0]
-            labels[p] = f"#{n}  {im.width}x{im.height}  {lic}"[:40] + f"\n{r['source']}  {r['date']}"[:42]
+            fit = f"  ~{r['match']:.2f}" if 'match' in r else ''   # "~": the sheet's font has no "≈"
+            labels[p] = f"#{n}  {im.width}x{im.height}  {lic}"[:40] + f"\n{r['source']}  {r['date']}"[:42 - len(fit)] + fit
         kept_hashes += [h for _, _, h in kept]
         sheet(files, f'{out}/sheet_{k}.jpg', labels)
-        index.append({'k': k, 'query': q, 'results': results, **({'error': err} if err else {})})
-        print(f'{k}. {q}: {len(results)} kept ({", ".join(sorted({r["source"] for r in results}))})')
+        about = WIKI_FOUND.get(source_of(q)[1]) if src == 'wiki' else None
+        index.append({'k': k, 'query': q, 'results': results, 'candidates': n_found, **({'want': want} if want else {}),
+                      **({'wikidata': about} if about else {}), **({'error': err} if err else {})})
+        print(f'{k}. {q}: {len(results)} kept of {n_found} ({", ".join(sorted({r["source"] for r in results}))})'
+              + (f' = {about["id"]} {about["label"]}: {about["description"]}' if about else ''))
     json.dump(index, open(f'{out}/index.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     if index and all(e.get('error') for e in index):
         raise SystemExit('tìm ảnh: mọi từ khóa đều lỗi (mạng hoặc các kho ảnh không trả lời)')
-    print(f"dropped: {dropped['small']} too small, {dropped['duplicate']} duplicates")
+    print(f"dropped: {dropped['small']} too small, {dropped['duplicate']} duplicates, {dropped['unfit']} not showing what was asked, {dropped['unsuitable']} unsuitable")
 
 
 if __name__ == '__main__':

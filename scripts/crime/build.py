@@ -13,7 +13,8 @@ scene starts at its "at" (line number, fractional = part-way through the line) a
 item's "at" is a line number, or "<line>:<words>" = the moment those words of that line are spoken (Whisper word
 times), or nothing = the start of its scene. The voice is shown in the subtitle box, a clause at a time
 (captions.subs). A scene with "edit": "<name>" first gets the places of that scene edit (scripts/crime/edits.py, the
-catalogue); <out_dir>/edits.md lists every scene with its edit and Claude's "why" for the owner.
+catalogue); <out_dir>/edits.md lists every scene with its edit and Claude's "why" for the owner, and under the list
+how many different pictures the video shows, the pictures shown in more than two scenes and the scenes with text alone.
 
 Timing: every line starts after the previous one plus a pause (0.45 s after a sentence end, 0.25 s otherwise),
 both divided by script.json "speed" (the pace of the voice, default 1.0: a faster voice gets shorter pauses).
@@ -110,6 +111,7 @@ def main(job, pub, N, imgsrc, out):
     if not scenes_in: fail('chưa có "scenes"')
     bounds = [0.0] + [at_time(p.get('at', 1), f'cảnh {j + 2}') - 0.12 for j, p in enumerate(scenes_in[1:])] + [total]
     scenes, used = [], []
+    uses, bare = {}, []   # picture file -> number of scenes that show it; scenes with text alone
     for j, sc in enumerate(scenes_in):
         s, e = bounds[j], bounds[j + 1]
         where = f'cảnh {j + 1}'
@@ -192,7 +194,17 @@ def main(job, pub, N, imgsrc, out):
             items.append(o)
         scenes.append({'s': round(s, 3), 'e': round(e, 3), 'scene': j + 1, 'bg': sc.get('bg', 'wood'),
                        'push': sc.get('push', 0.04), 'items': items, **({'edit': sc['edit']} if sc.get('edit') else {})})
-    open(f'{out}/edits.md', 'w', encoding='utf-8').write(E.listing(scenes_in, text, bounds))
+        for src in {images[it['photo']]['src'] for it in sc.get('items') or [] if 'photo' in it}:   # two crops of one file = one picture
+            uses[src] = uses.get(src, 0) + 1
+        if not any(o['k'] in ('photo', 'card', 'big') for o in items): bare.append(j + 1)
+    # how many different pictures the video shows (owner, 17/11/2026: the videos were short of pictures): the count, the
+    # pictures shown in more than two scenes and the scenes with text alone go to the log and under the list of edits
+    often = {k: v for k, v in uses.items() if v > 2}
+    pic_note = [f'{len(uses)} ảnh khác nhau cho {len(scenes)} cảnh' + (' (ít: nên có ít nhất 3 ảnh cho mỗi 4 cảnh)' if len(uses) * 4 < len(scenes) * 3 else '')]
+    if often: pic_note.append('ảnh dùng quá 2 lần: ' + ', '.join(f'{k} ({v} cảnh)' for k, v in sorted(often.items())))
+    if len(bare) * 6 > len(scenes): pic_note.append(f'{len(bare)} cảnh chỉ có chữ (cảnh ' + ', '.join(map(str, bare)) + '): nhiều hơn 1/6 số cảnh')
+    print('ảnh: ' + '; '.join(pic_note))
+    open(f'{out}/edits.md', 'w', encoding='utf-8').write(E.listing(scenes_in, text, bounds) + '\nẢnh: ' + '; '.join(pic_note) + '.\n')
     if E.repeats(scenes_in):
         print('chú ý: cảnh ' + ', '.join(map(str, E.repeats(scenes_in))) + ' dùng cùng kiểu edit với cảnh ngay trước nó (nên đổi kiểu)')
 

@@ -1,7 +1,8 @@
 name: Tìm ảnh (ảnh tự do)
 
-# Free-to-use pictures (Wikimedia Commons, Openverse, Europeana, Library of Congress; museums with a prefix),
-# licence checked (public domain, CC0, CC BY, CC BY-SA).
+# Free-to-use pictures (Wikimedia Commons, Openverse, Europeana; one archive or the Library of Congress with a
+# prefix; "wiki: <name>" = every picture about one thing, "geo: <lat>,<lon> <metres>" = photos taken around a point),
+# licence checked (public domain, CC0, CC BY, CC BY-SA), ranked by how well they fit the words (scripts/find_images.py).
 # Queries are separated by " || ". Results (pictures, index.json with licences, contact sheets) go to the
 # renders branch, folder image-search/<name>/.
 on:
@@ -27,10 +28,19 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+      # the search ranks its results with CLIP: the model file (600 MB) is kept between runs (the same file as crime.yml)
+      - name: Mô hình chấm điểm ảnh
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/find-images
+          key: clip-vit-b-32-quickgelu-laion400m-e32
       - name: Tìm và tải ảnh
         run: |
           case "$NAME" in *[!A-Za-z0-9_-]*|'') echo "::error::tên thư mục không hợp lệ"; exit 1;; esac
           pip install -q pillow
+          # optional: without it the search keeps the first pictures of every archive
+          { pip install -q torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -q open_clip_torch; } \
+            || echo "::warning::không cài được bộ chấm điểm ảnh: tìm ảnh chạy không xếp hạng"
           python3 - <<'PY'
           import os, subprocess
           qs = [q.strip() for q in os.environ['QUERIES'].split('||') if q.strip()]

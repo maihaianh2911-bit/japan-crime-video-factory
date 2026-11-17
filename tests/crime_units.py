@@ -186,16 +186,179 @@ try:
     assert jobs == ['Drei.', 'Vier.'] and [r['i'] for r in json.load(open(os.path.join(vd, 'b', 'lines.json')))] == [1, 2, 3, 4], jobs
 finally:
     V.cmd_tts, sys.argv = real_tts, argv
-# picture search: a source that answers 429 (Library of Congress on the runners) is asked once per run, not per query
+# picture search: an archive that answers 429 (too many requests) is asked once per run, not per query
+import contextlib
 import find_images as F
 asked = []
-def refused(q, n): asked.append(q); raise urllib.error.HTTPError('https://www.loc.gov/', 429, 'Too Many Requests', {}, None)
+def refused(q, n): asked.append(q); raise urllib.error.HTTPError('https://api.openverse.org/', 429, 'Too Many Requests', {}, None)
 real_find = dict(F.FIND)
 try:
-    F.FIND.update({s: (lambda q, n: []) for s in F.SOURCES}); F.FIND['loc'] = refused; F.REFUSED.clear()
-    assert F.search('first') == [] and F.search('second') == [] and asked == ['first'] and F.REFUSED == {'loc'}, asked
+    assert 'loc' not in F.SOURCES and 'loc' in F.FIND                                   # the Library of Congress only when asked for by name
+    F.FIND.update({s: (lambda q, n: []) for s in F.SOURCES}); F.FIND['openverse'] = refused; F.REFUSED.clear()
+    assert F.search('first') == [] and F.search('second') == [] and asked == ['first'] and F.REFUSED == {'openverse'}, asked
+    # every archive failing is an error of the query, not "nothing found"
+    F.REFUSED.clear(); F.FIND.update({s: refused for s in F.SOURCES})
+    try: F.search('third'); raise AssertionError('search with every archive down must fail')
+    except RuntimeError: pass
+    # results of several archives are mixed one from each in turn, and know their place in their archive (the ranking uses it)
+    F.REFUSED.clear(); F.FIND.update({s: (lambda q, n, s=s: [{'source': s, 'i': i} for i in range(2)]) for s in F.SOURCES})
+    mixed = F.search('fourth')
+    assert [(r['source'], r['rank']) for r in mixed] == [(s, i) for i in range(2) for s in F.SOURCES], mixed
+    # a ranked query asks every archive for more than it keeps
+    depth = []
+    F.FIND.update({s: (lambda q, n: depth.append(n) or []) for s in F.SOURCES})
+    F.search('fifth'); F.search('sixth', deep=True)
+    assert depth == [8] * len(F.SOURCES) + [F.DEEP] * len(F.SOURCES), depth
+    # a prefix asks one source; wiki: and geo: are sources too
+    assert F.source_of('wiki: 三億円事件') == ('wiki', '三億円事件') and F.source_of('geo: 35.68,139.47 800')[0] == 'geo'
+    assert F.source_of('commons: incategory:"Fuchu Prison"') == ('commons', 'incategory:"Fuchu Prison"')
+    assert F.source_of('Dr. Müller: Akte') == (None, 'Dr. Müller: Akte') and F.source_of('snowy field') == (None, 'snowy field')
 finally:
     F.FIND.clear(); F.FIND.update(real_find); F.REFUSED.clear()
+# Commons pictures are taken in the standard sizes: the largest up to 1920 px (3840 for an exact file); a file under
+# 960 px is taken whole; its 330 px version is the preview; a licence that does not allow the video is left out
+def _pg(title, w, h, lic='CC BY-SA 4.0', mime='image/jpeg', i=0):
+    name = title[5:].replace(' ', '_')
+    small = f'lossy-page1-330px-{name}.jpg' if mime == 'image/tiff' else f'330px-{name}'
+    return {'title': title, 'index': i, 'imageinfo': [{'mime': mime, 'width': w, 'height': h, 'descriptionurl': 'https://commons.wikimedia.org/wiki/' + name,
+            'url': f'https://upload.wikimedia.org/wikipedia/commons/a/ab/{name}?utm=1',
+            'thumburl': (f'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/{name}/{small}' if w > 330 else f'https://upload.wikimedia.org/wikipedia/commons/a/ab/{name}'),
+            'extmetadata': {'LicenseShortName': {'value': lic}}}]}
+res = F.commons_items([_pg('File:Big.jpg', 5100, 3000, i=1), _pg('File:Mid.jpg', 1400, 900, i=2), _pg('File:Small.jpg', 640, 480, i=3),
+                       _pg('File:Tiny.jpg', 300, 300, i=4), _pg('File:Press.jpg', 3000, 2000, lic='All rights reserved', i=5),
+                       _pg('File:Map.svg', 800, 600, mime='image/svg+xml', i=6)])
+assert [r['title'] for r in res] == ['Big.jpg', 'Mid.jpg', 'Small.jpg', 'Tiny.jpg'], res
+assert res[0]['thumb'].endswith('/1920px-Big.jpg') and res[0]['preview'].endswith('/330px-Big.jpg'), res[0]
+assert res[1]['thumb'].endswith('/1280px-Mid.jpg') and res[2]['thumb'].endswith('/ab/Small.jpg') and res[2]['preview'].endswith('/330px-Small.jpg'), res[1:3]
+assert res[3]['thumb'] == res[3]['preview'] and '?' not in res[3]['thumb'], res[3]
+assert F.commons_items([_pg('File:Big.jpg', 5100, 3000)], exact=True)[0]['thumb'].endswith('/3840px-Big.jpg')
+# a TIFF scan is taken as its JPEG rendering in a standard size (its thumbnails are called lossy-page1-<width>px-…)
+tif = F.commons_items([_pg('File:Scan.tif', 6000, 4000, mime='image/tiff')])[0]
+assert tif['thumb'].endswith('/Scan.tif/lossy-page1-1920px-Scan.tif.jpg') and tif['preview'].endswith('/lossy-page1-330px-Scan.tif.jpg'), tif
+# a list of titles comes back in the order asked, not in the API's
+assert [r['title'] for r in F.commons_items([_pg('File:B.jpg', 2000, 2000), _pg('File:A.jpg', 2000, 2000)], order=['File:A.jpg', 'File:B.jpg'])] == ['A.jpg', 'B.jpg']
+assert F.ICON.search('File:Commons-logo.svg') and F.ICON.search('File:Japan location map.jpg') and not F.ICON.search('File:Fuchu Prison wall.jpg')
+try: F.geo('府中刑務所', 5); raise AssertionError('geo: without coordinates must be refused')
+except ValueError: pass
+# wiki: and geo: against a fake Wikipedia / Wikidata / Commons. The Japanese Wikipedia cannot be reached (as in a
+# Claude cloud session): the item is then found by its name on Wikidata and the English article is read. Order: the
+# item's own picture, the article's pictures (page furniture left out), the Commons category, photos taken there
+# (one of a numbered series, none shown already)
+import urllib.parse as UP
+api_calls = []
+def fake_js(url):
+    host = UP.urlsplit(url).netloc; p_ = dict(UP.parse_qsl(UP.urlsplit(url).query)); api_calls.append((host, p_))
+    if host == 'ja.wikipedia.org': raise urllib.error.URLError('Tunnel connection failed: 403 Forbidden')
+    if host == 'en.wikipedia.org' and p_.get('prop') == 'pageprops': return {'query': {'pages': {'-1': {'title': p_['titles'], 'missing': ''}}}}
+    if p_.get('action') == 'wbsearchentities': return {'search': [{'id': 'Q4634328'}] if p_['language'] == 'ja' else []}
+    if p_.get('action') == 'wbgetentities':
+        snak = lambda v: [{'mainsnak': {'datavalue': {'value': v}}}]
+        return {'entities': {'Q4634328': {'labels': {'ja': {'value': '三億円事件'}, 'en': {'value': '300 million yen robbery'}}, 'descriptions': {'en': {'value': '1968 robbery'}},
+                'claims': {'P18': snak('A.jpg'), 'P373': snak('Cat'), 'P625': snak({'latitude': 35.68611, 'longitude': 139.473})},
+                'sitelinks': {'jawiki': {'title': '三億円事件'}, 'enwiki': {'title': '300 million yen robbery'}}}}}
+    if host == 'en.wikipedia.org' and p_.get('prop') == 'images':
+        return {'query': {'pages': {'1': {'images': [{'title': 'File:B.jpg'}, {'title': 'File:Commons-logo.svg'}, {'title': 'File:A.jpg'}]}}}}
+    if p_.get('list') == 'categorymembers':
+        return {'query': {'categorymembers': [{'title': 'File:C.jpg'}, {'title': 'File:B.jpg'}] if p_['cmtype'] == 'file' else []}}
+    if p_.get('generator') == 'geosearch':
+        return {'query': {'pages': {str(i): _pg(t, 2000, 1500) for i, t in enumerate(('File:D 1.jpg', 'File:D 2.jpg', 'File:C.jpg'))}}}
+    if host == 'commons.wikimedia.org' and p_.get('titles'):
+        return {'query': {'pages': {str(i): _pg(t, 2000, 1500) for i, t in enumerate(reversed(p_['titles'].split('|')))}}}
+    raise AssertionError(f'unexpected request: {url}')
+real_js = F.js
+try:
+    F.js = fake_js
+    with contextlib.redirect_stdout(io.StringIO()) as said_: got = F.wiki('三億円事件', 60)
+    assert [(r['title'], r['source']) for r in got] == [('A.jpg', 'commons/wiki'), ('B.jpg', 'commons/wiki'), ('C.jpg', 'commons/category'), ('D 1.jpg', 'commons/geo')], got
+    assert F.WIKI_FOUND['三億円事件'] == {'id': 'Q4634328', 'label': '三億円事件', 'description': '1968 robbery', 'coord': [35.68611, 139.473]}, F.WIKI_FOUND
+    assert [h for h, p_ in api_calls if p_.get('prop') in ('pageprops', 'images')] == ['ja.wikipedia.org', 'en.wikipedia.org'] * 2 and 'jawiki' in said_.getvalue(), api_calls
+    assert next(p_ for h, p_ in api_calls if p_.get('generator') == 'geosearch')['ggscoord'] == '35.68611|139.473'
+    api_calls.clear()
+    with contextlib.redirect_stdout(io.StringIO()): F.wiki('Q4634328', 60)               # an item number is taken as it is: nothing is looked up
+    assert not any(p_.get('prop') == 'pageprops' or p_.get('action') == 'wbsearchentities' for h, p_ in api_calls), api_calls
+    api_calls.clear(); assert [r['title'] for r in F.geo('35.6861,139.473 600', 5)] == ['D 1.jpg', 'C.jpg']
+    assert (api_calls[-1][1]['ggscoord'], api_calls[-1][1]['ggsradius']) == ('35.6861|139.473', '600')
+    F.geo('35.6861, 139.473', 5); F.geo('-33.86 151.21 99999m', 5)
+    assert [p_['ggsradius'] for h, p_ in api_calls[-2:]] == ['500', '10000'] and api_calls[-1][1]['ggscoord'] == '-33.86|151.21', api_calls[-2:]
+finally:
+    F.js = real_js; F.WIKI_FOUND.clear()
+# this channel's Wikipedia is read first by wiki:, then the English one; this repo's own User-Agent; no "page"-only
+# outside picture here (an entry without "url" is an error of that entry)
+assert F.LANGS[0] == json.load(open(os.path.join(ROOT, 'prompts', 'channel.json'), encoding='utf-8'))['lang'] and F.LANGS[-1] == 'en', F.LANGS
+assert 'japan-crime-video-factory' in F.UA and not hasattr(F, 'page_image')
+try: F.outside({'page': 'https://example.invalid/still'}); raise AssertionError('an outside picture without "url" must be refused')
+except ValueError: pass
+# a whole run without network (fake archives, ranking off): old plain-string queries and {"q", "want", "keep"} entries
+# side by side, a failing query and a url-less entry recorded as errors without stopping the others, a picture seen
+# under an earlier query not shown again, the index without the working fields
+import random
+def _jpg(seed, size=(900, 700)):
+    rnd = random.Random(seed); im = Image.new('L', (9, 8)); im.putdata([rnd.randrange(256) for _ in range(72)])
+    b = io.BytesIO(); im.resize(size, Image.NEAREST).convert('RGB').save(b, 'JPEG'); return b.getvalue()
+pics = {f'https://example.invalid/{n}.jpg': _jpg(n) for n in range(1, 12)}
+pics['https://example.invalid/small.jpg'] = _jpg(99, (300, 300))
+def fake_get(url, tries=4, raw=True, timeout=60):
+    if url not in pics: raise urllib.error.URLError('Tunnel connection failed: 403 Forbidden')
+    return pics[url]
+def fake_src(name, by_query):
+    """An archive that answers each query with the pictures listed for it (all of them for "*")."""
+    return lambda q, n: [F.item(name, f'{name} {i}', f'https://example.invalid/page/{i}', f'https://example.invalid/{i}.jpg', 'CC BY 4.0', 'A', '1968')
+                         for i in by_query.get(q, by_query.get('*', ()))]
+def down(q, n): raise urllib.error.URLError('down')
+def run_find(spec):
+    d_ = tempfile.mkdtemp(prefix='crime-units-find-')
+    json.dump(spec, open(os.path.join(d_, 'spec.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    sys.argv = ['find_images.py', os.path.join(d_, 'o'), '--spec', os.path.join(d_, 'spec.json')]
+    with contextlib.redirect_stdout(io.StringIO()) as said_: F.main()
+    idx_ = json.load(open(os.path.join(d_, 'o', 'index.json'), encoding='utf-8'))
+    assert all(os.path.exists(os.path.join(d_, 'o', r['file'])) and not {'preview', 'rank', 'error'} & set(r) for g in idx_ for r in g['results'])
+    return idx_, said_.getvalue(), os.path.join(d_, 'o')
+titles = lambda g: [r['title'] for r in g['results']]
+real_find, real_get, argv, rank_env = dict(F.FIND), F.get, sys.argv, os.environ.get('FIND_RANK')
+real_ready, real_scores = F.Clip.__dict__['ready'], F.Clip.__dict__['scores']
+try:
+    os.environ['FIND_RANK'] = '0'; F.Clip.model, F.Clip.failed = None, False
+    F.get = fake_get; F.REFUSED.clear()
+    F.FIND.update({s: (lambda q, n: []) for s in F.SOURCES})
+    F.FIND.update(commons=fake_src('commons', {'*': (1, 2, 3)}), openverse=fake_src('openverse', {'*': (4, 'small', 'gone')}), met=down,
+                  wiki=fake_src('commons/wiki', {'*': (1, 5, 6)}))
+    idx_, said_, o_ = run_find(['Fuchu Prison wall', {'q': 'police motorcycle', 'want': 'a white police motorcycle', 'keep': 1}, 'met: nothing',
+                                {'q': 'wiki: 三億円事件', 'keep': 2}, {'page': 'https://example.invalid/still', 'title': 'still'},
+                                {'url': 'https://example.invalid/6.jpg', 'page': 'https://example.invalid/p', 'title': 'own', 'license': 'CC BY 4.0'}])
+    assert [g['query'] for g in idx_] == ['Fuchu Prison wall', 'police motorcycle', 'met: nothing', 'wiki: 三億円事件', 'still', 'own'], idx_
+    # query 1: one from each archive in turn; the 300 px file is left out by its size, the dead address is skipped
+    assert titles(idx_[0]) == ['commons 1', 'openverse 4', 'commons 2', 'commons 3'] and idx_[0]['candidates'] == 6, idx_[0]
+    assert os.path.exists(os.path.join(o_, 'sheet_1.jpg')) and not any('match' in r for g in idx_ for r in g['results'])
+    # query 2: every picture it finds was kept under query 1 already → nothing new; its wish is kept in the index
+    assert idx_[1]['results'] == [] and idx_[1]['want'] == 'a white police motorcycle' and 'error' not in idx_[1], idx_[1]
+    assert 'error' in idx_[2] and not idx_[2]['results']                                  # the archive is down: this query only
+    assert titles(idx_[3]) == ['commons/wiki 5', 'commons/wiki 6'], idx_[3]              # "keep": 2; picture 1 was shown before
+    assert 'url' in idx_[4]['error'] and not idx_[4]['results'], idx_[4]                  # no "page"-only pictures in this repo
+    assert [r['source'] for r in idx_[5]['results']] == ['page'] and idx_[5]['results'][0]['license'] == 'CC BY 4.0', idx_[5]   # an exact picture is kept even if seen
+    assert 'ranking off' in said_ and 'dropped: 2 too small, 5 duplicates' in said_, said_
+    # the same with the ranking on (a fake scorer in place of CLIP): a query in Japanese keeps the archive's order
+    # unless it has an English "want"; a "want" drops what does not show it; an unsuitable picture is left out;
+    # wiki: keeps its order and says which item it found
+    scored = []
+    def fake_scores(cls, images, text):
+        scored.append(text)
+        return [0.10, 0.35, 0.25][:len(images)], ([0.1, 0.1, 0.3] if text == 'prison wall' else [0.1, 0.1, 0.1])[:len(images)]
+    F.Clip.ready, F.Clip.scores = classmethod(lambda cls: True), classmethod(fake_scores)
+    F.FIND.update(commons=fake_src('commons', {'府中刑務所': (1, 2, 3), '白バイ': (4, 5, 6), 'prison wall': (7, 8, 9)}), openverse=lambda q, n: [],
+                  wiki=fake_src('commons/wiki', {'*': (10, 11)}))
+    F.WIKI_FOUND['三億円事件'] = {'id': 'Q1', 'label': '三億円事件', 'description': '1968年の窃盗事件'}
+    idx_, said_, o_ = run_find(['府中刑務所', {'q': '白バイ', 'want': 'a white police motorcycle'}, 'prison wall', 'wiki: 三億円事件'])
+    assert titles(idx_[0]) == ['commons 1', 'commons 2', 'commons 3'] and 'match' not in idx_[0]['results'][0], idx_[0]
+    assert titles(idx_[1]) == ['commons 5', 'commons 6'] and [r['match'] for r in idx_[1]['results']] == [0.35, 0.25], idx_[1]
+    assert titles(idx_[2]) == ['commons 8', 'commons 7'], idx_[2]
+    assert titles(idx_[3]) == ['commons/wiki 10', 'commons/wiki 11'] and idx_[3]['wikidata']['id'] == 'Q1' and 'match' not in idx_[3]['results'][0], idx_[3]
+    assert scored == ['a white police motorcycle', 'prison wall'], scored
+    assert '1 not showing what was asked, 1 unsuitable' in said_, said_
+finally:
+    F.FIND.clear(); F.FIND.update(real_find); F.REFUSED.clear(); F.WIKI_FOUND.clear(); F.get, sys.argv = real_get, argv
+    F.Clip.ready, F.Clip.scores, F.Clip.model, F.Clip.failed = real_ready, real_scores, None, False
+    if rank_env is None: os.environ.pop('FIND_RANK', None)
+    else: os.environ['FIND_RANK'] = rank_env
 # scene edits (the catalogue scripts/crime/edits.py): every recipe builds, a scene without "edit" is left alone, the
 # template fills only what Claude left out, an unknown name or a missing item is refused with the names / the recipe,
 # the list for the owner marks a repeated edit, and AGENT_CRIME.md documents every name

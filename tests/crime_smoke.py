@@ -116,6 +116,7 @@ assert sc[0]['edit'] == 'hook' and sc[0]['bg'] == 'black' and all('edit' not in 
 assert (ph[0]['x'], ph[0]['y'], ph[0]['rot']) == (540, 640, -1) and (sc[0]['items'][1]['x'], sc[0]['items'][1]['y']) == (250, 1150) and tag2['x'] == 540
 md = open(os.path.join(out, 'edits.md'), encoding='utf-8').read()
 assert '`hook`' in md and 'câu đầu là điều lạ của vụ án' in md and '| 4 |' in md, md
+assert md.rstrip().endswith('Ảnh: 3 ảnh khác nhau cho 4 cảnh.'), md[-200:]      # the picture count under the list (three files, four scenes)
 srt = open(os.path.join(out, 'subtitles.srt'), encoding='utf-8').read(); assert srt.count('-->') == len(lines)
 cred = open(os.path.join(out, 'credits.txt'), encoding='utf-8').read()
 assert 'Street.jpg' in cred and 'AI' in cred and 'a small bedroom' in cred
