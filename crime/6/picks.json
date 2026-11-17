@@ -1,0 +1,335 @@
+{
+ "images": {
+  "scene": {
+   "src": "1/1-1.jpg",
+   "look": "aged-bw"
+  },
+  "mitsu": {
+   "src": "1/4-6.jpg"
+  },
+  "mitsuin": {
+   "src": "1/4-7.jpg"
+  },
+  "plaque": {
+   "src": "1/8-5.jpg"
+  },
+  "night": {
+   "src": "1/16-4.jpg"
+  },
+  "mitaka": {
+   "src": "1/10-1.jpg",
+   "look": "aged-bw"
+  },
+  "d51": {
+   "src": "1/9-2.jpg"
+  },
+  "todai": {
+   "src": "1/13-1.jpg"
+  },
+  "keio": {
+   "src": "1/14-1.jpg",
+   "look": "aged-bw"
+  },
+  "night2": {
+   "src": "1/16-2.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "hook",
+   "why": "câu 1 mở đầu bằng điều lạ: người đứng đầu đường sắt vào cửa hàng bách hóa rồi không trở ra",
+   "items": [
+    {
+     "photo": "mitsu"
+    },
+    {
+     "tag": "国鉄のトップ",
+     "at": "1:鉄道",
+     "color": "white"
+    },
+    {
+     "tag": "デパート",
+     "at": "1:デパート"
+    },
+    {
+     "tag": "戻らず",
+     "at": "1:二度と",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 2,
+   "edit": "where",
+   "why": "câu 2–3 nói ngày và người: chủ tịch đầu tiên của Đường sắt Quốc gia",
+   "items": [
+    {
+     "header": "下山事件",
+     "kicker": "ファイル 1949"
+    },
+    {
+     "photo": "plaque"
+    },
+    {
+     "tag": "国鉄 初代総裁",
+     "at": "3:総裁",
+     "color": "black"
+    },
+    {
+     "tag": "1949年7月5日 朝",
+     "at": "2:1949",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 4,
+   "edit": "timeline",
+   "why": "câu 4–6 có trình tự: dừng xe ở Mitsukoshi, vào trong, tài xế đợi mãi",
+   "items": [
+    {
+     "photo": "mitsuin"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "日本橋三越",
+        "right": "車を止める",
+        "at": "4:三越"
+       },
+       {
+        "text": "店の中へ",
+        "right": "入る",
+        "at": "5:店"
+       },
+       {
+        "text": "運転手",
+        "right": "待ち続ける",
+        "at": "6:運転手"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "戻らなかった",
+     "at": "6:戻らな",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 7,
+   "edit": "number",
+   "why": "câu 7–11: bối cảnh, con số 30.000 người bị cho nghỉ việc",
+   "items": [
+    {
+     "tag": "GHQ占領下",
+     "at": "7:GHQ",
+     "color": "white"
+    },
+    {
+     "big": "3万",
+     "text": "人\n解雇発表",
+     "at": "10:3万"
+    },
+    {
+     "tag": "労働組合と対立",
+     "at": "11:労働",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "place",
+   "why": "câu 12–14 nói thời điểm và nơi tìm thấy ông: đường ray gần ga Ayase lúc hơn 0 giờ",
+   "items": [
+    {
+     "photo": "night"
+    },
+    {
+     "tag": "0時過ぎ",
+     "at": "12:0時",
+     "color": "white"
+    },
+    {
+     "tag": "常磐線・綾瀬駅近く",
+     "at": "13:常磐線",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 15,
+   "edit": "compare",
+   "why": "câu 15–18 đối chiếu hai kết luận của hai trường đại học: bị giết hay tự sát",
+   "items": [
+    {
+     "card": {
+      "head": "鑑定",
+      "rows": [
+       {
+        "text": "東京大学",
+        "right": "死後にひかれた → 他殺",
+        "at": "16:東京"
+       },
+       {
+        "text": "慶應大学",
+        "right": "生きてひかれた → 自殺",
+        "at": "17:慶應"
+       }
+      ]
+     }
+    },
+    {
+     "stamp": "意見割れる",
+     "at": "18:警察"
+    }
+   ]
+  },
+  {
+   "at": 19,
+   "edit": "figure",
+   "why": "câu 19 nói về người đàn ông giống ông được nhìn thấy ở nhà trọ",
+   "items": [
+    {
+     "photo": "night2"
+    },
+    {
+     "tag": "近くの旅館",
+     "at": "19:旅館",
+     "color": "black"
+    },
+    {
+     "tag": "似た男?",
+     "at": "19:似た",
+     "color": "white"
+    },
+    {
+     "tag": "午後に休んでいた",
+     "at": "19:午後",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "board",
+   "why": "câu 20–24 điểm lại ba vụ của đường sắt: Shimoyama, Mitaka, Matsukawa",
+   "items": [
+    {
+     "photo": "scene"
+    },
+    {
+     "photo": "mitaka",
+     "at": "20:三鷹"
+    },
+    {
+     "photo": "d51",
+     "at": "22:松川"
+    },
+    {
+     "tag": "下山 7月5日",
+     "at": "20:わずか"
+    },
+    {
+     "tag": "三鷹 6人死亡",
+     "at": "21:6人"
+    },
+    {
+     "tag": "松川 3人死亡",
+     "at": "23:3人"
+    },
+    {
+     "line": [
+      0,
+      1
+     ],
+     "at": "20:三鷹"
+    },
+    {
+     "line": [
+      1,
+      2
+     ],
+     "at": "22:松川"
+    },
+    {
+     "tag": "国鉄三大ミステリー",
+     "at": "24:三大",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 25,
+   "edit": "span",
+   "why": "câu 25–26: điều tra dừng lại, năm 1964 hết thời hiệu",
+   "items": [
+    {
+     "header": "時効",
+     "kicker": "1964"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "事件",
+        "right": "1949.7.5"
+       },
+       {
+        "text": "時効成立",
+        "right": "1964年",
+        "color": "red",
+        "at": "26:1964"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "結論なし",
+     "at": "25:結論"
+    }
+   ]
+  },
+  {
+   "at": 27,
+   "edit": "question",
+   "why": "câu 27: câu hỏi mở tự sát hay bị giết",
+   "items": [
+    {
+     "photo": "todai"
+    },
+    {
+     "tag": "自殺か?",
+     "at": "27:自殺",
+     "color": "white"
+    },
+    {
+     "tag": "他殺か?",
+     "at": "27:他殺",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 28,
+   "edit": "ending",
+   "why": "hai câu cuối: không ai biết chuyện gì sau cánh cửa ấy",
+   "items": [
+    {
+     "text": [
+      "扉の向こうで何があったのか",
+      {
+       "text": "誰にも分からない。",
+       "color": "red"
+      }
+     ],
+     "size": 74
+    }
+   ]
+  }
+ ]
+}

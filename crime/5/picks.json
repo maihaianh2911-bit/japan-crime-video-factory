@@ -1,0 +1,440 @@
+{
+ "images": {
+  "cups": {
+   "src": "1/10-3.jpg"
+  },
+  "bank": {
+   "src": "1/7-1.jpg"
+  },
+  "armband": {
+   "src": "1/11-1.jpg"
+  },
+  "reenact": {
+   "src": "1/1-2.jpg",
+   "look": "aged-bw"
+  },
+  "cheque": {
+   "src": "1/8-8.jpg"
+  },
+  "paper": {
+   "src": "1/1-5.jpg",
+   "look": "clean"
+  },
+  "chart": {
+   "src": "1/2-1.jpg",
+   "look": "clean"
+  },
+  "trial": {
+   "src": "1/1-6.jpg",
+   "look": "aged-bw"
+  },
+  "prison": {
+   "src": "1/15-1.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "hook",
+   "why": "câu 1–2 mở đầu bằng điều lạ: 16 người uống \"thuốc\", 12 người không tỉnh lại",
+   "items": [
+    {
+     "photo": "cups"
+    },
+    {
+     "tag": "16人",
+     "at": "1:16人",
+     "color": "white"
+    },
+    {
+     "tag": "予防薬",
+     "at": "1:予防薬"
+    },
+    {
+     "tag": "12人死亡",
+     "at": "2:12人",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "where",
+   "why": "câu 3–4 nói ngày giờ và nơi: ngân hàng Teikoku chi nhánh Shiinamachi vừa đóng cửa",
+   "items": [
+    {
+     "header": "帝銀事件",
+     "kicker": "ファイル 1948"
+    },
+    {
+     "photo": "bank"
+    },
+    {
+     "tag": "東京・椎名町",
+     "at": "3:椎名町",
+     "color": "black"
+    },
+    {
+     "tag": "閉店直後",
+     "at": "4:閉店",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 5,
+   "edit": "figure",
+   "why": "câu 5–7 nói về người đàn ông lạ đeo băng tay và lời nói dối của hắn",
+   "items": [
+    {
+     "photo": "armband"
+    },
+    {
+     "tag": "防疫の職員?",
+     "at": "5:防疫",
+     "color": "black"
+    },
+    {
+     "tag": "「近くで赤痢」",
+     "at": "6:赤痢",
+     "color": "white"
+    },
+    {
+     "tag": "「進駐軍の命令」",
+     "at": "7:進駐軍",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 8,
+   "edit": "actions",
+   "why": "câu 8–10 kể lần lượt những việc hắn làm: tự uống, bảo uống hai lần, 16 người uống",
+   "items": [
+    {
+     "card": {
+      "style": "note",
+      "rows": [
+       {
+        "text": "自分で飲んでみせる",
+        "check": true,
+        "at": "8:自分"
+       },
+       {
+        "text": "2回に分けて飲ませる",
+        "check": true,
+        "at": "9:2回"
+       },
+       {
+        "text": "16人が飲む",
+        "check": true,
+        "at": "10:16人"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "数分後、次々と倒れる",
+     "at": "10:数分",
+     "color": "red"
+    },
+    {
+     "photo": "reenact",
+     "at": "8:自分"
+    }
+   ]
+  },
+  {
+   "at": 11,
+   "edit": "number",
+   "why": "câu 11–12 có con số: 12 người chết, 4 người sống sót",
+   "items": [
+    {
+     "big": "12",
+     "text": "人\n死亡",
+     "at": "11:12人"
+    },
+    {
+     "tag": "青酸化合物",
+     "at": "11:青酸",
+     "color": "white"
+    },
+    {
+     "big": "4",
+     "text": "人\n生存",
+     "at": "12:4人"
+    }
+   ]
+  },
+  {
+   "at": 13,
+   "edit": "object",
+   "why": "câu 13 tả thứ hắn lấy đi: tiền mặt và tờ séc",
+   "items": [
+    {
+     "photo": "cheque"
+    },
+    {
+     "tag": "現金 約16万円",
+     "at": "13:現金",
+     "color": "white"
+    },
+    {
+     "tag": "小切手",
+     "at": "13:小切手"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "fact",
+   "why": "câu 14–15: trước đó có vụ cùng mánh khóe ở hai ngân hàng, và tấm danh thiếp để lại",
+   "items": [
+    {
+     "photo": "paper"
+    },
+    {
+     "tag": "同じ手口",
+     "at": "14:同じ手口",
+     "color": "red"
+    },
+    {
+     "big": "2",
+     "text": "つの銀行で",
+     "at": "14:2つ"
+    },
+    {
+     "tag": "医師の名刺",
+     "at": "15:名刺",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "detail",
+   "why": "câu 16–18: lần theo danh thiếp, cảnh sát tìm đến họa sĩ Hirasawa (sơ đồ ban điều tra có tổ danh thiếp)",
+   "items": [
+    {
+     "photo": "chart",
+     "marks": [
+      {
+       "at": "16:名刺",
+       "box": [
+        0.42,
+        0.74,
+        0.88,
+        0.99
+       ],
+       "color": "red"
+      }
+     ],
+     "view": [
+      0.3,
+      0.5,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "tag": "名刺をたどる",
+     "at": "16:名刺"
+    },
+    {
+     "tag": "画家",
+     "at": "17:画家"
+    },
+    {
+     "tag": "平沢貞通",
+     "at": "17:平沢",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 19,
+   "edit": "timeline",
+   "why": "câu 19–22 có trình tự: bị bắt, nhận tội, rồi phản cung, vẫn bị án tử hình",
+   "items": [
+    {
+     "photo": "trial"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "1948.8",
+        "right": "逮捕",
+        "at": "19:逮捕"
+       },
+       {
+        "text": "取り調べ",
+        "right": "自白",
+        "at": "20:自白",
+        "strike": "21:一転"
+       },
+       {
+        "text": "法廷",
+        "right": "無実を訴える",
+        "at": "21:無実"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "死刑判決",
+     "at": "22:死刑",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 23,
+   "edit": "detail",
+   "why": "câu 23 chỉ vào một chi tiết: có ý kiến cho rằng thủ phạm từng ở quân đội (sơ đồ có tổ điều tra người cũ của quân đội)",
+   "items": [
+    {
+     "photo": "chart",
+     "marks": [
+      {
+       "at": "23:軍",
+       "box": [
+        0.0,
+        0.74,
+        0.45,
+        0.99
+       ],
+       "color": "red"
+      }
+     ],
+     "view": [
+      0.0,
+      0.5,
+      0.7,
+      1.0
+     ]
+    },
+    {
+     "tag": "毒物に慣れた手口",
+     "at": "23:毒物"
+    },
+    {
+     "tag": "軍の経験者?",
+     "at": "23:軍"
+    },
+    {
+     "tag": "ひとつの見方",
+     "at": "23:見方",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 24,
+   "edit": "span",
+   "why": "câu 24–25: án không thi hành suốt 32 năm",
+   "items": [
+    {
+     "header": "死刑囚",
+     "kicker": "32年"
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "死刑判決",
+        "right": "執行されず",
+        "at": "24:執行"
+       },
+       {
+        "text": "法務大臣",
+        "right": "署名せず",
+        "color": "red",
+        "at": "25:署名"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "32年間",
+     "at": "25:32年"
+    }
+   ]
+  },
+  {
+   "at": 26,
+   "edit": "place",
+   "why": "câu 26 nói thời điểm và nơi ông mất: nhà tù năm 1987",
+   "items": [
+    {
+     "photo": "prison"
+    },
+    {
+     "tag": "1987年 獄中で死去",
+     "at": "26:1987",
+     "color": "white"
+    },
+    {
+     "tag": "95歳",
+     "at": "26:95歳",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 27,
+   "edit": "statement",
+   "why": "câu 27 là câu chuyển: gia đình vẫn đòi xử lại",
+   "items": [
+    {
+     "tag": "再審を求め続ける",
+     "at": "27:再審"
+    }
+   ]
+  },
+  {
+   "at": 28,
+   "edit": "compare",
+   "why": "câu 28–29 đối chiếu 12 người chết với 1 người bị kết án, câu hỏi còn đó",
+   "items": [
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "死者",
+        "right": "12人",
+        "at": "28:12人"
+       },
+       {
+        "text": "裁かれた者",
+        "right": "1人",
+        "at": "28:1人"
+       }
+      ]
+     }
+    },
+    {
+     "stamp": "真犯人は?",
+     "at": "29:問い"
+    }
+   ]
+  },
+  {
+   "at": 30,
+   "edit": "ending",
+   "why": "câu cuối: ai mới thật sự đưa chén thuốc",
+   "items": [
+    {
+     "text": [
+      "あの薬を差し出したのは",
+      {
+       "text": "本当は誰か。",
+       "color": "red"
+      }
+     ],
+     "size": 80
+    }
+   ]
+  }
+ ]
+}
