@@ -1,0 +1,356 @@
+{
+ "pictures": [
+  {
+   "name": "scene",
+   "src": "1/1-1.jpg",
+   "title": "Shimoyama Incident No2.png",
+   "artist": "Nippon Eigasha",
+   "date": "1949-07-07",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Shimoyama_Incident_No2.png",
+   "ai": false
+  },
+  {
+   "name": "mitsu",
+   "src": "1/4-6.jpg",
+   "title": "Mitsukoshi Nihonbashi main store 7.jpg",
+   "artist": "Kakidai",
+   "date": "2018-09",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mitsukoshi_Nihonbashi_main_store_7.jpg",
+   "ai": false
+  },
+  {
+   "name": "mitsuin",
+   "src": "1/4-7.jpg",
+   "title": "Mitsukoshi Nihonbashi Interior1 201912.JPG",
+   "artist": "Wpcpey",
+   "date": "2019-12",
+   "license": "CC BY 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mitsukoshi_Nihonbashi_Interior1_201912.JPG",
+   "ai": false
+  },
+  {
+   "name": "plaque",
+   "src": "1/8-5.jpg",
+   "title": "Japanese National Railways entrance nameplate 20150627.jpg",
+   "artist": "Cheng-en Cheng",
+   "date": "Taken on 27 June 2015, 13:21:26",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Japanese_National_Railways_entrance_nameplate_20150627.jpg",
+   "ai": false
+  },
+  {
+   "name": "night",
+   "src": "1/16-4.jpg",
+   "title": "Railway track by night.jpg",
+   "artist": "Orlovic",
+   "date": "2007-09",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Railway_track_by_night.jpg",
+   "ai": false
+  },
+  {
+   "name": "mitaka",
+   "src": "1/10-1.jpg",
+   "title": "Mitaka Incident.JPG",
+   "artist": "Unknown authorUnknown author",
+   "date": "16 July 1949, This book was published in 1954.",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Mitaka_Incident.JPG",
+   "ai": false
+  },
+  {
+   "name": "d51",
+   "src": "1/9-2.jpg",
+   "title": "РЖД D51-4 2016-06 депо Южно-Сахалинск 3.jpg",
+   "artist": "Сергей Болашенко",
+   "date": "29 June 2016 (according to Exif data)",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%96%D0%94_D51-4_2016-06_%D0%B4%D0%B5%D0%BF%D0%BE_%D0%AE%D0%B6%D0%BD%D0%BE-%D0%A1%D0%B0%D1%85%D0%B0%D0%BB%D0%B8%D0%BD%D1%81%D0%BA_3.jpg",
+   "ai": false
+  },
+  {
+   "name": "todai",
+   "src": "1/13-1.jpg",
+   "title": "Yasuda Auditorium - Tokyo University 4.jpg",
+   "artist": "Kakidai",
+   "date": "2016-12-23",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Yasuda_Auditorium_-_Tokyo_University_4.jpg",
+   "ai": false
+  },
+  {
+   "name": "night2",
+   "src": "1/16-2.jpg",
+   "title": "Railway tracks at night.jpg",
+   "artist": "Olga Dudenko",
+   "date": "Taken on 9 March 2013",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Railway_tracks_at_night.jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 3.514,
+   "said": [
+    "日本の鉄道のトップが、",
+    "デパートに入り、",
+    "二度と出てこなかった。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "mitsu",
+     "ai": false,
+     "credit": "Kakidai / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Mitsukoshi_Nihonbashi_main_store_7.jpg"
+    }
+   ],
+   "texts": [
+    "国鉄のトップ",
+    "デパート",
+    "戻らず"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 3.514,
+   "end": 8.518,
+   "said": [
+    "1949年7月5日の朝。",
+    "国鉄の初代総裁、",
+    "下山定則は、",
+    "出勤の途中だった。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "plaque",
+     "ai": false,
+     "credit": "Cheng-en Cheng / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Japanese_National_Railways_entrance_nameplate_20150627.jpg"
+    }
+   ],
+   "texts": [
+    "下山事件",
+    "国鉄 初代総裁",
+    "1949年7月5日 朝"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 8.518,
+   "end": 15.812,
+   "said": [
+    "彼は運転手に、",
+    "日本橋の三越で",
+    "車を止めさせた。",
+    "下山は、店の中へ入っていった。",
+    "運転手は待ち続けたが、",
+    "彼は戻らなかった。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "mitsuin",
+     "ai": false,
+     "credit": "Wpcpey / CC BY 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Mitsukoshi_Nihonbashi_Interior1_201912.JPG"
+    }
+   ],
+   "texts": [
+    "戻らなかった"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 15.812,
+   "end": 28.26,
+   "said": [
+    "当時の日本は、GHQの",
+    "占領下にあった。",
+    "そして下山は、",
+    "難しい仕事を抱えていた。",
+    "何万人もの国鉄職員の、",
+    "人員整理だ。",
+    "前の日、国鉄は約3万人の",
+    "解雇を発表していた。",
+    "労働組合との対立は、",
+    "激しくなっていた。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "GHQ占領下",
+    "人\n解雇発表",
+    "労働組合と対立"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 28.26,
+   "end": 34.348,
+   "said": [
+    "その夜、0時過ぎ。",
+    "常磐線の綾瀬駅近くの線路で、",
+    "遺体が見つかった。",
+    "列車にひかれていた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "night",
+     "ai": false,
+     "credit": "Orlovic / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Railway_track_by_night.jpg"
+    }
+   ],
+   "texts": [
+    "0時過ぎ",
+    "常磐線・綾瀬駅近く"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 34.348,
+   "end": 45.002,
+   "said": [
+    "だが、医師たちの",
+    "意見は分かれた。",
+    "東京大学は、ひかれる前に",
+    "死んでいたとした。",
+    "つまり、他殺。",
+    "慶應大学は、",
+    "生きたままひかれたとした。",
+    "つまり、自殺。",
+    "警察の中でも、自殺説と",
+    "他殺説に分かれた。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "意見割れる"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 45.002,
+   "end": 48.563,
+   "said": [
+    "近くの旅館の人は、",
+    "下山に似た男が午後に",
+    "休んでいたと話した。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "night2",
+     "ai": false,
+     "credit": "Olga Dudenko / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Railway_tracks_at_night.jpg"
+    }
+   ],
+   "texts": [
+    "近くの旅館",
+    "似た男?",
+    "午後に休んでいた"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 48.563,
+   "end": 60.018,
+   "said": [
+    "わずか10日後、無人の電車が",
+    "三鷹駅に突っ込んだ。",
+    "6人が亡くなった。",
+    "1か月後には、松川の近くで",
+    "列車が転覆した。",
+    "乗務員3人が亡くなった。",
+    "これらは「国鉄三大ミステリー」と",
+    "呼ばれた。"
+   ],
+   "edit": "board",
+   "photos": [
+    {
+     "image": "scene",
+     "ai": false,
+     "credit": "Nippon Eigasha / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Shimoyama_Incident_No2.png"
+    },
+    {
+     "image": "mitaka",
+     "ai": false,
+     "credit": "Unknown authorUnknown author / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Mitaka_Incident.JPG"
+    },
+    {
+     "image": "d51",
+     "ai": false,
+     "credit": "Сергей Болашенко / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%96%D0%94_D51-4_2016-06_%D0%B4%D0%B5%D0%BF%D0%BE_%D0%AE%D0%B6%D0%BD%D0%BE-%D0%A1%D0%B0%D1%85%D0%B0%D0%BB%D0%B8%D0%BD%D1%81%D0%BA_3.jpg"
+    }
+   ],
+   "texts": [
+    "下山 7月5日",
+    "三鷹 6人死亡",
+    "松川 3人死亡",
+    "国鉄三大ミステリー"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 60.018,
+   "end": 64.468,
+   "said": [
+    "警察は、結論を",
+    "出さないまま捜査を終えた。",
+    "1964年、時効が成立した。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "時効",
+    "結論なし"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 64.468,
+   "end": 66.098,
+   "said": [
+    "自殺か、それとも他殺か。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "todai",
+     "ai": false,
+     "credit": "Kakidai / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Yasuda_Auditorium_-_Tokyo_University_4.jpg"
+    }
+   ],
+   "texts": [
+    "自殺か?",
+    "他殺か?"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 66.098,
+   "end": 71.936,
+   "said": [
+    "あのデパートの扉の向こうで",
+    "何があったのか。",
+    "今も、誰にも分からない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
