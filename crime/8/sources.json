@@ -1,0 +1,283 @@
+{
+ "pictures": [
+  {
+   "name": "corridor",
+   "src": "1/13-2.jpg",
+   "title": "Prison corridor eastern state penitentiary.jpg",
+   "artist": "Adithyavr",
+   "date": "2015-10-08 16:27:55",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Prison_corridor_eastern_state_penitentiary.jpg",
+   "ai": false
+  },
+  {
+   "name": "house",
+   "src": "1/2-1.jpg",
+   "title": "The house where the \"Hakamata Incident\" took place, in Yokosuna Higashi-chō, Shimizu Ward, Shizuoka City.jpg",
+   "artist": "要塞騎士",
+   "date": "2024-03-09 10:06:46",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:The_house_where_the_%22Hakamata_Incident%22_took_place,_in_Yokosuna_Higashi-ch%C5%8D,_Shimizu_Ward,_Shizuoka_City.jpg",
+   "ai": false
+  },
+  {
+   "name": "cuffs",
+   "src": "1/14-1.jpg",
+   "title": "Handcuffs GDR - State Securit - Image 2.jpg",
+   "artist": "Lupus in Saxonia",
+   "date": "2024-09-25 12:09:08",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Handcuffs_GDR_-_State_Securit_-_Image_2.jpg",
+   "ai": false
+  },
+  {
+   "name": "vats",
+   "src": "1/8-1.jpg",
+   "title": "石井味噌（松本市）内部.jpg",
+   "artist": "KCyamazaki",
+   "date": "2012-08-17 11:19:42",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%9F%B3%E4%BA%95%E5%91%B3%E5%99%8C%EF%BC%88%E6%9D%BE%E6%9C%AC%E5%B8%82%EF%BC%89%E5%86%85%E9%83%A8.jpg",
+   "ai": false
+  },
+  {
+   "name": "court",
+   "src": "1/6-1.jpg",
+   "title": "Shizuoka district court.JPG",
+   "artist": "Halowand",
+   "date": "2012-09-28 13:34:55",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Shizuoka_district_court.JPG",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 6.685,
+   "said": [
+    "48年間、刑務所で",
+    "生きた男がいる。",
+    "その多くの年月を、",
+    "彼は死刑を待って過ごした。",
+    "犯していない罪のために。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "corridor",
+     "ai": false,
+     "credit": "Adithyavr / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Prison_corridor_eastern_state_penitentiary.jpg"
+    }
+   ],
+   "texts": [
+    "48年間",
+    "死刑を待つ",
+    "無実の罪"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 6.685,
+   "end": 15.254,
+   "said": [
+    "1966年6月30日、",
+    "静岡県清水市。",
+    "みそ製造会社の専務の",
+    "家が、燃え上がった。",
+    "焼け跡から、一家4人の",
+    "遺体が見つかった。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "house",
+     "ai": false,
+     "credit": "要塞騎士 / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:The_house_where_the_%22Hakamata_Incident%22_took_place,_in_Yokosuna_Higashi-ch%C5%8D,_Shimizu_Ward,_Shizuoka_City.jpg"
+    }
+   ],
+   "texts": [
+    "袴田事件",
+    "静岡県清水市",
+    "一家4人死亡"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 15.254,
+   "end": 20.933,
+   "said": [
+    "2か月後、警察は袴田巌を",
+    "逮捕した。30歳だった。",
+    "元プロボクサーで、",
+    "その会社の従業員だった。"
+   ],
+   "edit": "who",
+   "photos": [],
+   "texts": [
+    "容疑者"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 20.933,
+   "end": 28.699,
+   "said": [
+    "取り調べは1日10時間以上。",
+    "それが何週間も続いた。",
+    "そして、彼は自白調書に署名した。",
+    "だが法廷で、彼は",
+    "訴えた。「やっていない」"
+   ],
+   "edit": "actions",
+   "photos": [
+    {
+     "image": "cuffs",
+     "ai": false,
+     "credit": "Lupus in Saxonia / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Handcuffs_GDR_-_State_Securit_-_Image_2.jpg"
+    }
+   ],
+   "texts": [
+    "「やっていない」"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 28.699,
+   "end": 37.535,
+   "said": [
+    "事件から1年以上たって、",
+    "工場のみそタンクから、",
+    "血のついた衣類5点が見つかった。",
+    "それが、最大の証拠になった。",
+    "だが、そのズボンは小さすぎて、",
+    "彼にははけなかった。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "vats",
+     "ai": false,
+     "credit": "KCyamazaki / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E7%9F%B3%E4%BA%95%E5%91%B3%E5%99%8C%EF%BC%88%E6%9D%BE%E6%9C%AC%E5%B8%82%EF%BC%89%E5%86%85%E9%83%A8.jpg"
+    }
+   ],
+   "texts": [
+    "みそタンク",
+    "衣類5点",
+    "ズボンがはけない"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 37.535,
+   "end": 44.708,
+   "said": [
+    "1968年、死刑判決。",
+    "1980年、刑が確定した。",
+    "長い拘禁の中で、",
+    "彼は心を病んでいった。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "死刑囚",
+    "心を病む"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 44.708,
+   "end": 47.468,
+   "said": [
+    "外では、姉のひで子さんが、",
+    "何十年も闘い続けた。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "姉・ひで子さんの闘い"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 47.468,
+   "end": 58.138,
+   "said": [
+    "2014年、静岡地裁は再審を",
+    "決め、彼を釈放した。",
+    "獄中で過ごした年月は、48年。",
+    "世界で最も長く収容された",
+    "死刑囚とされている。",
+    "そこから無罪まで、",
+    "さらに10年かかった。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "2014年 釈放",
+    "年\n獄中",
+    "年\n無罪まで",
+    "世界最長の死刑囚"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 58.138,
+   "end": 66.317,
+   "said": [
+    "2024年9月26日、",
+    "裁判所は、",
+    "無罪を言い渡した。",
+    "衣類と自白調書は、",
+    "捜査機関によるねつ造だと認めた。",
+    "検察は、控訴しなかった。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "無罪確定"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 66.317,
+   "end": 71.243,
+   "said": [
+    "無罪が言い渡されたとき、",
+    "袴田巌は88歳だった。",
+    "彼は人生のすべてを奪われた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "court",
+     "ai": false,
+     "credit": "Halowand / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Shizuoka_district_court.JPG"
+    }
+   ],
+   "texts": [
+    "88歳",
+    "人生を奪われた"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 71.243,
+   "end": 77.557,
+   "said": [
+    "そして1966年に",
+    "4人を殺した本当の犯人は、",
+    "今も、見つかっていない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
