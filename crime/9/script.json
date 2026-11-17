@@ -1,0 +1,78 @@
+{
+ "title": "D.B.クーパー事件",
+ "voice": "clone_190",
+ "speed": 1.2,
+ "lines": [
+  "スーツに黒いネクタイの乗客が、飛行機を乗っ取った。",
+  "20万ドルを奪い、夜空へ飛び降りた。",
+  "そして、永遠に消えた。",
+  "1971年11月24日、アメリカ、ポートランド空港。",
+  "一人の男が「ダン・クーパー」の名で、シアトル行きの便に乗った。",
+  "離陸後、男は客室乗務員にメモを渡した。「爆弾を持っている」",
+  "かばんを開けて、配線と赤い筒を見せた。",
+  "要求は、20万ドルとパラシュート4つ。",
+  "飛行機は、シアトルに着陸した。",
+  "金とパラシュートが渡され、乗客36人が解放された。",
+  "男の指示で、飛行機は再び南へ飛び立った。",
+  "午後8時ごろ、雨の中、機体の後部ドアが開いた。",
+  "クーパーは金とともに、ワシントン州の森の上の闇へ飛び降りた。",
+  "FBIは、周辺をくまなく捜した。",
+  "男も、パラシュートも、見つからなかった。",
+  "1980年、少年がコロンビア川の岸で、",
+  "朽ちた5800ドルを見つけた。",
+  "紙幣の番号は、身代金と一致した。",
+  "だが、その金以外に、手がかりは何もない。",
+  "機内に残されていたのは、黒いネクタイだけだった。",
+  "800人以上が調べられたが、誰も特定されなかった。",
+  "2016年、FBIは捜査を打ち切った。",
+  "今も、アメリカで唯一の未解決ハイジャック事件だ。",
+  "クーパーは生き延びたのか。それとも、あの夜の森で死んだのか。",
+  "誰にも分からない。"
+ ],
+ "tts": {
+  "2": "にじゅうまんドルを奪い、夜空へ飛び降りた。",
+  "6": "離陸後、男は客室じょうむいんにメモを渡した。「爆弾を持っている」",
+  "8": "要求は、にじゅうまんドルとパラシュート4つ。",
+  "10": "金とパラシュートが渡され、乗客さんじゅうろくにんが解放された。",
+  "17": "くちたごせんはっぴゃくドルを見つけた。",
+  "21": "はっぴゃくにんいじょうが調べられたが、誰も特定されなかった。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 74,
+  "energy": 0.3
+ },
+ "queries": [
+  "commons: D. B. Cooper",
+  "commons: incategory:\"D. B. Cooper\"",
+  "commons: Northwest Orient Boeing 727",
+  "commons: Boeing 727 aft stairs",
+  "commons: Boeing 727-51",
+  "commons: Portland International Airport 1970s",
+  "commons: Seattle-Tacoma International Airport 1970s",
+  "commons: parachute",
+  "commons: Columbia River Tena Bar",
+  "commons: Ariel Washington",
+  "commons: Lake Merwin",
+  "commons: twenty dollar bill 1969",
+  "commons: FBI headquarters",
+  "commons: clip-on tie",
+  "commons: Washington forest night rain",
+  "commons: briefcase"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, the open rear stairway of a 1970s jet airliner in flight at night, rain, dark forest below, no people",
+   "n": 2,
+   "aspect": "3:4"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a black clip-on necktie lying on an airplane seat, 1970s, dim light, no text",
+   "n": 1,
+   "aspect": "1:1"
+  }
+ ]
+}

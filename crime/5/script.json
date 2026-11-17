@@ -1,0 +1,90 @@
+{
+ "title": "帝銀事件",
+ "voice": "clone_190",
+ "speed": 1.2,
+ "lines": [
+  "ある男が銀行に入り、16人に「予防薬」を飲ませた。",
+  "そのうち12人は、二度と目を覚まさなかった。",
+  "1948年1月26日の午後。東京、帝国銀行椎名町支店。",
+  "銀行は、閉店したばかりだった。",
+  "腕章をつけた男が現れ、防疫の職員だと名乗った。",
+  "「近くで赤痢が出た。すぐに予防薬を飲んでほしい」",
+  "「進駐軍の命令だ」とも言った。",
+  "男はまず、自分で飲んでみせた。",
+  "そして、薬を2回に分けて飲むよう指示した。",
+  "16人が飲んだ。数分後、次々と倒れていった。",
+  "12人が死亡した。「薬」の正体は、青酸化合物だった。",
+  "生き残ったのは、4人だけだった。",
+  "男は現金約16万円と小切手を奪い、姿を消した。",
+  "それ以前にも、別の2つの銀行で、同じ手口の事件があった。",
+  "その一つで、男は実在する医師の名刺を残していた。",
+  "その医師と名刺を交換した人をたどり、",
+  "警察は一人の画家にたどり着いた。平沢貞通。",
+  "テンペラ画で知られた画家だった。",
+  "1948年8月、平沢は逮捕された。",
+  "取り調べの末、彼は自白した。",
+  "だが法廷では一転、無実を訴えた。",
+  "それでも、死刑判決が下された。",
+  "毒物の扱いに慣れた手口は、軍の経験者のものだという見方もある。",
+  "だが、刑は執行されなかった。",
+  "32年間、どの法務大臣も命令に署名しなかった。",
+  "1987年、平沢は獄中で亡くなった。95歳だった。",
+  "家族は今も、再審を求め続けている。",
+  "12人が死に、1人が裁かれた。",
+  "だが今も、問いは残っている。",
+  "あの薬を差し出したのは、本当は誰だったのか。"
+ ],
+ "tts": {
+  "3": "1948年1月26日の午後。東京、ていこくぎんこう しいなまちしてん。",
+  "5": "わんしょうをつけた男が現れ、ぼうえきの職員だと名乗った。",
+  "6": "「近くでせきりが出た。すぐに予防薬を飲んでほしい」",
+  "7": "「しんちゅうぐんの命令だ」とも言った。",
+  "11": "12人が死亡した。「薬」の正体は、せいさんかごうぶつだった。",
+  "13": "男は現金やくじゅうろくまんえんとこぎってを奪い、姿を消した。",
+  "17": "警察は一人の画家にたどり着いた。ひらさわさだみち。",
+  "18": "テンペラがで知られた画家だった。",
+  "19": "1948年8月、ひらさわは逮捕された。",
+  "26": "1987年、ひらさわはごくちゅうで亡くなった。95歳だった。",
+  "27": "家族は今も、さいしんを求め続けている。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 74,
+  "energy": 0.3
+ },
+ "queries": [
+  "commons: Teigin incident",
+  "commons: 帝銀事件",
+  "commons: Hirasawa Sadamichi",
+  "commons: Shiinamachi",
+  "commons: Toshima Tokyo 1948",
+  "commons: Tokyo 1948",
+  "commons: Teikoku Bank",
+  "commons: Japanese bank 1940s",
+  "commons: potassium cyanide",
+  "commons: Japanese teacup",
+  "commons: armband",
+  "commons: business card Japan",
+  "commons: Ministry of Justice Japan building",
+  "commons: Tokyo Detention House",
+  "commons: Hachioji medical prison",
+  "commons: Dai-Ichi Seimei Building GHQ",
+  "commons: tempera painting Japan",
+  "commons: Tokyo 1940s street"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a row of small white teacups on a bank counter in 1948 Japan, dim light, no people, no text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a man in a 1940s coat with an armband seen from behind in a dim bank office, face not visible",
+   "n": 2,
+   "aspect": "3:4"
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "title": "袴田事件",
+ "voice": "clone_190",
+ "speed": 1.2,
+ "lines": [
+  "48年間、刑務所で生きた男がいる。",
+  "その多くの年月を、彼は死刑を待って過ごした。",
+  "犯していない罪のために。",
+  "1966年6月30日、静岡県清水市。",
+  "みそ製造会社の専務の家が、燃え上がった。",
+  "焼け跡から、一家4人の遺体が見つかった。",
+  "2か月後、警察は袴田巌を逮捕した。30歳だった。",
+  "元プロボクサーで、その会社の従業員だった。",
+  "取り調べは1日10時間以上。それが何週間も続いた。",
+  "そして、彼は自白調書に署名した。",
+  "だが法廷で、彼は訴えた。「やっていない」",
+  "事件から1年以上たって、工場のみそタンクから、",
+  "血のついた衣類5点が見つかった。",
+  "それが、最大の証拠になった。",
+  "だが、そのズボンは小さすぎて、彼にははけなかった。",
+  "1968年、死刑判決。1980年、刑が確定した。",
+  "長い拘禁の中で、彼は心を病んでいった。",
+  "外では、姉のひで子さんが、何十年も闘い続けた。",
+  "2014年、静岡地裁は再審を決め、彼を釈放した。",
+  "獄中で過ごした年月は、48年。",
+  "世界で最も長く収容された死刑囚とされている。",
+  "そこから無罪まで、さらに10年かかった。",
+  "2024年9月26日、裁判所は、無罪を言い渡した。",
+  "衣類と自白調書は、捜査機関によるねつ造だと認めた。",
+  "検察は、控訴しなかった。",
+  "無罪が言い渡されたとき、袴田巌は88歳だった。",
+  "彼は人生のすべてを奪われた。",
+  "そして1966年に4人を殺した本当の犯人は、",
+  "今も、見つかっていない。"
+ ],
+ "tts": {
+  "4": "1966年6月30日、静岡県しみずし。",
+  "5": "みそ製造会社のせんむの家が、燃え上がった。",
+  "6": "やけあとから、一家4人の遺体が見つかった。",
+  "7": "2か月後、警察ははかまだいわおを逮捕した。30歳だった。",
+  "10": "そして、彼はじはくちょうしょに署名した。",
+  "13": "血のついたいるいごてんが見つかった。",
+  "17": "長いこうきんの中で、彼は心を病んでいった。",
+  "19": "2014年、しずおかちさいはさいしんを決め、彼を釈放した。",
+  "20": "ごくちゅうで過ごした年月は、48年。",
+  "21": "世界で最も長く収容されたしけいしゅうとされている。",
+  "24": "衣類とじはくちょうしょは、そうさきかんによるねつ造だと認めた。",
+  "25": "検察は、こうそしなかった。",
+  "26": "無罪が言い渡されたとき、はかまだいわおは88歳だった。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 74,
+  "energy": 0.3
+ },
+ "queries": [
+  "commons: Hakamada case",
+  "commons: 袴田事件",
+  "commons: Iwao Hakamada",
+  "commons: Hideko Hakamada",
+  "commons: Shimizu Shizuoka",
+  "commons: Shizuoka District Court",
+  "commons: Tokyo High Court",
+  "commons: miso barrel",
+  "commons: miso tank",
+  "commons: miso",
+  "commons: boxing gloves",
+  "commons: Tokyo Detention House",
+  "commons: prison corridor",
+  "commons: handcuffs",
+  "commons: courtroom Japan",
+  "commons: Shizuoka 1960s"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a large wooden miso fermentation vat in a dark factory, 1960s Japan, no people, no text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, a pair of old boxing gloves hanging on a nail in a dark room, no people, no text",
+   "n": 1,
+   "aspect": "1:1"
+  }
+ ]
+}

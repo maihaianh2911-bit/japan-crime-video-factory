@@ -1,0 +1,86 @@
+{
+ "title": "地下鉄サリン事件",
+ "voice": "clone_190",
+ "speed": 1.2,
+ "lines": [
+  "ごく普通の月曜日の朝。ラッシュアワー。",
+  "そして、5つの電車に置かれた、5つの小さな袋。",
+  "1995年3月20日、午前8時ごろ、東京。",
+  "何百万人もの人が、通勤の途中だった。",
+  "地下鉄3路線、5つの電車で、5人の男が床に袋を置いた。",
+  "袋は、新聞紙に包まれていた。",
+  "傘の先で袋を突き刺し、彼らは電車を降りた。",
+  "駅の外では、仲間の車が待っていた。",
+  "袋の中身は、サリン。わずかな量で人を殺す神経ガスだ。",
+  "乗客たちはせき込み、涙を流し、倒れていった。",
+  "5つの電車はすべて、官庁街の霞ケ関駅を通っていた。",
+  "駅員たちは、素手で毒の袋を運び出した。",
+  "そのうち、命を落とした人もいた。",
+  "駅の前や病院には、運ばれる人があふれた。",
+  "死者は14人。負傷者は、およそ6000人。",
+  "犯人は、オウム真理教だった。",
+  "教団は前の年にも、長野県松本市でサリンをまいていた。",
+  "2日後、警察は富士山のふもとの教団施設を捜索した。",
+  "5月16日、教祖の麻原彰晃が逮捕された。",
+  "隠し部屋に潜んでいたところだった。",
+  "2006年、麻原の死刑が確定した。",
+  "2018年、麻原と元幹部ら12人の死刑が執行された。",
+  "戦後の日本で、最悪のテロ事件である。",
+  "今も多くの人が、後遺症に苦しんでいる。",
+  "そして毎年3月20日の朝、霞ケ関駅では、",
+  "犠牲になった人々に、黙とうがささげられている。"
+ ],
+ "tts": {
+  "11": "5つの電車はすべて、官庁街のかすみがせきえきを通っていた。",
+  "12": "駅員たちは、すでで毒の袋を運び出した。",
+  "15": "死者はじゅうよにん。負傷者は、およそろくせんにん。",
+  "17": "教団は前の年にも、長野県まつもとしでサリンをまいていた。",
+  "18": "2日後、警察は富士山のふもとのきょうだんしせつを捜索した。",
+  "19": "5月16日、教祖のあさはらしょうこうが逮捕された。",
+  "21": "2006年、あさはらの死刑が確定した。",
+  "22": "2018年、あさはらともとかんぶらじゅうににんの死刑が執行された。",
+  "24": "今も多くの人が、こういしょうに苦しんでいる。",
+  "25": "そして毎年3月20日の朝、かすみがせきえきでは、",
+  "26": "犠牲になった人々に、もくとうがささげられている。"
+ },
+ "music": {
+  "style": "tension",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 74,
+  "energy": 0.3
+ },
+ "queries": [
+  "commons: Tokyo subway sarin attack",
+  "commons: 地下鉄サリン事件",
+  "commons: Kasumigaseki Station",
+  "commons: incategory:\"Kasumigaseki Station (Tokyo)\"",
+  "commons: Tokyo Metro 03 series",
+  "commons: Marunouchi Line 02 series",
+  "commons: Chiyoda Line 6000 series",
+  "commons: Aum Shinrikyo",
+  "commons: Kamikuishiki",
+  "commons: Mount Fuji Kamikuishiki",
+  "commons: umbrella",
+  "commons: gas mask",
+  "commons: Tokyo subway rush hour",
+  "commons: sarin molecule",
+  "commons: Tokyo District Court",
+  "commons: Matsumoto sarin attack",
+  "commons: Kasumigaseki government district",
+  "commons: newspaper folded"
+ ],
+ "urls": [],
+ "gen": [
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, an empty Tokyo subway car floor with a small plastic bag wrapped in newspaper and an umbrella lying on it, 1995, dim fluorescent light, no people, no readable text",
+   "n": 2,
+   "aspect": "4:3"
+  },
+  {
+   "gen": "black-and-white photograph, hard contrast, deep shadows, film grain, dark background, an empty subway platform in 1995 Tokyo, early morning, no people, no readable signs",
+   "n": 2,
+   "aspect": "4:3"
+  }
+ ]
+}
