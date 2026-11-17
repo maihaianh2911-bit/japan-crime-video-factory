@@ -7,10 +7,10 @@ The text sent to 11labs is script.json "tts"[line] when given, else the line wit
 whole words only, so "US" → "U S" leaves "USA" alone). Lines whose spoken text did not change are copied from
 a --prev folder instead of being read again (saves credits when only a few lines are fixed; several --prev are
 looked up in the order given). The voice is script.json "voice", else the channel's (prompts/channel.json).
-script.json "speed" (default 1.0, 0.8–1.3): the pace of the voice — each line is sped up (or slowed) after it is
-read, pitch kept (ffmpeg atempo: the cloned voices ignore 11labs' own speed setting); a line is reused only when
-it was made at the same speed.
-Writes <out_dir>/line_XX.mp3 (silence trimmed at both ends) and lines.json [{i, text, tts, voice, file, duration}].
+script.json "speed" (default 1; owner 17/11/2026: "nhịp nhanh lên 20%" → 1.2) speeds every line up afterwards
+(ffmpeg atempo, pitch kept), because the cloned voices of the voice service take no speed setting; a line read at
+another speed is never reused for this one.
+Writes <out_dir>/line_XX.mp3 (silence trimmed at both ends) and lines.json [{i, text, tts, voice, speed, file, duration}].
 lines.json is written again after every line, so when a later line fails the lines already paid for are on disk
 with their rows: run.py publishes them and the next run reuses them through --prev.
 """
@@ -41,6 +41,12 @@ def spoken(script, rd=None):
     return out
 
 
+def tempo_filter(speed):
+    """ffmpeg filter after the silence trim: atempo for a speed other than 1 (0.5–2, the range of one atempo)."""
+    if not 0.5 <= speed <= 2: vn11.die(f'script.json "speed" phải từ 0.5 đến 2 (đang là {speed})')
+    return ff.TRIM + (f',atempo={speed:g}' if abs(speed - 1) > 1e-6 else '')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('script'); ap.add_argument('out'); ap.add_argument('--prev', action='append', default=[])
@@ -51,13 +57,14 @@ def main():
     voice = m.group(0) if m else VOICE
     if not voice:
         vn11.die('Chưa chọn giọng đọc: ghi "voice" vào prompts/channel.json hoặc script.json.')
-    speed = round(min(1.3, max(0.8, float(script.get('speed') or 1.0))), 3)
+    speed = float(script.get('speed', 1))
+    filt = tempo_filter(speed)
     prev = {}   # (spoken text, voice, speed) → (folder, row); the first --prev that has the line wins
     for d in a.prev:
         if os.path.exists(os.path.join(d, 'lines.json')):
             for r in json.load(open(os.path.join(d, 'lines.json'), encoding='utf-8')):
                 if r.get('voice') == voice and os.path.exists(os.path.join(d, r['file'])):
-                    prev.setdefault((r['tts'], voice, round(float(r.get('speed') or 1.0), 3)), (d, r))
+                    prev.setdefault((r['tts'], voice, float(r.get('speed', 1))), (d, r))
     os.makedirs(a.out, exist_ok=True)
     rows, read = [], 0
     for i, (text, tts) in enumerate(zip(script['lines'], spoken(script)), 1):
@@ -71,8 +78,7 @@ def main():
             work = os.path.join(a.out, f'job_{i:02d}'); os.makedirs(work, exist_ok=True)
             tf = os.path.join(work, 'text.txt'); open(tf, 'w', encoding='utf-8').write(tts)
             vn11.cmd_tts(argparse.Namespace(text_file=tf, out=work, voice=voice, speed=1.0, timeout=900))
-            af = ff.TRIM + (f',atempo={speed}' if speed != 1.0 else '')
-            ff.run('-i', os.path.join(work, 'voice.mp3'), '-af', af, '-ar', '44100', '-c:a', 'libmp3lame', '-q:a', '2', dst)
+            ff.run('-i', os.path.join(work, 'voice.mp3'), '-af', filt, '-ar', '44100', '-c:a', 'libmp3lame', '-q:a', '2', dst)
             shutil.rmtree(work, ignore_errors=True); read += 1
         row = {'i': i, 'text': text, 'tts': tts, 'voice': voice, 'speed': speed, 'file': os.path.basename(dst), 'duration': round(ff.duration(dst), 3)}
         if reuse and old.get('align') and abs(old.get('duration', 0) - row['duration']) < 0.01:
