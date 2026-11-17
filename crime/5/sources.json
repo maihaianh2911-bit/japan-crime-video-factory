@@ -1,0 +1,418 @@
+{
+ "pictures": [
+  {
+   "name": "cups",
+   "src": "1/10-3.jpg",
+   "title": "Porcelain yunomi 0063 - DPLA - cc5964acd8e1c4f86981aff807ad969e.jpg",
+   "artist": "",
+   "date": "",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Porcelain_yunomi_0063_-_DPLA_-_cc5964acd8e1c4f86981aff807ad969e.jpg",
+   "ai": false
+  },
+  {
+   "name": "bank",
+   "src": "1/7-1.jpg",
+   "title": "Teikoku Bank Head Office.JPG",
+   "artist": "Unknown authorUnknown author",
+   "date": "circa 1953",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Teikoku_Bank_Head_Office.JPG",
+   "ai": false
+  },
+  {
+   "name": "armband",
+   "src": "1/11-1.jpg",
+   "title": "Armband (AM 2001.25.1272-3).jpg",
+   "artist": "Unknown authorUnknown author",
+   "date": "World War 1, 1914-18-wars; 17 Jul 2001; 15 Aug 2001; World W",
+   "license": "CC BY 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Armband_(AM_2001.25.1272-3).jpg",
+   "ai": false
+  },
+  {
+   "name": "reenact",
+   "src": "1/1-2.jpg",
+   "title": "Reenact of the scene of Teigin incident by Hirasawa Sadamichi.JPG",
+   "artist": "警視庁",
+   "date": "1948/9/28 or 10/1",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Reenact_of_the_scene_of_Teigin_incident_by_Hirasawa_Sadamichi.JPG",
+   "ai": false
+  },
+  {
+   "name": "cheque",
+   "src": "1/8-8.jpg",
+   "title": "Chung King Bank - Cancelled Cheque $100 (1935) (Chengtu). - Tien Yuan Chin Shop Certificate of Deposit 5-Yuan (1927) He De Company (Canton), Incense Export Tax ",
+   "artist": "Scans by Baldwin's Hong Kong Coin Auction.",
+   "date": "1920's-1930's",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Chung_King_Bank_-_Cancelled_Cheque_$100_(1935)_(Chengtu)._-_Tien_Yuan_Chin_Shop_Certificate_of_Deposit_5-Yuan_(1927)_He_De_Company_(Canton),_Incense_Export_Tax_Receipt_(1929).jpg",
+   "ai": false
+  },
+  {
+   "name": "paper",
+   "src": "1/1-5.jpg",
+   "title": "Teigin case.jpg",
+   "artist": "警視庁",
+   "date": "1948",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Teigin_case.jpg",
+   "ai": false
+  },
+  {
+   "name": "chart",
+   "src": "1/2-1.jpg",
+   "title": "帝銀事件 1948年 捜査陣 警視庁 東京地方検察庁 組織図.jpg",
+   "artist": "ウィキ太郎(Wiki Taro)",
+   "date": "2021-04-04",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:%E5%B8%9D%E9%8A%80%E4%BA%8B%E4%BB%B6_1948%E5%B9%B4_%E6%8D%9C%E6%9F%BB%E9%99%A3_%E8%AD%A6%E8%A6%96%E5%BA%81_%E6%9D%B1%E4%BA%AC%E5%9C%B0%E6%96%B9%E6%A4%9C%E5%AF%9F%E5%BA%81_%E7%B5%84%E7%B9%94%E5%9B%B3.jpg",
+   "ai": false
+  },
+  {
+   "name": "trial",
+   "src": "1/1-6.jpg",
+   "title": "Hirasawa Sadamichi at the 1st trial.JPG",
+   "artist": "朝日新聞社",
+   "date": "1948-12-20",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Hirasawa_Sadamichi_at_the_1st_trial.JPG",
+   "ai": false
+  },
+  {
+   "name": "prison",
+   "src": "1/15-1.jpg",
+   "title": "Hachioji Medical Prison.JPG",
+   "artist": "Waka77",
+   "date": "Taken on 8 August 2014",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Hachioji_Medical_Prison.JPG",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.825,
+   "said": [
+    "ある男が銀行に入り、",
+    "16人に「予防薬」を飲ませた。",
+    "そのうち12人は、",
+    "二度と目を覚まさなかった。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "cups",
+     "ai": false,
+     "credit": "Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Porcelain_yunomi_0063_-_DPLA_-_cc5964acd8e1c4f86981aff807ad969e.jpg"
+    }
+   ],
+   "texts": [
+    "16人",
+    "予防薬",
+    "12人死亡"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 5.825,
+   "end": 11.728,
+   "said": [
+    "1948年1月26日の午後。東京、",
+    "帝国銀行椎名町支店。",
+    "銀行は、閉店したばかりだった。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "bank",
+     "ai": false,
+     "credit": "Unknown authorUnknown author / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Teikoku_Bank_Head_Office.JPG"
+    }
+   ],
+   "texts": [
+    "帝銀事件",
+    "東京・椎名町",
+    "閉店直後"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 11.728,
+   "end": 19.348,
+   "said": [
+    "腕章をつけた男が現れ、",
+    "防疫の職員だと名乗った。",
+    "「近くで赤痢が出た。",
+    "すぐに予防薬を飲んでほしい」",
+    "「進駐軍の命令だ」とも言った。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "armband",
+     "ai": false,
+     "credit": "Unknown authorUnknown author / CC BY 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Armband_(AM_2001.25.1272-3).jpg"
+    }
+   ],
+   "texts": [
+    "防疫の職員?",
+    "「近くで赤痢」",
+    "「進駐軍の命令」"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 19.348,
+   "end": 26.471,
+   "said": [
+    "男はまず、",
+    "自分で飲んでみせた。",
+    "そして、薬を2回に分けて",
+    "飲むよう指示した。",
+    "16人が飲んだ。数分後、",
+    "次々と倒れていった。"
+   ],
+   "edit": "actions",
+   "photos": [
+    {
+     "image": "reenact",
+     "ai": false,
+     "credit": "警視庁 / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Reenact_of_the_scene_of_Teigin_incident_by_Hirasawa_Sadamichi.JPG"
+    }
+   ],
+   "texts": [
+    "数分後、次々と倒れる"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 26.471,
+   "end": 31.603,
+   "said": [
+    "12人が死亡した。「薬」",
+    "の正体は、",
+    "青酸化合物だった。",
+    "生き残ったのは、",
+    "4人だけだった。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "人\n死亡",
+    "青酸化合物",
+    "人\n生存"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 31.603,
+   "end": 34.883,
+   "said": [
+    "男は現金約16万円と小切手を",
+    "奪い、姿を消した。"
+   ],
+   "edit": "object",
+   "photos": [
+    {
+     "image": "cheque",
+     "ai": false,
+     "credit": "Scans by Baldwin's Hong Kong Coin Auction. / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Chung_King_Bank_-_Cancelled_Cheque_$100_(1935)_(Chengtu)._-_Tien_Yuan_Chin_Shop_Certificate_of_Deposit_5-Yuan_(1927)_He_De_Company_(Canton),_Incense_Export_Tax_Receipt_(1929).jpg"
+    }
+   ],
+   "texts": [
+    "現金 約16万円",
+    "小切手"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 34.883,
+   "end": 41.063,
+   "said": [
+    "それ以前にも、",
+    "別の2つの銀行で、",
+    "同じ手口の事件があった。",
+    "その一つで、男は",
+    "実在する医師の",
+    "名刺を残していた。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "paper",
+     "ai": false,
+     "credit": "警視庁 / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Teigin_case.jpg"
+    }
+   ],
+   "texts": [
+    "同じ手口",
+    "つの銀行で",
+    "医師の名刺"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 41.063,
+   "end": 47.695,
+   "said": [
+    "その医師と名刺を",
+    "交換した人をたどり、",
+    "警察は一人の画家にたどり着いた。",
+    "平沢貞通。",
+    "テンペラ画で知られた画家だった。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "chart",
+     "ai": false,
+     "credit": "ウィキ太郎(Wiki Taro) / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:%E5%B8%9D%E9%8A%80%E4%BA%8B%E4%BB%B6_1948%E5%B9%B4_%E6%8D%9C%E6%9F%BB%E9%99%A3_%E8%AD%A6%E8%A6%96%E5%BA%81_%E6%9D%B1%E4%BA%AC%E5%9C%B0%E6%96%B9%E6%A4%9C%E5%AF%9F%E5%BA%81_%E7%B5%84%E7%B9%94%E5%9B%B3.jpg"
+    }
+   ],
+   "texts": [
+    "名刺をたどる",
+    "画家",
+    "平沢貞通"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 47.695,
+   "end": 56.167,
+   "said": [
+    "1948年8月、",
+    "平沢は逮捕された。",
+    "取り調べの末、彼は自白した。",
+    "だが法廷では一転、",
+    "無実を訴えた。",
+    "それでも、",
+    "死刑判決が下された。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "trial",
+     "ai": false,
+     "credit": "朝日新聞社 / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Hirasawa_Sadamichi_at_the_1st_trial.JPG"
+    }
+   ],
+   "texts": [
+    "死刑判決"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 56.167,
+   "end": 59.787,
+   "said": [
+    "毒物の扱いに慣れた手口は、軍の",
+    "経験者のものだという見方もある。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "chart",
+     "ai": false,
+     "credit": "ウィキ太郎(Wiki Taro) / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:%E5%B8%9D%E9%8A%80%E4%BA%8B%E4%BB%B6_1948%E5%B9%B4_%E6%8D%9C%E6%9F%BB%E9%99%A3_%E8%AD%A6%E8%A6%96%E5%BA%81_%E6%9D%B1%E4%BA%AC%E5%9C%B0%E6%96%B9%E6%A4%9C%E5%AF%9F%E5%BA%81_%E7%B5%84%E7%B9%94%E5%9B%B3.jpg"
+    }
+   ],
+   "texts": [
+    "毒物に慣れた手口",
+    "軍の経験者?",
+    "ひとつの見方"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 59.787,
+   "end": 64.641,
+   "said": [
+    "だが、刑は執行されなかった。",
+    "32年間、どの法務大臣も命令に",
+    "署名しなかった。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "死刑囚",
+    "32年間"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 64.641,
+   "end": 68.123,
+   "said": [
+    "1987年、平沢は獄中で",
+    "亡くなった。95歳だった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "prison",
+     "ai": false,
+     "credit": "Waka77 / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Hachioji_Medical_Prison.JPG"
+    }
+   ],
+   "texts": [
+    "1987年 獄中で死去",
+    "95歳"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 68.123,
+   "end": 70.406,
+   "said": [
+    "家族は今も、再審を",
+    "求め続けている。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "再審を求め続ける"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 70.406,
+   "end": 74.175,
+   "said": [
+    "12人が死に、1人が裁かれた。",
+    "だが今も、",
+    "問いは残っている。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "真犯人は?"
+   ]
+  },
+  {
+   "scene": 15,
+   "start": 74.175,
+   "end": 78.561,
+   "said": [
+    "あの薬を差し出したのは、",
+    "本当は誰だったのか。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
