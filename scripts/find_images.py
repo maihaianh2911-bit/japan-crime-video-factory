@@ -105,7 +105,7 @@ def item(source, title, page, url, license, artist='', date='', description='', 
 
 # ---- sources: each returns up to n results, newest API shapes checked 12/11/2026
 def openverse(q, n):
-    p = {'q': q, 'page_size': n, 'license': 'by,by-sa,cc0,pdm', 'excluded_source': 'wikimedia', 'mature': 'false'}
+    p = {'q': q, 'page_size': min(n, 20), 'license': 'by,by-sa,cc0,pdm', 'excluded_source': 'wikimedia', 'mature': 'false'}   # 20 at most without a key (401 beyond)
     out = []
     for r in js('https://api.openverse.org/v1/images/?' + urllib.parse.urlencode(p)).get('results', []):
         lic = {'cc0': 'CC0', 'pdm': 'Public domain'}.get(r['license'], f"CC {r['license'].upper()} {r.get('license_version') or ''}".strip())
