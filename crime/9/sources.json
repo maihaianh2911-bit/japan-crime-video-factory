@@ -1,0 +1,317 @@
+{
+ "pictures": [
+  {
+   "name": "jet",
+   "src": "1/3-1.jpg",
+   "title": "Northwest Orient Airlines Boeing 727-251 N274US at Fort Lauderdale Int'l Airport, 31 January 1970.jpg",
+   "artist": "Original Photographer Unknown",
+   "date": "1970-01-31",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Northwest_Orient_Airlines_Boeing_727-251_N274US_at_Fort_Lauderdale_Int%27l_Airport,_31_January_1970.jpg",
+   "ai": false
+  },
+  {
+   "name": "jet2",
+   "src": "1/3-2.jpg",
+   "title": "Northwest Orient 727 (6961699414).jpg",
+   "artist": "clipperarctic",
+   "date": "1970",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Northwest_Orient_727_(6961699414).jpg",
+   "ai": false
+  },
+  {
+   "name": "ticket",
+   "src": "1/2-3.jpg",
+   "title": "July 2016 D.B. Cooper Plane Ticket (28379315406).jpg",
+   "artist": "Federal Bureau of Investigation (FBI)",
+   "date": "2016-06-23 12:06",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:July_2016_D.B._Cooper_Plane_Ticket_(28379315406).jpg",
+   "ai": false
+  },
+  {
+   "name": "sketch",
+   "src": "1/1-1.jpg",
+   "title": "CompositeB-FBI-1973.jpg",
+   "artist": "Roy Rose",
+   "date": "1973-01-02",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:CompositeB-FBI-1973.jpg",
+   "ai": false
+  },
+  {
+   "name": "forest",
+   "src": "1/11-2.jpg",
+   "title": "Aerial view of Lake Merwin in Washington (35085174512).jpg",
+   "artist": "ryan harvey from Portland, OR",
+   "date": "2017-06-11 13:47",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Lake_Merwin_in_Washington_(35085174512).jpg",
+   "ai": false
+  },
+  {
+   "name": "money",
+   "src": "1/1-2.jpg",
+   "title": "Money stolen by D. B. Cooper.jpg",
+   "artist": "FBI",
+   "date": "Unknown date",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Money_stolen_by_D._B._Cooper.jpg",
+   "ai": false
+  },
+  {
+   "name": "fbi",
+   "src": "1/13-1.jpg",
+   "title": "FBI Headquarters - J. Edgar Hoover Building (53840035941).jpg",
+   "artist": "ajay_suresh",
+   "date": "2024-06-21 10:37",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:FBI_Headquarters_-_J._Edgar_Hoover_Building_(53840035941).jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 6.92,
+   "said": [
+    "スーツに黒いネクタイの乗客が、",
+    "飛行機を乗っ取った。",
+    "20万ドルを奪い、",
+    "夜空へ飛び降りた。",
+    "そして、永遠に消えた。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "jet",
+     "ai": false,
+     "credit": "Original Photographer Unknown / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Northwest_Orient_Airlines_Boeing_727-251_N274US_at_Fort_Lauderdale_Int%27l_Airport,_31_January_1970.jpg"
+    }
+   ],
+   "texts": [
+    "ハイジャック",
+    "20万ドル",
+    "消えた"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 6.92,
+   "end": 13.553,
+   "said": [
+    "1971年11月24日、",
+    "アメリカ、",
+    "ポートランド空港。",
+    "一人の男が「ダン・クーパー」の名で、",
+    "シアトル行きの便に乗った。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "ticket",
+     "ai": false,
+     "credit": "Federal Bureau of Investigation (FBI) / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:July_2016_D.B._Cooper_Plane_Ticket_(28379315406).jpg"
+    }
+   ],
+   "texts": [
+    "D.B.クーパー事件",
+    "シアトル行き",
+    "「ダン・クーパー」"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 13.553,
+   "end": 19.443,
+   "said": [
+    "離陸後、男は客室乗務員に",
+    "メモを渡した。",
+    "「爆弾を持っている」",
+    "かばんを開けて、",
+    "配線と赤い筒を見せた。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "sketch",
+     "ai": false,
+     "credit": "Roy Rose / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:CompositeB-FBI-1973.jpg"
+    }
+   ],
+   "texts": [
+    "乗務員へメモ",
+    "「爆弾を持っている」",
+    "配線と赤い筒"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 19.443,
+   "end": 27.101,
+   "said": [
+    "要求は、20万ドルと",
+    "パラシュート4つ。",
+    "飛行機は、",
+    "シアトルに着陸した。",
+    "金とパラシュートが渡され、",
+    "乗客36人が解放された。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "要求",
+    "ドル",
+    "つの\nパラシュート",
+    "乗客36人を解放"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 27.101,
+   "end": 36.001,
+   "said": [
+    "男の指示で、飛行機は",
+    "再び南へ飛び立った。",
+    "午後8時ごろ、雨の中、",
+    "機体の後部ドアが開いた。",
+    "クーパーは金とともに、",
+    "ワシントン州の森の上の",
+    "闇へ飛び降りた。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "jet2",
+     "ai": false,
+     "credit": "clipperarctic / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Northwest_Orient_727_(6961699414).jpg"
+    }
+   ],
+   "texts": [
+    "闇へ飛び降りた"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 36.001,
+   "end": 39.795,
+   "said": [
+    "FBIは、周辺をくまなく捜した。",
+    "男も、パラシュートも、",
+    "見つからなかった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "forest",
+     "ai": false,
+     "credit": "ryan harvey from Portland, OR / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Lake_Merwin_in_Washington_(35085174512).jpg"
+    }
+   ],
+   "texts": [
+    "ワシントン州の森",
+    "何も見つからず"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 39.795,
+   "end": 46.247,
+   "said": [
+    "1980年、少年がコロンビア川の岸で、",
+    "朽ちた5800ドルを見つけた。",
+    "紙幣の番号は、",
+    "身代金と一致した。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "money",
+     "ai": false,
+     "credit": "FBI / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Money_stolen_by_D._B._Cooper.jpg"
+    }
+   ],
+   "texts": [
+    "1980年",
+    "コロンビア川",
+    "紙幣番号が一致"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 46.247,
+   "end": 51.282,
+   "said": [
+    "だが、その金以外に、",
+    "手がかりは何もない。",
+    "機内に残されていたのは、",
+    "黒いネクタイだけだった。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "残ったのは黒いネクタイだけ"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 51.282,
+   "end": 56.798,
+   "said": [
+    "800人以上が調べられたが、",
+    "誰も特定されなかった。",
+    "2016年、FBIは捜査を打ち切った。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "捜査打ち切り",
+    "誰も特定されず"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 56.798,
+   "end": 62.882,
+   "said": [
+    "今も、アメリカで唯一の",
+    "未解決ハイジャック事件だ。",
+    "クーパーは生き延びたのか。",
+    "それとも、あの夜の",
+    "森で死んだのか。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "fbi",
+     "ai": false,
+     "credit": "ajay_suresh / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:FBI_Headquarters_-_J._Edgar_Hoover_Building_(53840035941).jpg"
+    }
+   ],
+   "texts": [
+    "唯一の未解決ハイジャック",
+    "生き延びたのか?"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 62.882,
+   "end": 66.014,
+   "said": [
+    "誰にも分からない。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
