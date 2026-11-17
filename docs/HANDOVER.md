@@ -15,6 +15,8 @@ Repo này làm **video vụ án tiếng Nhật** (Shorts dọc 1080×1920, 30 fp
 - 14/11: *"Đây là video mẫu mới, bỏ mẫu cũ đi"* + video mẫu mới (vụ gia đình Miyazawa, 4 phút 12 giây, lời Việt) → dựng **kiểu hồ sơ vụ án** như mẫu mới (xem `00-video-mau/README.md`): mặt bàn gỗ tối, ảnh đen trắng viền trắng, nhãn vàng viết tay, giấy ghi chép đánh máy, tiêu đề giấy xé, dấu đỏ, số lớn, dây đỏ; mỗi thứ hiện khi giọng đọc nhắc tới; phụ đề ô trắng nhỏ. Mẫu cũ đã xóa. Quy định ảnh AI (ghi "イメージ（AI生成）", không vẽ mặt người thật) giữ nguyên.
 - 13/11: hình ảnh: **ảnh thật trước + AI minh họa** — ưu tiên ảnh thật (nơi xảy ra, báo cũ, tòa án); thiếu thì ảnh AI (kiểu ảnh đen trắng như mẫu), **luôn có chữ "イメージ（AI生成）"** trên ảnh và **không vẽ giống mặt người thật**. Không máu me, không chữ giả (báo, hồ sơ giả).
 
+- 17/11: *"cho nhịp nhanh lên 20% nữa nhé"* → `script.json` có `"speed": 1.2`: giọng đọc nhanh hơn 20% (tăng tốc file giọng, giữ cao độ; giọng clone không nhận chỉnh tốc độ của dịch vụ), khoảng nghỉ giữa các câu ngắn lại tương ứng, cảnh chia dày hơn. Dùng cho mọi video mới trừ khi chủ kênh đổi ý.
+
 ## Quy trình
 
 Phiếu `[Vụ án] …` → `.github/workflows/crime.yml` + `scripts/crime/run.py` (máy) và `AGENT_NIGHTLY.md` → `AGENT_CRIME.md` (Claude):

@@ -15,7 +15,8 @@ times), or nothing = the start of its scene. The voice is shown in the subtitle 
 (captions.subs). A scene with "edit": "<name>" first gets the places of that scene edit (scripts/crime/edits.py, the
 catalogue); <out_dir>/edits.md lists every scene with its edit and Claude's "why" for the owner.
 
-Timing: every line starts after the previous one plus a pause (0.45 s after a sentence end, 0.25 s otherwise).
+Timing: every line starts after the previous one plus a pause (0.45 s after a sentence end, 0.25 s otherwise),
+both divided by script.json "speed" (the pace of the voice, default 1.0: a faster voice gets shorter pauses).
 """
 import json, os, re, sys
 import numpy as np
@@ -68,6 +69,8 @@ def main(job, pub, N, imgsrc, out):
 
     # ---- voice timeline and subtitles
     LEAD, TAIL = 0.4, 2.0
+    pace = min(1.3, max(0.8, float(spec.get('speed') or 1.0)))
+    P_END, P_MID = 0.45 / pace, 0.25 / pace
     t = LEAD; starts = {}; subs = []; voice = []; srt = []
     for i in range(1, len(lines) + 1):
         starts[i] = t
@@ -80,8 +83,8 @@ def main(job, pub, N, imgsrc, out):
             acc += C.weight(sp, LANG)
             subs.append({'s': round(max(0, cs), 3), 'e': round(t + dur[i] + 0.2, 3), 'text': shown, 'line': i})
         srt.append({'s': round(t, 3), 'e': round(t + dur[i], 3), 'text': text[i]})
-        t += dur[i] + (0.45 if text[i].rstrip().endswith(END) else 0.25)
-    total = round(t - 0.25 + TAIL, 3)
+        t += dur[i] + (P_END if text[i].rstrip().endswith(END) else P_MID)
+    total = round(t - P_MID + TAIL, 3)
     for x, y in zip(subs, subs[1:]):   # a clause stays until the next one, or a moment after its line ends
         x['e'] = round(min(y['s'], x['e']) if y['line'] != x['line'] else y['s'], 3)
     subs = [c for c in subs if c['e'] - c['s'] > 0.05]

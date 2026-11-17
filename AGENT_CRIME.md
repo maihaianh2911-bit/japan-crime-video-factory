@@ -65,6 +65,10 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   only split. Numbers, dates and names as a native narrator says them.
 - Length: the voice reads ~8 characters/s; each line adds ~0.3 s. The sample is 4 min 12 s; 90–240 s suits this
   format (TikTok; Shorts allow 3 min). Longer without the owner asking → keep it and offer a shorter cut in your comment.
+- `speed`: the pace of the voice (0.8–1.3, default 1.0): every line is sped up after it is read (pitch kept) and the
+  pauses between lines shrink in step. The owner asked on 17/11/2026 for a **20 % faster pace**: write `"speed": 1.2`
+  unless the owner says otherwise. Faster speech means a shorter video: estimate the length at ~9.5 characters/s
+  (8 × 1.2) and keep it over 60 s (iron rule 2 of CLAUDE.md).
 - `tts`: kana for names and rare readings the voice may misread (`{"2": "かのじょのなまえは、アンネリーゼ・ミシェル。"}`) (`prompts/readings.json` is applied to every line).
 - `music`: dark, quiet bed under the voice. `style` `tension` (default) or `documentary`, minor key, `energy`
   0.2–0.4. `music_volume` (default 0.16) only if the owner asks.
