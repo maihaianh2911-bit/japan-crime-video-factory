@@ -1,0 +1,316 @@
+{
+ "pictures": [
+  {
+   "name": "platform",
+   "src": "1/13-1.jpg",
+   "title": "At the platform of Tokyo Subway Ginza Station.jpg",
+   "artist": "John Gillespie",
+   "date": "2012-05-13 03:06:49",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:At_the_platform_of_Tokyo_Subway_Ginza_Station.jpg",
+   "ai": false
+  },
+  {
+   "name": "train",
+   "src": "1/5-2.jpg",
+   "title": "Tokyo Metro 03 series.JPG",
+   "artist": "銚電神",
+   "date": "2012-12-13 12:00:59",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Metro_03_series.JPG",
+   "ai": false
+  },
+  {
+   "name": "umbrella",
+   "src": "1/11-7.jpg",
+   "title": "Umbrella (drawing).jpg",
+   "artist": "David Ring",
+   "date": "2015",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Umbrella_(drawing).jpg",
+   "ai": false
+  },
+  {
+   "name": "mask",
+   "src": "1/12-1.jpg",
+   "title": "Gas mask MUA IMGP0157.jpg",
+   "artist": "Nikodem Nijaki",
+   "date": "2011-02-05",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Gas_mask_MUA_IMGP0157.jpg",
+   "ai": false
+  },
+  {
+   "name": "kasumi",
+   "src": "1/3-5.jpg",
+   "title": "Kasumigaseki Station entrance.jpg",
+   "artist": "Comessu",
+   "date": "2025-08-12 11:56:12",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Kasumigaseki_Station_entrance.jpg",
+   "ai": false
+  },
+  {
+   "name": "responders",
+   "src": "1/1-2.jpg",
+   "title": "Emergency personnel respond to the Tokyo subway sarin attack.png",
+   "artist": "United States Public Health Service",
+   "date": "1995-03-20",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Emergency_personnel_respond_to_the_Tokyo_subway_sarin_attack.png",
+   "ai": false
+  },
+  {
+   "name": "street",
+   "src": "1/1-1.jpg",
+   "title": "Subway sarin attack 1995.png",
+   "artist": "防衛省",
+   "date": "Taken on 20 March 1995",
+   "license": "CC BY 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Subway_sarin_attack_1995.png",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.318,
+   "said": [
+    "ごく普通の月曜日の朝。",
+    "ラッシュアワー。",
+    "そして、5つの電車に",
+    "置かれた、5つの小さな袋。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "platform",
+     "ai": false,
+     "credit": "John Gillespie / CC BY-SA 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:At_the_platform_of_Tokyo_Subway_Ginza_Station.jpg"
+    }
+   ],
+   "texts": [
+    "月曜日の朝",
+    "ラッシュアワー",
+    "5つの袋"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 5.318,
+   "end": 10.502,
+   "said": [
+    "1995年3月20日、",
+    "午前8時ごろ、東京。",
+    "何百万人もの人が、",
+    "通勤の途中だった。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "train",
+     "ai": false,
+     "credit": "銚電神 / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Metro_03_series.JPG"
+    }
+   ],
+   "texts": [
+    "地下鉄サリン事件",
+    "東京・午前8時ごろ",
+    "通勤の途中"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 10.502,
+   "end": 20.497,
+   "said": [
+    "地下鉄3路線、5つの電車で、",
+    "5人の男が床に袋を置いた。",
+    "袋は、新聞紙に包まれていた。",
+    "傘の先で袋を突き刺し、",
+    "彼らは電車を降りた。",
+    "駅の外では、仲間の",
+    "車が待っていた。"
+   ],
+   "edit": "actions",
+   "photos": [
+    {
+     "image": "umbrella",
+     "ai": false,
+     "credit": "David Ring / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Umbrella_(drawing).jpg"
+    }
+   ],
+   "texts": [
+    "外で仲間の車が待つ"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 20.497,
+   "end": 26.034,
+   "said": [
+    "袋の中身は、サリン。",
+    "わずかな量で人を",
+    "殺す神経ガスだ。",
+    "乗客たちはせき込み、",
+    "涙を流し、倒れていった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "mask",
+     "ai": false,
+     "credit": "Nikodem Nijaki / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Gas_mask_MUA_IMGP0157.jpg"
+    }
+   ],
+   "texts": [
+    "神経ガス",
+    "サリン",
+    "せき・涙・倒れる"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 26.034,
+   "end": 33.59,
+   "said": [
+    "5つの電車はすべて、",
+    "官庁街の霞ケ関駅を通っていた。",
+    "駅員たちは、素手で毒の",
+    "袋を運び出した。",
+    "そのうち、",
+    "命を落とした人もいた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "kasumi",
+     "ai": false,
+     "credit": "Comessu / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Kasumigaseki_Station_entrance.jpg"
+    }
+   ],
+   "texts": [
+    "霞ケ関駅",
+    "駅員が素手で運び出す"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 33.59,
+   "end": 38.718,
+   "said": [
+    "駅の前や病院には、",
+    "運ばれる人があふれた。",
+    "死者は14人。負傷者は、",
+    "およそ6000人。"
+   ],
+   "edit": "number",
+   "photos": [],
+   "texts": [
+    "駅前・病院にあふれる",
+    "人\n死亡",
+    "人\n負傷"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 38.718,
+   "end": 40.553,
+   "said": [
+    "犯人は、オウム真理教だった。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "オウム真理教"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 40.553,
+   "end": 51.841,
+   "said": [
+    "教団は前の年にも、",
+    "長野県松本市で",
+    "サリンをまいていた。",
+    "2日後、警察は富士山のふもとの",
+    "教団施設を捜索した。",
+    "5月16日、教祖の麻原彰晃が",
+    "逮捕された。",
+    "隠し部屋に潜んでいたところだった。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "responders",
+     "ai": false,
+     "credit": "United States Public Health Service / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Emergency_personnel_respond_to_the_Tokyo_subway_sarin_attack.png"
+    }
+   ],
+   "texts": [
+    "隠し部屋に潜伏"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 51.841,
+   "end": 57.968,
+   "said": [
+    "2006年、麻原の死刑が確定した。",
+    "2018年、麻原と元幹部ら12人の",
+    "死刑が執行された。"
+   ],
+   "edit": "span",
+   "photos": [],
+   "texts": [
+    "死刑",
+    "麻原と元幹部ら"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 57.968,
+   "end": 62.644,
+   "said": [
+    "戦後の日本で、最悪の",
+    "テロ事件である。",
+    "今も多くの人が、",
+    "後遺症に苦しんでいる。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "street",
+     "ai": false,
+     "credit": "防衛省 / CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Subway_sarin_attack_1995.png"
+    }
+   ],
+   "texts": [
+    "戦後最悪のテロ",
+    "今も後遺症"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 62.644,
+   "end": 69.841,
+   "said": [
+    "そして毎年3月20日の",
+    "朝、霞ケ関駅では、",
+    "犠牲になった人々に、",
+    "黙とうがささげられている。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
