@@ -51,12 +51,6 @@
   "gun": {
    "src": "1/11-1.jpg"
   },
-  "sign": {
-   "src": "3/5-2.jpg"
-  },
-  "light": {
-   "src": "1/13-2.jpg"
-  },
   "mourn": {
    "src": "1/3-1.jpg",
    "look": "aged-bw"
@@ -65,13 +59,103 @@
    "src": "3/6-5.jpg",
    "look": "aged-bw"
   },
-  "castle": {
-   "src": "1/17-2.jpg",
-   "look": "aged-bw"
-  },
   "yokomizo": {
    "src": "1/15-1.jpg",
    "look": "aged-bw"
+  },
+  "kamo": {
+   "src": "5/8-3.jpg",
+   "look": "aged-bw"
+  },
+  "farm": {
+   "src": "5/8-2.jpg",
+   "look": "aged-bw"
+  },
+  "oldhouse": {
+   "src": "1/9-6.jpg"
+  },
+  "booklet": {
+   "src": "5/10-1.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "sword": {
+   "src": "5/13-3.jpg"
+  },
+  "attire": {
+   "src": "5/15-3.jpg",
+   "crop": [
+    0.0,
+    0.0,
+    0.84,
+    1.0
+   ],
+   "look": "aged-bw"
+  },
+  "paper38": {
+   "src": "5/5-1.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "scene38": {
+   "src": "5/2-1.jpg",
+   "look": "aged-bw"
+  },
+  "paper38b": {
+   "src": "5/7-8.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "film": {
+   "src": "5/16-4.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "grave": {
+   "src": "5/6-4.jpg"
+  },
+  "thatch3": {
+   "src": "5/9-2.jpg",
+   "crop": [
+    0.05,
+    0.06,
+    0.95,
+    0.92
+   ],
+   "look": "aged-bw"
+  },
+  "villagers": {
+   "src": "5/8-4.jpg",
+   "look": "aged-bw"
+  },
+  "paper38c": {
+   "src": "5/2-2.jpg",
+   "crop": [
+    0.15,
+    0.57,
+    0.84,
+    0.93
+   ],
+   "look": "clean",
+   "depth": false
+  },
+  "kaio_now": {
+   "src": "5/2-2.jpg",
+   "crop": [
+    0.15,
+    0.08,
+    0.77,
+    0.36
+   ]
+  },
+  "kaio_road": {
+   "src": "5/2-2.jpg",
+   "crop": [
+    0.53,
+    0.37,
+    0.9,
+    0.555
+   ]
   }
  },
  "scenes": [
@@ -138,7 +222,19 @@
      "kicker": "ファイル 1938"
     },
     {
-     "photo": "village"
+     "photo": [
+      "village",
+      {
+       "img": "kamo",
+       "at": "4:1938",
+       "move": "pan-right"
+      },
+      {
+       "img": "farm",
+       "at": "4:貝尾",
+       "move": "pull-back"
+      }
+     ]
     },
     {
      "tag": "岡山県・貝尾",
@@ -149,6 +245,13 @@
      "tag": "1938年5月21日 未明",
      "at": "4:1938",
      "color": "red"
+    },
+    {
+     "tag": "二十数戸",
+     "color": "white",
+     "at": "5:二十数戸",
+     "x": 300,
+     "y": 1260
     }
    ]
   },
@@ -158,7 +261,23 @@
    "why": "câu 6–8 nói về con người Toi: mồ côi, bà nội nuôi, học giỏi, rồi đau ốm",
    "items": [
     {
-     "photo": "toi2",
+     "photo": [
+      {
+       "img": "toi2",
+       "move": "push-in",
+       "view": [
+        0.1,
+        0.0,
+        0.9,
+        1.0
+       ]
+      },
+      {
+       "img": "oldhouse",
+       "at": "8:だが",
+       "move": "pan-left"
+      }
+     ],
      "view": [
       0.1,
       0.0,
@@ -193,7 +312,22 @@
    "why": "câu 9–11: khám tuyển quân, bị chẩn đoán lao, con đường đi lính khép lại (ảnh khám tuyển quân thời chiến)",
    "items": [
     {
-     "photo": "exam"
+     "photo": [
+      {
+       "img": "booklet",
+       "move": "push-in"
+      },
+      {
+       "img": "exam",
+       "at": "9:結核",
+       "move": "push-in"
+      },
+      {
+       "img": "villagers",
+       "at": "11:村人",
+       "move": "pan-left"
+      }
+     ]
     },
     {
      "tag": "徴兵検査 1937",
@@ -223,7 +357,17 @@
    "why": "câu 12–13 liệt kê những thứ hắn chuẩn bị: súng săn, kiếm Nhật, rìu",
    "items": [
     {
-     "photo": "gun"
+     "photo": [
+      {
+       "img": "gun",
+       "move": "pan-right"
+      },
+      {
+       "img": "sword",
+       "at": "13:日本刀",
+       "move": "push-in"
+      }
+     ]
     },
     {
      "tag": "恨みが募る",
@@ -252,10 +396,15 @@
   {
    "at": 14,
    "edit": "place",
-   "why": "câu 14–15: đêm đó hắn cắt điện, cả xóm chìm trong bóng tối (ảnh một ngôi nhà cũ còn lại ở xóm Kaio)",
+   "why": "câu 14–15: cắt điện, cả xóm mái tranh chìm vào bóng tối (một ảnh xóm cũ, máy đẩy vào chậm 4,5 s)",
    "items": [
     {
-     "photo": "sign"
+     "photo": [
+      {
+       "img": "thatch3",
+       "move": "push-in"
+      }
+     ]
     },
     {
      "tag": "集落の電線を切断",
@@ -272,18 +421,29 @@
   {
    "at": 16,
    "edit": "detail",
-   "why": "câu 16 chỉ vào chi tiết: hai chiếc đèn pin cài trên đầu như sừng",
+   "why": "câu 16 chỉ vào chi tiết: ảnh cảnh sát dựng lại bộ đồ hắn mặc đêm đó, hai đèn pin trên đầu",
    "items": [
     {
-     "photo": "light",
+     "photo": [
+      {
+       "img": "attire",
+       "move": "push-in",
+       "view": [
+        0.0,
+        0.0,
+        1.0,
+        0.6
+       ]
+      }
+     ],
      "marks": [
       {
        "at": "16:懐中",
        "box": [
-        0.25,
-        0.3,
-        0.52,
-        0.72
+        0.45,
+        0.08,
+        0.73,
+        0.2
        ]
       }
      ]
@@ -305,22 +465,57 @@
   },
   {
    "at": 17,
-   "edit": "statement",
-   "why": "câu 17–18 là bước ngoặt: nạn nhân đầu tiên là bà nội, rồi hắn đi từng nhà",
+   "edit": "place",
+   "why": "câu 17–18: báo 1938 ghi \"先づ祖母を惨殺\" (giết bà trước), rồi ảnh nhà ở Kaio ngay sau vụ án khi lời nói \"từ nhà này sang nhà khác\"",
    "items": [
     {
+     "photo": [
+      {
+       "img": "paper38c",
+       "move": "pan-left"
+      },
+      {
+       "img": "scene38",
+       "at": "18:それから",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
      "tag": "最初の犠牲者は、祖母",
+     "color": "red",
      "at": "17:最初"
+    },
+    {
+     "tag": "家から家へ",
+     "color": "white",
+     "at": "18:家から"
     }
    ]
   },
   {
    "at": 19,
    "edit": "fact",
-   "why": "câu 19–20 nêu kết quả: 28 người chết tại chỗ, 2 người mất sau (ảnh dân làng cầu nguyện bên quan tài)",
+   "why": "câu 19–20 nêu kết quả: tờ báo ngày 22/5/1938 \"28 người bị bắn chết\", rồi dân làng cầu nguyện bên quan tài",
    "items": [
     {
-     "photo": "mourn"
+     "photo": [
+      {
+       "img": "paper38",
+       "move": "push-in",
+       "view": [
+        0.3,
+        0.0,
+        1.0,
+        0.75
+       ]
+      },
+      {
+       "img": "mourn",
+       "at": "20:重傷",
+       "move": "pan-left"
+      }
+     ]
     },
     {
      "tag": "2時間足らず",
@@ -342,20 +537,25 @@
   {
    "at": 21,
    "edit": "place",
-   "why": "câu 21–22: rạng sáng hắn viết thư tuyệt mệnh rồi tự sát (ảnh cảnh sát điều tra ở làng năm 1938)",
+   "why": "câu 21–22: rạng sáng, cảnh sát tại hiện trường 1938; một ảnh 4 giây, máy lia chậm",
    "items": [
     {
-     "photo": "police"
+     "photo": [
+      {
+       "img": "police",
+       "move": "pan-right"
+      }
+     ]
     },
     {
      "tag": "夜明け前",
-     "at": "21:夜が",
-     "color": "white"
+     "color": "white",
+     "at": "21:夜が"
     },
     {
      "tag": "遺書を残し、自殺",
-     "at": "22:自ら",
-     "color": "red"
+     "color": "red",
+     "at": "22:自ら"
     }
    ]
   },
@@ -365,7 +565,23 @@
    "why": "câu 23–24 nêu hai thứ: tên gọi vụ án và tiểu thuyết \"Làng tám ngôi mộ\" của Yokomizo",
    "items": [
     {
-     "photo": "castle"
+     "photo": [
+      {
+       "img": "paper38b",
+       "move": "push-in",
+       "view": [
+        0.3,
+        0.0,
+        1.0,
+        0.7
+       ]
+      },
+      {
+       "img": "film",
+       "at": "24:八つ墓村",
+       "move": "pan-right"
+      }
+     ]
     },
     {
      "photo": "yokomizo",
@@ -388,18 +604,46 @@
   },
   {
    "at": 25,
-   "edit": "ending",
-   "why": "hai câu cuối quay về câu mở: một đêm, 30 người, sức nặng còn đến hôm nay",
+   "edit": "question",
+   "why": "câu 25–26 quay lại câu mở (một đêm, 30 người): bia mộ một nạn nhân đề ngày 21/5/1938 (tên đã che), rồi làng Kaio ngày nay khi lời nói \"80 năm sau vẫn còn\"; rồi con đường vào làng Kaio hôm nay (biển 貝尾)",
    "items": [
     {
-     "text": [
-      "たった一晩で、30人。",
+     "photo": [
       {
-       "text": "その重さは、今も。",
-       "color": "red"
+       "img": "grave",
+       "move": "push-in",
+       "view": [
+        0.1,
+        0.0,
+        0.95,
+        0.8
+       ]
+      },
+      {
+       "img": "kaio_now",
+       "at": "26:80年",
+       "move": "pull-back"
+      },
+      {
+       "img": "kaio_road",
+       "at": "26:残り",
+       "move": "pan-right"
       }
-     ],
-     "size": 86
+     ]
+    },
+    {
+     "tag": "たった一晩で",
+     "color": "white",
+     "at": "25:たった"
+    },
+    {
+     "tag": "30人",
+     "color": "red",
+     "at": "25:30人"
+    },
+    {
+     "tag": "80年以上たった今も",
+     "at": "26:80年"
     }
    ]
   }

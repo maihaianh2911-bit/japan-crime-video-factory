@@ -94,8 +94,9 @@ def main():
     name_of = lambda src: os.path.basename(src)[:-4]
     origin = lambda name: found.get((picks['images'].get(name) or {}).get('src', ''), {})
 
-    def said(s, e):
-        return ''.join(c['text'] for c in plan['subs'] if c['e'] > s + 0.05 and c['s'] < e - 0.05)
+    def said(s, e):   # the subtitles and the hook lines printed big instead of a subtitle (plan "quotes")
+        spoken = sorted(plan['subs'] + [{**q, 'text': q['text'].replace('\n', '')} for q in plan.get('quotes') or []], key=lambda c: c['s'])
+        return ''.join(c['text'] for c in spoken if c['e'] > s + 0.05 and c['s'] < e - 0.05)
 
     rows = []   # (scene, label, picture name, time of the still, words, whole picture path)
     for sc in plan['scenes']:
