@@ -20,7 +20,9 @@ export type Stamp = Base & { k: 'stamp'; text: string; size: number };
 export type Big = Base & { k: 'big'; num: string; text: string; size: number };
 export type Text = Base & { k: 'text'; rows: { s: number; text: string; color: string }[]; size: number };
 export type Line = Base & { k: 'line'; pts: [[number, number], [number, number]]; color: string };
-export type Item = Photo | Tag | Header | Card | Stamp | Big | Text | Line;
+export type Person = { name: string; sub: string; s: number; src?: string; iw?: number; ih?: number; focus?: [number, number] };
+export type Roster = Base & { k: 'roster'; people: Person[]; title: string; kicker: string; pick: number; pick_s: number; note: string };
+export type Item = Photo | Tag | Header | Card | Stamp | Big | Text | Line | Roster;
 export type Scene = { s: number; e: number; scene: number; bg: 'wood' | 'black'; push: number; items: Item[]; edit?: string };   // edit: name of the scene edit (picks.json), for the sheets only
 export type Sub = { s: number; e: number; text: string; line: number };
 type Role = 'sans' | 'serif' | 'mono' | 'hand';
@@ -223,8 +225,75 @@ const TextV: React.FC<{ g: Text; t: number; F: Record<Role, string> }> = ({ g, t
   </div>
 );
 
+// The opening of an episode of a "Top" series (owner, 18/11/2026: the sample of a list of killers, made finer): on
+// black, the series title on torn paper, a 3×3 grid of round portraits that come in one by one with their names on
+// paper tape; when the voice names this episode's person the others fade to grey, a red ring is drawn round that one
+// and the camera pushes in to it. A portrait without a free picture is a dark silhouette with a red question mark.
+const RCOL = [195, 540, 885], RROW = [600, 960, 1320], RD = 275;
+const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: 'ja' | 'de' }> = ({ r, t, F, lang }) => {
+  const n = r.people.length;
+  const rows = Math.ceil(n / 3);
+  const pos = r.people.map((_, i) => {
+    const row = Math.floor(i / 3), inRow = Math.min(3, n - row * 3), col = i % 3;
+    const x = inRow === 3 ? RCOL[col] : inRow === 2 ? [370, 710][col] : 540;
+    return { x, y: RROW[row] + (3 - rows) * 180 };
+  });
+  const c = pos[r.pick] || pos[0];
+  const k = ease((t - r.pick_s) / 1.15);
+  const ring = easeOut((t - r.pick_s - 0.15) / 0.6);
+  const ti = easeOut((t - r.s) / 0.5);
+  return (
+    <AbsoluteFill style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 55%, #241614 0%, #0d0a09 60%, #050404 100%)' }}>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 120, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
+        opacity: ti * (1 - k), transform: `translateY(${(1 - ti) * -30 - k * 60}px)` }}>
+        {r.kicker ? <div style={{ background: RED, color: '#fff', padding: '6px 26px', fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: 40,
+          letterSpacing: '0.18em', clipPath: torn(hash(r.kicker), 2), boxShadow: '0 4px 12px rgba(0,0,0,.5)' }}>{r.kicker}</div> : null}
+        <div style={{ background: '#ece9e2', color: INK, padding: '10px 34px', fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900,
+          fontStyle: lang === 'de' ? 'italic' : 'normal', fontSize: r.title.length > 11 ? 64 : 76, lineHeight: 1.2, whiteSpace: 'pre', textAlign: 'center',
+          clipPath: torn(hash(r.title) + 5, 1.4), boxShadow: '0 8px 22px rgba(0,0,0,.6)', maxWidth: 1000 }}>{r.title}</div>
+      </div>
+      <AbsoluteFill style={{ transformOrigin: `${c.x}px ${c.y}px`, transform: `translate(${(540 - c.x) * k}px, ${(820 - c.y) * k}px) scale(${1 + 1.35 * k})` }}>
+        {r.people.map((p, i) => {
+          const a = easeOut((t - p.s) / 0.35), me = i === r.pick;
+          const fade = me ? 1 : 1 - k;
+          const { x, y } = pos[i];
+          return (
+            <div key={i} style={{ position: 'absolute', left: x - RD / 2, top: y - RD / 2, width: RD, opacity: a * fade,
+              transform: `scale(${0.6 + 0.4 * backOut((t - p.s) / 0.4)}) rotate(${(rnd(i + 3) - 0.5) * 4}deg)`, filter: me ? 'none' : `grayscale(${k}) blur(${1.5 * k}px)` }}>
+              <div style={{ position: 'relative', width: RD, height: RD, borderRadius: '50%', overflow: 'hidden', border: '6px solid #e8e5de',
+                boxShadow: '0 14px 34px rgba(0,0,0,.75)', background: 'radial-gradient(circle at 50% 35%, #3a3532 0%, #1a1715 70%)' }}>
+                {p.src ? <Img src={staticFile(p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover',
+                    objectPosition: `${(p.focus || [0.5, 0.35])[0] * 100}% ${(p.focus || [0.5, 0.35])[1] * 100}%` }} />
+                  : <svg width={RD} height={RD} viewBox="0 0 100 100" style={{ position: 'absolute', left: 0, top: 0 }}>
+                      <ellipse cx="50" cy="40" rx="17" ry="20" fill="#0a0908" /><path d="M14 100 C 16 72, 30 62, 50 62 C 70 62, 84 72, 86 100 Z" fill="#0a0908" />
+                      <text x="50" y="49" textAnchor="middle" fontSize="22" fontWeight="900" fill={RED} fontFamily={`"${F.serif}"`}>?</text>
+                    </svg>}
+                <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 40px rgba(0,0,0,.55)', borderRadius: '50%' }} />
+              </div>
+              {me && ring > 0 ? <svg width={RD + 60} height={RD + 60} style={{ position: 'absolute', left: -30, top: -30, overflow: 'visible' }}>
+                <ellipse pathLength={1} cx={(RD + 60) / 2} cy={(RD + 60) / 2} rx={(RD + 34) / 2} ry={(RD + 26) / 2} fill="none" stroke={RED} strokeWidth={7}
+                  strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1 - ring} transform={`rotate(-80 ${(RD + 60) / 2} ${(RD + 60) / 2})`}
+                  style={{ filter: 'drop-shadow(0 0 6px rgba(0,0,0,.8))' }} /></svg> : null}
+              <div style={{ position: 'absolute', left: '50%', top: RD - 8, transform: 'translateX(-50%) rotate(-1.5deg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ background: me && k > 0.05 ? RED : '#ece9e2', color: me && k > 0.05 ? '#fff' : INK, padding: '2px 16px', whiteSpace: 'nowrap',
+                  fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 800, fontSize: 36, lineHeight: 1.25, clipPath: torn(hash(p.name), 2.4),
+                  boxShadow: '0 4px 10px rgba(0,0,0,.5)' }}>{p.name}</div>
+                {p.sub ? <div style={{ marginTop: 4, fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: 24, color: YELLOW, whiteSpace: 'nowrap',
+                  textShadow: '0 2px 6px rgba(0,0,0,.9)' }}>{p.sub}</div> : null}
+              </div>
+            </div>
+          );
+        })}
+      </AbsoluteFill>
+      {r.note ? <div style={{ position: 'absolute', left: 60, right: 60, top: 372, textAlign: 'center', fontFamily: `"${F.sans}"`, fontWeight: 700,
+        fontSize: 28, color: 'rgba(230,224,214,.7)', letterSpacing: '0.04em', opacity: ti * (1 - k) }}>{r.note}</div> : null}
+    </AbsoluteFill>
+  );
+};
+
 const ItemV: React.FC<{ it: Item; t: number; e: number; plan: PlanC; F: Record<Role, string> }> = ({ it, t, e, plan, F }) => {
   if (t < it.s || (it.e !== undefined && t >= it.e)) return null;
+  if (it.k === 'roster') return <RosterV r={it} t={t} F={F} lang={plan.lang} />;
   if (it.k === 'line') {
     const [[x0, y0], [x1, y1]] = it.pts;
     const d = easeOut((t - it.s) / 0.45);

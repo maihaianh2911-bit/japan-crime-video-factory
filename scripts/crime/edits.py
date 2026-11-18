@@ -20,14 +20,15 @@ with a red string (without an edit a line is two points, as before).
 """
 import copy, json, re
 
-KINDS = ('photo', 'tag', 'header', 'card', 'stamp', 'big', 'text', 'line')
+KINDS = ('photo', 'tag', 'header', 'card', 'stamp', 'big', 'text', 'line', 'roster')
 PICS = ('photo',)                      # "pic": a picture
 COLOR0 = 'yellow'                      # colour of a tag that names none
 CYCLE = False                          # places are pixels: they are never used twice
 PLACE = ('x', 'y')                     # what an item beyond the template's places must carry
 GROUPS = {'photo': {'w': ('h',), 'h': ('w',)}}   # Claude sized the photo himself: the other side follows the picture
 LABEL = {'photo': 'ảnh (photo)', 'pic': 'ảnh (photo)', 'tag': 'nhãn (tag)', 'header': 'tiêu đề (header)', 'card': 'tờ giấy (card)',
-         'stamp': 'dấu đỏ (stamp)', 'big': 'số lớn (big)', 'text': 'chữ lớn (text)', 'line': 'dây đỏ (line)'}
+         'stamp': 'dấu đỏ (stamp)', 'big': 'số lớn (big)', 'text': 'chữ lớn (text)', 'line': 'dây đỏ (line)',
+         'roster': 'lưới chân dung (roster)'}
 
 
 def style_of(it):
@@ -298,6 +299,13 @@ EDITS = {
             'tag': {'white': [{'x': 540, 'y': 1200, 'size': 58}], 'red': [{'x': 540, 'y': 1310, 'size': 56}], '*': [{'x': 300, 'y': 230}]}},
   'recipe': {'at': 34, 'edit': 'question', 'why': '…', 'items': [
       {'photo': 'house'}, {'tag': '何も残さなかった?', 'color': 'white', 'at': '34:何も'}, {'tag': 'すべてを残した', 'color': 'red', 'at': '35:すべて'}]}},
+ 'roster': {
+  'vi': 'mở đầu loạt Top: lưới chân dung', 'sample': '(mẫu Top 18/11) 0:00–0:08',
+  'look': 'nền đen, tiêu đề loạt "Top" trên giấy xé, lưới 3×3 ảnh chân dung tròn có tên hiện lần lượt; khi giọng đọc gọi tên người của tập này, những người khác tối đi, vòng đỏ khoanh người đó và máy quay phóng vào',
+  'use': 'MỞ ĐẦU MỘT TẬP CỦA LOẠT TOP: 1–3 câu đầu nêu tên loạt (những kẻ sát nhân đáng sợ nhất Nhật Bản…) rồi gọi tên người của tập này',
+  'needs': {'roster': 1}, 'most': {'roster': 1, 'photo': 0, 'card': 0}, 'scene': {'bg': 'black', 'push': 0},
+  'recipe': {'at': 1, 'edit': 'roster', 'why': '…', 'items': [{'roster': [{'name': '宮崎勤', 'sub': '1988–89', 'img': 'miyazaki'}, {'name': '大久保清', 'sub': '1971'}],
+      'title': '日本の凶悪殺人犯', 'kicker': 'TOP 9', 'pick': 0, 'pick_at': '2:宮崎'}]}},
  'ending': {
   'vi': 'kết: chữ lớn trắng + đỏ', 'sample': '3:16–3:17',
   'look': 'nền đen, hai dòng chữ lớn gõ ra: dòng đầu trắng, dòng cuối đỏ',

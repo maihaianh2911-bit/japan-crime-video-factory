@@ -30,7 +30,7 @@ import edits as E
 import board
 from channel import LANG, AI_TAG
 
-KINDS = ('photo', 'tag', 'header', 'card', 'stamp', 'big', 'text', 'line')
+KINDS = ('photo', 'tag', 'header', 'card', 'stamp', 'big', 'text', 'line', 'roster')
 COLORS = ('yellow', 'red', 'white', 'black')
 
 
@@ -188,6 +188,20 @@ def main(job, pub, N, imgsrc, out):
                     t0 = rs + 0.5
                     rows.append({'s': round(min(e - 0.3, max(st, rs)), 3), 'text': r.get('text', ''), 'color': r.get('color', 'white')})
                 o.update({'rows': rows, 'size': it.get('size', d['size'])})
+            elif kind == 'roster':   # the opening of a "Top" series episode: a grid of round portraits, one picked
+                ppl = []
+                for k, pr in enumerate(it['roster'][:9]):
+                    q = {'name': pr.get('name', ''), 'sub': pr.get('sub', ''), 's': round(st + 0.35 + 0.16 * k, 3)}
+                    if pr.get('img'):
+                        name = pr['img']; used.append(name); iw, ih = img_size(name)
+                        q.update({'src': f'{base}/img/{name}.jpg', 'iw': iw, 'ih': ih, 'focus': pr.get('focus', [0.5, 0.35])})
+                    ppl.append(q)
+                if not ppl: fail(f'{w_}: "roster" trống')
+                pick = int(it.get('pick', 0))
+                if not 0 <= pick < len(ppl): fail(f'{w_}: "pick" {pick} ngoài danh sách (0–{len(ppl) - 1})')
+                o.update({'people': ppl, 'title': it.get('title', ''), 'kicker': it.get('kicker', ''), 'pick': pick,
+                          'pick_s': round(when(it['pick_at'], w_) if it.get('pick_at') is not None else e - 2.2, 3),
+                          'note': it.get('note', '')})
             elif kind == 'line':
                 (x0, y0), (x1, y1) = it['line']
                 o.update({'pts': [[x0, y0], [x1, y1]], 'color': it.get('color', 'red')})
