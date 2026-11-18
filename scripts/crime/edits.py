@@ -302,7 +302,7 @@ EDITS = {
  'roster': {
   'vi': 'mở đầu loạt Top: lưới chân dung', 'sample': '(mẫu Top 18/11) 0:00–0:08',
   'look': 'nền đen, tiêu đề loạt "Top" trên giấy xé, lưới 3×3 ảnh chân dung tròn có tên hiện lần lượt; khi giọng đọc gọi tên người của tập này, những người khác tối đi, vòng đỏ khoanh người đó và máy quay phóng vào',
-  'use': 'MỞ ĐẦU MỘT TẬP CỦA LOẠT TOP: 1–3 câu đầu nêu tên loạt (những kẻ sát nhân đáng sợ nhất Nhật Bản…) rồi gọi tên người của tập này',
+  'use': 'MỞ ĐẦU VIDEO TOP và TRƯỚC MỖI NGƯỜI (owner 18/11: 4–6 người một video): câu nêu tên loạt / câu gọi hạng và tên người tiếp theo. Lần sau: "done" = những người đã kể (gạch chéo đỏ), "rank" = hạng (第3位)',
   'needs': {'roster': 1}, 'most': {'roster': 1, 'photo': 0, 'card': 0}, 'scene': {'bg': 'black', 'push': 0},
   'recipe': {'at': 1, 'edit': 'roster', 'why': '…', 'items': [{'roster': [{'name': '宮崎勤', 'sub': '1988–89', 'img': 'miyazaki'}, {'name': '大久保清', 'sub': '1971'}],
       'title': '日本の凶悪殺人犯', 'kicker': 'TOP 9', 'pick': 0, 'pick_at': '2:宮崎'}]}},

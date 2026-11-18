@@ -21,7 +21,7 @@ export type Big = Base & { k: 'big'; num: string; text: string; size: number };
 export type Text = Base & { k: 'text'; rows: { s: number; text: string; color: string }[]; size: number };
 export type Line = Base & { k: 'line'; pts: [[number, number], [number, number]]; color: string };
 export type Person = { name: string; sub: string; s: number; src?: string; iw?: number; ih?: number; focus?: [number, number] };
-export type Roster = Base & { k: 'roster'; people: Person[]; title: string; kicker: string; pick: number; pick_s: number; note: string };
+export type Roster = Base & { k: 'roster'; people: Person[]; title: string; kicker: string; pick: number; pick_s: number; note: string; rank: string; done: number[] };
 export type Item = Photo | Tag | Header | Card | Stamp | Big | Text | Line | Roster;
 export type Scene = { s: number; e: number; scene: number; bg: 'wood' | 'black'; push: number; items: Item[]; edit?: string };   // edit: name of the scene edit (picks.json), for the sheets only
 export type Sub = { s: number; e: number; text: string; line: number };
@@ -256,10 +256,11 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
         {r.people.map((p, i) => {
           const a = easeOut((t - p.s) / 0.35), me = i === r.pick;
           const fade = me ? 1 : 1 - k;
+          const gone = r.done.includes(i);   // a person this video already told: grey, struck through
           const { x, y } = pos[i];
           return (
             <div key={i} style={{ position: 'absolute', left: x - RD / 2, top: y - RD / 2, width: RD, opacity: a * fade,
-              transform: `scale(${0.6 + 0.4 * backOut((t - p.s) / 0.4)}) rotate(${(rnd(i + 3) - 0.5) * 4}deg)`, filter: me ? 'none' : `grayscale(${k}) blur(${1.5 * k}px)` }}>
+              transform: `scale(${0.6 + 0.4 * backOut((t - p.s) / 0.4)}) rotate(${(rnd(i + 3) - 0.5) * 4}deg)`, filter: me ? 'none' : `grayscale(${gone ? 1 : k}) brightness(${gone ? 0.55 : 1}) blur(${1.5 * k}px)` }}>
               <div style={{ position: 'relative', width: RD, height: RD, borderRadius: '50%', overflow: 'hidden', border: '6px solid #e8e5de',
                 boxShadow: '0 14px 34px rgba(0,0,0,.75)', background: 'radial-gradient(circle at 50% 35%, #3a3532 0%, #1a1715 70%)' }}>
                 {p.src ? <Img src={staticFile(p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover',
@@ -270,6 +271,12 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
                     </svg>}
                 <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 40px rgba(0,0,0,.55)', borderRadius: '50%' }} />
               </div>
+              {gone ? <svg width={RD} height={RD} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }}>
+                <line x1={RD * 0.12} y1={RD * 0.12} x2={RD * 0.88} y2={RD * 0.88} stroke={RED} strokeWidth={9} strokeLinecap="round" opacity={0.85} />
+                <line x1={RD * 0.88} y1={RD * 0.12} x2={RD * 0.12} y2={RD * 0.88} stroke={RED} strokeWidth={9} strokeLinecap="round" opacity={0.85} /></svg> : null}
+              {me && r.rank && ring > 0 ? <div style={{ position: 'absolute', left: '50%', top: -58, transform: `translateX(-50%) rotate(-4deg) scale(${0.6 + 0.4 * backOut(ring)})`,
+                background: '#ece9e2', color: RED, padding: '0 18px', fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: 44, whiteSpace: 'nowrap',
+                clipPath: torn(hash(r.rank), 2.2), boxShadow: '0 4px 10px rgba(0,0,0,.6)' }}>{r.rank}</div> : null}
               {me && ring > 0 ? <svg width={RD + 60} height={RD + 60} style={{ position: 'absolute', left: -30, top: -30, overflow: 'visible' }}>
                 <ellipse pathLength={1} cx={(RD + 60) / 2} cy={(RD + 60) / 2} rx={(RD + 34) / 2} ry={(RD + 26) / 2} fill="none" stroke={RED} strokeWidth={7}
                   strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1 - ring} transform={`rotate(-80 ${(RD + 60) / 2} ${(RD + 60) / 2})`}

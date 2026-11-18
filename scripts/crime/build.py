@@ -191,7 +191,7 @@ def main(job, pub, N, imgsrc, out):
             elif kind == 'roster':   # the opening of a "Top" series episode: a grid of round portraits, one picked
                 ppl = []
                 for k, pr in enumerate(it['roster'][:9]):
-                    q = {'name': pr.get('name', ''), 'sub': pr.get('sub', ''), 's': round(st + 0.35 + 0.16 * k, 3)}
+                    q = {'name': pr.get('name', ''), 'sub': pr.get('sub', ''), 's': round(st + (0.1 + 0.05 * k if it.get('done') else 0.35 + 0.16 * k), 3)}
                     if pr.get('img'):
                         name = pr['img']; used.append(name); iw, ih = img_size(name)
                         q.update({'src': f'{base}/img/{name}.jpg', 'iw': iw, 'ih': ih, 'focus': pr.get('focus', [0.5, 0.35])})
@@ -201,7 +201,7 @@ def main(job, pub, N, imgsrc, out):
                 if not 0 <= pick < len(ppl): fail(f'{w_}: "pick" {pick} ngoài danh sách (0–{len(ppl) - 1})')
                 o.update({'people': ppl, 'title': it.get('title', ''), 'kicker': it.get('kicker', ''), 'pick': pick,
                           'pick_s': round(when(it['pick_at'], w_) if it.get('pick_at') is not None else e - 2.2, 3),
-                          'note': it.get('note', '')})
+                          'note': it.get('note', ''), 'rank': it.get('rank', ''), 'done': [int(d) for d in it.get('done') or []]})
             elif kind == 'line':
                 (x0, y0), (x1, y1) = it['line']
                 o.update({'pts': [[x0, y0], [x1, y1]], 'color': it.get('color', 'red')})
