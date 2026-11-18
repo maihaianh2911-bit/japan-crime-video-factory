@@ -8,7 +8,7 @@ Sources (crime channels: places, buildings, people of the time, newspapers, cour
              its main picture, the pictures of its Wikipedia articles (channel language and English), the files of its
              Wikimedia Commons category (and sub-categories), the photos taken at its coordinates. `wiki: 三億円事件`,
              `wiki: 府中刑務所` or `wiki: Q4634328`. This is where the real pictures of a case are: ask it first.
-  web        web image search (DuckDuckGo, then Bing, then Yahoo! JAPAN): press photos, mugshots, portraits that no
+  web        web image search (Yahoo! JAPAN, then Bing, then DuckDuckGo; shops and book covers left out): press photos, mugshots, portraits that no
              open archive has. Only when prompts/channel.json has "web_images": true (owner's decision: the Japanese
              channel, 18/11/2026, accepts press photos; the pictures are not free, the credit names the page they come
              from). `web: 都井睦雄 顔写真`. With "web_images", `wiki:` also keeps the non-free pictures of the Wikipedia
@@ -71,7 +71,8 @@ try:             # the owner allows pictures that are not free (press photos) fo
     WEB_IMAGES = bool(json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'prompts', 'channel.json'), encoding='utf-8')).get('web_images'))
 except Exception:
     WEB_IMAGES = False
-WEB_LICENCE = 'Web（出典ページ）'   # Wikipedias and labels read by wiki:, in this order
+WEB_LICENCE = 'Web（出典ページ）'
+SHOPS = re.compile(r'(?i)amazon\.|media-amazon|kinokuniya|rakuten|mercari|yodobashi|honto\.|bookoff|hulu\.|cmoa\.|ebookjapan|booklive|dmm\.|tsutaya|yahoo\.co\.jp/auction|auctions\.|shopping\.|7net|hmv\.|tower\.jp|bookwalker|kobo\.|e-hon|cdjapan')   # Wikipedias and labels read by wiki:, in this order
 
 
 WIKIMEDIA = threading.BoundedSemaphore(2)   # Wikimedia asks for few requests at a time, whatever runs in parallel here
@@ -398,22 +399,23 @@ def web_bing(q, n):
 def web_yahoo(q, n):
     html = page_get('https://search.yahoo.co.jp/image/search?' + urllib.parse.urlencode({'p': q, 'ei': 'UTF-8'}))
     out = []
-    for m in re.finditer(r'"original":\{"url":"([^"]+)","width":(\d+),"height":(\d+)\}.{0,400}?"refererUrl":"([^"]*)"(?:.{0,200}?"title":"([^"]*)")?', html):
-        u, w, h, ref, t = m.groups()
-        dec = lambda x: json.loads(f'"{x}"') if x else ''
-        out.append(item('web/yahoo', dec(t) or q, dec(ref), dec(u), WEB_LICENCE, urllib.parse.urlsplit(dec(ref)).netloc, '', '', int(w), int(h)))
+    dec = lambda x: json.loads(f'"{x}"') if x else ''
+    for m in re.finditer(r'"original":\{"url":"([^"]+)","height":(\d+),"width":(\d+)[^}]*\}.{0,400}?"refererUrl":"([^"]*)"', html):
+        u, h, w, ref = m.groups()
+        t = re.search(r'"title":"([^"]{1,160})"', html[m.end():m.end() + 1500])
+        out.append(item('web/yahoo', dec(t.group(1)) if t else q, dec(ref), dec(u), WEB_LICENCE, urllib.parse.urlsplit(dec(ref)).netloc, '', '', int(w), int(h)))
         if len(out) >= n: break
     return out
 
-
 def web(q, n):
-    """Pictures from a web image search (see the module text): DuckDuckGo, else Bing, else Yahoo! JAPAN."""
+    """Pictures from a web image search (see the module text): Yahoo! JAPAN, else Bing, else DuckDuckGo. Shops and
+    book covers are left out (a search for a name finds the books about it first)."""
     if not WEB_IMAGES:
         raise RuntimeError('web: chưa được phép (prompts/channel.json "web_images": true là quyết định của chủ kênh)')
     errors = []
-    for f in (web_ddg, web_bing, web_yahoo):
+    for f in (web_yahoo, web_bing, web_ddg):   # Yahoo! JAPAN answers scripts; Bing and DuckDuckGo often ask for a challenge
         try:
-            r = f(q, n)
+            r = [x for x in f(q, n + 12) if not SHOPS.search(urllib.parse.urlsplit(x.get('page') or '').netloc + ' ' + x['thumb'])][:n]
             if r: return r
             errors.append(f'{f.__name__}: 0')
         except Exception as e:
