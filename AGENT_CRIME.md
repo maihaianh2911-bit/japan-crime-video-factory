@@ -6,6 +6,7 @@
 > would be under 60 seconds, write the script longer (true facts on the same subject, nothing invented), say on the
 > issue what was added, then go on. Never render or deliver under 60 seconds, except a trial or sample video (the
 > owner says so, or the title or notes say `thử`, `mẫu`, `test`, `demo`).
+> (3) **Vertical, 80–160 seconds** (owner, 18/11/2026: all channels): write the script for that length.
 
 The owner (Vietnamese, not technical) opens an issue `[Vụ án] …` with a script (Vietnamese, or already in the
 channel's language). The result is a vertical short (1080×1920, 30 fps) laid out as the owner's sample
@@ -72,12 +73,12 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   owner a script as one continuous text (the Japanese in one piece, then its Vietnamese meaning in one piece), never
   cut into numbered scenes or bullet points. Under 60 seconds: add true scenes and facts of the same story, never
   padding. The first line goes into `picks.json` `"quotes": [1]`.
-- Length: the voice reads ~8 characters/s; each line adds ~0.3 s. The sample is 4 min 12 s; 90–240 s suits this
-  format (TikTok; Shorts allow 3 min). Longer without the owner asking → keep it and offer a shorter cut in your comment.
+- Length: **80–160 s** (owner, 18/11/2026: every channel vertical, 80–160 s; iron rule 3 of CLAUDE.md). The voice reads
+  ~8 characters/s; each line adds ~0.3 s. A script that would run longer: cut repetition, never facts the story needs.
 - `speed`: the pace of the voice (0.8–1.3, default 1.0): every line is sped up after it is read (pitch kept) and the
   pauses between lines shrink in step. The owner asked on 17/11/2026 for a **20 % faster pace**: write `"speed": 1.2`
   unless the owner says otherwise. Faster speech means a shorter video: estimate the length at ~9.5 characters/s
-  (8 × 1.2) and keep it over 60 s (iron rule 2 of CLAUDE.md).
+  (8 × 1.2) and keep it within 80–160 s (iron rules 2–3 of CLAUDE.md).
 - `tts`: kana for names and rare readings the voice may misread (`{"3": "その途中、しろバイの警察官が車を止めた。"}`) (`prompts/readings.json` is applied to every line).
 - `music`: dark, quiet bed under the voice. `style` `tension` (default) or `documentary`, minor key, `energy`
   0.2–0.4. `music_volume` (default 0.16) only if the owner asks.
