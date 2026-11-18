@@ -293,6 +293,20 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
    that cuts the subject, set `view`, or `w`/`h` yourself. Check: the picture is the
    thing the line names, nothing important is cut or covered, no item off the desk or under the subtitle box, no
    recognisable face on an AI picture, tags appear on the right words. Fix and run again until all are right.
+7b. **Picture review (owner, 18/11/2026, as in japan-news-video-factory: "đọc lại hình ảnh đã chọn xem đã phù hợp
+   với nội dung cần thể hiện chưa, chưa thì chọn lại, duyệt lại, khi nào ổn mới lấy").** After the last preview run
+   `python3 scripts/crime/review.py crime/<N> /tmp/r/crime/<N> /tmp/review` and read every row of
+   `/tmp/review/review-<n>.jpg` (the frame as seen, the whole picture as found, the words spoken while it is on
+   screen, its source title, page, licence and the query that found it; the portraits of a `roster` too). A row
+   passes only when all hold:
+   - it shows what those words say at that moment: the person named (check the source title: a picture found under
+     one name can be someone else, an actor in a drama about the case, a drawing), the place, the event, the era (no
+     2020s photo on a 1938 line, no other case's photo on "that night");
+   - the main person or object is whole and seen: not cut by the frame, not under a tag or a card;
+   - it is clean and sharp enough: no burnt-in TV captions, logos or watermarks across it, not a small picture blown up;
+   - it is not a near-duplicate of another pick; no victim's face, no body, no blood.
+   Any row that fails: pick another picture (or search again, step 2), preview, run the review again. Push the picks
+   only when every row passes, and write in the closing comment "Đã duyệt ảnh: N/N ảnh khớp lời đọc".
 8. Commit `picks.json` together with any `script.json`/readings fixes in **one** push as `[crime #<N>] chọn ảnh`
    (a push of `script.json` alone runs the voice step again), remove `crime-busy`. (Render ~15–20 min for 2 minutes of video; you are
    woken at `crime-check`.)

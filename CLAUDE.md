@@ -46,8 +46,8 @@ Nobody answers questions, so do not ask; comments go on the issues (🤖, Vietna
    16/11/2026: every video comes with it) and the picture credits.
 
 Quality first: look at every picture yourself, read each scene's lines and choose its scene edit by their meaning
-(the catalogue in `AGENT_CRIME.md` §2.4, `"edit"` + `"why"` in `picks.json`), preview before rendering, and paste
-`edits.md` in the closing comment.
+(the catalogue in `AGENT_CRIME.md` §2.4, `"edit"` + `"why"` in `picks.json`), preview before rendering, **review every picture against the words spoken while it is on screen**
+(`scripts/crime/review.py`, `AGENT_CRIME.md` §2.7b, owner 18/11/2026) and paste `edits.md` in the closing comment.
 
 ## Changing the pipeline
 Before pushing to `main`: `python3 tests/crime_units.py`, `python3 tests/crime_smoke.py --still` (with
