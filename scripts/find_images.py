@@ -31,6 +31,10 @@ With --spec, the JSON list may also hold
    museum page …): its own group with one picture. Without "url", the page's main picture (its og:image) is taken:
    with "web_images", a news article about a person (give "page" and "license": "© <newspaper>").
 
+A wish may also be written in the query itself: "web:大久保清 顔写真 => a man's face, old black-and-white photo" (the
+English after " => " is the "want"; as in japan-news-video-factory). With a wish, wiki:, geo: and web: results are
+ranked too, and pictures that do not show it are left out.
+
 Ranking (17/11/2026). A free-text query asks each archive for 20 pictures, not 8, looks at a small version of every
 one and keeps the 8 that fit the words best: CLIP (open_clip ViT-B/32, MIT; weights from its GitHub release) scores
 picture against text ("want", else the query), and the archive's own order counts a little too. The score is
@@ -53,7 +57,7 @@ in the same run. Stdlib + Pillow (+ torch and open_clip_torch for the ranking).
 import io, json, os, re, sys, time, urllib.parse, urllib.request
 import threading
 from concurrent.futures import ThreadPoolExecutor
-from PIL import Image, ImageDraw
+from PIL import Image, ImageOps, ImageDraw
 
 UA = 'CrimeVideoFactory/0.1 (https://github.com/maihaianh2911-bit/japan-crime-video-factory; licence-checked picture search for documentary shorts)'
 SOURCES = ('commons', 'openverse', 'europeana')   # a query without prefix; loc is slow and refuses the runners
@@ -72,6 +76,8 @@ try:             # the owner allows pictures that are not free (press photos) fo
 except Exception:
     WEB_IMAGES = False
 WEB_LICENCE = 'Web（出典ページ）'
+STOCK = re.compile(r'(?i)gettyimages|alamy|shutterstock|istockphoto|dreamstime|123rf|depositphotos|pixta|aflo|amanaimages|'
+                   r'stock\.adobe|agefotostock|bridgemanimages|pinimg|pinterest|photolibrary|imagenavi')   # watermarked stock (as japan-news)
 SHOPS = re.compile(r'(?i)amazon\.|media-amazon|kinokuniya|rakuten|mercari|yodobashi|honto\.|bookoff|hulu\.|cmoa\.|ebookjapan|booklive|dmm\.|tsutaya|yahoo\.co\.jp/auction|auctions\.|shopping\.|7net|hmv\.|tower\.jp|bookwalker|kobo\.|e-hon|cdjapan')   # Wikipedias and labels read by wiki:, in this order
 
 
@@ -375,6 +381,7 @@ def page_get(url, headers=None, timeout=30):
 
 def web_ddg(q, n):
     html = page_get('https://duckduckgo.com/?' + urllib.parse.urlencode({'q': q, 'iax': 'images', 'ia': 'images'}))
+    DEBUG['duckduckgo'] = html
     m = re.search(r"vqd=['\"]?([\d-]+)", html)
     if not m: raise RuntimeError('duckduckgo: no token')
     d = json.loads(page_get('https://duckduckgo.com/i.js?' + urllib.parse.urlencode({'l': 'jp-jp', 'o': 'json', 'q': q, 'vqd': m.group(1), 'f': ',,,,,', 'p': '-1'}),
@@ -384,7 +391,8 @@ def web_ddg(q, n):
 
 
 def web_bing(q, n):
-    html = page_get('https://www.bing.com/images/search?' + urllib.parse.urlencode({'q': q, 'form': 'HDRSC2', 'first': 1}))
+    html = page_get('https://www.bing.com/images/search?' + urllib.parse.urlencode({'q': q, 'form': 'HDRSC2', 'first': 1, 'setlang': 'ja', 'cc': 'JP', 'mkt': 'ja-JP'}))
+    DEBUG['bing'] = html
     out = []
     for m in re.finditer(r'class="iusc"[^>]*\bm="([^"]+)"', html):
         try: d = json.loads(m.group(1).replace('&quot;', '"').replace('&amp;', '&'))
@@ -397,31 +405,54 @@ def web_bing(q, n):
 
 
 def web_yahoo(q, n):
+    """Yahoo! JAPAN image search, read from the page's own data (__NEXT_DATA__), as japan-news-video-factory does."""
     html = page_get('https://search.yahoo.co.jp/image/search?' + urllib.parse.urlencode({'p': q, 'ei': 'UTF-8'}))
+    DEBUG['yahoo'] = html
+    m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html, re.S)
     out = []
-    dec = lambda x: json.loads(f'"{x}"') if x else ''
-    for m in re.finditer(r'"original":\{"url":"([^"]+)","height":(\d+),"width":(\d+)[^}]*\}.{0,400}?"refererUrl":"([^"]*)"', html):
-        u, h, w, ref = m.groups()
-        t = re.search(r'"title":"([^"]{1,160})"', html[m.end():m.end() + 1500])
-        out.append(item('web/yahoo', dec(t.group(1)) if t else q, dec(ref), dec(u), WEB_LICENCE, urllib.parse.urlsplit(dec(ref)).netloc, '', '', int(w), int(h)))
-        if len(out) >= n: break
+
+    def walk(node):
+        if len(out) >= n: return
+        if isinstance(node, dict):
+            o = node.get('original')
+            if isinstance(o, dict) and isinstance(o.get('url'), str):
+                ref = node.get('refererUrl') or node.get('url') or o['url']
+                out.append(item('web/yahoo', strip(node.get('title') or '') or q, ref, o['url'], WEB_LICENCE, urllib.parse.urlsplit(ref).netloc,
+                                '', '', o.get('width'), o.get('height'), (node.get('thumbnail') or {}).get('url')))
+                return
+            for v in node.values(): walk(v)
+        elif isinstance(node, list):
+            for v in node: walk(v)
+    if m:
+        walk(json.loads(m.group(1)))
     return out
 
+DEBUG_DIR = None   # the output folder of this run (main)
+DEBUG = {}         # the last page of each web search engine: saved beside the results when none answered
+WEB_REFUSED = set()   # web engines that answered 429 in this run: not asked again
+
+
 def web(q, n):
-    """Pictures from a web image search (see the module text): Yahoo! JAPAN, else Bing, else DuckDuckGo. Shops and
-    book covers are left out (a search for a name finds the books about it first)."""
+    """Pictures from a web image search (see the module text): Yahoo! JAPAN, else Bing, else DuckDuckGo. Shops, book
+    covers and watermarked stock sites are left out (a search for a name finds the books about it first)."""
     if not WEB_IMAGES:
         raise RuntimeError('web: chưa được phép (prompts/channel.json "web_images": true là quyết định của chủ kênh)')
     errors = []
+    DEBUG.clear()
     for f in (web_yahoo, web_bing, web_ddg):   # Yahoo! JAPAN answers scripts; Bing and DuckDuckGo often ask for a challenge
+        if f.__name__ in WEB_REFUSED: continue
         try:
-            r = [x for x in f(q, n + 12) if not SHOPS.search(urllib.parse.urlsplit(x.get('page') or '').netloc + ' ' + x['thumb'])][:n]
+            r = [x for x in f(q, n + 20) if not SHOPS.search(urllib.parse.urlsplit(x.get('page') or '').netloc + ' ' + x['thumb'])
+                 and not STOCK.search((x.get('page') or '') + ' ' + x['thumb'])][:n]
             if r: return r
             errors.append(f'{f.__name__}: 0')
         except Exception as e:
+            if isinstance(e, urllib.error.HTTPError) and e.code == 429: WEB_REFUSED.add(f.__name__)
             errors.append(f'{f.__name__}: {str(e)[:60]}')
+    if DEBUG_DIR:
+        for k, html in DEBUG.items():
+            open(os.path.join(DEBUG_DIR, f'debug_{k}.html'), 'w', encoding='utf-8').write(html[:400000])
     raise RuntimeError('web: ' + '; '.join(errors))
-
 
 REFUSED = set()   # sources that answered 429 (too many requests) in this run: not asked again, see search()
 
@@ -469,7 +500,10 @@ class Clip:
 
 
 def picture(url, tries=2, timeout=20):   # a dead host costs 45 s at most, not minutes
-    return Image.open(io.BytesIO(get(url, tries=tries, timeout=timeout))).convert('RGB')
+    im = Image.open(io.BytesIO(get(url, tries=tries, timeout=timeout)))
+    try: im = ImageOps.exif_transpose(im)   # a phone photo stored lying on its side, with a note saying so
+    except Exception: pass
+    return im.convert('RGB')
 
 
 def ranked(found, text):
@@ -596,11 +630,14 @@ def main():
     if queries[:1] == ['--spec']:
         queries = json.load(open(queries[1], encoding='utf-8'))
     os.makedirs(out, exist_ok=True)
+    global DEBUG_DIR; DEBUG_DIR = out
     index, kept_hashes, dropped = [], seen_hashes(), {'small': 0, 'duplicate': 0, 'unfit': 0, 'unsuitable': 0}
     for k, q in enumerate(queries, 1):
         want = keep = None
         if isinstance(q, dict) and q.get('q'):   # a query with its own wish
             want, keep, q = q.get('want'), q.get('keep'), q['q']
+        if isinstance(q, str) and ' => ' in q:   # "web:大久保清 => a man's face, old photo": the wish written in the query
+            q, want = (x.strip() for x in q.split(' => ', 1))
         exact = isinstance(q, dict) or q.startswith('File:')
         src = None if exact else source_of(q)[0]
         keep = int(keep or (KEEP_WIKI if src == 'wiki' else KEEP_GEO if src == 'geo' else KEEP))
