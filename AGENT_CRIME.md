@@ -261,6 +261,17 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
 ```
    (This example writes most places by hand to show the fields; with an `edit` you normally leave `x`, `y`, `w`, `h`,
    `rot` and `size` out.)
+   - **A new picture every 3–4 seconds, every picture moving** (owner, 18/11/2026, on TOP 4 #1: "Quá ít hình ảnh. 1 ảnh
+     dừng lại quá lâu, chuyển động gần như bằng không"): a photo slot takes a list, shown one after the other in the
+     same frame, cross-fading: `{"photo": ["village", "house", {"img": "police", "move": "pan-left", "view": [0, 0.1, 1, 0.9],
+     "at": "5:静か"}]}` (an entry's `at` = when it comes in; without, the scene's time is shared evenly). Every
+     picture moves: `move` `push-in` | `pull-back` | `pan-right` | `pan-left` | `rise` | `fall` (a fifth of the
+     picture; a different one each, chosen by meaning: `push-in` on a face or a detail the line names, `pan-*` across a
+     place or a group, `rise` up a building, `pull-back` to reveal), or `hold` for a document; without `move` they take
+     turns. **Give every scene longer than ~4 s two or three pictures, and almost every scene a picture** (a scene with
+     words only — `statement`, `chapter`, `number`, `ending` — at most two or three in a video). The build prints
+     `chú ý: … đứng N s` for a picture on screen over 5.5 s: fix them all. Search for 2–3 pictures per scene from round 1
+     (`wiki:`, `web:` with a wish, a gallery page by `urls` with "page" only).
    - **Picture effects and hook line** (owner, 18/11/2026: "cập nhật tất cả" what japan-news-video-factory has):
      every new `picks.json` carries `"fx": {"motion": true, "depth": true, "text": true}` and `"quotes": [1]`:
      - `motion`: pictures and desk move quickly at first, then settle;

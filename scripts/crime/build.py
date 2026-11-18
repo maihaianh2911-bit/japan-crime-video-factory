@@ -31,6 +31,7 @@ import edits as E
 import board
 from channel import LANG, AI_TAG
 
+MOVES = ['push-in', 'pan-right', 'pull-back', 'pan-left', 'rise', 'fall']   # the moves of a picture, CrimeV.tsx
 KINDS = ('photo', 'tag', 'header', 'card', 'stamp', 'big', 'text', 'line', 'roster')
 COLORS = ('yellow', 'red', 'white', 'black')
 
@@ -153,9 +154,14 @@ def main(job, pub, N, imgsrc, out):
                  'rot': it.get('rot', 0)}
             if it.get('until') is not None: o['e'] = round(at_time(it['until'], w_), 3)
             if kind == 'photo':
-                name = it['photo']; used.append(name)
+                # one picture, or a list shown one after the other in the same frame (owner 18/11/2026: "quá ít hình
+                # ảnh, 1 ảnh dừng lại quá lâu, chuyển động gần như bằng không": a new picture every 3–4 s, each moving)
+                entries = it['photo'] if isinstance(it['photo'], list) else [it['photo']]
+                entries = [{'img': x} if isinstance(x, str) else {**x, 'img': x.get('img') or x.get('photo')} for x in entries]
+                if not entries or not all(x['img'] for x in entries): fail(f'{w_}: "photo" trống')
+                name = entries[0]['img']; used.extend(x['img'] for x in entries)
                 iw, ih = img_size(name)
-                view = it.get('view') or [0, 0, 1, 1]
+                view = entries[0].get('view') or it.get('view') or [0, 0, 1, 1]
                 vasp = (view[2] - view[0]) * iw / ((view[3] - view[1]) * ih)
                 w = it.get('w', d['w']); h = it.get('h', round(w / vasp))
                 if not (it.get('h') or it.get('w')) and h > 900: h = 900; w = round(h * vasp)   # a tall picture stays on the desk
@@ -172,12 +178,36 @@ def main(job, pub, N, imgsrc, out):
                     o['drift'] = 0
                 o['marks'] = [{'s': round(max(st, when(m['at'], w_)) if m.get('at') is not None else st + 0.4, 3), 'box': m['box'],
                                'shape': m.get('shape', 'ellipse'), 'color': m.get('color', 'yellow')} for m in it.get('marks', [])]
-                rec = images[name]; r = idx.get(rec['src']) or {}
-                credit = it.get('credit')
-                if credit is None:
-                    credit = '' if o['ai'] else ' / '.join(x for x in (re.sub(r'\s+', ' ', rec.get('artist') or r.get('artist') or '').strip()[:60],
+
+                def credit_of(nm, given=None):
+                    rec = images[nm]; r = idx.get(rec['src']) or {}
+                    if given is not None: return given
+                    return '' if is_ai(nm) else ' / '.join(x for x in (re.sub(r'\s+', ' ', rec.get('artist') or r.get('artist') or '').strip()[:60],
                                                                      rec.get('license') or r.get('license') or '') if x)
-                o['credit'] = credit
+                o['credit'] = credit_of(name, it.get('credit'))
+                # the slides: their start times (an "at" of their own, else shared evenly), view, move, depth
+                times = [st] + [when(x['at'], w_) if x.get('at') is not None else None for x in entries[1:]]
+                known = [k for k, x in enumerate(times) if x is not None] + [len(entries)]
+                for ka, kb in zip(known, known[1:]):
+                    end = times[kb] if kb < len(entries) else e
+                    for k in range(ka + 1, kb): times[k] = times[ka] + (end - times[ka]) * (k - ka) / (kb - ka)
+                seed = sum(map(ord, name)) + j
+                slides = []
+                for k, x in enumerate(entries):
+                    nm = x['img']; siw, sih = img_size(nm)
+                    sv = L.fit_view(x.get('view') or (view if k == 0 else [0, 0, 1, 1]), w / h, siw, sih)
+                    mv = x.get('move') or (it.get('move') if k == 0 else None) or ('hold' if it.get('still') or z else MOVES[(seed + k) % len(MOVES)])
+                    if mv not in MOVES + ['hold']: fail(f'{w_}: "move" phải là một trong {", ".join(MOVES + ["hold"])}')
+                    sl = {'src': f'{base}/img/{nm}.jpg', 'iw': siw, 'ih': sih, 'view': sv, 's': round(times[k], 3), 'move': mv,
+                          'ai': is_ai(nm), 'credit': credit_of(nm, x.get('credit', it.get('credit') if k == 0 else None))}
+                    if fx.get('depth') and x.get('depth', it.get('depth', True)) and os.path.exists(f'{pub}/{base}/img/{nm}.depth.png'):
+                        sl['depth'] = f'{base}/img/{nm}.depth.png'
+                    slides.append(sl)
+                for k, sl in enumerate(slides):
+                    sl['e'] = round(slides[k + 1]['s'] if k + 1 < len(slides) else e, 3)
+                    if sl['e'] - sl['s'] > 5.5:
+                        print(f'chú ý: {w_}: ảnh "{os.path.basename(sl["src"])[:-4]}" đứng {sl["e"] - sl["s"]:.1f} s (nên đổi ảnh mỗi 3–4 s: "photo": [ … ])')
+                o['slides'] = slides
             elif kind == 'tag':
                 o.update({'text': it['tag'], 'color': it.get('color', 'yellow'), 'size': it.get('size', d['size']),
                           'font': it.get('font', 'hand' if it.get('color', 'yellow') in ('yellow', 'red') else 'serif' if it.get('color') == 'white' else 'mono')})
@@ -228,8 +258,8 @@ def main(job, pub, N, imgsrc, out):
                 o.update({'pts': [[x0, y0], [x1, y1]], 'color': it.get('color', 'red')})
             items.append(o)
         scenes.append({'s': round(s, 3), 'e': round(e, 3), 'scene': j + 1, 'bg': sc.get('bg', 'wood'),
-                       'push': sc.get('push', 0.04), 'items': items, **({'edit': sc['edit']} if sc.get('edit') else {})})
-        for src in {images[it['photo']]['src'] for it in sc.get('items') or [] if 'photo' in it}:   # two crops of one file = one picture
+                       'push': sc.get('push', 0.07), 'items': items, **({'edit': sc['edit']} if sc.get('edit') else {})})
+        for src in {images[x if isinstance(x, str) else (x.get('img') or x.get('photo'))]['src'] for it in sc.get('items') or [] if 'photo' in it for x in (it['photo'] if isinstance(it['photo'], list) else [it['photo']])}:   # two crops of one file = one picture
             uses[src] = uses.get(src, 0) + 1
         if not any(o['k'] in ('photo', 'card', 'big') for o in items): bare.append(j + 1)
     # how many different pictures the video shows (owner, 17/11/2026: the videos were short of pictures): the count, the
@@ -305,7 +335,7 @@ def main(job, pub, N, imgsrc, out):
     scene_rows = []
     for sc in scenes:
         said = [c['text'] for c in subs if sc['s'] - 0.01 <= c['s'] < sc['e']]
-        photos = [i for i in sc['items'] if i['k'] == 'photo']
+        photos = [sl for i in sc['items'] if i['k'] == 'photo' for sl in (i.get('slides') or [i])]
         scene_rows.append({'scene': sc['scene'], 'start': sc['s'], 'end': sc['e'], 'said': said, **({'edit': sc['edit']} if sc.get('edit') else {}),
                            'photos': [{'image': os.path.basename(p['src'])[:-4], 'ai': p['ai'], 'credit': p['credit'],
                                        'page': next((x['page'] for x in src_rows if x['name'] == os.path.basename(p['src'])[:-4]), '')} for p in photos],

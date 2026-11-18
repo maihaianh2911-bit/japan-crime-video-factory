@@ -67,7 +67,7 @@ json.dump({'images': {'street': {'src': '1/1-1.jpg'}, 'room': {'src': '1/2-1.jpg
                    {'big': '67', 'text': 'x', 'y': 1180}, {'stamp': 'X', 'at': 3.5},
                    {'line': [[200, 1300], [880, 1350]], 'at': 3.6}]},
                {'at': 4, 'items': [
-                   {'photo': 'paper', 'zoom': {'to': [0.5, 0.5, 0.9, 0.9]}, 'credit': 'B / Public domain', 'y': 600},
+                   {'photo': ['paper', {'img': 'street', 'move': 'pan-left'}], 'zoom': {'to': [0.5, 0.5, 0.9, 0.9]}, 'credit': 'B / Public domain', 'y': 600},
                    {'text': ['?', {'text': '!', 'color': 'red'}], 'y': 1200}]}]},
           open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 
@@ -90,6 +90,10 @@ assert ph[0]['credit'] == 'A / CC BY-SA 4.0' and ph[1]['credit'] == ''          
 v = ph[0]['view']; assert abs((v[2] - v[0]) * ph[0]['iw'] / ((v[3] - v[1]) * ph[0]['ih']) - 620 / 820) < 0.01   # view fitted to the box
 assert ph[2]['h'] == round(ph[2]['w'] / (2000 / 1300)) and ph[2]['zoom'] and ph[2]['drift'] == 0   # whole picture + zoom
 assert ph[0]['drift'] > 0 and ph[1]['drift'] == 0
+sl = ph[2]['slides']   # a list of pictures in one frame: shown in turn, the scene shared evenly, each with its move
+assert [os.path.basename(x['src']) for x in sl] == ['paper.jpg', 'street.jpg'] and sl[1]['move'] == 'pan-left' and sl[0]['move'] == 'hold'
+assert sl[0]['s'] == ph[2]['s'] and sl[0]['e'] == sl[1]['s'] and sl[1]['e'] == sc[3]['e'] and abs((sl[1]['s'] - sl[0]['s']) - (sl[1]['e'] - sl[1]['s'])) < 0.01
+assert all(len(x['slides']) == 1 and x['slides'][0]['move'] in ('push-in', 'pan-right', 'pull-back', 'pan-left', 'rise', 'fall', 'hold') for x in ph[:2])
 v3 = plan['voice'][2]['s']; assert abs(ph[1]['marks'][0]['s'] - (v3 + 0.4 * rows[2]['duration'])) < 0.01
 tag2 = sc[0]['items'][2]; assert tag2['k'] == 'tag' and tag2['color'] == 'red'
 assert plan['voice'][1]['s'] + 0.1 < tag2['s'] < plan['voice'][1]['s'] + 1.6, tag2['s']      # "2:<words>": when the words are spoken

@@ -21,6 +21,8 @@ Repo này làm **video vụ án tiếng Nhật** (Shorts dọc 1080×1920, 30 fp
 
 - 18/11: chủ kênh (sau khi xem repo `japan-news-video-factory`): *"cập nhật tất cả"* → lấy sang repo này: tìm ảnh web (Yahoo Nhật trước, bỏ kho ảnh có hình mờ, cửa hàng, bìa sách), ước muốn ` => ` trong từ khóa, ảnh xoay đúng chiều, **bước duyệt ảnh** (`scripts/crime/review.py`), **nhạc thật** (`music:` + `"music"` trong picks.json), **hiệu ứng** (`"fx"`: máy quay có nhịp, chiều sâu 2.5D, phụ đề tô dần) và **câu hook in to** (`"quotes"`), cách viết kịch bản (câu đầu nói cả câu chuyện, lời kể liền mạch). Mỗi `picks.json` mới bật `fx` và `quotes: [1]`. Phông Shippori Mincho của repo tin tức không lấy: repo này đã có chữ có chân đậm (Noto Serif JP). Phần dây chuyền (tìm ảnh, nhạc) đã chép cả sang repo Đức (ở đó `web_images` tắt).
 
+- 18/11 (sau video TOP 4 tập 1): *"Quá ít hình ảnh. 1 ảnh dừng lại quá lâu, chuyển động gần như bằng không"* → một khung ảnh nhận **danh sách ảnh** đổi nhau mờ dần, **mỗi 3–4 giây một ảnh mới**, mỗi ảnh có **chuyển động rõ** (`move`: phóng vào/lùi ra 1/5 ảnh, lia ngang, lia dọc), mặt bàn cũng phóng mạnh hơn (7%). Bản dựng báo `chú ý` khi một ảnh đứng quá 5,5 giây. Hầu hết cảnh phải có ảnh; cảnh chỉ có chữ tối đa 2–3 trong một video.
+
 ## Quy trình
 
 Phiếu `[Vụ án] …` → `.github/workflows/crime.yml` + `scripts/crime/run.py` (máy) và `AGENT_NIGHTLY.md` → `AGENT_CRIME.md` (Claude):

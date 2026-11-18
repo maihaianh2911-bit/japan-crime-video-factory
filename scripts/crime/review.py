@@ -99,12 +99,13 @@ def main():
 
     rows = []   # (scene, label, picture name, time of the still, words, whole picture path)
     for sc in plan['scenes']:
-        photos = [it for it in sc['items'] if it['k'] == 'photo']
-        for k, it in enumerate(photos):
-            nxt = photos[k + 1]['s'] if k + 1 < len(photos) else sc['e']
-            t = min(sc['e'] - 0.1, max(it['s'] + 1.2, (it['s'] + nxt) / 2))
-            n = name_of(it['src'])
-            rows.append((sc, f"ảnh {k + 1}", n, t, said(it['s'], nxt), os.path.join(base, 'img', n + '.jpg')))
+        # every picture a photo frame shows (its slides), on screen from its start to the next picture or the scene's end
+        shown = sorted(((sl['s'], sl) for it in sc['items'] if it['k'] == 'photo' for sl in (it.get('slides') or [it])), key=lambda x: x[0])
+        for k, (s0, sl) in enumerate(shown):
+            nxt = sl.get('e') or (shown[k + 1][0] if k + 1 < len(shown) else sc['e'])
+            t = min(sc['e'] - 0.1, max(s0 + 0.8, (s0 + nxt) / 2))
+            n = name_of(sl['src'])
+            rows.append((sc, f"ảnh {k + 1} · {sl.get('move', '')} · {nxt - s0:.1f} s", n, t, said(s0, nxt), os.path.join(base, 'img', n + '.jpg')))
         for it in sc['items']:
             if it['k'] == 'roster':
                 for k, p in enumerate(it['people']):

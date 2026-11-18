@@ -11,7 +11,9 @@ type View = [number, number, number, number];
 type Base = { s: number; e?: number; x: number; y: number; rot: number };
 export type Mark = { s: number; box: View; shape: 'ellipse' | 'rect'; color: 'yellow' | 'red' };
 export type Photo = Base & { k: 'photo'; src: string; iw: number; ih: number; w: number; h: number; view: View;
-  zoom?: { to: View; s: number; e: number }; drift: number; ai: boolean; credit: string; frame: 'white' | 'none'; marks: Mark[]; depth?: string };
+  zoom?: { to: View; s: number; e: number }; drift: number; ai: boolean; credit: string; frame: 'white' | 'none'; marks: Mark[]; depth?: string; slides?: Slide[] };
+// one of the pictures a photo frame shows in turn (build.py): its own region, start, end and move
+export type Slide = { src: string; iw: number; ih: number; view: View; s: number; e: number; move: string; ai: boolean; credit: string; depth?: string };
 export type Tag = Base & { k: 'tag'; text: string; color: 'yellow' | 'red' | 'white' | 'black'; size: number; font: Role };
 export type Header = Base & { k: 'header'; title: string; kicker: string; size: number };
 export type Row = { s: number; text: string; right: string; color: string; check: boolean; strike?: number };
@@ -101,51 +103,83 @@ const enter = (t: number, s: number, kind: Item['k']) => {
   return { opacity: clamp01(p * 1.6), scale: sc, turn: (1 - easeOut(p)) * (kind === 'photo' ? 2.5 : kind === 'tag' ? -3 : 0) };
 };
 
+// the region of a slide at time t, by its move (owner 18/11/2026: the pictures must move visibly): push in or pull back
+// by a fifth, or travel across / up / down the picture at 1.2× — quick at first, then settling (motion)
+const slideView = (sl: Slide, t: number): View => {
+  const [a, b, c, d] = sl.view, W = c - a, H = d - b, k = pace((t - sl.s) / Math.max(0.8, sl.e - sl.s + 0.45));
+  const box = (cx: number, cy: number, z: number): View => [cx - W * z / 2, cy - H * z / 2, cx + W * z / 2, cy + H * z / 2];
+  const cx = (a + c) / 2, cy = (b + d) / 2, Z = 0.82, m = (1 - Z) / 2;
+  switch (sl.move) {
+    case 'push-in': return box(cx, cy, 1 - 0.2 * k);
+    case 'pull-back': return box(cx, cy, 0.8 + 0.2 * k);
+    case 'pan-right': return box(cx + W * m * (2 * k - 1), cy, Z);
+    case 'pan-left': return box(cx - W * m * (2 * k - 1), cy, Z);
+    case 'rise': return box(cx, cy - H * m * (2 * k - 1), Z);
+    case 'fall': return box(cx, cy + H * m * (2 * k - 1), Z);
+    default: return box(cx, cy, 1 - 0.04 * k);
+  }
+};
+
+// one picture drawn in the frame through a region (flat, or with its depth map)
+const Layer: React.FC<{ src: string; iw: number; ih: number; w: number; h: number; v: View; depth?: string; k: number; opacity?: number }> = ({ src, iw, ih, w, h, v, depth, k, opacity = 1 }) => {
+  const [v0, v1, v2, v3] = v;
+  const sx = w / ((v2 - v0) * iw), sy = h / ((v3 - v1) * ih), W = iw * sx, H = ih * sy;
+  if (depth && FX.depth) {
+    // depth: near things move outwards a little more than far things (2.5D, a map by prep.py)
+    const id = `dm${hash(src)}`;
+    return (
+      <svg width={W} height={H} style={{ position: 'absolute', left: -v0 * W, top: -v1 * H, overflow: 'hidden', opacity }}>
+        <filter id={id} x="0" y="0" width={W} height={H} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feImage href={staticFile(depth)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" result="map" />
+          <feDisplacementMap in="SourceGraphic" in2="map" scale={0.1 * Math.max(W, H) * k} xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <image href={staticFile(src)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" filter={`url(#${id})`} />
+      </svg>
+    );
+  }
+  return <Img src={staticFile(src)} style={{ position: 'absolute', left: -v0 * W, top: -v1 * H, width: W, height: H, maxWidth: 'none', opacity }} />;
+};
+
 const PhotoV: React.FC<{ p: Photo; t: number; e: number; tag: string; sans: string; mono: string }> = ({ p, t, e, tag, sans, mono }) => {
-  const [v0, v1, v2, v3] = viewAt(p, t, e);
-  const sx = p.w / ((v2 - v0) * p.iw), sy = p.h / ((v3 - v1) * p.ih);
+  const slides: Slide[] = p.slides && p.slides.length ? p.slides
+    : [{ src: p.src, iw: p.iw, ih: p.ih, view: p.view, s: p.s, e, move: p.drift ? 'push-in' : 'hold', ai: p.ai, credit: p.credit, depth: p.depth }];
+  let i = 0;
+  slides.forEach((sl, k) => { if (t >= sl.s) i = k; });
+  const cur = slides[i], prev = i > 0 && t - cur.s < 0.45 ? slides[i - 1] : null;
+  const fade = clamp01((t - cur.s) / 0.45);
+  const viewOf = (sl: Slide, k: number): View => (k === 0 && p.zoom ? viewAt(p, t, e) : slideView(sl, t));
+  const [v0, v1, v2, v3] = viewOf(cur, i);
+  const depthK = (sl: Slide) => pace((t - sl.s) / Math.max(0.8, sl.e - sl.s + 0.45));
   const b = p.frame === 'white' ? BORDER : 0;
   return (
     <div style={{ position: 'relative', width: p.w + 2 * b, height: p.h + 2 * b, background: '#e8e5de', padding: b, boxSizing: 'border-box',
       boxShadow: '0 18px 40px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.5)' }}>
       <div style={{ position: 'relative', width: p.w, height: p.h, overflow: 'hidden', background: '#000' }}>
-        {p.depth && FX.depth ? (() => {
-          // depth: near things move outwards a little more than far things as the scene goes on (2.5D, a map by prep.py)
-          const W = p.iw * sx, H = p.ih * sy, id = `dm${hash(p.src)}`;
-          const k = pace((t - p.s) / Math.max(0.5, e - p.s));
-          return (
-            <svg width={W} height={H} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, overflow: 'hidden' }}>
-              <filter id={id} x="0" y="0" width={W} height={H} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                <feImage href={staticFile(p.depth)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" result="map" />
-                <feDisplacementMap in="SourceGraphic" in2="map" scale={0.075 * Math.max(W, H) * k} xChannelSelector="R" yChannelSelector="G" />
-              </filter>
-              <image href={staticFile(p.src)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" filter={`url(#${id})`} />
-            </svg>
-          );
-        })() : <Img src={staticFile(p.src)} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, width: p.iw * sx, height: p.ih * sy, maxWidth: 'none' }} />}
+        {prev ? <Layer src={prev.src} iw={prev.iw} ih={prev.ih} w={p.w} h={p.h} v={viewOf(prev, i - 1)} depth={prev.depth} k={depthK(prev)} /> : null}
+        <Layer src={cur.src} iw={cur.iw} ih={cur.ih} w={p.w} h={p.h} v={[v0, v1, v2, v3]} depth={cur.depth} k={depthK(cur)} opacity={prev ? fade : 1} />
         <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 50px rgba(0,0,0,.45)' }} />
         <svg width={p.w} height={p.h} style={{ position: 'absolute', left: 0, top: 0 }}>
-          {p.marks.filter((mk) => t >= mk.s).map((mk, i) => {
+          {(i === 0 ? p.marks : []).filter((mk) => t >= mk.s).map((mk, mi) => {
             const X = (f: number) => ((f - v0) / (v2 - v0)) * p.w, Y = (f: number) => ((f - v1) / (v3 - v1)) * p.h;
             const [a, bb, c, d] = mk.box;
             const draw = easeOut((t - mk.s) / 0.5);
             const st = { fill: 'none', stroke: mk.color === 'red' ? RED : YELLOW, strokeWidth: 6, strokeLinecap: 'round' as const,
               strokeDasharray: 1, strokeDashoffset: 1 - draw, filter: 'drop-shadow(0 0 4px rgba(0,0,0,.7))' };
             return mk.shape === 'rect'
-              ? <rect key={i} pathLength={1} x={X(a)} y={Y(bb)} width={X(c) - X(a)} height={Y(d) - Y(bb)} rx={6} style={st} />
+              ? <rect key={mi} pathLength={1} x={X(a)} y={Y(bb)} width={X(c) - X(a)} height={Y(d) - Y(bb)} rx={6} style={st} />
               // turned by -90° so the ring starts drawing at the top: its radii are swapped to keep the box's shape
-              : <ellipse key={i} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(bb) + Y(d)) / 2} rx={(Y(d) - Y(bb)) / 2} ry={(X(c) - X(a)) / 2}
+              : <ellipse key={mi} pathLength={1} cx={(X(a) + X(c)) / 2} cy={(Y(bb) + Y(d)) / 2} rx={(Y(d) - Y(bb)) / 2} ry={(X(c) - X(a)) / 2}
                   transform={`rotate(-90 ${(X(a) + X(c)) / 2} ${(Y(bb) + Y(d)) / 2})`} style={st} />;
           })}
         </svg>
-        {p.ai ? (
+        {cur.ai ? (
           <div style={{ position: 'absolute', right: 10, bottom: 10, padding: '3px 10px', background: 'rgba(0,0,0,.6)', color: 'rgba(255,255,255,.92)',
             fontFamily: `"${sans}"`, fontWeight: 500, fontSize: 21, letterSpacing: '0.02em', borderRadius: 3 }}>{tag}</div>
         ) : null}
       </div>
-      {p.credit ? (
+      {cur.credit ? (
         <div style={{ position: 'absolute', left: b, right: b, top: p.h + 2 * b + 6, fontFamily: `"${mono}", "${sans}"`, fontWeight: 400, fontSize: 17,
-          color: 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.credit}</div>
+          color: 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{cur.credit}</div>
       ) : null}
     </div>
   );
