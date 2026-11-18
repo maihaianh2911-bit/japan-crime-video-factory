@@ -1,0 +1,656 @@
+{
+ "pictures": [
+  {
+   "name": "hanako_tv",
+   "src": "1/1-1.jpg",
+   "title": "公開大捜索2020春!岡山花子さん(30歳女性)の身元判明や結果は ...",
+   "artist": "trend-hoyahoya.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://trend-hoyahoya.com/koukaidaisousaku-2020-okayama-hanako-33346",
+   "ai": false
+  },
+  {
+   "name": "ryo_tv",
+   "src": "1/4-8.jpg",
+   "title": "公開大捜索2020春!小泉諒さん(27歳男性)の身元判明や結果は?母親 ...",
+   "artist": "trend-hoyahoya.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://trend-hoyahoya.com/koukaidaisousaku-2020-koizumi-ryo-33349",
+   "ai": false
+  },
+  {
+   "name": "studio",
+   "src": "1/4-3.jpg",
+   "title": "緊急！公開大捜索SP (@koukai_sp) / X",
+   "artist": "x.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://x.com/koukai_sp",
+   "ai": false
+  },
+  {
+   "name": "hanako_studio",
+   "src": "own/hanako_studio.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "date": "",
+   "license": "元動画（引用）",
+   "page": "",
+   "ai": false
+  },
+  {
+   "name": "shizuoka_car",
+   "src": "own/shizuoka_car.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "date": "",
+   "license": "元動画（引用）",
+   "page": "",
+   "ai": false
+  },
+  {
+   "name": "shizuoka_eat",
+   "src": "own/shizuoka_eat.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "date": "",
+   "license": "元動画（引用）",
+   "page": "",
+   "ai": false
+  },
+  {
+   "name": "station",
+   "src": "1/8-3.jpg",
+   "title": "Tokyo-Station-2005-7-21 4.jpg",
+   "artist": "User:Araisyohei",
+   "date": "2005-07-21",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Tokyo-Station-2005-7-21_4.jpg",
+   "ai": false
+  },
+  {
+   "name": "station2",
+   "src": "1/8-4.jpg",
+   "title": "Odawara-eki-2005-5-4 13.jpg",
+   "artist": "Syohei Arai",
+   "date": "2005-05-04",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Odawara-eki-2005-5-4_13.jpg",
+   "ai": false
+  },
+  {
+   "name": "koban",
+   "src": "1/9-5.jpg",
+   "title": "Higashi Police Station Kasumigaoka Police Box 1-3 Kasumigaoka 6-chōme Higashi-ku Fukuoka 20230109.jpg",
+   "artist": "Hirho",
+   "date": "2023-01-09 15:33:56",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Higashi_Police_Station_Kasumigaoka_Police_Box_1-3_Kasumigaoka_6-ch%C5%8Dme_Higashi-ku_Fukuoka_20230109.jpg",
+   "ai": false
+  },
+  {
+   "name": "koban_old",
+   "src": "1/9-1.jpg",
+   "title": "Koban (police box) from Sudo-cho.jpg",
+   "artist": "MichaelMaggs",
+   "date": "Taken on 9 November 2008",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Koban_(police_box)_from_Sudo-cho.jpg",
+   "ai": false
+  },
+  {
+   "name": "cityhall",
+   "src": "1/10-4.jpg",
+   "title": "Wajima City Hall.jpg",
+   "artist": "2010/09/26",
+   "date": "Hirorinmasa",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Wajima_City_Hall.jpg",
+   "ai": false
+  },
+  {
+   "name": "daycare",
+   "src": "1/11-3.jpg",
+   "title": "20120106-OC-AMW-0109",
+   "artist": "USDAgov",
+   "date": "",
+   "license": "Public domain",
+   "page": "https://www.flickr.com/photos/41284017@N08/6896805816",
+   "ai": false
+  },
+  {
+   "name": "phone",
+   "src": "1/12-3.jpg",
+   "title": "FeAp 92-1a - handset-4975.jpg",
+   "artist": "Raimond Spekking",
+   "date": "2017-11-23",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:FeAp_92-1a_-_handset-4975.jpg",
+   "ai": false
+  },
+  {
+   "name": "phone_black",
+   "src": "1/12-2.jpg",
+   "title": "Communication.",
+   "artist": "Delwin Steven Campbell",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/22955545@N00/538006470",
+   "ai": false
+  },
+  {
+   "name": "letter",
+   "src": "1/13-1.jpg",
+   "title": "Handwritten Letter of Resignation.jpg",
+   "artist": "CIPHR Connect",
+   "date": "2021-08-21",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Handwritten_Letter_of_Resignation.jpg",
+   "ai": false
+  },
+  {
+   "name": "mri",
+   "src": "1/14-5.jpg",
+   "title": "MRI Brain T1 Sag (13).jpg",
+   "artist": "511KeV",
+   "date": "2024-06-02",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:MRI_Brain_T1_Sag_(13).jpg",
+   "ai": false
+  },
+  {
+   "name": "hospital",
+   "src": "1/15-1.jpg",
+   "title": "Corridor on the second level - NÄL hospital 3.jpg",
+   "artist": "W.carter",
+   "date": "2018-04-03 17:24:50",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Corridor_on_the_second_level_-_N%C3%84L_hospital_3.jpg",
+   "ai": false
+  },
+  {
+   "name": "oldwoman",
+   "src": "1/17-1.jpg",
+   "title": "IMG_7743.jpg",
+   "artist": "Hello Turkey Toe",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/7298413@N06/5837032070",
+   "ai": false
+  },
+  {
+   "name": "hands",
+   "src": "1/18-1.jpg",
+   "title": "hold my hand",
+   "artist": "Robynlou8",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/38389614@N07/5938073935",
+   "ai": false
+  },
+  {
+   "name": "mri2",
+   "src": "1/14-2.jpg",
+   "title": "2014-09-10-brain-MRI",
+   "artist": "Kainoki Kaede",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/54246145@N05/15179374436",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.663,
+   "said": [
+    "1つ目は、岡山・自称30歳女性事件。"
+   ],
+   "edit": "roster",
+   "photos": [],
+   "texts": []
+  },
+  {
+   "scene": 2,
+   "start": 5.663,
+   "end": 12.801,
+   "said": [
+    "2020年、公開捜査番組に、",
+    "自称30歳の女性が出演した。",
+    "およそ1年前から、突然、",
+    "記憶がなくなったという。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "studio",
+     "ai": false,
+     "credit": "x.com / Web（出典ページ）",
+     "page": "https://x.com/koukai_sp"
+    },
+    {
+     "image": "hanako_tv",
+     "ai": false,
+     "credit": "trend-hoyahoya.com / Web（出典ページ）",
+     "page": "https://trend-hoyahoya.com/koukaidaisousaku-2020-okayama-hanako-33346"
+    }
+   ],
+   "texts": [
+    "2020年",
+    "自称30歳",
+    "約1年前から",
+    "記憶がない"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 12.801,
+   "end": 15.892,
+   "said": [
+    "駅で記憶がないことに気づき、",
+    "警察に助けを求めたのだ。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "station",
+     "ai": false,
+     "credit": "User:Araisyohei / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Tokyo-Station-2005-7-21_4.jpg"
+    },
+    {
+     "image": "koban",
+     "ai": false,
+     "credit": "Hirho / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Higashi_Police_Station_Kasumigaoka_Police_Box_1-3_Kasumigaoka_6-ch%C5%8Dme_Higashi-ku_Fukuoka_20230109.jpg"
+    }
+   ],
+   "texts": [
+    "駅で",
+    "警察に助けを"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 15.892,
+   "end": 22.405,
+   "said": [
+    "その時は、",
+    "デイサービスの",
+    "仕事をしていた。",
+    "せめて、自分の名前だけでも分かれば。",
+    "その思いで、彼女は",
+    "番組に出たのだ。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "daycare",
+     "ai": false,
+     "credit": "USDAgov / Public domain",
+     "page": "https://www.flickr.com/photos/41284017@N08/6896805816"
+    },
+    {
+     "image": "hanako_studio",
+     "ai": false,
+     "credit": "元動画 / 元動画（引用）",
+     "page": ""
+    }
+   ],
+   "texts": [
+    "自分の名前は?",
+    "番組に出演"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 22.405,
+   "end": 25.545,
+   "said": [
+    "今の名前は、",
+    "市役所につけてもらった、",
+    "仮の名前だった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "cityhall",
+     "ai": false,
+     "credit": "2010/09/26 / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Wajima_City_Hall.jpg"
+    }
+   ],
+   "texts": [
+    "市役所が命名",
+    "の名前",
+    "本名は不明"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 25.545,
+   "end": 31.86,
+   "said": [
+    "病院によると、「解離性健忘」",
+    "の可能性があるという。",
+    "強いストレスなどで、",
+    "自分のことを",
+    "思い出せなくなる状態だ。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "hospital",
+     "ai": false,
+     "credit": "W.carter / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Corridor_on_the_second_level_-_N%C3%84L_hospital_3.jpg"
+    },
+    {
+     "image": "mri2",
+     "ai": false,
+     "credit": "Kainoki Kaede / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/54246145@N05/15179374436"
+    },
+    {
+     "image": "mri",
+     "ai": false,
+     "credit": "511KeV / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:MRI_Brain_T1_Sag_(13).jpg"
+    }
+   ],
+   "texts": [
+    "病院の見立て",
+    "強いストレス",
+    "解離性健忘"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 31.86,
+   "end": 35.294,
+   "said": [
+    "そして放送中、実の兄を",
+    "名乗る男性から、",
+    "電話が入った。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "studio",
+     "ai": false,
+     "credit": "x.com / Web（出典ページ）",
+     "page": "https://x.com/koukai_sp"
+    },
+    {
+     "image": "phone",
+     "ai": false,
+     "credit": "Raimond Spekking / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:FeAp_92-1a_-_handset-4975.jpg"
+    }
+   ],
+   "texts": [
+    "放送中",
+    "実の兄から電話"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 35.294,
+   "end": 44.989,
+   "said": [
+    "2つ目は、岡山・自称27歳男性事件。",
+    "同じ2020年、",
+    "自称27歳の男性が、",
+    "公開捜査番組に出演した。",
+    "自分が誰なのかを、",
+    "知るためだった。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "ryo_tv",
+     "ai": false,
+     "credit": "trend-hoyahoya.com / Web（出典ページ）",
+     "page": "https://trend-hoyahoya.com/koukaidaisousaku-2020-koizumi-ryo-33349"
+    },
+    {
+     "image": "studio2",
+     "ai": false,
+     "credit": "x.com / Web（出典ページ）",
+     "page": ""
+    }
+   ],
+   "texts": [
+    "2つ目",
+    "自称27歳",
+    "2020年",
+    "身元を知るため"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 44.989,
+   "end": 50.595,
+   "said": [
+    "男性の記憶では、",
+    "叔母からひどい扱いを",
+    "受けていたという。",
+    "だが、番組を観ていた母親が、",
+    "電話をかけてきた。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "studio2",
+     "ai": false,
+     "credit": "x.com / Web（出典ページ）",
+     "page": ""
+    },
+    {
+     "image": "phone_black",
+     "ai": false,
+     "credit": "Delwin Steven Campbell / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/22955545@N00/538006470"
+    }
+   ],
+   "texts": [
+    "叔母からひどい扱い?",
+    "母親から電話"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 50.595,
+   "end": 56.692,
+   "said": [
+    "母親によると、彼は",
+    "「探さないでください」と手紙を残し、",
+    "姿を消していた。",
+    "警察にも、捜索願を",
+    "出していたという。"
+   ],
+   "edit": "actions",
+   "photos": [
+    {
+     "image": "letter",
+     "ai": false,
+     "credit": "CIPHR Connect / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Handwritten_Letter_of_Resignation.jpg"
+    }
+   ],
+   "texts": [
+    "母親の話"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 56.692,
+   "end": 60.792,
+   "said": [
+    "「テレビで息子の姿を",
+    "見られて、良かった」。",
+    "母親は、涙ながらにそう語った。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "ryo_tv",
+     "ai": false,
+     "credit": "trend-hoyahoya.com / Web（出典ページ）",
+     "page": "https://trend-hoyahoya.com/koukaidaisousaku-2020-koizumi-ryo-33349"
+    },
+    {
+     "image": "hands",
+     "ai": false,
+     "credit": "Robynlou8 / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/38389614@N07/5938073935"
+    }
+   ],
+   "texts": [
+    "「良かった」",
+    "涙ながらに"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 60.792,
+   "end": 68.482,
+   "said": [
+    "3つ目は、静岡・推定63歳女性事件。",
+    "2018年、公開捜査番組に、",
+    "推定63歳の女性が登場した。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "shizuoka_car",
+     "ai": false,
+     "credit": "元動画 / 元動画（引用）",
+     "page": ""
+    },
+    {
+     "image": "shizuoka_eat",
+     "ai": false,
+     "credit": "元動画 / 元動画（引用）",
+     "page": ""
+    }
+   ],
+   "texts": [
+    "3つ目",
+    "推定63歳",
+    "2018年",
+    "公開捜査番組"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 68.482,
+   "end": 73.828,
+   "said": [
+    "女性は静岡県の駅で、",
+    "記憶を失ったまま見つかった。",
+    "保護されたのは、",
+    "2016年のことだ。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "station2",
+     "ai": false,
+     "credit": "Syohei Arai / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Odawara-eki-2005-5-4_13.jpg"
+    },
+    {
+     "image": "oldwoman",
+     "ai": false,
+     "credit": "Hello Turkey Toe / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/7298413@N06/5837032070"
+    }
+   ],
+   "texts": [
+    "静岡県の駅",
+    "2016年 保護"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 73.828,
+   "end": 81.447,
+   "said": [
+    "番組に出ると、女性の",
+    "姉から連絡が入った。",
+    "女性はもともと体調が悪く、",
+    "病院に通っていたという。",
+    "姉の連絡で、女性の",
+    "本名も分かった。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "phone_black",
+     "ai": false,
+     "credit": "Delwin Steven Campbell / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/22955545@N00/538006470"
+    },
+    {
+     "image": "hospital",
+     "ai": false,
+     "credit": "W.carter / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Corridor_on_the_second_level_-_N%C3%84L_hospital_3.jpg"
+    }
+   ],
+   "texts": [
+    "もともと通院"
+   ]
+  },
+  {
+   "scene": 15,
+   "start": 81.447,
+   "end": 88.942,
+   "said": [
+    "ところが、女性には、",
+    "同居していた息子がいた。",
+    "息子は、警察に届け出ていなかった",
+    "可能性が高い。",
+    "ネットでは、息子に",
+    "批判の声があがった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "oldwoman",
+     "ai": false,
+     "credit": "Hello Turkey Toe / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/7298413@N06/5837032070"
+    },
+    {
+     "image": "koban_old",
+     "ai": false,
+     "credit": "MichaelMaggs / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Koban_(police_box)_from_Sudo-cho.jpg"
+    }
+   ],
+   "texts": [
+    "同居の息子",
+    "届け出なし?",
+    "ネットで批判"
+   ]
+  },
+  {
+   "scene": 16,
+   "start": 88.942,
+   "end": 95.233,
+   "said": [
+    "名前も、過去も失った3人。",
+    "最後に見つけたのは、",
+    "テレビの前の家族だった。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
