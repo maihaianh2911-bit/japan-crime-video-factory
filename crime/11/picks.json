@@ -1,0 +1,570 @@
+{
+ "fx": {
+  "motion": true,
+  "depth": true,
+  "text": true
+ },
+ "quotes": [
+  1
+ ],
+ "music": {
+  "pick": "1/23-4.ogg",
+  "volume": 1
+ },
+ "images": {
+  "nishikawa": {
+   "src": "1/4-3.jpg"
+  },
+  "daigoro_field": {
+   "src": "1/4-1.jpg"
+  },
+  "daigoro_paper": {
+   "src": "1/3-8.jpg",
+   "look": "aged-bw",
+   "depth": false
+  },
+  "tv_listing": {
+   "src": "1/4-2.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "babycart": {
+   "src": "1/4-6.jpg"
+  },
+  "handcuffs": {
+   "src": "1/22-2.jpg"
+  },
+  "niigata_court": {
+   "src": "1/6-1.jpg"
+  },
+  "oshio": {
+   "src": "1/8-7.jpg"
+  },
+  "oshio_walk": {
+   "src": "1/9-2.jpg"
+  },
+  "pills": {
+   "src": "1/11-3.jpg"
+  },
+  "hills": {
+   "src": "1/10-1.jpg"
+  },
+  "arrest_night": {
+   "src": "1/9-5.jpg"
+  },
+  "trial_press": {
+   "src": "1/9-4.jpg"
+  },
+  "katsumi": {
+   "src": "1/15-6.jpg"
+  },
+  "sasurai_guitar": {
+   "src": "1/16-7.jpg"
+  },
+  "katsumi_tv": {
+   "src": "1/15-4.jpg"
+  },
+  "ginza1971": {
+   "src": "1/20-2.jpg"
+  },
+  "sasurai_bw": {
+   "src": "1/15-1.jpg"
+  },
+  "haneda1975": {
+   "src": "1/19-1.jpg"
+  },
+  "haneda_old": {
+   "src": "1/19-4.jpg"
+  },
+  "katsumi_kiri": {
+   "src": "1/16-3.jpg"
+  },
+  "sasurai_orange": {
+   "src": "1/16-1.jpg"
+  },
+  "yuhi": {
+   "src": "1/15-3.jpg"
+  },
+  "kohaku1953": {
+   "src": "1/17-11.jpg"
+  },
+  "council": {
+   "src": "2/4-6.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "roster",
+   "why": "câu 1–2: tên loạt (3 vụ án của người nổi tiếng) rồi gọi người thứ nhất, Nishikawa",
+   "items": [
+    {
+     "roster": [
+      {
+       "name": "西川和孝",
+       "sub": "1999",
+       "img": "nishikawa",
+       "focus": [
+        0.78,
+        0.35
+       ]
+      },
+      {
+       "name": "押尾学",
+       "sub": "2009",
+       "img": "oshio",
+       "focus": [
+        0.5,
+        0.3
+       ]
+      },
+      {
+       "name": "克美しげる",
+       "sub": "1976",
+       "img": "katsumi",
+       "focus": [
+        0.55,
+        0.35
+       ]
+      }
+     ],
+     "title": "有名人による\n凶悪事件",
+     "kicker": "3選",
+     "note": "※実際の事件に基づく内容です",
+     "pick": 0,
+     "rank": "1つ目",
+     "pick_at": "2:西川"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "pair",
+   "why": "câu 3–4 nói hai thứ: vai Daigoro trong phim, rồi bài báo khen cậu bé nổi tiếng",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "daigoro_field",
+       "move": "push-in"
+      },
+      {
+       "img": "babycart",
+       "move": "pan-right",
+       "at": "3:演じた"
+      }
+     ]
+    },
+    {
+     "photo": "daigoro_paper",
+     "at": "4:愛らしい"
+    },
+    {
+     "tag": "大五郎役",
+     "at": "3:大五郎"
+    },
+    {
+     "tag": "名子役",
+     "at": "3:名子役"
+    },
+    {
+     "tag": "一躍人気者に",
+     "color": "red",
+     "at": "4:人気者"
+    }
+   ]
+  },
+  {
+   "at": 5,
+   "edit": "timeline",
+   "why": "câu 5–7 có các mốc: học xong cấp 3 bỏ nghề (tờ báo giới thiệu phim), 28 tuổi làm nghị viên (phòng họp hội đồng thành phố), rồi rắc rối",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "tv_listing",
+       "move": "hold"
+      },
+      {
+       "img": "council",
+       "move": "pan-right",
+       "at": "6:28"
+      }
+     ]
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "高校卒業後",
+        "right": "芸能界を引退",
+        "at": "5:引退"
+       },
+       {
+        "text": "28歳",
+        "right": "市議会議員",
+        "at": "6:28"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "トラブル続き",
+     "color": "red",
+     "at": "7:トラブル"
+    }
+   ]
+  },
+  {
+   "at": 8,
+   "edit": "fact",
+   "why": "câu 8–9: giết người quen vì tiền năm 1999, trốn ra nước ngoài, án chung thân",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "handcuffs",
+       "move": "push-in"
+      },
+      {
+       "img": "niigata_court",
+       "move": "pan-left",
+       "at": "9:海外"
+      }
+     ]
+    },
+    {
+     "tag": "1999年",
+     "color": "red",
+     "at": "8:1999"
+    },
+    {
+     "big": "無期",
+     "text": "懲役",
+     "at": "9:無期"
+    },
+    {
+     "tag": "海外逃亡→逮捕",
+     "color": "white",
+     "at": "9:逃亡"
+    }
+   ]
+  },
+  {
+   "at": 10,
+   "edit": "figure",
+   "why": "câu 10–11 giới thiệu người thứ hai: Oshio, diễn viên đóng chính nhiều phim",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "oshio",
+       "move": "push-in"
+      },
+      {
+       "img": "oshio_walk",
+       "move": "rise",
+       "at": "11:主演"
+      }
+     ]
+    },
+    {
+     "tag": "2つ目",
+     "color": "black",
+     "at": "10:2つ目"
+    },
+    {
+     "tag": "押尾学",
+     "color": "white",
+     "at": "10:押尾"
+    },
+    {
+     "tag": "人気俳優",
+     "at": "11:人気"
+    },
+    {
+     "tag": "主演多数",
+     "color": "red",
+     "at": "11:主演"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "place",
+   "why": "câu 12–13: năm 2009, ma túy MDMA, hiện trường là một căn phòng ở Roppongi Hills",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "pills",
+       "move": "push-in"
+      },
+      {
+       "img": "hills",
+       "move": "pan-right",
+       "at": "13:現場"
+      }
+     ]
+    },
+    {
+     "tag": "2009年",
+     "color": "white",
+     "at": "12:2009"
+    },
+    {
+     "tag": "六本木ヒルズ",
+     "color": "black",
+     "at": "13:六本木"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "compare",
+   "why": "câu 14–16 đối chiếu tội bị xét xử ban đầu với bản án cuối cùng, rồi đóng dấu án",
+   "items": [
+    {
+     "card": {
+      "head": "押尾学の裁判",
+      "rows": [
+       {
+        "text": "保護責任者遺棄致死",
+        "at": "15:致死",
+        "strike": "16:判決"
+       },
+       {
+        "text": "保護責任者遺棄",
+        "at": "16:遺棄罪"
+       }
+      ]
+     }
+    },
+    {
+     "stamp": "懲役2年6か月",
+     "at": "16:懲役"
+    }
+   ]
+  },
+  {
+   "at": 17,
+   "edit": "place",
+   "why": "câu 17: vụ ma túy của ngôi sao gây chấn động: đêm bắt giữ 2009, rồi phóng viên ở phiên tòa",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "arrest_night",
+       "move": "pan-left"
+      },
+      {
+       "img": "trial_press",
+       "move": "push-in",
+       "at": "17:世間"
+      }
+     ]
+    },
+    {
+     "tag": "2009年",
+     "color": "white",
+     "at": "17:人気"
+    },
+    {
+     "tag": "世間に大きな衝撃",
+     "color": "red",
+     "at": "17:衝撃"
+    }
+   ]
+  },
+  {
+   "at": 18,
+   "edit": "pair",
+   "why": "câu 18–20: người thứ ba Katsumi, ca sĩ từng hát Kōhaku (sân khấu Kōhaku thập niên 1950), bài 'Sasurai' bán 60 vạn đĩa",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "katsumi",
+       "move": "push-in"
+      },
+      {
+       "img": "kohaku1953",
+       "move": "pan-right",
+       "at": "19:紅白"
+      },
+      {
+       "img": "sasurai_orange",
+       "move": "push-in",
+       "at": "20:60万"
+      }
+     ]
+    },
+    {
+     "photo": "sasurai_guitar",
+     "at": "20:さすらい"
+    },
+    {
+     "tag": "3つ目 克美しげる",
+     "at": "18:克美"
+    },
+    {
+     "tag": "60万枚",
+     "at": "20:60万"
+    },
+    {
+     "tag": "大ヒット",
+     "color": "red",
+     "at": "20:ヒット"
+    }
+   ]
+  },
+  {
+   "at": 21,
+   "edit": "figure",
+   "why": "câu 21–23 nói về con người bí ẩn phía sau: hết thời, nợ nần, cô nhân tình ở Ginza van nài",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "katsumi_tv",
+       "move": "push-in"
+      },
+      {
+       "img": "ginza1971",
+       "move": "rise",
+       "at": "22:ホステス"
+      }
+     ]
+    },
+    {
+     "tag": "借金",
+     "color": "black",
+     "at": "21:借金"
+    },
+    {
+     "tag": "愛人のホステス",
+     "at": "22:愛人"
+    },
+    {
+     "tag": "「妻と離婚して」",
+     "color": "white",
+     "at": "23:離婚"
+    },
+    {
+     "tag": "懇願",
+     "color": "red",
+     "at": "23:懇願"
+    }
+   ]
+  },
+  {
+   "at": 24,
+   "edit": "question",
+   "why": "câu 24–25 lật lại: muốn trở lại làm ca sĩ, nên cô thành vật cản, rồi anh bóp cổ cô",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "sasurai_bw",
+       "move": "push-in"
+      },
+      {
+       "img": "yuhi",
+       "move": "pull-back",
+       "at": "25:話し合い"
+      }
+     ]
+    },
+    {
+     "tag": "歌手として復活?",
+     "color": "white",
+     "at": "24:復活"
+    },
+    {
+     "tag": "邪魔になった",
+     "color": "red",
+     "at": "24:邪魔"
+    }
+   ]
+  },
+  {
+   "at": 26,
+   "edit": "place",
+   "why": "câu 26: ngày và nơi tìm thấy thi thể: tháng 5/1976, sân bay Haneda (ảnh 1975), rồi bãi đỗ xe của sân bay thời ấy",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "haneda1975",
+       "move": "push-in"
+      },
+      {
+       "img": "haneda_old",
+       "move": "pan-right",
+       "at": "26:駐車場"
+      }
+     ]
+    },
+    {
+     "tag": "1976年5月",
+     "color": "white",
+     "at": "26:1976"
+    },
+    {
+     "tag": "羽田空港",
+     "color": "black",
+     "at": "26:羽田"
+    }
+   ]
+  },
+  {
+   "at": 27,
+   "edit": "fact",
+   "why": "câu 27: bản án 10 năm, cú rơi của một ngôi sao",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "katsumi_kiri",
+       "move": "pull-back"
+      }
+     ]
+    },
+    {
+     "tag": "判決",
+     "color": "red",
+     "at": "27:判決"
+    },
+    {
+     "big": "10",
+     "text": "年\n懲役",
+     "at": "27:10年"
+    },
+    {
+     "tag": "深い転落",
+     "color": "white",
+     "at": "27:転落"
+    }
+   ]
+  },
+  {
+   "at": 28,
+   "edit": "ending",
+   "why": "câu cuối quay về câu mở: ba người nổi tiếng tự tay biến đời mình thành bóng tối",
+   "items": [
+    {
+     "text": [
+      "光を浴びた3人は、",
+      {
+       "text": "人生を闇に変えた。",
+       "color": "red"
+      }
+     ],
+     "x": 540,
+     "y": 900,
+     "size": 80
+    }
+   ]
+  }
+ ]
+}

@@ -2,5 +2,7 @@
  "_note": "Kana for words the 11labs Japanese voice misreads. Applied to every line before it is read (longest key first, anywhere in the line); the captions keep the kanji. Add a word here when the voice check (check.md) shows a misreading, so later videos get it right.",
  "刑場": "けいじょう",
  "猶予": "ゆうよ",
- "悪魔祓い": "あくまばらい"
+ "悪魔祓い": "あくまばらい",
+ "遺棄致死": "いき、ちし",
+ "激高": "げきこう"
 }
