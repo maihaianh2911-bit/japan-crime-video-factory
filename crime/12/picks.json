@@ -1,0 +1,656 @@
+{
+ "fx": {
+  "motion": true,
+  "depth": true,
+  "text": true
+ },
+ "quotes": [
+  1
+ ],
+ "music": {
+  "pick": "1/20-1.ogg",
+  "volume": 1
+ },
+ "images": {
+  "hanako_tv": {
+   "src": "1/1-1.jpg",
+   "crop": [
+    0.24,
+    0.14,
+    0.92,
+    0.82
+   ]
+  },
+  "ryo_tv": {
+   "src": "1/4-8.jpg",
+   "crop": [
+    0.18,
+    0.18,
+    0.8,
+    0.8
+   ]
+  },
+  "studio": {
+   "src": "1/4-3.jpg"
+  },
+  "hanako_studio": {
+   "src": "own/hanako_studio.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "license": "元動画（引用）",
+   "page": ""
+  },
+  "shizuoka_car": {
+   "src": "own/shizuoka_car.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "license": "元動画（引用）",
+   "page": ""
+  },
+  "shizuoka_eat": {
+   "src": "own/shizuoka_eat.jpg",
+   "title": "緊急!公開大捜索'20春 / 公開捜査番組の映像（元動画より）",
+   "artist": "元動画",
+   "license": "元動画（引用）",
+   "page": ""
+  },
+  "station": {
+   "src": "1/8-3.jpg"
+  },
+  "station2": {
+   "src": "1/8-4.jpg"
+  },
+  "koban": {
+   "src": "1/9-5.jpg"
+  },
+  "koban_old": {
+   "src": "1/9-1.jpg"
+  },
+  "cityhall": {
+   "src": "1/10-4.jpg"
+  },
+  "daycare": {
+   "src": "1/11-3.jpg"
+  },
+  "phone": {
+   "src": "1/12-3.jpg"
+  },
+  "phone_black": {
+   "src": "1/12-2.jpg"
+  },
+  "letter": {
+   "src": "1/13-1.jpg"
+  },
+  "mri": {
+   "src": "1/14-5.jpg"
+  },
+  "hospital": {
+   "src": "1/15-1.jpg"
+  },
+  "oldwoman": {
+   "src": "1/17-1.jpg"
+  },
+  "hands": {
+   "src": "1/18-1.jpg"
+  },
+  "studio2": {
+   "src": "1/4-5.jpg"
+  },
+  "mri2": {
+   "src": "1/14-2.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "roster",
+   "why": "câu 1–2: tên loạt (3 vụ giải quyết nhờ chương trình truy tìm) rồi gọi vụ thứ nhất",
+   "items": [
+    {
+     "roster": [
+      {
+       "name": "岡山・自称30歳",
+       "sub": "2020",
+       "img": "hanako_tv",
+       "focus": [
+        0.5,
+        0.4
+       ]
+      },
+      {
+       "name": "岡山・自称27歳",
+       "sub": "2020",
+       "img": "ryo_tv",
+       "focus": [
+        0.5,
+        0.3
+       ]
+      },
+      {
+       "name": "静岡・推定63歳",
+       "sub": "2018",
+       "img": "shizuoka_car",
+       "focus": [
+        0.5,
+        0.45
+       ]
+      }
+     ],
+     "title": "捜索番組で\n解決した事件",
+     "kicker": "3選",
+     "note": "※実際の事件に基づく内容です",
+     "pick": 0,
+     "rank": "1つ目",
+     "pick_at": "2:1つ目"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "figure",
+   "why": "câu 3–4 nói về người phụ nữ bí ẩn: tự nhận 30 tuổi, mất trí nhớ từ khoảng 1 năm trước",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "studio",
+       "move": "pan-right"
+      },
+      {
+       "img": "hanako_tv",
+       "move": "push-in",
+       "at": "3:自称"
+      }
+     ]
+    },
+    {
+     "tag": "2020年",
+     "color": "black",
+     "at": "3:2020"
+    },
+    {
+     "tag": "自称30歳",
+     "color": "white",
+     "at": "3:自称"
+    },
+    {
+     "tag": "約1年前から",
+     "at": "4:1年"
+    },
+    {
+     "tag": "記憶がない",
+     "color": "red",
+     "at": "4:記憶"
+    }
+   ]
+  },
+  {
+   "at": 5,
+   "edit": "place",
+   "why": "câu 5: chỗ cô nhận ra mất trí nhớ (nhà ga) rồi đến cảnh sát nhờ giúp",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "station",
+       "move": "push-in"
+      },
+      {
+       "img": "koban",
+       "move": "pan-left",
+       "at": "5:警察"
+      }
+     ]
+    },
+    {
+     "tag": "駅で",
+     "color": "white",
+     "at": "5:駅"
+    },
+    {
+     "tag": "警察に助けを",
+     "color": "black",
+     "at": "5:警察"
+    }
+   ]
+  },
+  {
+   "at": 6,
+   "edit": "question",
+   "why": "câu 6–8: đang làm ở trung tâm chăm sóc người già; câu hỏi 'tên mình là gì?' khiến cô lên truyền hình",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "daycare",
+       "move": "pan-right"
+      },
+      {
+       "img": "hanako_studio",
+       "move": "push-in",
+       "at": "7:名前",
+       "view": [
+        0.0,
+        0.0,
+        0.78,
+        1.0
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "自分の名前は?",
+     "color": "white",
+     "at": "7:名前"
+    },
+    {
+     "tag": "番組に出演",
+     "color": "red",
+     "at": "8:番組"
+    }
+   ]
+  },
+  {
+   "at": 9,
+   "edit": "fact",
+   "why": "câu 9: cái tên hiện tại là tên tạm do tòa thị chính đặt (chữ lớn 仮名)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "cityhall",
+       "move": "rise"
+      }
+     ]
+    },
+    {
+     "tag": "市役所が命名",
+     "color": "red",
+     "at": "9:市役所"
+    },
+    {
+     "big": "仮名",
+     "text": "の名前",
+     "at": "9:仮"
+    },
+    {
+     "tag": "本名は不明",
+     "color": "white",
+     "at": "9:仮"
+    }
+   ]
+  },
+  {
+   "at": 10,
+   "edit": "pair",
+   "why": "câu 10–11 nêu hai thứ: lời bệnh viện và chứng 'mất trí nhớ phân ly' do căng thẳng",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "hospital",
+       "move": "push-in"
+      },
+      {
+       "img": "mri2",
+       "move": "pull-back",
+       "at": "11:ストレス"
+      }
+     ]
+    },
+    {
+     "photo": "mri",
+     "at": "10:可能性"
+    },
+    {
+     "tag": "病院の見立て",
+     "at": "10:病院"
+    },
+    {
+     "tag": "強いストレス",
+     "at": "11:ストレス"
+    },
+    {
+     "tag": "解離性健忘",
+     "color": "red",
+     "at": "10:解離"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "place",
+   "why": "câu 12: đúng lúc đang phát sóng, người tự nhận là anh ruột gọi đến",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "studio",
+       "move": "push-in"
+      },
+      {
+       "img": "phone",
+       "move": "pan-left",
+       "at": "12:電話"
+      }
+     ]
+    },
+    {
+     "tag": "放送中",
+     "color": "white",
+     "at": "12:放送"
+    },
+    {
+     "tag": "実の兄から電話",
+     "color": "black",
+     "at": "12:兄"
+    }
+   ]
+  },
+  {
+   "at": 13,
+   "edit": "figure",
+   "why": "câu 13–15: vụ thứ hai, người đàn ông tự nhận 27 tuổi lên chương trình để biết mình là ai",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "ryo_tv",
+       "move": "push-in"
+      },
+      {
+       "img": "studio2",
+       "move": "pan-right",
+       "at": "14:自称"
+      }
+     ]
+    },
+    {
+     "tag": "2つ目",
+     "color": "black",
+     "at": "13:2つ目"
+    },
+    {
+     "tag": "自称27歳",
+     "color": "white",
+     "at": "13:27"
+    },
+    {
+     "tag": "2020年",
+     "at": "14:2020"
+    },
+    {
+     "tag": "身元を知るため",
+     "color": "red",
+     "at": "15:知る"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "question",
+   "why": "câu 16–17 lật lại: anh nhớ mình bị dì đối xử tệ, nhưng người gọi đến lại là mẹ anh",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "studio2",
+       "move": "pan-left"
+      },
+      {
+       "img": "phone_black",
+       "move": "push-in",
+       "at": "17:電話"
+      }
+     ]
+    },
+    {
+     "tag": "叔母からひどい扱い?",
+     "color": "white",
+     "at": "16:叔母"
+    },
+    {
+     "tag": "母親から電話",
+     "color": "red",
+     "at": "17:母親"
+    }
+   ]
+  },
+  {
+   "at": 18,
+   "edit": "actions",
+   "why": "câu 18–19 kể lần lượt việc đã xảy ra theo lời mẹ: để lại thư, biến mất, mẹ trình báo cảnh sát",
+   "items": [
+    {
+     "tag": "母親の話",
+     "color": "red",
+     "at": "18:母親"
+    },
+    {
+     "card": {
+      "style": "note",
+      "rows": [
+       {
+        "text": "「探さないでください」",
+        "check": true,
+        "at": "18:探さない"
+       },
+       {
+        "text": "姿を消した",
+        "check": true,
+        "at": "19:姿"
+       },
+       {
+        "text": "警察に捜索願",
+        "check": true,
+        "at": "19:捜索願"
+       }
+      ]
+     }
+    },
+    {
+     "photo": "letter",
+     "at": "18:手紙"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "place",
+   "why": "câu 20–21: lời người mẹ vừa khóc vừa nói khi thấy con trên tivi",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "ryo_tv",
+       "move": "push-in"
+      },
+      {
+       "img": "hands",
+       "move": "pull-back",
+       "at": "21:涙"
+      }
+     ]
+    },
+    {
+     "tag": "「良かった」",
+     "color": "white",
+     "at": "20:テレビ"
+    },
+    {
+     "tag": "涙ながらに",
+     "color": "red",
+     "at": "21:涙"
+    }
+   ]
+  },
+  {
+   "at": 22,
+   "edit": "figure",
+   "why": "câu 22–23: vụ thứ ba, người phụ nữ ước chừng 63 tuổi xuất hiện trên chương trình năm 2018",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "shizuoka_car",
+       "move": "push-in"
+      },
+      {
+       "img": "shizuoka_eat",
+       "move": "pull-back",
+       "at": "23:推定"
+      }
+     ]
+    },
+    {
+     "tag": "3つ目",
+     "color": "black",
+     "at": "22:3つ目"
+    },
+    {
+     "tag": "推定63歳",
+     "color": "white",
+     "at": "22:63"
+    },
+    {
+     "tag": "2018年",
+     "at": "23:2018"
+    },
+    {
+     "tag": "公開捜査番組",
+     "color": "red",
+     "at": "23:公開"
+    }
+   ]
+  },
+  {
+   "at": 24,
+   "edit": "place",
+   "why": "câu 24–25: nơi tìm thấy bà (một nhà ga ở Shizuoka) và năm được bảo hộ, 2016",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "station2",
+       "move": "pan-right"
+      },
+      {
+       "img": "oldwoman",
+       "move": "push-in",
+       "at": "24:記憶"
+      }
+     ]
+    },
+    {
+     "tag": "静岡県の駅",
+     "color": "black",
+     "at": "24:静岡"
+    },
+    {
+     "tag": "2016年 保護",
+     "color": "white",
+     "at": "25:2016"
+    }
+   ]
+  },
+  {
+   "at": 26,
+   "edit": "timeline",
+   "why": "câu 26–28 có trình tự: sau chương trình chị gái liên lạc, bà vốn đi viện, rồi biết tên thật",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "phone_black",
+       "move": "push-in"
+      },
+      {
+       "img": "hospital",
+       "move": "pull-back",
+       "at": "27:病院"
+      }
+     ]
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "番組出演後",
+        "right": "姉から連絡",
+        "at": "26:姉"
+       },
+       {
+        "text": "本名",
+        "right": "判明",
+        "at": "28:本名",
+        "color": "red"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "もともと通院",
+     "color": "red",
+     "at": "27:病院"
+    }
+   ]
+  },
+  {
+   "at": 29,
+   "edit": "question",
+   "why": "câu 29–31 lật lại (ところが): bà có con trai sống cùng, nhiều khả năng không trình báo, dân mạng chỉ trích",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "oldwoman",
+       "move": "pull-back"
+      },
+      {
+       "img": "koban_old",
+       "move": "push-in",
+       "at": "30:警察"
+      }
+     ]
+    },
+    {
+     "tag": "同居の息子",
+     "color": "white",
+     "at": "29:息子"
+    },
+    {
+     "tag": "届け出なし?",
+     "color": "red",
+     "at": "30:届け出"
+    },
+    {
+     "stamp": "ネットで批判",
+     "at": "31:批判",
+     "x": 560,
+     "y": 240
+    }
+   ]
+  },
+  {
+   "at": 32,
+   "edit": "ending",
+   "why": "câu cuối quay về câu mở: mất cả tên lẫn quá khứ, người tìm ra họ là gia đình trước màn hình tivi",
+   "items": [
+    {
+     "text": [
+      "名前も過去も",
+      "失った3人。",
+      {
+       "text": "見つけたのは、",
+       "color": "red"
+      },
+      {
+       "text": "家族だった。",
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
