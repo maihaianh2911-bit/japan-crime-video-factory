@@ -1,0 +1,99 @@
+{
+ "queries": [
+  "web:津山事件 昭和13年 写真 => old black-and-white photograph of a Japanese mountain village",
+  "web:津山三十人殺し 当時の写真",
+  "web:津山事件 貝尾 古写真",
+  "web:都井睦雄 自宅",
+  "web:津山事件 新聞 1938 => an old Japanese newspaper page",
+  "web:津山事件 慰霊 => Japanese people mourning, old photograph",
+  "web:都井睦雄 学生服 写真",
+  "web:昭和初期 農村 岡山 写真 => a Japanese farming village in the 1930s, black-and-white",
+  "web:昭和13年 農村 夜 => a dark Japanese village at night, old photograph",
+  "web:徴兵検査 写真 昭和12年",
+  "web:結核 療養所 昭和 写真",
+  "web:猟銃 昭和初期 => an old shotgun",
+  "web:日本刀 写真 => a Japanese sword drawn from its scabbard",
+  "web:懐中電灯 古い => an old metal flashlight",
+  "web:鉢巻き 懐中電灯 津山事件",
+  "web:八つ墓村 1977 映画 => a scene of a Japanese film poster",
+  "web:横溝正史 書斎",
+  "web:津山市 加茂町 行重 風景",
+  "web:岡山県 山村 夜明け => dawn over Japanese mountains",
+  "web:昭和 古い 遺書 => an old handwritten Japanese letter"
+ ],
+ "urls": [
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/1",
+   "title": "津山事件 写真（withnews）1",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/2",
+   "title": "津山事件 写真（withnews）2",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/3",
+   "title": "津山事件 写真（withnews）3",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/4",
+   "title": "津山事件 写真（withnews）4",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/5",
+   "title": "津山事件 写真（withnews）5",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/6",
+   "title": "津山事件 写真（withnews）6",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/7",
+   "title": "津山事件 写真（withnews）7",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/8",
+   "title": "津山事件 写真（withnews）8",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/9",
+   "title": "津山事件 写真（withnews）9",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/10",
+   "title": "津山事件 写真（withnews）10",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/11",
+   "title": "津山事件 写真（withnews）11",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  },
+  {
+   "page": "https://withnews.jp/photo-gallery/1000005547/12",
+   "title": "津山事件 写真（withnews）12",
+   "artist": "withnews",
+   "license": "© withnews / 朝日新聞社"
+  }
+ ],
+ "gen": []
+}
