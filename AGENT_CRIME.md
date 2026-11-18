@@ -254,6 +254,17 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
 ```
    (This example writes most places by hand to show the fields; with an `edit` you normally leave `x`, `y`, `w`, `h`,
    `rot` and `size` out.)
+   - **Picture effects and hook line** (owner, 18/11/2026: "cập nhật tất cả" what japan-news-video-factory has):
+     every new `picks.json` carries `"fx": {"motion": true, "depth": true, "text": true}` and `"quotes": [1]`:
+     - `motion`: pictures and desk move quickly at first, then settle;
+     - `depth`: a light 2.5D depth in the photos (near things move a little more than far ones; Depth Anything V2
+       on GitHub). Never on documents, scans, maps (`"look": "clean"` has none) nor a collage or a screenshot: give
+       such an image `"depth": false` in `images`;
+     - `text`: the subtitle is there whole, pale, and darkens as it is read; a quote is typed out;
+     - `quotes`: line numbers printed big on the foot of the frame over a soft dark band while spoken (the hook
+       line; its subtitle is not shown meanwhile). The first line of the script is the hook: it says the whole story
+       and what it means, in about 5 seconds (as japan-news, owner 17/11/2026).
+     The run log says `warning: depth effect off` when the depth could not be made; say so in the closing comment.
    - `images`: `src` = `<round>/<file>`, or `own/<file>` (a picture the owner attached, saved in `crime/<N>/own/`;
      then also give `title`, `artist`, `license`, `page`, and `"ai": true` if it is AI-made). `rotate` 90 / -90 /
      180, `crop` removes borders and burnt-in captions. `look`: `print` (default: the sample's evidence photo —

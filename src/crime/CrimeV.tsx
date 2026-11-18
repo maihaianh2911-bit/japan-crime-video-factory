@@ -11,7 +11,7 @@ type View = [number, number, number, number];
 type Base = { s: number; e?: number; x: number; y: number; rot: number };
 export type Mark = { s: number; box: View; shape: 'ellipse' | 'rect'; color: 'yellow' | 'red' };
 export type Photo = Base & { k: 'photo'; src: string; iw: number; ih: number; w: number; h: number; view: View;
-  zoom?: { to: View; s: number; e: number }; drift: number; ai: boolean; credit: string; frame: 'white' | 'none'; marks: Mark[] };
+  zoom?: { to: View; s: number; e: number }; drift: number; ai: boolean; credit: string; frame: 'white' | 'none'; marks: Mark[]; depth?: string };
 export type Tag = Base & { k: 'tag'; text: string; color: 'yellow' | 'red' | 'white' | 'black'; size: number; font: Role };
 export type Header = Base & { k: 'header'; title: string; kicker: string; size: number };
 export type Row = { s: number; text: string; right: string; color: string; check: boolean; strike?: number };
@@ -28,7 +28,7 @@ export type Sub = { s: number; e: number; text: string; line: number };
 type Role = 'sans' | 'serif' | 'mono' | 'hand';
 type FontChunk = { family: string; file: string; range: string; weight: string; style: string };
 export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; aiTag: string; bg: string; grain: string; scenes: Scene[];
-  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; musicLoop?: boolean; fonts: FontChunk[];
+  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; musicLoop?: boolean; fx?: { motion: boolean; depth: boolean; text: boolean }; quotes?: { s: number; e: number; text: string }[]; fonts: FontChunk[];
   families: Partial<Record<Role, string>> };
 
 // layout.py
@@ -76,13 +76,18 @@ const torn = (seed: number, jag = 1.6) => {
 };
 
 // region of the picture shown at time t: a zoom when asked for, else a slow push-in (by `drift` over the scene)
+// picture effects of the plan (owner 18/11/2026, from japan-news): set once per frame by CrimeV
+let FX = { motion: false, depth: false, text: false };
+// motion: the camera moves quickly at first and then settles, instead of one even speed
+const pace = (x: number) => (FX.motion ? 1 - Math.pow(1 - clamp01(x), 2.2) : clamp01(x));
+
 const viewAt = (p: Photo, t: number, e: number): View => {
   if (p.zoom) {
     const k = ease((t - p.zoom.s) / Math.max(0.1, p.zoom.e - p.zoom.s));
     return p.view.map((v, i) => v + (p.zoom!.to[i] - v) * k) as View;
   }
   if (!p.drift) return p.view;
-  const k = clamp01((t - p.s) / Math.max(0.5, e - p.s)) * p.drift / 2;
+  const k = pace((t - p.s) / Math.max(0.5, e - p.s)) * p.drift / 2;
   const [a, b, c, d] = p.view, w = c - a, h = d - b;
   return [a + w * k, b + h * k, c - w * k, d - h * k];
 };
@@ -104,7 +109,20 @@ const PhotoV: React.FC<{ p: Photo; t: number; e: number; tag: string; sans: stri
     <div style={{ position: 'relative', width: p.w + 2 * b, height: p.h + 2 * b, background: '#e8e5de', padding: b, boxSizing: 'border-box',
       boxShadow: '0 18px 40px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.5)' }}>
       <div style={{ position: 'relative', width: p.w, height: p.h, overflow: 'hidden', background: '#000' }}>
-        <Img src={staticFile(p.src)} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, width: p.iw * sx, height: p.ih * sy, maxWidth: 'none' }} />
+        {p.depth && FX.depth ? (() => {
+          // depth: near things move outwards a little more than far things as the scene goes on (2.5D, a map by prep.py)
+          const W = p.iw * sx, H = p.ih * sy, id = `dm${hash(p.src)}`;
+          const k = pace((t - p.s) / Math.max(0.5, e - p.s));
+          return (
+            <svg width={W} height={H} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, overflow: 'hidden' }}>
+              <filter id={id} x="0" y="0" width={W} height={H} filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feImage href={staticFile(p.depth)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" result="map" />
+                <feDisplacementMap in="SourceGraphic" in2="map" scale={0.075 * Math.max(W, H) * k} xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+              <image href={staticFile(p.src)} x="0" y="0" width={W} height={H} preserveAspectRatio="none" filter={`url(#${id})`} />
+            </svg>
+          );
+        })() : <Img src={staticFile(p.src)} style={{ position: 'absolute', left: -v0 * p.iw * sx, top: -v1 * p.ih * sy, width: p.iw * sx, height: p.ih * sy, maxWidth: 'none' }} />}
         <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 50px rgba(0,0,0,.45)' }} />
         <svg width={p.w} height={p.h} style={{ position: 'absolute', left: 0, top: 0 }}>
           {p.marks.filter((mk) => t >= mk.s).map((mk, i) => {
@@ -336,7 +354,7 @@ const ItemV: React.FC<{ it: Item; t: number; e: number; plan: PlanC; F: Record<R
 };
 
 const SceneV: React.FC<{ sc: Scene; t: number; plan: PlanC; F: Record<Role, string> }> = ({ sc, t, plan, F }) => {
-  const push = 1 + sc.push * clamp01((t - sc.s) / Math.max(1, sc.e - sc.s));
+  const push = 1 + sc.push * pace((t - sc.s) / Math.max(1, sc.e - sc.s));
   return (
     <AbsoluteFill style={{ background: '#0b0a09', overflow: 'hidden' }}>
       <AbsoluteFill style={{ transform: `scale(${push})`, transformOrigin: '50% 45%' }}>
@@ -374,6 +392,7 @@ const Film: React.FC<{ frame: number; grain: string }> = ({ frame, grain }) => {
 
 export const CrimeV: React.FC<PlanC> = (plan) => {
   const lang = plan.lang || 'ja';
+  FX = { motion: false, depth: false, text: false, ...(plan.fx || {}) };
   const F = { ...DEFAULT_FAM[lang], ...(plan.families || {}) } as Record<Role, string>;
   useFonts(plan, F);
   const frame = useCurrentFrame();
@@ -391,11 +410,29 @@ export const CrimeV: React.FC<PlanC> = (plan) => {
       {prev && fade < 1 ? <SceneV sc={prev} t={t} plan={plan} F={F} /> : null}
       <AbsoluteFill style={{ opacity: prev ? fade : clamp01(t / 0.4) }}><SceneV sc={sc} t={t} plan={plan} F={F} /></AbsoluteFill>
       <Film frame={frame} grain={plan.grain} />
+      {(plan.quotes || []).filter((q) => t >= q.s && t < q.e).map((q, i) => {
+        // a key line printed big on the foot of the frame over a soft dark band while it is spoken (hook, from japan-news)
+        const a = easeOut((t - q.s) / 0.35) * (1 - easeOut((t - (q.e - 0.3)) / 0.3));
+        const shown = FX.text ? typed(q.text, t, q.s, Math.max(6, [...q.text].length / Math.max(0.6, (q.e - q.s) * 0.8))) : q.text;
+        return (
+          <AbsoluteFill key={i} style={{ pointerEvents: 'none', opacity: a }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, top: 1150, height: 560,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 38%, rgba(0,0,0,.82) 100%)' }} />
+            <div style={{ position: 'absolute', left: 70, right: 70, top: 1380, transform: `translateY(${(1 - a) * 20}px)`, textAlign: 'center',
+              fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: [...q.text].length > 22 ? 62 : 72, lineHeight: 1.35, color: '#f4efe6',
+              textShadow: '0 4px 18px rgba(0,0,0,.85)' }}>{shown}</div>
+          </AbsoluteFill>
+        );
+      })}
       {sub ? (
         <div style={{ position: 'absolute', left: 540 - SUB_MAX_W / 2, width: SUB_MAX_W, top: SUB_Y, display: 'flex', justifyContent: 'center',
           transform: 'translateY(-50%)' }}>
           <div style={{ background: '#f7f5f0', color: '#111', padding: '8px 18px', borderRadius: 3, fontFamily: `"${F.sans}"`, fontWeight: 500,
-            fontSize: SUB_SIZE[lang], lineHeight: 1.3, textAlign: 'center', boxShadow: '0 3px 10px rgba(0,0,0,.35)' }}>{sub.text}</div>
+            fontSize: SUB_SIZE[lang], lineHeight: 1.3, textAlign: 'center', boxShadow: '0 3px 10px rgba(0,0,0,.35)' }}>
+            {FX.text ? (() => {   // text: the whole clause is there, pale, and darkens from left to right as it is read
+              const cs = [...sub.text], n = Math.round(cs.length * clamp01((t - sub.s) / Math.max(0.3, (sub.e - sub.s) * 0.92)));
+              return <><span>{cs.slice(0, n).join('')}</span><span style={{ color: '#9a958c' }}>{cs.slice(n).join('')}</span></>;
+            })() : sub.text}</div>
         </div>
       ) : null}
       {plan.voice.map((v, i) => <Sequence key={i} from={Math.round(v.s * fps)}><Audio src={staticFile(v.src)} /></Sequence>)}

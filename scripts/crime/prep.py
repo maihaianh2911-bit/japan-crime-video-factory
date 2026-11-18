@@ -12,6 +12,7 @@ that must stay readable),
 """
 import json, os, sys, zlib
 import numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw, ImageFilter
 
 
@@ -103,6 +104,16 @@ def prepare(it, root, name='x'):
 if __name__ == '__main__':
     picks, root, out = sys.argv[1], sys.argv[2], sys.argv[3]
     os.makedirs(out, exist_ok=True)
-    for name, it in json.load(open(picks, encoding='utf-8'))['images'].items():
-        prepare(it, root, name).save(os.path.join(out, f'{name}.jpg'), quality=92)
-        print(name, Image.open(os.path.join(out, f'{name}.jpg')).size)
+    pk = json.load(open(picks, encoding='utf-8'))
+    deep = bool((pk.get('fx') or {}).get('depth'))   # owner 18/11/2026: the picture effects of japan-news
+    for name, it in pk['images'].items():
+        im = prepare(it, root, name)
+        im.save(os.path.join(out, f'{name}.jpg'), quality=92)
+        print(name, im.size)
+        # depth for the 2.5D effect: not on documents, scans, maps ("look": "clean") nor where Claude said "depth": false
+        if deep and it.get('depth', it.get('look') != 'clean'):
+            try:
+                import depth
+                depth.parallax_map(im).save(os.path.join(out, f'{name}.depth.png'))
+            except Exception as e:
+                print(f'warning: depth effect off for {name}: {type(e).__name__}: {str(e)[:120]}')

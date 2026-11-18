@@ -173,6 +173,13 @@ jobs:
         with:
           path: ~/.cache/find-images
           key: clip-vit-b-32-quickgelu-laion400m-e32
+      # the depth model of the picture effects (scripts/crime/depth.py, 99 MB) is kept between runs
+      - name: Mô hình chiều sâu ảnh
+        if: env.TODO == '1'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/crime-depth
+          key: depth-anything-v2-vits-onnx
       - name: Cài công cụ
         if: env.TODO == '1'
         run: |
@@ -183,6 +190,12 @@ jobs:
           fi
           # pinned to the versions tested together (PyAV 19 breaks faster-whisper 1.2: "metadata_errors")
           pip install -q numpy scipy pillow pykakasi==2.3.0 num2words==0.5.14 faster-whisper==1.1.1 av==13.1.0 imageio-ffmpeg==0.8.1
+          # picture effects (owner 18/11/2026): optional, without them the pictures stay flat and the video is made all the same
+          if grep -q ' render' /tmp/todo.txt; then
+            pip install -q onnxruntime==1.29.0 opencv-python-headless==5.0.0.93 \
+              && python -c "import sys; sys.path.insert(0, 'scripts/crime'); import depth; depth.session()" \
+              || echo "::warning::không cài được hiệu ứng chiều sâu: ảnh sẽ phẳng như cũ"
+          fi
           npm ci --no-audit --no-fund
           npx remotion browser ensure
           bash scripts/crime/get_fonts.sh "$FONTSOURCE"

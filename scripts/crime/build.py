@@ -107,6 +107,17 @@ def main(job, pub, N, imgsrc, out):
         k = int(at); k = min(max(starts), max(min(starts), k))
         return starts[k] + (at - int(at)) * dur[k]
 
+    fx = picks.get('fx') or {}   # owner 18/11/2026: the picture effects of japan-news (motion, depth, text)
+
+    # ---- quotes: a line printed big on the frame while it is spoken (picks.json "quotes": [line numbers]), as the hook
+    # line of japan-news; its subtitle is not shown meanwhile
+    quotes = []
+    for qn in picks.get('quotes') or []:
+        if qn not in starts: fail(f'"quotes": không có câu {qn}')
+        qs, qe = starts[qn], starts[qn] + dur[qn]
+        quotes.append({'s': round(qs - 0.1, 3), 'e': round(qe + 0.35, 3), 'text': text[qn].strip()})
+        subs = [c for c in subs if c['line'] != qn]
+
     # ---- scenes
     scenes_in = picks.get('scenes')
     if not scenes_in: fail('chưa có "scenes"')
@@ -145,6 +156,8 @@ def main(job, pub, N, imgsrc, out):
                 o.update({'src': f'{base}/img/{name}.jpg', 'iw': iw, 'ih': ih, 'w': w, 'h': h, 'view': v,
                           'drift': 0 if it.get('still') else it.get('drift', 0.05), 'ai': is_ai(name),
                           'frame': 'none' if it.get('frame') == 'none' else 'white'})
+                if fx.get('depth') and it.get('depth', True) and os.path.exists(f'{pub}/{base}/img/{name}.depth.png'):
+                    o['depth'] = f'{base}/img/{name}.depth.png'   # the 2.5D map made by prep.py
                 z = it.get('zoom')
                 if z:
                     zs = when(z['at'], w_) if z.get('at') is not None else st + 0.5
@@ -246,7 +259,8 @@ def main(job, pub, N, imgsrc, out):
 
     plan = {'duration': total, 'lang': LANG, 'title': spec.get('title', ''), 'aiTag': AI_TAG,
             'bg': f'{base}/bg.jpg', 'grain': f'{base}/grain.png', 'scenes': scenes, 'subs': subs, 'voice': voice,
-            'music': music_file, 'musicVolume': music_vol, 'musicLoop': music_loop, 'fonts': [], 'families': {}}
+            'music': music_file, 'musicVolume': music_vol, 'musicLoop': music_loop, 'fonts': [], 'families': {},
+            'fx': {k: bool(fx.get(k)) for k in ('motion', 'depth', 'text')}, 'quotes': quotes}
     json.dump(plan, open(f'{out}/plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
     def ts(v):
