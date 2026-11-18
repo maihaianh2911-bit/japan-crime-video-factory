@@ -17,6 +17,8 @@ Repo này làm **video vụ án tiếng Nhật** (Shorts dọc 1080×1920, 30 fp
 
 - 17/11: *"cho nhịp nhanh lên 20% nữa nhé"* → `script.json` có `"speed": 1.2`: giọng đọc nhanh hơn 20% (tăng tốc file giọng, giữ cao độ; giọng clone không nhận chỉnh tốc độ của dịch vụ), khoảng nghỉ giữa các câu ngắn lại tương ứng, cảnh chia dày hơn. Dùng cho mọi video mới trừ khi chủ kênh đổi ý.
 
+- 18/11: chủ kênh gửi mẫu "Top" (video ngang, lưới chân dung sát nhân rồi kể một người) → *"đổi sang dạng này, nội dung Nhật (top x sát nhân tàn nhẫn nhất Nhật Bản / top vụ án ghê rợn…), edit giữ của mình, hook làm theo nó nhưng đẹp hơn"*. Chủ kênh chọn: **giữ khổ dọc**, **chuỗi: mỗi tập 1 người** (hook lưới Top giống nhau, khoanh người của tập), **ảnh chân dung: dùng cả ảnh báo chí** (chủ kênh chấp nhận rủi ro bản quyền). Đã làm kiểu edit `roster` (lưới 3×3 chân dung tròn, người của tập được khoanh đỏ và phóng to). Ảnh báo chí: phiên chat không tải được; chủ kênh gửi ảnh kèm phiếu (`own/`) hoặc Claude ghi URL ảnh vào `urls` với `license` ghi nguồn báo; thiếu ảnh thì ô là bóng đen có dấu ?.
+
 ## Quy trình
 
 Phiếu `[Vụ án] …` → `.github/workflows/crime.yml` + `scripts/crime/run.py` (máy) và `AGENT_NIGHTLY.md` → `AGENT_CRIME.md` (Claude):
