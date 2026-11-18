@@ -28,7 +28,8 @@ With --spec, the JSON list may also hold
   {"q": "<query>", "want": "<what the picture must show, in English>", "keep": 12}   a query with its own wish
   {"url": "<direct image url>", "page": "<page that states the licence>", "title": "...", "artist": "...",
    "license": "CC BY 4.0", "date": "..."}   a picture from any page Claude checked (journal figures under CC BY, a
-   museum page …): its own group with one picture.
+   museum page …): its own group with one picture. Without "url", the page's main picture (its og:image) is taken:
+   with "web_images", a news article about a person (give "page" and "license": "© <newspaper>").
 
 Ranking (17/11/2026). A free-text query asks each archive for 20 pictures, not 8, looks at a small version of every
 one and keeps the 8 that fit the words best: CLIP (open_clip ViT-B/32, MIT; weights from its GitHub release) scores
@@ -525,12 +526,22 @@ def search(q, deep=False):
     return mixed
 
 
+def page_image(page):
+    """The main picture of a web page (its og:image / twitter:image), for an outside picture given by "page" only."""
+    html = get(page).decode('utf-8', 'replace')
+    for pat in (r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)(?::src)?["\'][^>]+content=["\']([^"\']+)',
+                r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\'](?:og:image|twitter:image)'):
+        m = re.search(pat, html, re.I)
+        if m: return urllib.parse.urljoin(page, m.group(1).replace('&amp;', '&'))
+    raise RuntimeError(f'no og:image on {page}')
+
+
 def outside(q):
-    """A picture from any page, described by Claude (licence checked on its page)."""
-    if not q.get('url'): raise ValueError('an outside picture needs "url": the direct address of the image file')
+    """A picture from any page, described by Claude (licence checked on its page). Without "url", the page's own
+    main picture (og:image) is taken: a news article about a person gives its photo."""
+    if not q.get('url'): q = {**q, 'url': page_image(q['page'])}
     return item('page', q.get('title') or q['url'].rsplit('/', 1)[-1], q.get('page', ''), q['url'], q.get('license', '?'),
                 q.get('artist', ''), q.get('date', ''), q.get('description', ''))
-
 
 def sheet(files, path, labels=None):
     """Numbered contact sheet; each tile says its size, licence and source."""

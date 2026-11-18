@@ -282,12 +282,13 @@ try:
     assert [p_['ggsradius'] for h, p_ in api_calls[-2:]] == ['500', '10000'] and api_calls[-1][1]['ggscoord'] == '-33.86|151.21', api_calls[-2:]
 finally:
     F.js = real_js; F.WIKI_FOUND.clear()
-# this channel's Wikipedia is read first by wiki:, then the English one; this repo's own User-Agent; no "page"-only
-# outside picture here (an entry without "url" is an error of that entry)
+# this channel's Wikipedia is read first by wiki:, then the English one; this repo's own User-Agent; an outside picture
+# given by its page only takes the page's og:image (owner 18/11/2026: press photos allowed on this channel)
 assert F.LANGS[0] == json.load(open(os.path.join(ROOT, 'prompts', 'channel.json'), encoding='utf-8'))['lang'] and F.LANGS[-1] == 'en', F.LANGS
-assert 'japan-crime-video-factory' in F.UA and not hasattr(F, 'page_image')
-try: F.outside({'page': 'https://example.invalid/still'}); raise AssertionError('an outside picture without "url" must be refused')
-except ValueError: pass
+assert 'japan-crime-video-factory' in F.UA and F.WEB_IMAGES and 'web' in F.FIND
+real_pi = F.page_image; F.page_image = lambda page: page + '/photo.jpg'
+try: assert F.outside({'page': 'https://example.invalid/news', 'license': '© 新聞'})['thumb'] == 'https://example.invalid/news/photo.jpg'
+finally: F.page_image = real_pi
 # a whole run without network (fake archives, ranking off): old plain-string queries and {"q", "want", "keep"} entries
 # side by side, a failing query and a url-less entry recorded as errors without stopping the others, a picture seen
 # under an earlier query not shown again, the index without the working fields
