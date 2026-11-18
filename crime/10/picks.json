@@ -1,0 +1,407 @@
+{
+ "fx": {
+  "motion": true,
+  "depth": true,
+  "text": true
+ },
+ "quotes": [
+  3
+ ],
+ "music": {
+  "pick": "4/13-4.flac",
+  "volume": 1
+ },
+ "images": {
+  "toi": {
+   "src": "1/1-1.jpg"
+  },
+  "toi2": {
+   "src": "3/1-7.jpg"
+  },
+  "shiraishi": {
+   "src": "3/4-1.jpg"
+  },
+  "katsuta": {
+   "src": "3/3-3.jpg",
+   "crop": [
+    0.22,
+    0.0,
+    0.78,
+    0.8
+   ]
+  },
+  "okubo": {
+   "src": "4/1-1.jpg",
+   "crop": [
+    0.16,
+    0.0,
+    0.84,
+    0.66
+   ],
+   "look": "aged-bw"
+  },
+  "village": {
+   "src": "3/6-4.jpg",
+   "look": "aged-bw"
+  },
+  "exam": {
+   "src": "4/6-1.jpg",
+   "look": "aged-bw"
+  },
+  "gun": {
+   "src": "1/11-1.jpg"
+  },
+  "sign": {
+   "src": "3/5-2.jpg"
+  },
+  "light": {
+   "src": "1/13-2.jpg"
+  },
+  "mourn": {
+   "src": "1/3-1.jpg",
+   "look": "aged-bw"
+  },
+  "police": {
+   "src": "3/6-5.jpg",
+   "look": "aged-bw"
+  },
+  "castle": {
+   "src": "1/17-2.jpg",
+   "look": "aged-bw"
+  },
+  "yokomizo": {
+   "src": "1/15-1.jpg",
+   "look": "aged-bw"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "roster",
+   "why": "câu 1–2 nêu tên loạt Top và gọi người của tập này: hạng 1, Toi Mutsuo",
+   "items": [
+    {
+     "roster": [
+      {
+       "name": "都井睦雄",
+       "sub": "1938",
+       "img": "toi",
+       "focus": [
+        0.5,
+        0.32
+       ]
+      },
+      {
+       "name": "白石隆浩",
+       "sub": "2017",
+       "img": "shiraishi",
+       "focus": [
+        0.5,
+        0.4
+       ]
+      },
+      {
+       "name": "勝田清孝",
+       "sub": "1972–82",
+       "img": "katsuta",
+       "focus": [
+        0.5,
+        0.35
+       ]
+      },
+      {
+       "name": "大久保清",
+       "sub": "1971",
+       "img": "okubo",
+       "focus": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "title": "犠牲者の数で見る\n日本の凶悪殺人犯",
+     "kicker": "TOP 4",
+     "note": "※実際の事件に基づく内容です",
+     "pick": 0,
+     "rank": "第1位",
+     "pick_at": "2:第1位"
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "where",
+   "why": "câu 3 là câu hook (in to), câu 4–5 nói ngày và nơi: xóm Kaio, Okayama, rạng sáng 21/5/1938",
+   "items": [
+    {
+     "header": "津山三十人殺し",
+     "kicker": "ファイル 1938"
+    },
+    {
+     "photo": "village"
+    },
+    {
+     "tag": "岡山県・貝尾",
+     "at": "4:岡山",
+     "color": "black"
+    },
+    {
+     "tag": "1938年5月21日 未明",
+     "at": "4:1938",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 6,
+   "edit": "figure",
+   "why": "câu 6–8 nói về con người Toi: mồ côi, bà nội nuôi, học giỏi, rồi đau ốm",
+   "items": [
+    {
+     "photo": "toi2",
+     "view": [
+      0.1,
+      0.0,
+      0.9,
+      1.0
+     ]
+    },
+    {
+     "tag": "両親を結核で亡くす",
+     "at": "6:両親",
+     "color": "black"
+    },
+    {
+     "tag": "祖母に育てられる",
+     "at": "7:祖母"
+    },
+    {
+     "tag": "成績の良い子",
+     "at": "7:成績",
+     "color": "white"
+    },
+    {
+     "tag": "病気がちに",
+     "at": "8:病気",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 9,
+   "edit": "fact",
+   "why": "câu 9–11: khám tuyển quân, bị chẩn đoán lao, con đường đi lính khép lại (ảnh khám tuyển quân thời chiến)",
+   "items": [
+    {
+     "photo": "exam"
+    },
+    {
+     "tag": "徴兵検査 1937",
+     "at": "9:徴兵",
+     "color": "red"
+    },
+    {
+     "big": "結核",
+     "text": "と診断",
+     "at": "9:結核",
+     "size": 140
+    },
+    {
+     "tag": "兵隊への道は閉ざされた",
+     "at": "10:兵隊",
+     "color": "white"
+    },
+    {
+     "tag": "避けられている?",
+     "at": "11:村人"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "list",
+   "why": "câu 12–13 liệt kê những thứ hắn chuẩn bị: súng săn, kiếm Nhật, rìu",
+   "items": [
+    {
+     "photo": "gun"
+    },
+    {
+     "tag": "恨みが募る",
+     "at": "12:恨み",
+     "color": "red"
+    },
+    {
+     "tag": "猟銃",
+     "at": "13:猟銃"
+    },
+    {
+     "tag": "日本刀",
+     "at": "13:日本刀"
+    },
+    {
+     "tag": "斧",
+     "at": "13:斧"
+    },
+    {
+     "tag": "何か月も準備",
+     "at": "13:何か月",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "place",
+   "why": "câu 14–15: đêm đó hắn cắt điện, cả xóm chìm trong bóng tối (ảnh một ngôi nhà cũ còn lại ở xóm Kaio)",
+   "items": [
+    {
+     "photo": "sign"
+    },
+    {
+     "tag": "集落の電線を切断",
+     "at": "14:電線",
+     "color": "white"
+    },
+    {
+     "tag": "村は真っ暗に",
+     "at": "15:真っ暗",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "detail",
+   "why": "câu 16 chỉ vào chi tiết: hai chiếc đèn pin cài trên đầu như sừng",
+   "items": [
+    {
+     "photo": "light",
+     "marks": [
+      {
+       "at": "16:懐中",
+       "box": [
+        0.25,
+        0.3,
+        0.52,
+        0.72
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "鉢巻き",
+     "at": "16:鉢巻き"
+    },
+    {
+     "tag": "懐中電灯を2本",
+     "at": "16:懐中"
+    },
+    {
+     "tag": "角のように",
+     "at": "16:角",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 17,
+   "edit": "statement",
+   "why": "câu 17–18 là bước ngoặt: nạn nhân đầu tiên là bà nội, rồi hắn đi từng nhà",
+   "items": [
+    {
+     "tag": "最初の犠牲者は、祖母",
+     "at": "17:最初"
+    }
+   ]
+  },
+  {
+   "at": 19,
+   "edit": "fact",
+   "why": "câu 19–20 nêu kết quả: 28 người chết tại chỗ, 2 người mất sau (ảnh dân làng cầu nguyện bên quan tài)",
+   "items": [
+    {
+     "photo": "mourn"
+    },
+    {
+     "tag": "2時間足らず",
+     "at": "19:わずか",
+     "color": "red"
+    },
+    {
+     "big": "28",
+     "text": "人\nその場で",
+     "at": "19:28人"
+    },
+    {
+     "tag": "のちに2人も",
+     "at": "20:重傷",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 21,
+   "edit": "place",
+   "why": "câu 21–22: rạng sáng hắn viết thư tuyệt mệnh rồi tự sát (ảnh cảnh sát điều tra ở làng năm 1938)",
+   "items": [
+    {
+     "photo": "police"
+    },
+    {
+     "tag": "夜明け前",
+     "at": "21:夜が",
+     "color": "white"
+    },
+    {
+     "tag": "遺書を残し、自殺",
+     "at": "22:自ら",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 23,
+   "edit": "pair",
+   "why": "câu 23–24 nêu hai thứ: tên gọi vụ án và tiểu thuyết \"Làng tám ngôi mộ\" của Yokomizo",
+   "items": [
+    {
+     "photo": "castle"
+    },
+    {
+     "photo": "yokomizo",
+     "at": "24:横溝"
+    },
+    {
+     "tag": "「津山三十人殺し」",
+     "at": "23:津山"
+    },
+    {
+     "tag": "横溝正史『八つ墓村』",
+     "at": "24:横溝"
+    },
+    {
+     "tag": "モデルとも",
+     "at": "24:モデル",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 25,
+   "edit": "ending",
+   "why": "hai câu cuối quay về câu mở: một đêm, 30 người, sức nặng còn đến hôm nay",
+   "items": [
+    {
+     "text": [
+      "たった一晩で、30人。",
+      {
+       "text": "その重さは、今も。",
+       "color": "red"
+      }
+     ],
+     "size": 86
+    }
+   ]
+  }
+ ]
+}

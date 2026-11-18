@@ -115,7 +115,14 @@ def main(job, pub, N, imgsrc, out):
     for qn in picks.get('quotes') or []:
         if qn not in starts: fail(f'"quotes": không có câu {qn}')
         qs, qe = starts[qn], starts[qn] + dur[qn]
-        quotes.append({'s': round(qs - 0.1, 3), 'e': round(qe + 0.35, 3), 'text': text[qn].strip()})
+        qt = text[qn].strip()
+        rows = [r for r in re.split(r'(?<=[、，,])', qt) if r]   # one row per clause, short clauses joined (≤ 13 characters)
+        joined = []
+        for r in rows:
+            if joined and len(joined[-1]) + len(r) <= 13: joined[-1] += r
+            else: joined.append(r)
+        qt = '\n'.join(joined)
+        quotes.append({'s': round(qs - 0.1, 3), 'e': round(qe + 0.35, 3), 'text': qt})
         subs = [c for c in subs if c['line'] != qn]
 
     # ---- scenes

@@ -419,7 +419,7 @@ export const CrimeV: React.FC<PlanC> = (plan) => {
             <div style={{ position: 'absolute', left: 0, right: 0, top: 1150, height: 560,
               background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 38%, rgba(0,0,0,.82) 100%)' }} />
             <div style={{ position: 'absolute', left: 70, right: 70, top: 1380, transform: `translateY(${(1 - a) * 20}px)`, textAlign: 'center',
-              fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: [...q.text].length > 22 ? 62 : 72, lineHeight: 1.35, color: '#f4efe6',
+              fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: Math.min(76, Math.floor(920 / Math.max(...q.text.split('\n').map((r) => [...r].length)))), lineHeight: 1.35, color: '#f4efe6', whiteSpace: 'pre-line',
               textShadow: '0 4px 18px rgba(0,0,0,.85)' }}>{shown}</div>
           </AbsoluteFill>
         );
