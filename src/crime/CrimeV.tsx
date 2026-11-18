@@ -229,11 +229,17 @@ const TextV: React.FC<{ g: Text; t: number; F: Record<Role, string> }> = ({ g, t
 // black, the series title on torn paper, a 3×3 grid of round portraits that come in one by one with their names on
 // paper tape; when the voice names this episode's person the others fade to grey, a red ring is drawn round that one
 // and the camera pushes in to it. A portrait without a free picture is a dark silhouette with a red question mark.
-const RCOL = [195, 540, 885], RROW = [600, 960, 1320], RD = 275;
+const RCOL = [195, 540, 885], RROW = [600, 960, 1320], RD3 = 275;
 const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: 'ja' | 'de' }> = ({ r, t, F, lang }) => {
   const n = r.people.length;
-  const rows = Math.ceil(n / 3);
+  // up to 4 people (owner 18/11/2026: a grid of 4 suits 9:16 best): a 2×2 grid of large portraits; 5–9: 3 columns
+  const two = n <= 4, RD = two ? 380 : RD3, NAME = two ? 48 : 36, SUBF = two ? 30 : 24;
+  const rows = two ? Math.ceil(n / 2) : Math.ceil(n / 3);
   const pos = r.people.map((_, i) => {
+    if (two) {
+      const row = Math.floor(i / 2), inRow = Math.min(2, n - row * 2);
+      return { x: inRow === 2 ? [285, 795][i % 2] : 540, y: [700, 1220][row] + (2 - rows) * 260 };
+    }
     const row = Math.floor(i / 3), inRow = Math.min(3, n - row * 3), col = i % 3;
     const x = inRow === 3 ? RCOL[col] : inRow === 2 ? [370, 710][col] : 540;
     return { x, y: RROW[row] + (3 - rows) * 180 };
@@ -252,7 +258,7 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
           fontStyle: lang === 'de' ? 'italic' : 'normal', fontSize: r.title.length > 11 ? 64 : 76, lineHeight: 1.2, whiteSpace: 'pre', textAlign: 'center',
           clipPath: torn(hash(r.title) + 5, 1.4), boxShadow: '0 8px 22px rgba(0,0,0,.6)', maxWidth: 1000 }}>{r.title}</div>
       </div>
-      <AbsoluteFill style={{ transformOrigin: `${c.x}px ${c.y}px`, transform: `translate(${(540 - c.x) * k}px, ${(820 - c.y) * k}px) scale(${1 + 1.35 * k})` }}>
+      <AbsoluteFill style={{ transformOrigin: `${c.x}px ${c.y}px`, transform: `translate(${(540 - c.x) * k}px, ${(820 - c.y) * k}px) scale(${1 + (two ? 0.8 : 1.35) * k})` }}>
         {r.people.map((p, i) => {
           const a = easeOut((t - p.s) / 0.35), me = i === r.pick;
           const fade = me ? 1 : 1 - k;
@@ -283,9 +289,9 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
                   style={{ filter: 'drop-shadow(0 0 6px rgba(0,0,0,.8))' }} /></svg> : null}
               <div style={{ position: 'absolute', left: '50%', top: RD - 8, transform: 'translateX(-50%) rotate(-1.5deg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ background: me && k > 0.05 ? RED : '#ece9e2', color: me && k > 0.05 ? '#fff' : INK, padding: '2px 16px', whiteSpace: 'nowrap',
-                  fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 800, fontSize: 36, lineHeight: 1.25, clipPath: torn(hash(p.name), 2.4),
+                  fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 800, fontSize: NAME, lineHeight: 1.25, clipPath: torn(hash(p.name), 2.4),
                   boxShadow: '0 4px 10px rgba(0,0,0,.5)' }}>{p.name}</div>
-                {p.sub ? <div style={{ marginTop: 4, fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: 24, color: YELLOW, whiteSpace: 'nowrap',
+                {p.sub ? <div style={{ marginTop: 4, fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: SUBF, color: YELLOW, whiteSpace: 'nowrap',
                   textShadow: '0 2px 6px rgba(0,0,0,.9)' }}>{p.sub}</div> : null}
               </div>
             </div>

@@ -301,11 +301,11 @@ EDITS = {
       {'photo': 'house'}, {'tag': '何も残さなかった?', 'color': 'white', 'at': '34:何も'}, {'tag': 'すべてを残した', 'color': 'red', 'at': '35:すべて'}]}},
  'roster': {
   'vi': 'mở đầu loạt Top: lưới chân dung', 'sample': '(mẫu Top 18/11) 0:00–0:08',
-  'look': 'nền đen, tiêu đề loạt "Top" trên giấy xé, lưới 3×3 ảnh chân dung tròn có tên hiện lần lượt; khi giọng đọc gọi tên người của tập này, những người khác tối đi, vòng đỏ khoanh người đó và máy quay phóng vào',
-  'use': 'MỞ ĐẦU MỘT TẬP CỦA LOẠT TOP (owner 18/11: mỗi video một người, lưới 4–6 người): 1–3 câu đầu nêu tên loạt rồi gọi tên người của tập này. "rank" = hạng của người đó (第3位), "done" = những người đã có tập trước (gạch chéo đỏ)',
+  'look': 'nền đen, tiêu đề loạt "Top" trên giấy xé, lưới 2×2 (4 người; 5–9 người: 3 cột) ảnh chân dung tròn có tên hiện lần lượt; khi giọng đọc gọi tên người của tập này, những người khác tối đi, vòng đỏ khoanh người đó và máy quay phóng vào',
+  'use': 'MỞ ĐẦU MỘT TẬP CỦA LOẠT TOP (owner 18/11: mỗi video một người, lưới 4 người 2×2): 1–3 câu đầu nêu tên loạt rồi gọi tên người của tập này. "rank" = hạng của người đó (第3位), "done" = những người đã có tập trước (gạch chéo đỏ)',
   'needs': {'roster': 1}, 'most': {'roster': 1, 'photo': 0, 'card': 0}, 'scene': {'bg': 'black', 'push': 0},
   'recipe': {'at': 1, 'edit': 'roster', 'why': '…', 'items': [{'roster': [{'name': '宮崎勤', 'sub': '1988–89', 'img': 'miyazaki'}, {'name': '大久保清', 'sub': '1971'}],
-      'title': '日本の凶悪殺人犯', 'kicker': 'TOP 9', 'pick': 0, 'pick_at': '2:宮崎'}]}},
+      'title': '日本の凶悪殺人犯', 'kicker': 'TOP 4', 'pick': 0, 'pick_at': '2:宮崎'}]}},
  'ending': {
   'vi': 'kết: chữ lớn trắng + đỏ', 'sample': '3:16–3:17',
   'look': 'nền đen, hai dòng chữ lớn gõ ra: dòng đầu trắng, dòng cuối đỏ',
