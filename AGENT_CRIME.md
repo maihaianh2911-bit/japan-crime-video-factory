@@ -119,6 +119,13 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
        asked for by name), `met:`, `aic:`, `cleveland:`; `File:<name>` fetches one Commons file.
     The contact sheet shows the score (`~0.31`: it shows the thing; `~0.20`: doubtful) next to the source
     (`commons/wiki` = from the item or its articles, `commons/category`, `commons/geo`).
+  - **Portraits and press photos** (owner, 18/11/2026: this channel may use pictures that are not free, e.g. the
+    face of a convicted killer for the `roster` grid; `prompts/channel.json` `"web_images": true`): `wiki: <article>`
+    also keeps the non-free pictures of the Wikipedia articles (source `jawiki/local`, `enwiki/local`), and
+    `web: <words>` asks a web image search (DuckDuckGo, then Bing, then Yahoo! JAPAN; source `web/…`, licence
+    `Web（出典ページ）`, the page is kept for the credit). Ask for every person of the grid: `wiki: 都井睦雄`,
+    `web: 都井睦雄 顔写真`, `web: 大久保清 死刑囚`. Look at every web picture before using it: the right person, not a
+    drawing or a fake, no watermark across the face, no victim. Prefer a free picture when there is one.
   - `urls`: pictures you found yourself on a page that states a free licence (direct image URL + page + title +
     author + licence). Check the licence on the page. Press photos (dpa, Getty …) are **not** free: never.
   - `gen`: AI illustrations for the lines no real picture can show (the room, the night, the ritual, the hospital

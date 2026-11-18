@@ -1,8 +1,9 @@
 {
- "_note": "Settings of this channel. lang: ja (Japanese voice and captions) or de (German). voice: 11labs voice used when script.json has no \"voice\". ai_tag: the small tag printed on every AI illustration. gen_provider: which picture generator makes the AI illustrations — auto (the first one whose key is in the repo secrets: OPENAI_API_KEY, GEMINI_API_KEY, then CF_ACCOUNT_ID + CF_API_TOKEN), or openai / gemini / cloudflare.",
+ "_note": "Settings of this channel. lang: ja (Japanese voice and captions) or de (German). voice: 11labs voice used when script.json has no \"voice\". ai_tag: the small tag printed on every AI illustration. gen_provider: which picture generator makes the AI illustrations — auto (the first one whose key is in the repo secrets: OPENAI_API_KEY, GEMINI_API_KEY, then CF_ACCOUNT_ID + CF_API_TOKEN), or openai / gemini / cloudflare. web_images: true = the owner allows pictures that are not free (press photos, portraits found on the web) for this channel (18/11/2026); find_images.py web: and wiki: use them, and the credit names the page.",
  "lang": "ja",
  "repo": "maihaianh2911-bit/japan-crime-video-factory",
  "voice": "clone_190",
  "ai_tag": "イメージ（AI生成）",
- "gen_provider": "auto"
+ "gen_provider": "auto",
+ "web_images": true
 }

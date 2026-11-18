@@ -8,6 +8,11 @@ Sources (crime channels: places, buildings, people of the time, newspapers, cour
              its main picture, the pictures of its Wikipedia articles (channel language and English), the files of its
              Wikimedia Commons category (and sub-categories), the photos taken at its coordinates. `wiki: 三億円事件`,
              `wiki: 府中刑務所` or `wiki: Q4634328`. This is where the real pictures of a case are: ask it first.
+  web        web image search (DuckDuckGo, then Bing, then Yahoo! JAPAN): press photos, mugshots, portraits that no
+             open archive has. Only when prompts/channel.json has "web_images": true (owner's decision: the Japanese
+             channel, 18/11/2026, accepts press photos; the pictures are not free, the credit names the page they come
+             from). `web: 都井睦雄 顔写真`. With "web_images", `wiki:` also keeps the non-free pictures of the Wikipedia
+             articles (portraits kept on one Wikipedia only).
   geo        Commons photos taken around a point, whatever they are called: `geo: 35.6861,139.473 600` (metres)
   commons    Wikimedia Commons, full-text search
   openverse  Openverse: Flickr, museums, science sites … (CC0, public domain, CC BY, CC BY-SA; Wikimedia excluded)
@@ -60,7 +65,12 @@ try:             # the channel's language: its Wikipedia is read first by wiki:
     LANG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'prompts', 'channel.json'), encoding='utf-8'))['lang']
 except Exception:
     LANG = 'en'
-LANGS = tuple(dict.fromkeys((LANG, 'en')))   # Wikipedias and labels read by wiki:, in this order
+LANGS = tuple(dict.fromkeys((LANG, 'en')))
+try:             # the owner allows pictures that are not free (press photos) for this channel: web:, and wiki: keeps them
+    WEB_IMAGES = bool(json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'prompts', 'channel.json'), encoding='utf-8')).get('web_images'))
+except Exception:
+    WEB_IMAGES = False
+WEB_LICENCE = 'Web（出典ページ）'   # Wikipedias and labels read by wiki:, in this order
 
 
 WIKIMEDIA = threading.BoundedSemaphore(2)   # Wikimedia asks for few requests at a time, whatever runs in parallel here
@@ -321,23 +331,101 @@ def wiki(q, n):
             if len(filed) >= 150: break
             filed += members(sub[9:], 'file', 50)
     groups = [(own, 'commons/wiki'), (article, 'commons/wiki'), (filed, 'commons/category')]
+    local = []   # non-free pictures kept on one Wikipedia only (a portrait, a press photo): only when the owner allows them
+    if WEB_IMAGES:
+        for site in (l + 'wiki' for l in LANGS):
+            if site not in links: continue
+            try:
+                d = commons_api(f'https://{site[:-4]}.wikipedia.org/w/api.php', titles=links[site]['title'], generator='images', gimlimit=100,
+                                prop='imageinfo', iiprop='url|size|mime|extmetadata', iiurlwidth=1280, redirects=1)
+            except Exception as ex:
+                print(f'  wiki: local {site} {str(ex)[:80]}'); continue
+            for pg in (d.get('query') or {}).get('pages', {}).values():
+                if pg.get('imagerepository') != 'local' or ICON.search(pg.get('title', '')): continue
+                ii = (pg.get('imageinfo') or [{}])[0]
+                if ii.get('mime') not in ('image/jpeg', 'image/png'): continue
+                md = ii.get('extmetadata') or {}
+                local.append(item(f'{site}/local', pg['title'].split(':', 1)[1], ii.get('descriptionurl'), (ii.get('thumburl') or ii['url']).split('?')[0],
+                                  strip((md.get('LicenseShortName') or {}).get('value')) or 'Wikipedia（非自由）', (md.get('Artist') or {}).get('value'),
+                                  (md.get('DateTimeOriginal') or {}).get('value'), '', ii.get('width'), ii.get('height')))
     seen, out = set(), []
-    for titles, source in groups:
+    for gi, (titles, source) in enumerate(groups):
         titles = [t for t in dict.fromkeys(titles) if t.replace('_', ' ') not in seen and not ICON.search(t)]
         seen.update(t.replace('_', ' ') for t in titles)
         out += commons_files(titles[:150], source)
+        if gi == 0 and local:   # a portrait on the article comes right after the item's own pictures
+            out += local; local = []
+    out += local
     if coord:   # the place itself, whatever the photos are called
         try: out += [r for r in geo(f"{coord['latitude']},{coord['longitude']} 400", 20) if 'File:' + r['title'] not in seen]
         except Exception as ex: print(f'  wiki: geo {str(ex)[:80]}')
     return out[:max(n, 60)]
 
 
+BROWSER = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+
+
+def page_get(url, headers=None, timeout=30):
+    with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': BROWSER, 'Accept-Language': 'ja,en;q=0.7', **(headers or {})}),
+                                timeout=timeout) as r:
+        return r.read().decode('utf-8', 'replace')
+
+
+def web_ddg(q, n):
+    html = page_get('https://duckduckgo.com/?' + urllib.parse.urlencode({'q': q, 'iax': 'images', 'ia': 'images'}))
+    m = re.search(r"vqd=['\"]?([\d-]+)", html)
+    if not m: raise RuntimeError('duckduckgo: no token')
+    d = json.loads(page_get('https://duckduckgo.com/i.js?' + urllib.parse.urlencode({'l': 'jp-jp', 'o': 'json', 'q': q, 'vqd': m.group(1), 'f': ',,,,,', 'p': '-1'}),
+                            {'Referer': 'https://duckduckgo.com/', 'Accept': 'application/json'}))
+    return [item('web/duckduckgo', r.get('title') or q, r.get('url', ''), r['image'], WEB_LICENCE, urllib.parse.urlsplit(r.get('url', '')).netloc,
+                  '', r.get('title', ''), r.get('width'), r.get('height'), r.get('thumbnail')) for r in d.get('results', [])[:n] if r.get('image')]
+
+
+def web_bing(q, n):
+    html = page_get('https://www.bing.com/images/search?' + urllib.parse.urlencode({'q': q, 'form': 'HDRSC2', 'first': 1}))
+    out = []
+    for m in re.finditer(r'class="iusc"[^>]*\bm="([^"]+)"', html):
+        try: d = json.loads(m.group(1).replace('&quot;', '"').replace('&amp;', '&'))
+        except Exception: continue
+        if d.get('murl'):
+            out.append(item('web/bing', d.get('t') or q, d.get('purl', ''), d['murl'], WEB_LICENCE, urllib.parse.urlsplit(d.get('purl', '')).netloc,
+                            '', d.get('desc', ''), None, None, d.get('turl')))
+        if len(out) >= n: break
+    return out
+
+
+def web_yahoo(q, n):
+    html = page_get('https://search.yahoo.co.jp/image/search?' + urllib.parse.urlencode({'p': q, 'ei': 'UTF-8'}))
+    out = []
+    for m in re.finditer(r'"original":\{"url":"([^"]+)","width":(\d+),"height":(\d+)\}.{0,400}?"refererUrl":"([^"]*)"(?:.{0,200}?"title":"([^"]*)")?', html):
+        u, w, h, ref, t = m.groups()
+        dec = lambda x: json.loads(f'"{x}"') if x else ''
+        out.append(item('web/yahoo', dec(t) or q, dec(ref), dec(u), WEB_LICENCE, urllib.parse.urlsplit(dec(ref)).netloc, '', '', int(w), int(h)))
+        if len(out) >= n: break
+    return out
+
+
+def web(q, n):
+    """Pictures from a web image search (see the module text): DuckDuckGo, else Bing, else Yahoo! JAPAN."""
+    if not WEB_IMAGES:
+        raise RuntimeError('web: chưa được phép (prompts/channel.json "web_images": true là quyết định của chủ kênh)')
+    errors = []
+    for f in (web_ddg, web_bing, web_yahoo):
+        try:
+            r = f(q, n)
+            if r: return r
+            errors.append(f'{f.__name__}: 0')
+        except Exception as e:
+            errors.append(f'{f.__name__}: {str(e)[:60]}')
+    raise RuntimeError('web: ' + '; '.join(errors))
+
+
 REFUSED = set()   # sources that answered 429 (too many requests) in this run: not asked again, see search()
 
 
 FIND = {'openverse': openverse, 'met': met, 'aic': aic, 'cleveland': cleveland, 'europeana': europeana, 'loc': loc, 'commons': commons,
-        'wiki': wiki, 'geo': geo}
-ABOUT = ('wiki', 'geo')   # sources whose results are about the thing by construction: kept in their order
+        'wiki': wiki, 'geo': geo, 'web': web}
+ABOUT = ('wiki', 'geo', 'web')   # sources whose results are about the thing by construction: kept in their order
 
 
 class Clip:
