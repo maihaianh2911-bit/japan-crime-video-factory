@@ -1,0 +1,417 @@
+{
+ "pictures": [
+  {
+   "name": "toi",
+   "src": "1/1-1.jpg",
+   "title": "Mutsuo Toi.jpg",
+   "artist": "Unknown authorUnknown author",
+   "date": "before 1938",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Mutsuo_Toi.jpg",
+   "ai": false
+  },
+  {
+   "name": "toi2",
+   "src": "3/1-7.jpg",
+   "title": "都井睦雄 写真",
+   "artist": "showa-g.org",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://showa-g.org/men/view/409",
+   "ai": false
+  },
+  {
+   "name": "shiraishi",
+   "src": "3/4-1.jpg",
+   "title": "白石隆浩 顔写真",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/articles/AST6W02FST6WUTIL046M.html",
+   "ai": false
+  },
+  {
+   "name": "katsuta",
+   "src": "3/3-3.jpg",
+   "title": "勝田清孝 写真",
+   "artist": "newsdig.tbs.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://newsdig.tbs.co.jp/articles/gallery/2171956",
+   "ai": false
+  },
+  {
+   "name": "okubo",
+   "src": "4/1-1.jpg",
+   "title": "昭和四十六年、群馬の春 : 大久保清の犯罪 | 筑波昭 著 | 草思社 ...",
+   "artist": "www.kosho.or.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.kosho.or.jp/products/detail.php?product_id=572024148",
+   "ai": false
+  },
+  {
+   "name": "village",
+   "src": "3/6-4.jpg",
+   "title": "津山事件 現場 昭和13年",
+   "artist": "withnews.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://withnews.jp/photo-gallery/1000005547/1",
+   "ai": false
+  },
+  {
+   "name": "exam",
+   "src": "4/6-1.jpg",
+   "title": "甲乙丙…」戦時中の兵役検査とは 合格は「誉れ」、徴兵逃れも ...",
+   "artist": "mainichi.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://mainichi.jp/articles/20240810/k00/00m/040/302000c",
+   "ai": false
+  },
+  {
+   "name": "gun",
+   "src": "1/11-1.jpg",
+   "title": "Browning 16 Gauge Shotgun (23714869590).jpg",
+   "artist": "James Case from Philadelphia, Mississippi, U.S.A.",
+   "date": "2015-12-27 14:52",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Browning_16_Gauge_Shotgun_(23714869590).jpg",
+   "ai": false
+  },
+  {
+   "name": "sign",
+   "src": "3/5-2.jpg",
+   "title": "津山三十人殺し 貝尾 集落",
+   "artist": "cub-de-tabi.jugem.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://cub-de-tabi.jugem.jp/?eid=583",
+   "ai": false
+  },
+  {
+   "name": "light",
+   "src": "1/13-2.jpg",
+   "title": "Stara latarka PRL vintage metalowa.jpg",
+   "artist": "ElisaVintage",
+   "date": "2025-02-20 15:53:25",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Stara_latarka_PRL_vintage_metalowa.jpg",
+   "ai": false
+  },
+  {
+   "name": "mourn",
+   "src": "1/3-1.jpg",
+   "title": "Tsuyama Massacre victims.JPG",
+   "artist": "Unknown authorUnknown author",
+   "date": "1938-05",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Tsuyama_Massacre_victims.JPG",
+   "ai": false
+  },
+  {
+   "name": "castle",
+   "src": "1/17-2.jpg",
+   "title": "Tsuyama Castle old potograph.jpg",
+   "artist": "松平国忠 （津山藩城代家老、廃藩後に写真館主）",
+   "date": "circa 1872",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Tsuyama_Castle_old_potograph.jpg",
+   "ai": false
+  },
+  {
+   "name": "yokomizo",
+   "src": "1/15-1.jpg",
+   "title": "Seishi-Yokomizo-1.jpg",
+   "artist": "Unknown authorUnknown author",
+   "date": "Unknown date",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Seishi-Yokomizo-1.jpg",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.429,
+   "said": [
+    "犠牲者の数で見る、",
+    "日本の凶悪殺人犯。",
+    "第1位は、21歳の青年、",
+    "都井睦雄。"
+   ],
+   "edit": "roster",
+   "photos": [],
+   "texts": []
+  },
+  {
+   "scene": 2,
+   "start": 5.429,
+   "end": 16.633,
+   "said": [
+    "1938年5月21日の未明。",
+    "岡山県の山あいの集落、貝尾。",
+    "二十数戸が寄り添うように暮らす、",
+    "静かな村だった。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "village",
+     "ai": false,
+     "credit": "withnews.jp / Web（出典ページ）",
+     "page": "https://withnews.jp/photo-gallery/1000005547/1"
+    }
+   ],
+   "texts": [
+    "津山三十人殺し",
+    "岡山県・貝尾",
+    "1938年5月21日 未明"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 16.633,
+   "end": 24.706,
+   "said": [
+    "都井は幼いころに、",
+    "両親を結核で亡くし、",
+    "祖母に育てられた。",
+    "小学校では、成績の",
+    "良い子だったという。",
+    "だが、やがて病気がちになり、",
+    "家にこもるようになる。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "toi2",
+     "ai": false,
+     "credit": "showa-g.org / Web（出典ページ）",
+     "page": "https://showa-g.org/men/view/409"
+    }
+   ],
+   "texts": [
+    "両親を結核で亡くす",
+    "祖母に育てられる",
+    "成績の良い子",
+    "病気がちに"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 24.706,
+   "end": 33.078,
+   "said": [
+    "そして1937年、徴兵検査で",
+    "結核と診断された。",
+    "兵隊になる道も閉ざされ、",
+    "彼は、村人たちから",
+    "避けられていると",
+    "感じるようになった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "exam",
+     "ai": false,
+     "credit": "mainichi.jp / Web（出典ページ）",
+     "page": "https://mainichi.jp/articles/20240810/k00/00m/040/302000c"
+    }
+   ],
+   "texts": [
+    "徴兵検査 1937",
+    "と診断",
+    "兵隊への道は閉ざされた",
+    "避けられている?"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 33.078,
+   "end": 38.938,
+   "said": [
+    "その恨みは、",
+    "少しずつ大きくなっていった。",
+    "彼は猟銃と日本刀、",
+    "斧を手に入れ、",
+    "何か月も準備を重ねた。"
+   ],
+   "edit": "list",
+   "photos": [
+    {
+     "image": "gun",
+     "ai": false,
+     "credit": "James Case from Philadelphia, Mississippi, U.S.A. / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Browning_16_Gauge_Shotgun_(23714869590).jpg"
+    }
+   ],
+   "texts": [
+    "恨みが募る",
+    "猟銃",
+    "日本刀",
+    "斧",
+    "何か月も準備"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 38.938,
+   "end": 43.39,
+   "said": [
+    "そしてその夜、彼はまず、",
+    "集落の電線を切った。",
+    "村は、真っ暗な闇に包まれた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "sign",
+     "ai": false,
+     "credit": "cub-de-tabi.jugem.jp / Web（出典ページ）",
+     "page": "https://cub-de-tabi.jugem.jp/?eid=583"
+    }
+   ],
+   "texts": [
+    "集落の電線を切断",
+    "村は真っ暗に"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 43.39,
+   "end": 47.282,
+   "said": [
+    "頭には鉢巻きを",
+    "締め、懐中電灯を2本、",
+    "角のように差していた。"
+   ],
+   "edit": "detail",
+   "photos": [
+    {
+     "image": "light",
+     "ai": false,
+     "credit": "ElisaVintage / CC0",
+     "page": "https://commons.wikimedia.org/wiki/File:Stara_latarka_PRL_vintage_metalowa.jpg"
+    }
+   ],
+   "texts": [
+    "鉢巻き",
+    "懐中電灯を2本",
+    "角のように"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 47.282,
+   "end": 52.774,
+   "said": [
+    "最初に命を奪ったのは、",
+    "一緒に暮らしていた祖母だった。",
+    "それから彼は、闇の中を",
+    "家から家へと回った。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "最初の犠牲者は、祖母"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 52.774,
+   "end": 58.281,
+   "said": [
+    "わずか2時間足らずのうちに、",
+    "28人がその場で亡くなり、",
+    "重傷を負った2人も、",
+    "のちに息を引き取った。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "mourn",
+     "ai": false,
+     "credit": "Unknown authorUnknown author / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Tsuyama_Massacre_victims.JPG"
+    }
+   ],
+   "texts": [
+    "2時間足らず",
+    "人\nその場で",
+    "のちに2人も"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 58.281,
+   "end": 62.375,
+   "said": [
+    "夜が明けるころ、",
+    "彼は近くの山で",
+    "遺書を書き残し、",
+    "自ら命を絶った。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "police",
+     "ai": false,
+     "credit": "withnews.jp / Web（出典ページ）",
+     "page": ""
+    }
+   ],
+   "texts": [
+    "夜明け前",
+    "遺書を残し、自殺"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 62.375,
+   "end": 68.103,
+   "said": [
+    "事件は「津山三十人殺し」と呼ばれ、",
+    "横溝正史の『八つ墓村』",
+    "のモデルになったとも言われている。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "castle",
+     "ai": false,
+     "credit": "松平国忠 （津山藩城代家老、廃藩後に写真館主） / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Tsuyama_Castle_old_potograph.jpg"
+    },
+    {
+     "image": "yokomizo",
+     "ai": false,
+     "credit": "Unknown authorUnknown author / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Seishi-Yokomizo-1.jpg"
+    }
+   ],
+   "texts": [
+    "「津山三十人殺し」",
+    "横溝正史『八つ墓村』",
+    "モデルとも"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 68.103,
+   "end": 75.803,
+   "said": [
+    "たった一晩で、30人。",
+    "その重さは、",
+    "80年以上たった今も、",
+    "日本の犯罪史に",
+    "残り続けている。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
