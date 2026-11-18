@@ -1,0 +1,148 @@
+[
+ {
+  "k": 1,
+  "query": "wiki: 津山三十人殺し",
+  "results": [],
+  "candidates": 1,
+  "wikidata": {
+   "id": "Q55816370",
+   "label": "津山事件",
+   "description": "1938年に日本の岡山県西加茂村で発生した大量殺人事件",
+   "coord": [
+    35.15583,
+    134.03806
+   ]
+  }
+ },
+ {
+  "k": 2,
+  "query": "wiki: 大久保清",
+  "results": [],
+  "candidates": 0,
+  "wikidata": {
+   "id": "Q1069217",
+   "label": "大久保清",
+   "description": "日本の連続殺人犯 (1935-1976)"
+  }
+ },
+ {
+  "k": 3,
+  "query": "wiki: Kiyoshi Ōkubo",
+  "results": [],
+  "candidates": 0,
+  "wikidata": {
+   "id": "Q1069217",
+   "label": "大久保清",
+   "description": "日本の連続殺人犯 (1935-1976)"
+  }
+ },
+ {
+  "k": 4,
+  "query": "web: 都井睦雄",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 5,
+  "query": "web: 大久保清 顔写真",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 6,
+  "query": "web: 勝田清孝 顔写真",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 7,
+  "query": "web: 白石隆浩 顔写真",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 8,
+  "query": "web: 津山事件 貝尾 集落",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 9,
+  "query": "web: 津山三十人殺し 現場",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 10,
+  "query": "web: 八つ墓村 横溝正史 初版",
+  "results": [],
+  "candidates": 0,
+  "error": "web: web_ddg: 0; web_bing: 0; web_yahoo: 0"
+ },
+ {
+  "k": 11,
+  "query": "大久保清（文春オンライン）",
+  "results": [
+   {
+    "source": "page",
+    "title": "大久保清（文春オンライン）",
+    "page": "https://bunshun.jp/articles/-/88228",
+    "thumb": "https://bunshun.jp/mwimgs/0/5/1200wm/img_057258a3ca7dce501f5b76b49c19b48c249077.jpg",
+    "license": "© 文藝春秋",
+    "artist": "文春オンライン",
+    "date": "",
+    "description": "",
+    "width": 1200,
+    "height": 750,
+    "file": "11-1.jpg"
+   }
+  ],
+  "candidates": 1
+ },
+ {
+  "k": 12,
+  "query": "大久保清（文春オンライン）",
+  "results": [
+   {
+    "source": "page",
+    "title": "大久保清（文春オンライン）",
+    "page": "https://bunshun.jp/articles/-/88415",
+    "thumb": "https://bunshun.jp/mwimgs/4/a/1200wm/img_4a1fe7a7922cd7f25952cb442beb084e663676.jpg",
+    "license": "© 文藝春秋",
+    "artist": "文春オンライン",
+    "date": "",
+    "description": "",
+    "width": 1200,
+    "height": 750,
+    "file": "12-1.jpg"
+   }
+  ],
+  "candidates": 1
+ },
+ {
+  "k": 13,
+  "query": "白石隆浩（文春オンライン）",
+  "results": [
+   {
+    "source": "page",
+    "title": "白石隆浩（文春オンライン）",
+    "page": "https://bunshun.jp/articles/-/80160",
+    "thumb": "https://bunshun.jp/mwimgs/e/2/1200wm/img_e2ccdf62aebfeeb910dc50ab059b780962958.jpg",
+    "license": "© 文藝春秋",
+    "artist": "文春オンライン",
+    "date": "",
+    "description": "",
+    "width": 900,
+    "height": 563,
+    "file": "13-1.jpg"
+   }
+  ],
+  "candidates": 1
+ }
+]
