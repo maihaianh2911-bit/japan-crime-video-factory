@@ -13,6 +13,8 @@ Sources (crime channels: places, buildings, people of the time, newspapers, cour
              channel, 18/11/2026, accepts press photos; the pictures are not free, the credit names the page they come
              from). `web: 都井睦雄 顔写真`. With "web_images", `wiki:` also keeps the non-free pictures of the Wikipedia
              articles (portraits kept on one Wikipedia only).
+  music      recordings on Wikimedia Commons with a free licence, for the music under the voice: `music:Satie
+             Gymnopédie piano` (files <k>-<n>.ogg, their length in index.json "seconds"; picks.json "music")
   geo        Commons photos taken around a point, whatever they are called: `geo: 35.6861,139.473 600` (metres)
   commons    Wikimedia Commons, full-text search
   openverse  Openverse: Flickr, museums, science sites … (CC0, public domain, CC BY, CC BY-SA; Wikimedia excluded)
@@ -427,6 +429,41 @@ def web_yahoo(q, n):
         walk(json.loads(m.group(1)))
     return out
 
+AUDIO = {'application/ogg': 'ogg', 'audio/ogg': 'ogg', 'audio/mpeg': 'mp3', 'audio/webm': 'webm', 'audio/x-flac': 'flac',
+         'audio/flac': 'flac', 'audio/wav': 'wav', 'audio/x-wav': 'wav'}
+MUSIC_KEEP, MUSIC_LIMIT = 4, 12_000_000
+
+
+def music(q, n):
+    """Recordings on Wikimedia Commons with a free licence (as japan-news-video-factory): `music:Gymnopédie Satie
+    piano`. Up to 4 files, each saved as <k>-<n>.<ext> with its length in seconds; Claude picks one in picks.json
+    ("music": {"pick": "<round>/<k>-<n>.ogg"}) and it replaces the made music bed."""
+    d = commons_api(generator='search', gsrsearch=f'{q} filetype:audio', gsrnamespace=6, gsrlimit=20, prop='imageinfo',
+                    iiprop='url|extmetadata|size|mime')
+    out = []
+    for pg in sorted((d.get('query') or {}).get('pages', {}).values(), key=lambda pg: pg.get('index', 0)):
+        ii = (pg.get('imageinfo') or [{}])[0]; md = ii.get('extmetadata') or {}
+        lic = strip((md.get('LicenseShortName') or {}).get('value'))
+        if ii.get('mime') not in AUDIO or not OK.search(lic) or ii.get('size', 0) > MUSIC_LIMIT: continue
+        out.append({'source': 'commons/music', 'title': pg['title'][5:], 'page': ii.get('descriptionurl'), 'thumb': ii['url'], 'license': lic,
+                    'artist': strip((md.get('Artist') or {}).get('value'))[:120], 'date': '', 'description': strip((md.get('ImageDescription') or {}).get('value'))[:300],
+                    'ext': AUDIO[ii['mime']], 'audio': True})
+    return out
+
+
+def seconds_of(path):
+    try:
+        import subprocess
+        r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path], capture_output=True, text=True, timeout=30)
+        return round(float(r.stdout.strip()), 1)
+    except Exception:
+        try:
+            sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crime')); import ff
+            return round(ff.duration(path), 1)
+        except Exception:
+            return None
+
+
 DEBUG_DIR = None   # the output folder of this run (main)
 DEBUG = {}         # the last page of each web search engine: saved beside the results when none answered
 WEB_REFUSED = set()   # web engines that answered 429 in this run: not asked again
@@ -458,7 +495,7 @@ REFUSED = set()   # sources that answered 429 (too many requests) in this run: n
 
 
 FIND = {'openverse': openverse, 'met': met, 'aic': aic, 'cleveland': cleveland, 'europeana': europeana, 'loc': loc, 'commons': commons,
-        'wiki': wiki, 'geo': geo, 'web': web}
+        'wiki': wiki, 'geo': geo, 'web': web, 'music': music}
 ABOUT = ('wiki', 'geo', 'web')   # sources whose results are about the thing by construction: kept in their order
 
 
@@ -638,6 +675,21 @@ def main():
             want, keep, q = q.get('want'), q.get('keep'), q['q']
         if isinstance(q, str) and ' => ' in q:   # "web:大久保清 => a man's face, old photo": the wish written in the query
             q, want = (x.strip() for x in q.split(' => ', 1))
+        if isinstance(q, str) and source_of(q)[0] == 'music':   # recordings, not pictures: saved as they are
+            res, err = [], None
+            try:
+                for r in music(source_of(q)[1], MUSIC_KEEP * 3):
+                    if len(res) >= MUSIC_KEEP: break
+                    try: data = get(r['thumb'])
+                    except Exception as e: print(f'  music: {r["title"]}: {str(e)[:80]}'); continue
+                    r['file'] = f"{k}-{len(res) + 1}.{r.pop('ext')}"
+                    open(os.path.join(out, r['file']), 'wb').write(data)
+                    r['seconds'] = seconds_of(os.path.join(out, r['file'])); res.append(r)
+            except Exception as e:
+                err = str(e)[:200]
+            index.append({'k': k, 'query': q, 'results': res, 'candidates': len(res), **({'error': err} if err else {})})
+            print(f'{k}. {q}: {len(res)} recordings' + (f' — lỗi {err[:100]}' if err else ''))
+            continue
         exact = isinstance(q, dict) or q.startswith('File:')
         src = None if exact else source_of(q)[0]
         keep = int(keep or (KEEP_WIKI if src == 'wiki' else KEEP_GEO if src == 'geo' else KEEP))

@@ -28,7 +28,7 @@ export type Sub = { s: number; e: number; text: string; line: number };
 type Role = 'sans' | 'serif' | 'mono' | 'hand';
 type FontChunk = { family: string; file: string; range: string; weight: string; style: string };
 export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; aiTag: string; bg: string; grain: string; scenes: Scene[];
-  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; fonts: FontChunk[];
+  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; musicLoop?: boolean; fonts: FontChunk[];
   families: Partial<Record<Role, string>> };
 
 // layout.py
@@ -400,7 +400,7 @@ export const CrimeV: React.FC<PlanC> = (plan) => {
       ) : null}
       {plan.voice.map((v, i) => <Sequence key={i} from={Math.round(v.s * fps)}><Audio src={staticFile(v.src)} /></Sequence>)}
       {plan.music ? (
-        <Audio src={staticFile(plan.music)} volume={(f) => {
+        <Audio src={staticFile(plan.music)} loop={!!plan.musicLoop} volume={(f) => {
           const tt = f / fps;
           return plan.musicVolume * Math.max(0, Math.min(1, tt / 0.6, (durationInFrames / fps - tt) / 1.4)) * (speaking(tt) ? 0.7 : 1);
         }} />

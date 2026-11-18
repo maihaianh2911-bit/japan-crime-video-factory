@@ -126,6 +126,11 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
     `Web（出典ページ）`, the page is kept for the credit). Ask for every person of the grid: `wiki: 都井睦雄`,
     `web: 都井睦雄 顔写真`, `web: 大久保清 死刑囚`. Look at every web picture before using it: the right person, not a
     drawing or a fake, no watermark across the face, no victim. Prefer a free picture when there is one.
+  - **Music** (owner, 18/11/2026, as in japan-news-video-factory): add 2–3 searches `music:<words>` for a real
+    recording under the voice (Wikimedia Commons, free licences): `music:Satie Gymnopédie piano`, `music:Chopin
+    nocturne`, `music:dark ambient`. They come back as `<k>-<n>.ogg|flac|wav|mp3` with `seconds` in index.json. In
+    picks.json `"music": {"pick": "<round>/<k>-<n>.ogg", "volume": 1, "start": 0}`: it replaces the made bed, loops,
+    fades in and out, sits under the voice, and is credited in credits.txt. A calm, dark piece; never a song with words.
   - `urls`: pictures you found yourself on a page that states a free licence (direct image URL + page + title +
     author + licence). Check the licence on the page. Press photos (dpa, Getty …) are **not** free: never.
   - `gen`: AI illustrations for the lines no real picture can show (the room, the night, the ritual, the hospital

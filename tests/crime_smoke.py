@@ -123,6 +123,18 @@ assert 'Street.jpg' in cred and 'AI' in cred and 'a small bedroom' in cred
 src = json.load(open(os.path.join(out, 'sources.json'), encoding='utf-8'))
 assert len(src['scenes']) == 4 and src['scenes'][2]['photos'][0]['ai'] and src['scenes'][0]['photos'][0]['page']
 assert os.path.getsize(os.path.join(pub, 'crime', N, 'bed.wav')) > 100000
+# a recording found with music: replaces the made bed, loops, and is credited
+os.makedirs(os.path.join(imgsrc, 'm'))
+ff.run('-f', 'lavfi', '-i', 'sine=frequency=220:duration=5', '-c:a', 'libvorbis', os.path.join(imgsrc, 'm', '1-1.ogg'))
+json.dump([{'k': 1, 'query': 'music:test', 'results': [{'file': '1-1.ogg', 'title': 'Test piece.ogg', 'artist': 'Someone', 'license': 'Public domain',
+           'page': 'https://commons.wikimedia.org/wiki/File:Test_piece.ogg', 'audio': True, 'seconds': 5.0}]}], open(os.path.join(imgsrc, 'm', 'index.json'), 'w'))
+pk = json.load(open(os.path.join(job, 'picks.json'), encoding='utf-8')); pk['music'] = {'pick': 'm/1-1.ogg', 'volume': 1}
+json.dump(pk, open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+run(sys.executable, os.path.join(S, 'build.py'), job, pub, N, imgsrc, os.path.join(tmp, 'outm'))
+pm_ = json.load(open(os.path.join(tmp, 'outm', 'plan.json'), encoding='utf-8'))
+assert pm_['music'].endswith('music.mp3') and pm_['musicLoop'] and os.path.getsize(os.path.join(pub, pm_['music'])) > 10000, pm_['music']
+assert 'Test piece.ogg' in open(os.path.join(tmp, 'outm', 'credits.txt'), encoding='utf-8').read()
+del pk['music']; json.dump(pk, open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 if os.environ.get('FONTSOURCE'):
     plan = json.load(open(plan_p, encoding='utf-8')); assert len(plan['fonts']) >= 2 and all(os.path.exists(os.path.join(pub, f['file'])) for f in plan['fonts'])
 

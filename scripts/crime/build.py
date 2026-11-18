@@ -24,6 +24,7 @@ import numpy as np
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import music_gen as mg
+import ff
 import layout as L
 import captions as C
 import edits as E
@@ -222,16 +223,30 @@ def main(job, pub, N, imgsrc, out):
     if E.repeats(scenes_in):
         print('chú ý: cảnh ' + ', '.join(map(str, E.repeats(scenes_in))) + ' dùng cùng kiểu edit với cảnh ngay trước nó (nên đổi kiểu)')
 
-    # ---- music bed and desk textures
-    mu = {'style': 'tension', 'key': 'D', 'mode': 'minor', 'bpm': 70, 'energy': 0.3, **spec.get('music', {})}
-    music = mg.render([{'from': 0, 'to': total, **mu}], lambda v: v, total)
-    bed = music / (np.abs(music).max() or 1) * 0.8
-    mg.write_wav(f'{pub}/{base}/bed.wav', bed)
+    # ---- music: a recording found with music:<words> (picks.json "music": {"pick": "<round>/<k>-<n>.<ext>", "volume",
+    # "start"}; owner 18/11/2026, as in japan-news-video-factory), else the made dark bed
+    pm, music_row = picks.get('music'), None
+    if pm:
+        pm = {'pick': pm} if isinstance(pm, str) else pm
+        src_audio = os.path.join(imgsrc, pm['pick'])
+        if not os.path.isfile(src_audio): fail(f'"music": không có bản nhạc "{pm["pick"]}" (tìm bằng music:<từ khóa>)')
+        ff.run('-ss', str(pm.get('start', 0)), '-i', src_audio, '-af', 'loudnorm=I=-23:TP=-2:LRA=11', '-ar', '44100', '-ac', '2',
+               '-c:a', 'libmp3lame', '-q:a', '3', f'{pub}/{base}/music.mp3')
+        rnd, fname = pm['pick'].split('/', 1)
+        music_row = next((r for g in json.load(open(os.path.join(imgsrc, rnd, 'index.json'), encoding='utf-8')) for r in g['results']
+                          if r.get('file') == fname), {'title': fname})
+        music_file, music_vol, music_loop = f'{base}/music.mp3', 0.3 * float(pm.get('volume', 1)), True
+    else:
+        mu = {'style': 'tension', 'key': 'D', 'mode': 'minor', 'bpm': 70, 'energy': 0.3, **spec.get('music', {})}
+        music = mg.render([{'from': 0, 'to': total, **mu}], lambda v: v, total)
+        bed = music / (np.abs(music).max() or 1) * 0.8
+        mg.write_wav(f'{pub}/{base}/bed.wav', bed)
+        music_file, music_vol, music_loop = f'{base}/bed.wav', spec.get('music_volume', 0.16), False
     board.desk(f'{pub}/{base}/bg.jpg'); board.grain(f'{pub}/{base}/grain.png')
 
     plan = {'duration': total, 'lang': LANG, 'title': spec.get('title', ''), 'aiTag': AI_TAG,
             'bg': f'{base}/bg.jpg', 'grain': f'{base}/grain.png', 'scenes': scenes, 'subs': subs, 'voice': voice,
-            'music': f'{base}/bed.wav', 'musicVolume': spec.get('music_volume', 0.16), 'fonts': [], 'families': {}}
+            'music': music_file, 'musicVolume': music_vol, 'musicLoop': music_loop, 'fonts': [], 'families': {}}
     json.dump(plan, open(f'{out}/plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
     def ts(v):
@@ -263,6 +278,8 @@ def main(job, pub, N, imgsrc, out):
         note = {'ja': '※一部の画像はAIで生成したイメージです（実際の写真ではありません）。',
                 'de': 'Hinweis: Einige Bilder sind KI-generierte Illustrationen (keine echten Fotos).'}[LANG]
         txt += f'\nẢnh minh họa tạo bằng AI (không phải ảnh thật, có chữ "{AI_TAG}" trên video). Nên ghi trong mô tả video:\n{note}\n\n' + '\n'.join(ai_rows) + '\n'
+    if music_row:
+        txt += f"\nNhạc: {music_row.get('title', '')} — {music_row.get('artist', '')} — {music_row.get('license', '')}\n  {music_row.get('page', '')}\n"
     open(f'{out}/credits.txt', 'w', encoding='utf-8').write(txt)
     scene_rows = []
     for sc in scenes:
