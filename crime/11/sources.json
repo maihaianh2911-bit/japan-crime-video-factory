@@ -1,0 +1,638 @@
+{
+ "pictures": [
+  {
+   "name": "nishikawa",
+   "src": "1/4-3.jpg",
+   "title": "萬屋錦之介さん主演、復讐に燃える親子を描いた時代劇「子連れ狼 ...",
+   "artist": "thetv.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://thetv.jp/news/detail/1249080/",
+   "ai": false
+  },
+  {
+   "name": "daigoro_field",
+   "src": "1/4-1.jpg",
+   "title": "子連れ狼（1973）【動画】 - RetroAnime Japan-映像で追体験 ...",
+   "artist": "anime.b9navi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://anime.b9navi.com/%E5%AD%90%E9%80%A3%E3%82%8C%E7%8B%BC%EF%BC%881973%EF%BC%89/",
+   "ai": false
+  },
+  {
+   "name": "daigoro_paper",
+   "src": "1/3-8.jpg",
+   "title": "昭和レインボー「昭和特撮大好き！」 on X: \"テレビ時代劇 ...",
+   "artist": "x.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://x.com/TokudaiRainbow/status/1911319919310110821",
+   "ai": false
+  },
+  {
+   "name": "tv_listing",
+   "src": "1/4-2.jpg",
+   "title": "番宣広告シリーズ ～ 同じ日に放送スタートした『ドラえもん』と ...",
+   "artist": "ameblo.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://ameblo.jp/takagi-mania/entry-12796323986.html",
+   "ai": false
+  },
+  {
+   "name": "handcuffs",
+   "src": "1/22-2.jpg",
+   "title": "Handcuffs with black background",
+   "artist": "JobsForFelonsHub",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/144110575@N07/27654580142",
+   "ai": false
+  },
+  {
+   "name": "niigata_court",
+   "src": "1/6-1.jpg",
+   "title": "Niigata District Court 1.jpg",
+   "artist": "Ebiebi2",
+   "date": "2018-10-25",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Niigata_District_Court_1.jpg",
+   "ai": false
+  },
+  {
+   "name": "oshio",
+   "src": "1/8-7.jpg",
+   "title": "1ページ目】押尾学氏〝地上波復帰〟で囁かれるもう一つの〝お蔵 ...",
+   "artist": "www.tokyo-sports.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.tokyo-sports.co.jp/articles/-/198309?page=1",
+   "ai": false
+  },
+  {
+   "name": "oshio_walk",
+   "src": "1/9-2.jpg",
+   "title": "写真】芸能界の薬物事件、転機は酒井法子＆押尾学逮捕の2009年 ...",
+   "artist": "www.news-postseven.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.news-postseven.com/archives/20191208_1502370.html?IMG_ENT",
+   "ai": false
+  },
+  {
+   "name": "pills",
+   "src": "1/11-3.jpg",
+   "title": "MDMA tablets.jpg",
+   "artist": "Dominic Milton Trott",
+   "date": "2019-06-01",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:MDMA_tablets.jpg",
+   "ai": false
+  },
+  {
+   "name": "hills",
+   "src": "1/10-1.jpg",
+   "title": "Roppongi Hills from Tokyo Tower.jpg",
+   "artist": "稲妻ノ歯鯨",
+   "date": "2022-12-25 09:36:43",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Roppongi_Hills_from_Tokyo_Tower.jpg",
+   "ai": false
+  },
+  {
+   "name": "arrest_night",
+   "src": "1/9-5.jpg",
+   "title": "2009年8月3日】人気俳優、アイドルの夫の逮捕…芸能記者 ...",
+   "artist": "hochi.news",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://hochi.news/articles/20200801-OHT1T50162.html",
+   "ai": false
+  },
+  {
+   "name": "trial_press",
+   "src": "1/9-4.jpg",
+   "title": "押尾学被告初公判、MDMA服用認め求刑1年6月 - 音楽ナタリー",
+   "artist": "natalie.mu",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://natalie.mu/music/news/22817",
+   "ai": false
+  },
+  {
+   "name": "katsumi",
+   "src": "1/15-6.jpg",
+   "title": "7\"】克美しげる/ メッカ (toshiba) | RECORD SHOP NAKA by nakareco2",
+   "artist": "nakareco2.thebase.in",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://nakareco2.thebase.in/items/29875925",
+   "ai": false
+  },
+  {
+   "name": "sasurai_guitar",
+   "src": "1/16-7.jpg",
+   "title": "克美しげる – さすらい / 克美しげるヒットソング集 – Vinyl (LP ...",
+   "artist": "www.discogs.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.discogs.com/release/30370601-%E5%85%8B%E7%BE%8E%E3%81%97%E3%81%92%E3%82%8B-%E3%81%95%E3%81%99%E3%82%89%E3%81%84-%E5%85%8B%E7%BE%8E%E3%81%97%E3%81%92%E3%82%8B%E3%83%92%E3%83%83%E3%83%88%E3%82%BD%E3%83%B3%E3%82%B0%E9%9B%86",
+   "ai": false
+  },
+  {
+   "name": "katsumi_tv",
+   "src": "1/15-4.jpg",
+   "title": "歌手の克美しげるさんが死去 | Royal Hawaii",
+   "artist": "01670167.blog74.fc2.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "http://01670167.blog74.fc2.com/blog-entry-2152.html?sp",
+   "ai": false
+  },
+  {
+   "name": "ginza1971",
+   "src": "1/20-2.jpg",
+   "title": "842b Ginza, Tokyo, Japan 1971 (51421452983).jpg",
+   "artist": "wilford peloquin",
+   "date": "2010-10-04 19:38",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:842b_Ginza,_Tokyo,_Japan_1971_(51421452983).jpg",
+   "ai": false
+  },
+  {
+   "name": "sasurai_bw",
+   "src": "1/15-1.jpg",
+   "title": "克美しげる / さすらい / ナナ (7\") - HIP TANK RECORDS",
+   "artist": "hiptankrecords.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "http://hiptankrecords.com/?pid=146387566",
+   "ai": false
+  },
+  {
+   "name": "haneda1975",
+   "src": "1/19-1.jpg",
+   "title": "19750330haneda11.jpg",
+   "artist": "tun-rail.world.coocan.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://tun-rail.world.coocan.jp/bangai/sora/1975hanedaairport/1975haneda01.html",
+   "ai": false
+  },
+  {
+   "name": "haneda_old",
+   "src": "1/19-4.jpg",
+   "title": "羽田空港ファン、航空ファン必見！ 羽田空港の倉庫に眠っていた ...",
+   "artist": "prtimes.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://prtimes.jp/main/html/rd/p/000000534.000016935.html",
+   "ai": false
+  },
+  {
+   "name": "katsumi_kiri",
+   "src": "1/16-3.jpg",
+   "title": "克美しげる - さすらい TP-1621/中古CD・レコード・DVDの超専門 ...",
+   "artist": "www.fanfan1.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.fanfan1.com/products/detail/813016",
+   "ai": false
+  },
+  {
+   "name": "sasurai_orange",
+   "src": "1/16-1.jpg",
+   "title": "克美しげる さすらい TP-4008 | レコード買取",
+   "artist": "www.snowrecords.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.snowrecords.jp/?pid=101319241",
+   "ai": false
+  },
+  {
+   "name": "yuhi",
+   "src": "1/15-3.jpg",
+   "title": "克美しげる - 夕陽の果てに TP-1460/中古CD・レコード・DVDの超 ...",
+   "artist": "www.fanfan1.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.fanfan1.com/products/detail/826642",
+   "ai": false
+  },
+  {
+   "name": "kohaku1953",
+   "src": "1/17-11.jpg",
+   "title": "Kohaku1953.jpg",
+   "artist": "Mainichi Shimbun",
+   "date": "1953-12-31",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Kohaku1953.jpg",
+   "ai": false
+  },
+  {
+   "name": "council",
+   "src": "2/4-6.jpg",
+   "title": "都城市議会場 様 | 会議場 | 納入事例 | TOA株式会社",
+   "artist": "www.toa.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.toa.co.jp/works/conference-hall/miyakonojo",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 4.092,
+   "said": [
+    "1つ目は、西川和孝。"
+   ],
+   "edit": "roster",
+   "photos": [],
+   "texts": []
+  },
+  {
+   "scene": 2,
+   "start": 4.092,
+   "end": 9.452,
+   "said": [
+    "ドラマ『子連れ狼』で、",
+    "大五郎を演じた名子役だ。",
+    "その愛らしい姿で、",
+    "一躍人気者になった。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "daigoro_field",
+     "ai": false,
+     "credit": "anime.b9navi.com / Web（出典ページ）",
+     "page": "https://anime.b9navi.com/%E5%AD%90%E9%80%A3%E3%82%8C%E7%8B%BC%EF%BC%881973%EF%BC%89/"
+    },
+    {
+     "image": "babycart",
+     "ai": false,
+     "credit": "thetv.jp / Web（出典ページ）",
+     "page": ""
+    },
+    {
+     "image": "daigoro_paper",
+     "ai": false,
+     "credit": "x.com / Web（出典ページ）",
+     "page": "https://x.com/TokudaiRainbow/status/1911319919310110821"
+    }
+   ],
+   "texts": [
+    "大五郎役",
+    "名子役",
+    "一躍人気者に"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 9.452,
+   "end": 18.178,
+   "said": [
+    "大五郎役は好評だったが、",
+    "高校卒業後に芸能界を引退。",
+    "28歳の若さで、",
+    "市議会議員になった。",
+    "だが経営に失敗するなど、",
+    "トラブルが絶えなかった。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "tv_listing",
+     "ai": false,
+     "credit": "ameblo.jp / Web（出典ページ）",
+     "page": "https://ameblo.jp/takagi-mania/entry-12796323986.html"
+    },
+    {
+     "image": "council",
+     "ai": false,
+     "credit": "www.toa.co.jp / Web（出典ページ）",
+     "page": "https://www.toa.co.jp/works/conference-hall/miyakonojo"
+    }
+   ],
+   "texts": [
+    "トラブル続き"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 18.178,
+   "end": 25.668,
+   "said": [
+    "1999年、金銭トラブルから、",
+    "知人の男性を手にかけた。",
+    "海外へ逃亡したものの、",
+    "逮捕され、",
+    "無期懲役となった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "handcuffs",
+     "ai": false,
+     "credit": "JobsForFelonsHub / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/144110575@N07/27654580142"
+    },
+    {
+     "image": "niigata_court",
+     "ai": false,
+     "credit": "Ebiebi2 / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Niigata_District_Court_1.jpg"
+    }
+   ],
+   "texts": [
+    "1999年",
+    "懲役",
+    "海外逃亡→逮捕"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 25.668,
+   "end": 29.782,
+   "said": [
+    "2つ目は、押尾学。",
+    "数々の人気ドラマで、",
+    "主演を務めた俳優だ。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "oshio",
+     "ai": false,
+     "credit": "www.tokyo-sports.co.jp / Web（出典ページ）",
+     "page": "https://www.tokyo-sports.co.jp/articles/-/198309?page=1"
+    },
+    {
+     "image": "oshio_walk",
+     "ai": false,
+     "credit": "www.news-postseven.com / Web（出典ページ）",
+     "page": "https://www.news-postseven.com/archives/20191208_1502370.html?IMG_ENT"
+    }
+   ],
+   "texts": [
+    "2つ目",
+    "押尾学",
+    "人気俳優",
+    "主演多数"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 29.782,
+   "end": 36.11,
+   "said": [
+    "2009年、合成麻薬MDMAを使った",
+    "疑いで逮捕された。",
+    "現場は、東京・六本木ヒルズの一室。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "pills",
+     "ai": false,
+     "credit": "Dominic Milton Trott / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:MDMA_tablets.jpg"
+    },
+    {
+     "image": "hills",
+     "ai": false,
+     "credit": "稲妻ノ歯鯨 / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Roppongi_Hills_from_Tokyo_Tower.jpg"
+    }
+   ],
+   "texts": [
+    "2009年",
+    "六本木ヒルズ"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 36.11,
+   "end": 45.92,
+   "said": [
+    "一緒にMDMAを飲んだ女性が、",
+    "亡くなっていたのだ。",
+    "当初は、保護責任者遺棄致死の罪で",
+    "裁判にかけられた。",
+    "判決は、保護責任者遺棄罪で",
+    "懲役2年6か月。"
+   ],
+   "edit": "compare",
+   "photos": [],
+   "texts": [
+    "懲役2年6か月"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 45.92,
+   "end": 49.007,
+   "said": [
+    "人気俳優の薬物事件は、",
+    "世間に大きな衝撃を与えた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "arrest_night",
+     "ai": false,
+     "credit": "hochi.news / Web（出典ページ）",
+     "page": "https://hochi.news/articles/20200801-OHT1T50162.html"
+    },
+    {
+     "image": "trial_press",
+     "ai": false,
+     "credit": "natalie.mu / Web（出典ページ）",
+     "page": "https://natalie.mu/music/news/22817"
+    }
+   ],
+   "texts": [
+    "2009年",
+    "世間に大きな衝撃"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 49.007,
+   "end": 57.391,
+   "said": [
+    "3つ目は、克美しげる。",
+    "紅白歌合戦にも出場した、",
+    "人気歌手だった。",
+    "1964年には、『さすらい』",
+    "が60万枚の大ヒット。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "katsumi",
+     "ai": false,
+     "credit": "nakareco2.thebase.in / Web（出典ページ）",
+     "page": "https://nakareco2.thebase.in/items/29875925"
+    },
+    {
+     "image": "kohaku1953",
+     "ai": false,
+     "credit": "Mainichi Shimbun / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Kohaku1953.jpg"
+    },
+    {
+     "image": "sasurai_orange",
+     "ai": false,
+     "credit": "www.snowrecords.jp / Web（出典ページ）",
+     "page": "https://www.snowrecords.jp/?pid=101319241"
+    },
+    {
+     "image": "sasurai_guitar",
+     "ai": false,
+     "credit": "www.discogs.com / Web（出典ページ）",
+     "page": "https://www.discogs.com/release/30370601-%E5%85%8B%E7%BE%8E%E3%81%97%E3%81%92%E3%82%8B-%E3%81%95%E3%81%99%E3%82%89%E3%81%84-%E5%85%8B%E7%BE%8E%E3%81%97%E3%81%92%E3%82%8B%E3%83%92%E3%83%83%E3%83%88%E3%82%BD%E3%83%B3%E3%82%B0%E9%9B%86"
+    }
+   ],
+   "texts": [
+    "3つ目 克美しげる",
+    "60万枚",
+    "大ヒット"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 57.391,
+   "end": 65.505,
+   "said": [
+    "だが人気は下火になり、",
+    "借金を抱えていた。",
+    "そんな彼に貢いでいたのが、",
+    "愛人のホステスだ。",
+    "彼女は「妻と離婚して、",
+    "私と結婚して」と",
+    "懇願したという。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "katsumi_tv",
+     "ai": false,
+     "credit": "01670167.blog74.fc2.com / Web（出典ページ）",
+     "page": "http://01670167.blog74.fc2.com/blog-entry-2152.html?sp"
+    },
+    {
+     "image": "ginza1971",
+     "ai": false,
+     "credit": "wilford peloquin / CC BY 2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:842b_Ginza,_Tokyo,_Japan_1971_(51421452983).jpg"
+    }
+   ],
+   "texts": [
+    "借金",
+    "愛人のホステス",
+    "「妻と離婚して」",
+    "懇願"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 65.505,
+   "end": 71.543,
+   "said": [
+    "歌手として復活を狙う彼には、",
+    "その存在が邪魔になった。",
+    "話し合いの末に激高し、",
+    "彼女の首を絞めてしまう。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "sasurai_bw",
+     "ai": false,
+     "credit": "hiptankrecords.com / Web（出典ページ）",
+     "page": "http://hiptankrecords.com/?pid=146387566"
+    },
+    {
+     "image": "yuhi",
+     "ai": false,
+     "credit": "www.fanfan1.com / Web（出典ページ）",
+     "page": "https://www.fanfan1.com/products/detail/826642"
+    }
+   ],
+   "texts": [
+    "歌手として復活?",
+    "邪魔になった"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 71.543,
+   "end": 76.16,
+   "said": [
+    "1976年5月、",
+    "遺体は羽田空港の",
+    "駐車場で見つかった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "haneda1975",
+     "ai": false,
+     "credit": "tun-rail.world.coocan.jp / Web（出典ページ）",
+     "page": "https://tun-rail.world.coocan.jp/bangai/sora/1975hanedaairport/1975haneda01.html"
+    },
+    {
+     "image": "haneda_old",
+     "ai": false,
+     "credit": "prtimes.jp / Web（出典ページ）",
+     "page": "https://prtimes.jp/main/html/rd/p/000000534.000016935.html"
+    }
+   ],
+   "texts": [
+    "1976年5月",
+    "羽田空港"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 76.16,
+   "end": 79.976,
+   "said": [
+    "判決は懲役10年。",
+    "華やかなスターの、",
+    "あまりに深い転落だった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "katsumi_kiri",
+     "ai": false,
+     "credit": "www.fanfan1.com / Web（出典ページ）",
+     "page": "https://www.fanfan1.com/products/detail/813016"
+    }
+   ],
+   "texts": [
+    "判決",
+    "年\n懲役",
+    "深い転落"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 79.976,
+   "end": 85.455,
+   "said": [
+    "光を浴びた3人は、",
+    "自らの手で、その人生を",
+    "闇に変えたのだ。"
+   ],
+   "edit": "ending",
+   "photos": [],
+   "texts": []
+  }
+ ]
+}
