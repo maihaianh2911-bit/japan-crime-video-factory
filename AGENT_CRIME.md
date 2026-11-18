@@ -65,6 +65,13 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
 - `lines`: one spoken sentence each. ≤ ~32 characters (one breath; one subtitle box holds ≤ 18 characters, a line makes 1–2 boxes). Plain である / だ narration as the sample's tone, or です / ます if the owner's text is polite. Vietnamese script → translate into natural spoken
   tiếng Nhật narration, faithful, nothing added; script already in tiếng Nhật → keep the owner's words exactly,
   only split. Numbers, dates and names as a native narrator says them.
+- **How to write it** (owner's rules for japan-news-video-factory, 17–18/11/2026, taken over here on 18/11/2026):
+  the first line (about 5 seconds) says the whole story and what it means, plainly, so the viewer stays; then one
+  flowing narration, sentences linked by connectives (だが, そして, その夜, それから), no chopped fragments such as
+  「1938年。岡山。」; end on a line that comes back to the opening (not a question to the viewer every time). Show the
+  owner a script as one continuous text (the Japanese in one piece, then its Vietnamese meaning in one piece), never
+  cut into numbered scenes or bullet points. Under 60 seconds: add true scenes and facts of the same story, never
+  padding. The first line goes into `picks.json` `"quotes": [1]`.
 - Length: the voice reads ~8 characters/s; each line adds ~0.3 s. The sample is 4 min 12 s; 90–240 s suits this
   format (TikTok; Shorts allow 3 min). Longer without the owner asking → keep it and offer a shorter cut in your comment.
 - `speed`: the pace of the voice (0.8–1.3, default 1.0): every line is sped up after it is read (pitch kept) and the
