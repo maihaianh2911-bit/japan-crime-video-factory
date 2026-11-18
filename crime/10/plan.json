@@ -85,7 +85,7 @@
    "e": 16.633,
    "scene": 2,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "header",
@@ -119,7 +119,60 @@
      "frame": "white",
      "depth": "crime/10/img/village.depth.png",
      "marks": [],
-     "credit": "withnews.jp / Web（出典ページ）"
+     "credit": "withnews.jp / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/village.jpg",
+       "iw": 1500,
+       "ih": 1000,
+       "view": [
+        0.03571,
+        0.0,
+        0.96429,
+        1.0
+       ],
+       "s": 5.429,
+       "move": "pan-left",
+       "ai": false,
+       "credit": "withnews.jp / Web（出典ページ）",
+       "depth": "crime/10/img/village.depth.png",
+       "e": 8.726
+      },
+      {
+       "src": "crime/10/img/kamo.jpg",
+       "iw": 1500,
+       "ih": 1084,
+       "view": [
+        0.0,
+        0.00326,
+        1.0,
+        0.99674
+       ],
+       "s": 8.726,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "www.e-tsuyama.com / Web（出典ページ）",
+       "depth": "crime/10/img/kamo.depth.png",
+       "e": 12.939
+      },
+      {
+       "src": "crime/10/img/farm.jpg",
+       "iw": 1583,
+       "ih": 1200,
+       "view": [
+        0.0,
+        0.02645,
+        1.0,
+        0.97355
+       ],
+       "s": 12.939,
+       "move": "pull-back",
+       "ai": false,
+       "credit": "search.showakan.go.jp / Web（出典ページ）",
+       "depth": "crime/10/img/farm.depth.png",
+       "e": 16.633
+      }
+     ]
     },
     {
      "k": "tag",
@@ -142,6 +195,17 @@
      "color": "red",
      "size": 56,
      "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 13.883,
+     "x": 300,
+     "y": 1260,
+     "rot": 0,
+     "text": "二十数戸",
+     "color": "white",
+     "size": 46,
+     "font": "serif"
     }
    ],
    "edit": "where"
@@ -151,7 +215,7 @@
    "e": 24.706,
    "scene": 3,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -175,7 +239,43 @@
      "frame": "white",
      "depth": "crime/10/img/toi2.depth.png",
      "marks": [],
-     "credit": "showa-g.org / Web（出典ページ）"
+     "credit": "showa-g.org / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/toi2.jpg",
+       "iw": 1500,
+       "ih": 1500,
+       "view": [
+        0.15116,
+        0.0,
+        0.84884,
+        1.0
+       ],
+       "s": 16.633,
+       "move": "push-in",
+       "ai": false,
+       "credit": "showa-g.org / Web（出典ページ）",
+       "depth": "crime/10/img/toi2.depth.png",
+       "e": 22.004
+      },
+      {
+       "src": "crime/10/img/oldhouse.jpg",
+       "iw": 1920,
+       "ih": 1300,
+       "view": [
+        0.26381,
+        0.0,
+        0.73619,
+        1.0
+       ],
+       "s": 22.004,
+       "move": "pan-left",
+       "ai": false,
+       "credit": "wilford peloquin / CC BY 2.0",
+       "depth": "crime/10/img/oldhouse.depth.png",
+       "e": 24.706
+      }
+     ]
     },
     {
      "k": "tag",
@@ -229,7 +329,7 @@
    "e": 33.078,
    "scene": 4,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -237,23 +337,74 @@
      "x": 540,
      "y": 640,
      "rot": -2,
-     "src": "crime/10/img/exam.jpg",
-     "iw": 1500,
-     "ih": 1114,
+     "src": "crime/10/img/booklet.jpg",
+     "iw": 1032,
+     "ih": 1500,
      "w": 860,
      "h": 560,
      "view": [
       0.0,
-      0.0616,
+      0.276,
       1.0,
-      0.9384
+      0.724
      ],
      "drift": 0.05,
      "ai": false,
      "frame": "white",
-     "depth": "crime/10/img/exam.depth.png",
      "marks": [],
-     "credit": "mainichi.jp / Web（出典ページ）"
+     "credit": "www.kosho.or.jp / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/booklet.jpg",
+       "iw": 1032,
+       "ih": 1500,
+       "view": [
+        0.0,
+        0.276,
+        1.0,
+        0.724
+       ],
+       "s": 24.706,
+       "move": "push-in",
+       "ai": false,
+       "credit": "www.kosho.or.jp / Web（出典ページ）",
+       "e": 27.346
+      },
+      {
+       "src": "crime/10/img/exam.jpg",
+       "iw": 1500,
+       "ih": 1114,
+       "view": [
+        0.0,
+        0.0616,
+        1.0,
+        0.9384
+       ],
+       "s": 27.346,
+       "move": "push-in",
+       "ai": false,
+       "credit": "mainichi.jp / Web（出典ページ）",
+       "depth": "crime/10/img/exam.depth.png",
+       "e": 30.564
+      },
+      {
+       "src": "crime/10/img/villagers.jpg",
+       "iw": 1500,
+       "ih": 1114,
+       "view": [
+        0.0,
+        0.0616,
+        1.0,
+        0.9384
+       ],
+       "s": 30.564,
+       "move": "pan-left",
+       "ai": false,
+       "credit": "www.e-tsuyama.com / Web（出典ページ）",
+       "depth": "crime/10/img/villagers.depth.png",
+       "e": 33.078
+      }
+     ]
     },
     {
      "k": "tag",
@@ -306,7 +457,7 @@
    "e": 38.938,
    "scene": 5,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -330,7 +481,43 @@
      "frame": "white",
      "depth": "crime/10/img/gun.depth.png",
      "marks": [],
-     "credit": "James Case from Philadelphia, Mississippi, U.S.A. / CC BY 2.0"
+     "credit": "James Case from Philadelphia, Mississippi, U.S.A. / CC BY 2.0",
+     "slides": [
+      {
+       "src": "crime/10/img/gun.jpg",
+       "iw": 1920,
+       "ih": 1440,
+       "view": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+       ],
+       "s": 33.078,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "James Case from Philadelphia, Mississippi, U.S.A. / CC BY 2.0",
+       "depth": "crime/10/img/gun.depth.png",
+       "e": 36.071
+      },
+      {
+       "src": "crime/10/img/sword.jpg",
+       "iw": 1500,
+       "ih": 1000,
+       "view": [
+        0.05556,
+        0.0,
+        0.94444,
+        1.0
+       ],
+       "s": 36.071,
+       "move": "push-in",
+       "ai": false,
+       "credit": "wa-gokoro.jp / Web（出典ページ）",
+       "depth": "crime/10/img/sword.depth.png",
+       "e": 38.938
+      }
+     ]
     },
     {
      "k": "tag",
@@ -395,7 +582,7 @@
    "e": 43.39,
    "scene": 6,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -403,23 +590,42 @@
      "x": 540,
      "y": 620,
      "rot": -1,
-     "src": "crime/10/img/sign.jpg",
+     "src": "crime/10/img/thatch3.jpg",
      "iw": 1500,
-     "ih": 1125,
+     "ih": 1068,
      "w": 820,
      "h": 600,
      "view": [
+      0.01347,
       0.0,
-      0.0122,
-      1.0,
-      0.9878
+      0.98653,
+      1.0
      ],
      "drift": 0.05,
      "ai": false,
      "frame": "white",
-     "depth": "crime/10/img/sign.depth.png",
+     "depth": "crime/10/img/thatch3.depth.png",
      "marks": [],
-     "credit": "cub-de-tabi.jugem.jp / Web（出典ページ）"
+     "credit": "jbpress.ismedia.jp / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/thatch3.jpg",
+       "iw": 1500,
+       "ih": 1068,
+       "view": [
+        0.01347,
+        0.0,
+        0.98653,
+        1.0
+       ],
+       "s": 38.938,
+       "move": "push-in",
+       "ai": false,
+       "credit": "jbpress.ismedia.jp / Web（出典ページ）",
+       "depth": "crime/10/img/thatch3.depth.png",
+       "e": 43.39
+      }
+     ]
     },
     {
      "k": "tag",
@@ -451,7 +657,7 @@
    "e": 47.282,
    "scene": 7,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -459,35 +665,54 @@
      "x": 540,
      "y": 640,
      "rot": -1,
-     "src": "crime/10/img/light.jpg",
-     "iw": 1920,
-     "ih": 2560,
+     "src": "crime/10/img/attire.jpg",
+     "iw": 991,
+     "ih": 1500,
      "w": 820,
      "h": 820,
      "view": [
       0.0,
-      0.125,
+      0.0,
       1.0,
-      0.875
+      0.66067
      ],
      "drift": 0.05,
      "ai": false,
      "frame": "white",
-     "depth": "crime/10/img/light.depth.png",
+     "depth": "crime/10/img/attire.depth.png",
      "marks": [
       {
        "s": 44.959,
        "box": [
-        0.25,
-        0.3,
-        0.52,
-        0.72
+        0.45,
+        0.08,
+        0.73,
+        0.2
        ],
        "shape": "ellipse",
        "color": "yellow"
       }
      ],
-     "credit": "ElisaVintage / CC0"
+     "credit": "x.com / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/attire.jpg",
+       "iw": 991,
+       "ih": 1500,
+       "view": [
+        0.0,
+        0.0,
+        1.0,
+        0.66067
+       ],
+       "s": 43.39,
+       "move": "push-in",
+       "ai": false,
+       "credit": "x.com / Web（出典ページ）",
+       "depth": "crime/10/img/attire.depth.png",
+       "e": 47.282
+      }
+     ]
     },
     {
      "k": "tag",
@@ -530,28 +755,97 @@
    "e": 52.774,
    "scene": 8,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
+    {
+     "k": "photo",
+     "s": 47.282,
+     "x": 540,
+     "y": 620,
+     "rot": -1,
+     "src": "crime/10/img/paper38c.jpg",
+     "iw": 1500,
+     "ih": 1152,
+     "w": 820,
+     "h": 600,
+     "view": [
+      0.0,
+      0.02363,
+      1.0,
+      0.97637
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "marks": [],
+     "credit": "prtimes.jp / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/paper38c.jpg",
+       "iw": 1500,
+       "ih": 1152,
+       "view": [
+        0.0,
+        0.02363,
+        1.0,
+        0.97637
+       ],
+       "s": 47.282,
+       "move": "pan-left",
+       "ai": false,
+       "credit": "prtimes.jp / Web（出典ページ）",
+       "e": 50.24
+      },
+      {
+       "src": "crime/10/img/scene38.jpg",
+       "iw": 1500,
+       "ih": 1000,
+       "view": [
+        0.04444,
+        0.0,
+        0.95556,
+        1.0
+       ],
+       "s": 50.24,
+       "move": "push-in",
+       "ai": false,
+       "credit": "withnews.jp / Web（出典ページ）",
+       "depth": "crime/10/img/scene38.depth.png",
+       "e": 52.774
+      }
+     ]
+    },
     {
      "k": "tag",
      "s": 47.322,
-     "x": 540,
-     "y": 820,
-     "rot": -2,
+     "x": 740,
+     "y": 1130,
+     "rot": 0,
      "text": "最初の犠牲者は、祖母",
      "color": "red",
-     "size": 76,
+     "size": 54,
      "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 51.46,
+     "x": 330,
+     "y": 1020,
+     "rot": 0,
+     "text": "家から家へ",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
     }
    ],
-   "edit": "statement"
+   "edit": "place"
   },
   {
    "s": 52.774,
    "e": 58.281,
    "scene": 9,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -559,23 +853,57 @@
      "x": 540,
      "y": 640,
      "rot": -2,
-     "src": "crime/10/img/mourn.jpg",
-     "iw": 1500,
-     "ih": 1042,
+     "src": "crime/10/img/paper38.jpg",
+     "iw": 1464,
+     "ih": 1500,
      "w": 860,
      "h": 560,
      "view": [
       0.0,
-      0.03131,
+      0.05723,
       1.0,
-      0.96869
+      0.69277
      ],
      "drift": 0.05,
      "ai": false,
      "frame": "white",
-     "depth": "crime/10/img/mourn.depth.png",
      "marks": [],
-     "credit": "Unknown authorUnknown author / Public domain"
+     "credit": "x.com / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/paper38.jpg",
+       "iw": 1464,
+       "ih": 1500,
+       "view": [
+        0.0,
+        0.05723,
+        1.0,
+        0.69277
+       ],
+       "s": 52.774,
+       "move": "push-in",
+       "ai": false,
+       "credit": "x.com / Web（出典ページ）",
+       "e": 55.913
+      },
+      {
+       "src": "crime/10/img/mourn.jpg",
+       "iw": 1500,
+       "ih": 1042,
+       "view": [
+        0.0,
+        0.03131,
+        1.0,
+        0.96869
+       ],
+       "s": 55.913,
+       "move": "pan-left",
+       "ai": false,
+       "credit": "Unknown authorUnknown author / Public domain",
+       "depth": "crime/10/img/mourn.depth.png",
+       "e": 58.281
+      }
+     ]
     },
     {
      "k": "tag",
@@ -617,7 +945,7 @@
    "e": 62.375,
    "scene": 10,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -641,7 +969,26 @@
      "frame": "white",
      "depth": "crime/10/img/police.depth.png",
      "marks": [],
-     "credit": "withnews.jp / Web（出典ページ）"
+     "credit": "withnews.jp / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/police.jpg",
+       "iw": 1500,
+       "ih": 1002,
+       "view": [
+        0.04353,
+        0.0,
+        0.95647,
+        1.0
+       ],
+       "s": 58.281,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "withnews.jp / Web（出典ページ）",
+       "depth": "crime/10/img/police.depth.png",
+       "e": 62.375
+      }
+     ]
     },
     {
      "k": "tag",
@@ -673,7 +1020,7 @@
    "e": 68.103,
    "scene": 11,
    "bg": "wood",
-   "push": 0.04,
+   "push": 0.07,
    "items": [
     {
      "k": "photo",
@@ -681,23 +1028,56 @@
      "x": 540,
      "y": 700,
      "rot": 1,
-     "src": "crime/10/img/castle.jpg",
+     "src": "crime/10/img/paper38b.jpg",
      "iw": 1500,
-     "ih": 1209,
+     "ih": 1395,
      "w": 780,
      "h": 560,
      "view": [
+      0.09325,
       0.0,
-      0.05462,
       1.0,
-      0.94538
+      0.7
      ],
      "drift": 0.05,
      "ai": false,
      "frame": "white",
-     "depth": "crime/10/img/castle.depth.png",
      "marks": [],
-     "credit": "松平国忠 （津山藩城代家老、廃藩後に写真館主） / Public domain"
+     "credit": "feng.ifeng.com / Web（出典ページ）",
+     "slides": [
+      {
+       "src": "crime/10/img/paper38b.jpg",
+       "iw": 1500,
+       "ih": 1395,
+       "view": [
+        0.09325,
+        0.0,
+        1.0,
+        0.7
+       ],
+       "s": 62.375,
+       "move": "push-in",
+       "ai": false,
+       "credit": "feng.ifeng.com / Web（出典ページ）",
+       "e": 65.74
+      },
+      {
+       "src": "crime/10/img/film.jpg",
+       "iw": 1920,
+       "ih": 1005,
+       "view": [
+        0.13546,
+        0.0,
+        0.86454,
+        1.0
+       ],
+       "s": 65.74,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "note.com / Web（出典ページ）",
+       "e": 68.103
+      }
+     ]
     },
     {
      "k": "photo",
@@ -721,7 +1101,26 @@
      "frame": "white",
      "depth": "crime/10/img/yokomizo.depth.png",
      "marks": [],
-     "credit": "Unknown authorUnknown author / Public domain"
+     "credit": "Unknown authorUnknown author / Public domain",
+     "slides": [
+      {
+       "src": "crime/10/img/yokomizo.jpg",
+       "iw": 1114,
+       "ih": 1500,
+       "view": [
+        0.0,
+        0.12867,
+        1.0,
+        0.87133
+       ],
+       "s": 64.685,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "Unknown authorUnknown author / Public domain",
+       "depth": "crime/10/img/yokomizo.depth.png",
+       "e": 68.103
+      }
+     ]
     },
     {
      "k": "tag",
@@ -763,31 +1162,121 @@
    "s": 68.103,
    "e": 75.803,
    "scene": 12,
-   "bg": "black",
-   "push": 0.04,
+   "bg": "wood",
+   "push": 0.07,
    "items": [
     {
-     "k": "text",
+     "k": "photo",
      "s": 68.103,
      "x": 540,
-     "y": 860,
-     "rot": 0,
-     "rows": [
+     "y": 680,
+     "rot": -1,
+     "src": "crime/10/img/grave.jpg",
+     "iw": 1125,
+     "ih": 1500,
+     "w": 780,
+     "h": 760,
+     "view": [
+      0.0,
+      0.03462,
+      1.0,
+      0.76538
+     ],
+     "drift": 0.05,
+     "ai": false,
+     "frame": "white",
+     "depth": "crime/10/img/grave.depth.png",
+     "marks": [],
+     "credit": "cub-de-tabi.jugem.jp / Web（出典ページ）",
+     "slides": [
       {
+       "src": "crime/10/img/grave.jpg",
+       "iw": 1125,
+       "ih": 1500,
+       "view": [
+        0.0,
+        0.03462,
+        1.0,
+        0.76538
+       ],
        "s": 68.103,
-       "text": "たった一晩で、30人。",
-       "color": "white"
+       "move": "push-in",
+       "ai": false,
+       "credit": "cub-de-tabi.jugem.jp / Web（出典ページ）",
+       "depth": "crime/10/img/grave.depth.png",
+       "e": 70.418
       },
       {
-       "s": 68.603,
-       "text": "その重さは、今も。",
-       "color": "red"
+       "src": "crime/10/img/kaio_now.jpg",
+       "iw": 1500,
+       "ih": 995,
+       "view": [
+        0.15961,
+        0.0,
+        0.84039,
+        1.0
+       ],
+       "s": 70.418,
+       "move": "pull-back",
+       "ai": false,
+       "credit": "prtimes.jp / Web（出典ページ）",
+       "depth": "crime/10/img/kaio_now.depth.png",
+       "e": 72.789
+      },
+      {
+       "src": "crime/10/img/kaio_road.jpg",
+       "iw": 1500,
+       "ih": 1099,
+       "view": [
+        0.12403,
+        0.0,
+        0.87597,
+        1.0
+       ],
+       "s": 72.789,
+       "move": "pan-right",
+       "ai": false,
+       "credit": "prtimes.jp / Web（出典ページ）",
+       "depth": "crime/10/img/kaio_road.depth.png",
+       "e": 75.803
       }
-     ],
-     "size": 86
+     ]
+    },
+    {
+     "k": "tag",
+     "s": 68.143,
+     "x": 540,
+     "y": 1200,
+     "rot": 0,
+     "text": "たった一晩で",
+     "color": "white",
+     "size": 58,
+     "font": "serif"
+    },
+    {
+     "k": "tag",
+     "s": 69.001,
+     "x": 540,
+     "y": 1310,
+     "rot": 0,
+     "text": "30人",
+     "color": "red",
+     "size": 56,
+     "font": "hand"
+    },
+    {
+     "k": "tag",
+     "s": 70.418,
+     "x": 300,
+     "y": 230,
+     "rot": 0,
+     "text": "80年以上たった今も",
+     "color": "yellow",
+     "size": 46,
+     "font": "hand"
     }
    ],
-   "edit": "ending"
+   "edit": "question"
   }
  ],
  "subs": [
@@ -1230,13 +1719,6 @@
   },
   {
    "family": "Noto Sans JP",
-   "file": "crime/fonts/noto-sans-jp-64-wght-normal.woff2",
-   "range": "U+2467,U+4ece,U+4ed4,U+4f91,U+4fae,U+534d,U+53c9,U+54b3,U+586b,U+5944,U+5b78,U+5df7,U+5f77,U+6101,U+6167-6168,U+61a4,U+62d9,U+698a,U+699b,U+6a59,U+6cc4,U+6e07,U+7099,U+75d2,U+77ad,U+7953,U+7984,U+7a92,U+7baa,U+7dbb,U+817f,U+82ad,U+85e9,U+868a,U+8caa,U+8f44,U+9017,U+907c,U+908a,U+92f3,U+936e,U+9435,U+978d,U+9838,U+9a28,U+9b41,U+9ba8,U+9c57,U+9eb9",
-   "weight": "100 900",
-   "style": "normal"
-  },
-  {
-   "family": "Noto Sans JP",
    "file": "crime/fonts/noto-sans-jp-67-wght-normal.woff2",
    "range": "U+2466,U+2600,U+4eab,U+4fe3,U+4ff5,U+51a5,U+51f0,U+536f,U+53d4,U+53f1,U+54a5,U+559d,U+55e3,U+58fa,U+5962,U+59ea,U+5c16,U+5cef,U+5d16,U+5f10,U+5fd6,U+6190,U+6216,U+634f,U+63bb,U+66d6,U+6756,U+6bc5,U+6e26,U+727d,U+731f,U+76f2,U+7729,U+7a7f,U+7aff,U+7c9f,U+818f,U+8236,U+82b9,U+8338,U+85aa,U+88b4,U+8b33,U+904d,U+93a7,U+96cc,U+96eb,U+9aed,U+9b8e,U+fa11",
    "weight": "100 900",
@@ -1295,13 +1777,6 @@
    "family": "Noto Sans JP",
    "file": "crime/fonts/noto-sans-jp-82-wght-normal.woff2",
    "range": "U+2103,U+5049,U+52b1,U+5320,U+5553,U+572d,U+58c7,U+5b5d,U+5bc2,U+5de3,U+5e61,U+5f80,U+61a9,U+67d0,U+67f4,U+6c88,U+6ca1,U+6ce5,U+6d78,U+6e9c,U+6f54,U+731b,U+73b2,U+74a7,U+74f6,U+75e9,U+7b20,U+7c8b,U+7f72,U+809d,U+8108,U+82b3,U+82bd,U+84b8,U+84c4,U+88c2,U+8ae6,U+8ef8,U+902e,U+9065,U+9326,U+935b,U+938c,U+9676,U+9694,U+96f7,U+9ed9,U+ff48,U+ff4c,U+ff81",
-   "weight": "100 900",
-   "style": "normal"
-  },
-  {
-   "family": "Noto Sans JP",
-   "file": "crime/fonts/noto-sans-jp-83-wght-normal.woff2",
-   "range": "U+2500,U+3008-3009,U+4ead,U+4f0f,U+4fca,U+53eb,U+543e,U+57a2,U+5cf0,U+5e8f,U+5fe0,U+61b2,U+62d8,U+6442,U+64b2,U+6589,U+659c,U+67f1,U+68c4,U+6cb8,U+6d12,U+6de1,U+6fe1,U+70c8,U+723d,U+73e0,U+7656,U+773a,U+7948,U+7b87,U+7c92,U+7d3a,U+7e1b,U+7e4a,U+819a,U+8358,U+83c5,U+84bc,U+864e,U+8912,U+8c9e,U+8d05,U+92fc,U+9396,U+98fd,U+99d2,U+ff64,U+ff7a,U+ff83",
    "weight": "100 900",
    "style": "normal"
   },
@@ -1566,13 +2041,6 @@
   },
   {
    "family": "Noto Serif JP",
-   "file": "crime/fonts/noto-serif-jp-64-wght-normal.woff2",
-   "range": "U+2467,U+4ece,U+4ed4,U+4f91,U+4fae,U+534d,U+53c9,U+54b3,U+586b,U+5944,U+5b78,U+5df7,U+5f77,U+6101,U+6167-6168,U+61a4,U+62d9,U+698a,U+699b,U+6a59,U+6cc4,U+6e07,U+7099,U+75d2,U+77ad,U+7953,U+7984,U+7a92,U+7baa,U+7dbb,U+817f,U+82ad,U+85e9,U+868a,U+8caa,U+8f44,U+9017,U+907c,U+908a,U+92f3,U+936e,U+9435,U+978d,U+9838,U+9a28,U+9b41,U+9ba8,U+9c57,U+9eb9",
-   "weight": "200 900",
-   "style": "normal"
-  },
-  {
-   "family": "Noto Serif JP",
    "file": "crime/fonts/noto-serif-jp-67-wght-normal.woff2",
    "range": "U+2466,U+2600,U+4eab,U+4fe3,U+4ff5,U+51a5,U+51f0,U+536f,U+53d4,U+53f1,U+54a5,U+559d,U+55e3,U+58fa,U+5962,U+59ea,U+5c16,U+5cef,U+5d16,U+5f10,U+5fd6,U+6190,U+6216,U+634f,U+63bb,U+66d6,U+6756,U+6bc5,U+6e26,U+727d,U+731f,U+76f2,U+7729,U+7a7f,U+7aff,U+7c9f,U+818f,U+8236,U+82b9,U+8338,U+85aa,U+88b4,U+8b33,U+904d,U+93a7,U+96cc,U+96eb,U+9aed,U+9b8e,U+fa11",
    "weight": "200 900",
@@ -1631,13 +2099,6 @@
    "family": "Noto Serif JP",
    "file": "crime/fonts/noto-serif-jp-82-wght-normal.woff2",
    "range": "U+2103,U+5049,U+52b1,U+5320,U+5553,U+572d,U+58c7,U+5b5d,U+5bc2,U+5de3,U+5e61,U+5f80,U+61a9,U+67d0,U+67f4,U+6c88,U+6ca1,U+6ce5,U+6d78,U+6e9c,U+6f54,U+731b,U+73b2,U+74a7,U+74f6,U+75e9,U+7b20,U+7c8b,U+7f72,U+809d,U+8108,U+82b3,U+82bd,U+84b8,U+84c4,U+88c2,U+8ae6,U+8ef8,U+902e,U+9065,U+9326,U+935b,U+938c,U+9676,U+9694,U+96f7,U+9ed9,U+ff48,U+ff4c,U+ff81",
-   "weight": "200 900",
-   "style": "normal"
-  },
-  {
-   "family": "Noto Serif JP",
-   "file": "crime/fonts/noto-serif-jp-83-wght-normal.woff2",
-   "range": "U+2500,U+3008-3009,U+4ead,U+4f0f,U+4fca,U+53eb,U+543e,U+57a2,U+5cf0,U+5e8f,U+5fe0,U+61b2,U+62d8,U+6442,U+64b2,U+6589,U+659c,U+67f1,U+68c4,U+6cb8,U+6d12,U+6de1,U+6fe1,U+70c8,U+723d,U+73e0,U+7656,U+773a,U+7948,U+7b87,U+7c92,U+7d3a,U+7e1b,U+7e4a,U+819a,U+8358,U+83c5,U+84bc,U+864e,U+8912,U+8c9e,U+8d05,U+92fc,U+9396,U+98fd,U+99d2,U+ff64,U+ff7a,U+ff83",
    "weight": "200 900",
    "style": "normal"
   },
@@ -1902,13 +2363,6 @@
   },
   {
    "family": "M PLUS 1 Code",
-   "file": "crime/fonts/m-plus-1-code-64-wght-normal.woff2",
-   "range": "U+2467,U+4ece,U+4ed4,U+4f91,U+4fae,U+534d,U+53c9,U+54b3,U+586b,U+5944,U+5b78,U+5df7,U+5f77,U+6101,U+6167-6168,U+61a4,U+62d9,U+698a,U+699b,U+6a59,U+6cc4,U+6e07,U+7099,U+75d2,U+77ad,U+7953,U+7984,U+7a92,U+7baa,U+7dbb,U+817f,U+82ad,U+85e9,U+868a,U+8caa,U+8f44,U+9017,U+907c,U+908a,U+92f3,U+936e,U+9435,U+978d,U+9838,U+9a28,U+9b41,U+9ba8,U+9c57,U+9eb9",
-   "weight": "100 700",
-   "style": "normal"
-  },
-  {
-   "family": "M PLUS 1 Code",
    "file": "crime/fonts/m-plus-1-code-67-wght-normal.woff2",
    "range": "U+2466,U+2600,U+4eab,U+4fe3,U+4ff5,U+51a5,U+51f0,U+536f,U+53d4,U+53f1,U+54a5,U+559d,U+55e3,U+58fa,U+5962,U+59ea,U+5c16,U+5cef,U+5d16,U+5f10,U+5fd6,U+6190,U+6216,U+634f,U+63bb,U+66d6,U+6756,U+6bc5,U+6e26,U+727d,U+731f,U+76f2,U+7729,U+7a7f,U+7aff,U+7c9f,U+818f,U+8236,U+82b9,U+8338,U+85aa,U+88b4,U+8b33,U+904d,U+93a7,U+96cc,U+96eb,U+9aed,U+9b8e,U+fa11",
    "weight": "100 700",
@@ -1967,13 +2421,6 @@
    "family": "M PLUS 1 Code",
    "file": "crime/fonts/m-plus-1-code-82-wght-normal.woff2",
    "range": "U+2103,U+5049,U+52b1,U+5320,U+5553,U+572d,U+58c7,U+5b5d,U+5bc2,U+5de3,U+5e61,U+5f80,U+61a9,U+67d0,U+67f4,U+6c88,U+6ca1,U+6ce5,U+6d78,U+6e9c,U+6f54,U+731b,U+73b2,U+74a7,U+74f6,U+75e9,U+7b20,U+7c8b,U+7f72,U+809d,U+8108,U+82b3,U+82bd,U+84b8,U+84c4,U+88c2,U+8ae6,U+8ef8,U+902e,U+9065,U+9326,U+935b,U+938c,U+9676,U+9694,U+96f7,U+9ed9,U+ff48,U+ff4c,U+ff81",
-   "weight": "100 700",
-   "style": "normal"
-  },
-  {
-   "family": "M PLUS 1 Code",
-   "file": "crime/fonts/m-plus-1-code-83-wght-normal.woff2",
-   "range": "U+2500,U+3008-3009,U+4ead,U+4f0f,U+4fca,U+53eb,U+543e,U+57a2,U+5cf0,U+5e8f,U+5fe0,U+61b2,U+62d8,U+6442,U+64b2,U+6589,U+659c,U+67f1,U+68c4,U+6cb8,U+6d12,U+6de1,U+6fe1,U+70c8,U+723d,U+73e0,U+7656,U+773a,U+7948,U+7b87,U+7c92,U+7d3a,U+7e1b,U+7e4a,U+819a,U+8358,U+83c5,U+84bc,U+864e,U+8912,U+8c9e,U+8d05,U+92fc,U+9396,U+98fd,U+99d2,U+ff64,U+ff7a,U+ff83",
    "weight": "100 700",
    "style": "normal"
   },
@@ -2238,13 +2685,6 @@
   },
   {
    "family": "Yusei Magic",
-   "file": "crime/fonts/yusei-magic-64-400-normal.woff2",
-   "range": "U+2467,U+4ece,U+4ed4,U+4f91,U+4fae,U+534d,U+53c9,U+54b3,U+586b,U+5944,U+5b78,U+5df7,U+5f77,U+6101,U+6167-6168,U+61a4,U+62d9,U+698a,U+699b,U+6a59,U+6cc4,U+6e07,U+7099,U+75d2,U+77ad,U+7953,U+7984,U+7a92,U+7baa,U+7dbb,U+817f,U+82ad,U+85e9,U+868a,U+8caa,U+8f44,U+9017,U+907c,U+908a,U+92f3,U+936e,U+9435,U+978d,U+9838,U+9a28,U+9b41,U+9ba8,U+9c57,U+9eb9",
-   "weight": "400",
-   "style": "normal"
-  },
-  {
-   "family": "Yusei Magic",
    "file": "crime/fonts/yusei-magic-67-400-normal.woff2",
    "range": "U+2466,U+2600,U+4eab,U+4fe3,U+4ff5,U+51a5,U+51f0,U+536f,U+53d4,U+53f1,U+54a5,U+559d,U+55e3,U+58fa,U+5962,U+59ea,U+5c16,U+5cef,U+5d16,U+5f10,U+5fd6,U+6190,U+6216,U+634f,U+63bb,U+66d6,U+6756,U+6bc5,U+6e26,U+727d,U+731f,U+76f2,U+7729,U+7a7f,U+7aff,U+7c9f,U+818f,U+8236,U+82b9,U+8338,U+85aa,U+88b4,U+8b33,U+904d,U+93a7,U+96cc,U+96eb,U+9aed,U+9b8e,U+fa11",
    "weight": "400",
@@ -2303,13 +2743,6 @@
    "family": "Yusei Magic",
    "file": "crime/fonts/yusei-magic-82-400-normal.woff2",
    "range": "U+2103,U+5049,U+52b1,U+5320,U+5553,U+572d,U+58c7,U+5b5d,U+5bc2,U+5de3,U+5e61,U+5f80,U+61a9,U+67d0,U+67f4,U+6c88,U+6ca1,U+6ce5,U+6d78,U+6e9c,U+6f54,U+731b,U+73b2,U+74a7,U+74f6,U+75e9,U+7b20,U+7c8b,U+7f72,U+809d,U+8108,U+82b3,U+82bd,U+84b8,U+84c4,U+88c2,U+8ae6,U+8ef8,U+902e,U+9065,U+9326,U+935b,U+938c,U+9676,U+9694,U+96f7,U+9ed9,U+ff48,U+ff4c,U+ff81",
-   "weight": "400",
-   "style": "normal"
-  },
-  {
-   "family": "Yusei Magic",
-   "file": "crime/fonts/yusei-magic-83-400-normal.woff2",
-   "range": "U+2500,U+3008-3009,U+4ead,U+4f0f,U+4fca,U+53eb,U+543e,U+57a2,U+5cf0,U+5e8f,U+5fe0,U+61b2,U+62d8,U+6442,U+64b2,U+6589,U+659c,U+67f1,U+68c4,U+6cb8,U+6d12,U+6de1,U+6fe1,U+70c8,U+723d,U+73e0,U+7656,U+773a,U+7948,U+7b87,U+7c92,U+7d3a,U+7e1b,U+7e4a,U+819a,U+8358,U+83c5,U+84bc,U+864e,U+8912,U+8c9e,U+8d05,U+92fc,U+9396,U+98fd,U+99d2,U+ff64,U+ff7a,U+ff83",
    "weight": "400",
    "style": "normal"
   },
