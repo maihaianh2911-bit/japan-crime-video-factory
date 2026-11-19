@@ -53,6 +53,17 @@ Quality first: look at every picture yourself, read each scene's lines and choos
 (the catalogue in `AGENT_CRIME.md` §2.4, `"edit"` + `"why"` in `picks.json`), preview before rendering, **review every picture against the words spoken while it is on screen**
 (`scripts/crime/review.py`, `AGENT_CRIME.md` §2.7b, owner 18/11/2026) and paste `edits.md` in the closing comment.
 
+## A video the owner sends (owner, 19/11/2026, for every repo)
+"nếu repo nào đc dựng bằng cách remix video hoặc tao có gửi video, có thể sử dụng hình ảnh/video trong video tao gửi":
+when a video of this repo is made from a video the owner sent (a remix, or a video sent in the chat), **the pictures
+and the footage of that video may be used** in ours, beside the pictures of our own search. Still the rule: never its
+voice or its music; a frame with the source's caption, logo or watermark over the picture is cropped clean or left;
+credited 元動画; told in our own words (YouTube penalises reused content: the more of the source a video shows, the
+higher that risk, told to the owner). The shared note is in `maihaianh2911-bit/japan-video-factory` →
+`docs/KENH-NHAT.md`; `tools/video_frames.py` of `japan-news-video-factory` lays out the shots of a video to choose
+from (this repo has no such tool yet: cut the frames with ffmpeg and save them in `crime/<N>/own/`, the
+`own/<file>` pictures of `AGENT_CRIME.md`).
+
 ## Changing the pipeline
 Before pushing to `main`: `python3 tests/crime_units.py`, `python3 tests/crime_smoke.py --still` (with
 `FONTSOURCE` set and `bash scripts/crime/get_fonts.sh "$FONTSOURCE"`), `python3 -m compileall -q scripts tests`,
