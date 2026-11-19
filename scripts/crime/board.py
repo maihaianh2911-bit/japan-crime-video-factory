@@ -5,7 +5,9 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 
-def desk(path, W=1188, H=2112, seed=7):
+def desk(path, W=1188, H=2112, seed=7, light=False):
+    """The wooden desk under the evidence: dark walnut (the sample), or light oak with a soft vignette for picks.json
+    "tone": "normal" (owner, 19/11/2026: "Để bình thường đi, ko cần làm tối om thế đâu")."""
     rng = np.random.RandomState(seed)
     # horizontal grain: noise stretched along x, several scales
     g = np.zeros((H, W), np.float32)
@@ -15,8 +17,12 @@ def desk(path, W=1188, H=2112, seed=7):
     g = (g - g.mean()) / (g.std() + 1e-6)
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     r = np.sqrt(((xx - W / 2) / (W * 0.62)) ** 2 + ((yy - H / 2) / (H * 0.58)) ** 2)
-    light = np.clip(1.05 - 0.75 * r ** 1.6, 0.22, 1.0)
-    base = np.array([60, 53, 47], np.float32)
+    if light:
+        light = np.clip(1.06 - 0.32 * r ** 1.6, 0.62, 1.0)
+        base = np.array([196, 160, 118], np.float32)
+    else:
+        light = np.clip(1.05 - 0.75 * r ** 1.6, 0.22, 1.0)
+        base = np.array([60, 53, 47], np.float32)
     a = base[None, None, :] * (light * (1 + 0.075 * g))[..., None]
     a += rng.normal(0, 2.0, (H, W, 1))
     Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.6)).save(path, quality=90)

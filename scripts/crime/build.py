@@ -292,12 +292,13 @@ def main(job, pub, N, imgsrc, out):
         bed = music / (np.abs(music).max() or 1) * 0.8
         mg.write_wav(f'{pub}/{base}/bed.wav', bed)
         music_file, music_vol, music_loop = f'{base}/bed.wav', spec.get('music_volume', 0.16), False
-    board.desk(f'{pub}/{base}/bg.jpg'); board.grain(f'{pub}/{base}/grain.png')
+    tone = 'normal' if picks.get('tone') == 'normal' else 'dark'
+    board.desk(f'{pub}/{base}/bg.jpg', light=tone == 'normal'); board.grain(f'{pub}/{base}/grain.png')
 
     plan = {'duration': total, 'lang': LANG, 'title': spec.get('title', ''), 'aiTag': AI_TAG,
             'bg': f'{base}/bg.jpg', 'grain': f'{base}/grain.png', 'scenes': scenes, 'subs': subs, 'voice': voice,
             'music': music_file, 'musicVolume': music_vol, 'musicLoop': music_loop, 'fonts': [], 'families': {},
-            'fx': {k: bool(fx.get(k)) for k in ('motion', 'depth', 'text')}, 'quotes': quotes}
+            'fx': {k: bool(fx.get(k)) for k in ('motion', 'depth', 'text')}, 'quotes': quotes, 'tone': tone}
     json.dump(plan, open(f'{out}/plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
     def ts(v):

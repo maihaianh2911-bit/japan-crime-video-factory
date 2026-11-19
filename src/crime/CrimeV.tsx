@@ -30,7 +30,7 @@ export type Sub = { s: number; e: number; text: string; line: number };
 type Role = 'sans' | 'serif' | 'mono' | 'hand';
 type FontChunk = { family: string; file: string; range: string; weight: string; style: string };
 export type PlanC = { duration: number; lang: 'ja' | 'de'; title: string; aiTag: string; bg: string; grain: string; scenes: Scene[];
-  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; musicLoop?: boolean; fx?: { motion: boolean; depth: boolean; text: boolean }; quotes?: { s: number; e: number; text: string }[]; fonts: FontChunk[];
+  subs: Sub[]; voice: { s: number; src: string }[]; music: string | null; musicVolume: number; musicLoop?: boolean; fx?: { motion: boolean; depth: boolean; text: boolean }; tone?: 'dark' | 'normal'; quotes?: { s: number; e: number; text: string }[]; fonts: FontChunk[];
   families: Partial<Record<Role, string>> };
 
 // layout.py
@@ -80,6 +80,9 @@ const torn = (seed: number, jag = 1.6) => {
 // region of the picture shown at time t: a zoom when asked for, else a slow push-in (by `drift` over the scene)
 // picture effects of the plan (owner 18/11/2026, from japan-news): set once per frame by CrimeV
 let FX = { motion: false, depth: false, text: false };
+// picks.json "tone": "normal" (owner, 19/11/2026: "Để bình thường đi, ko cần làm tối om thế đâu"): a light desk for every
+// scene, true-colour photos (prep.py), dark ink for the words laid straight on the desk, and only a trace of old film
+let NORMAL = false;
 // motion: the camera moves quickly at first and then settles, instead of one even speed
 const pace = (x: number) => (FX.motion ? 1 - Math.pow(1 - clamp01(x), 2.2) : clamp01(x));
 
@@ -179,7 +182,7 @@ const PhotoV: React.FC<{ p: Photo; t: number; e: number; tag: string; sans: stri
       </div>
       {cur.credit ? (
         <div style={{ position: 'absolute', left: b, right: b, top: p.h + 2 * b + 6, fontFamily: `"${mono}", "${sans}"`, fontWeight: 400, fontSize: 17,
-          color: 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{cur.credit}</div>
+          color: NORMAL ? 'rgba(40,32,26,.6)' : 'rgba(225,218,205,.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{cur.credit}</div>
       ) : null}
     </div>
   );
@@ -261,8 +264,8 @@ const BigV: React.FC<{ g: Big; t: number; F: Record<Role, string> }> = ({ g, t, 
   const shown = Number.isFinite(n) && /^[\d,]+$/.test(g.num) ? Math.round(n * easeOut((t - g.s) / 0.7)).toLocaleString('en-US') : g.num;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: g.size * 0.12 }}>
-      <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: '#eeeae2', whiteSpace: 'nowrap', textShadow: '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
-      {g.text ? <span style={{ fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: '#cbc4b8', whiteSpace: 'pre',
+      <span style={{ fontFamily: `"${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1, color: NORMAL ? INK : '#eeeae2', whiteSpace: 'nowrap', textShadow: NORMAL ? '0 3px 10px rgba(255,250,240,.35)' : '0 6px 18px rgba(0,0,0,.5)' }}>{shown}</span>
+      {g.text ? <span style={{ fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 600, fontSize: g.size * 0.27, lineHeight: 1.3, color: NORMAL ? '#3a342d' : '#cbc4b8', whiteSpace: 'pre',
         paddingTop: g.size * 0.25 }}>{g.text}</span> : null}
     </div>
   );
@@ -272,7 +275,7 @@ const TextV: React.FC<{ g: Text; t: number; F: Record<Role, string> }> = ({ g, t
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
     {g.rows.map((r, i) => (
       <div key={i} style={{ fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: g.size, lineHeight: 1.2, whiteSpace: 'pre', minHeight: g.size * 1.2,
-        color: r.color === 'red' ? '#d8333a' : '#efebe3', textShadow: '0 6px 20px rgba(0,0,0,.6)' }}>{t >= r.s ? typed(r.text, t, r.s, 14) : ''}</div>
+        color: r.color === 'red' ? (NORMAL ? '#b8222a' : '#d8333a') : NORMAL ? INK : '#efebe3', textShadow: NORMAL ? '0 3px 12px rgba(255,250,240,.4)' : '0 6px 20px rgba(0,0,0,.6)' }}>{t >= r.s ? typed(r.text, t, r.s, 14) : ''}</div>
     ))}
   </div>
 );
@@ -301,7 +304,7 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
   const ring = easeOut((t - r.pick_s - 0.15) / 0.6);
   const ti = easeOut((t - r.s) / 0.5);
   return (
-    <AbsoluteFill style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 55%, #241614 0%, #0d0a09 60%, #050404 100%)' }}>
+    <AbsoluteFill style={{ background: NORMAL ? 'transparent' : 'radial-gradient(ellipse 90% 60% at 50% 55%, #241614 0%, #0d0a09 60%, #050404 100%)' }}>
       <div style={{ position: 'absolute', left: 0, right: 0, top: 120, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
         opacity: ti * (1 - k), transform: `translateY(${(1 - ti) * -30 - k * 60}px)` }}>
         {r.kicker ? <div style={{ background: RED, color: '#fff', padding: '6px 26px', fontFamily: `"${F.mono}", "${F.sans}"`, fontWeight: 700, fontSize: 40,
@@ -351,7 +354,7 @@ const RosterV: React.FC<{ r: Roster; t: number; F: Record<Role, string>; lang: '
         })}
       </AbsoluteFill>
       {r.note ? <div style={{ position: 'absolute', left: 60, right: 60, top: 372, textAlign: 'center', fontFamily: `"${F.sans}"`, fontWeight: 700,
-        fontSize: 28, color: 'rgba(230,224,214,.7)', letterSpacing: '0.04em', opacity: ti * (1 - k) }}>{r.note}</div> : null}
+        fontSize: 28, color: NORMAL ? 'rgba(40,32,26,.7)' : 'rgba(230,224,214,.7)', letterSpacing: '0.04em', opacity: ti * (1 - k) }}>{r.note}</div> : null}
     </AbsoluteFill>
   );
 };
@@ -392,7 +395,7 @@ const SceneV: React.FC<{ sc: Scene; t: number; plan: PlanC; F: Record<Role, stri
   return (
     <AbsoluteFill style={{ background: '#0b0a09', overflow: 'hidden' }}>
       <AbsoluteFill style={{ transform: `scale(${push})`, transformOrigin: '50% 45%' }}>
-        {sc.bg === 'wood' ? <Img src={staticFile(plan.bg)} style={{ position: 'absolute', left: -54, top: -96, width: 1188, height: 2112 }} /> : null}
+        {sc.bg === 'wood' || NORMAL ? <Img src={staticFile(plan.bg)} style={{ position: 'absolute', left: -54, top: -96, width: 1188, height: 2112 }} /> : null}
         {sc.items.map((it, i) => <ItemV key={i} it={it} t={t} e={sc.e} plan={plan} F={F} />)}
       </AbsoluteFill>
     </AbsoluteFill>
@@ -408,7 +411,14 @@ const Film: React.FC<{ frame: number; grain: string }> = ({ frame, grain }) => {
   const hairOn = rnd(Math.floor(frame / 9) * 3.3) < 0.28;   // a hair stays ~9 frames, about a third of the time
   const hs = Math.floor(frame / 9);
   const hx = rnd(hs + 1) * 900 + 90, hy = rnd(hs + 2) * 1700 + 110, hr = rnd(hs + 3) * 360;
-  const flick = 0.04 * rnd(frame * 0.7 + 5);
+  const flick = NORMAL ? 0 : 0.04 * rnd(frame * 0.7 + 5);
+  if (NORMAL) return (
+    <AbsoluteFill style={{ pointerEvents: 'none' }}>
+      <AbsoluteFill style={{ backgroundImage: `url(${staticFile(grain)})`, backgroundPosition: `${Math.floor(rnd(frame) * 512)}px ${Math.floor(rnd(frame + 0.5) * 512)}px`,
+        mixBlendMode: 'overlay', opacity: 0.07 }} />
+      <AbsoluteFill style={{ boxShadow: 'inset 0 0 180px rgba(0,0,0,.22)' }} />
+    </AbsoluteFill>
+  );
   return (
     <AbsoluteFill style={{ pointerEvents: 'none' }}>
       <AbsoluteFill style={{ backgroundImage: `url(${staticFile(grain)})`, backgroundPosition: `${Math.floor(rnd(frame) * 512)}px ${Math.floor(rnd(frame + 0.5) * 512)}px`,
@@ -427,6 +437,7 @@ const Film: React.FC<{ frame: number; grain: string }> = ({ frame, grain }) => {
 export const CrimeV: React.FC<PlanC> = (plan) => {
   const lang = plan.lang || 'ja';
   FX = { motion: false, depth: false, text: false, ...(plan.fx || {}) };
+  NORMAL = plan.tone === 'normal';
   const F = { ...DEFAULT_FAM[lang], ...(plan.families || {}) } as Record<Role, string>;
   useFonts(plan, F);
   const frame = useCurrentFrame();

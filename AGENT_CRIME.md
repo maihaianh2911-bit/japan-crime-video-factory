@@ -275,8 +275,14 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
      words only — `statement`, `chapter`, `number`, `ending` — at most two or three in a video). The build prints
      `chú ý: … đứng N s` for a picture on screen over 5.5 s: fix them all. Search for 2–3 pictures per scene from round 1
      (`wiki:`, `web:` with a wish, a gallery page by `urls` with "page" only).
+   - **Bright, normal look** (owner, 19/11/2026, after the two "3選" videos #11–#12: "Để bình thường đi, ko cần làm tối
+     om thế đâu"): every new `picks.json` carries `"tone": "normal"`: a light oak desk under every scene (also the
+     `roster` and `ending` ones), photos in their true colours (`look` default `color` instead of the black-and-white
+     `print`), dark ink for the words laid straight on the desk (`big`, `text`), and only a trace of film grain (no
+     dust, hair, flicker or heavy vignette). Without it (videos #1–#10) the dark case file of the sample stays. A
+     picture may still ask `"look": "print"` / `"aged"` / `"aged-bw"` / `"clean"`.
    - **Picture effects and hook line** (owner, 18/11/2026: "cập nhật tất cả" what japan-news-video-factory has):
-     every new `picks.json` carries `"fx": {"motion": true, "depth": true, "text": true}` and `"quotes": [1]`:
+     every new `picks.json` carries `"tone": "normal"`, `"fx": {"motion": true, "depth": true, "text": true}` and `"quotes": [1]`:
      - `motion`: pictures and desk move quickly at first, then settle;
      - `depth`: a light 2.5D depth in the photos (near things move a little more than far ones; Depth Anything V2
        on GitHub). Never on documents, scans, maps (`"look": "clean"` has none) nor a collage or a screenshot: give

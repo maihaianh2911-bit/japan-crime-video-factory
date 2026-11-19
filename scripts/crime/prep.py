@@ -6,7 +6,8 @@ picks.json "images": {"<name>": {"src": "<round>/<file>" (picture search or AI i
 removes borders, captions, watermarks), "look": "print" (default: the evidence photograph of the owner's sample —
 black and white, hard contrast, deep blacks, grain) | "aged" (an old colour print: faded warm colours, dust,
 scratches) | "aged-bw" (an old faded black-and-white print) | "clean" (true colours, for documents, maps and scans
-that must stay readable),
+that must stay readable) | "color" (true colours, a touch more contrast and colour: the photos of picks.json
+"tone": "normal", whose default it is — owner, 19/11/2026: "Để bình thường đi, ko cần làm tối om thế đâu"),
 "blur": [[x0, y0, x1, y1], …] (optional: faces or details to blur — children, uninvolved people, names)}}
 → <out_dir>/<name>.jpg. The ageing is seeded by the name, so a picture looks the same in every render.
 """
@@ -75,7 +76,7 @@ def print_look(im, seed):
     return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.3 * max(W, H) / 1400))
 
 
-def prepare(it, root, name='x'):
+def prepare(it, root, name='x', default='print'):
     """One picture of picks.json "images", cropped, blurred where asked and aged (PIL image)."""
     im = Image.open(os.path.join(root, it['src'])).convert('RGB')
     if it.get('rotate'):
@@ -93,9 +94,12 @@ def prepare(it, root, name='x'):
         im = im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=50, threshold=2))
     if max(im.size) > 2600:
         k = 2600 / max(im.size); im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
-    look = it.get('look', 'print')
+    look = it.get('look', default)
     if look == 'clean':
         return im
+    if look == 'color':
+        from PIL import ImageEnhance
+        return ImageEnhance.Color(ImageEnhance.Contrast(im).enhance(1.06)).enhance(1.06)
     if look == 'print':
         return print_look(im, zlib.crc32(name.encode()))
     return age(im, zlib.crc32(name.encode()), bw=look == 'aged-bw')
@@ -106,8 +110,9 @@ if __name__ == '__main__':
     os.makedirs(out, exist_ok=True)
     pk = json.load(open(picks, encoding='utf-8'))
     deep = bool((pk.get('fx') or {}).get('depth'))   # owner 18/11/2026: the picture effects of japan-news
+    default = 'color' if pk.get('tone') == 'normal' else 'print'
     for name, it in pk['images'].items():
-        im = prepare(it, root, name)
+        im = prepare(it, root, name, default)
         im.save(os.path.join(out, f'{name}.jpg'), quality=92)
         print(name, im.size)
         # depth for the 2.5D effect: not on documents, scans, maps ("look": "clean") nor where Claude said "depth": false
