@@ -138,7 +138,13 @@ run(sys.executable, os.path.join(S, 'build.py'), job, pub, N, imgsrc, os.path.jo
 pm_ = json.load(open(os.path.join(tmp, 'outm', 'plan.json'), encoding='utf-8'))
 assert pm_['music'].endswith('music.mp3') and pm_['musicLoop'] and os.path.getsize(os.path.join(pub, pm_['music'])) > 10000, pm_['music']
 assert 'Test piece.ogg' in open(os.path.join(tmp, 'outm', 'credits.txt'), encoding='utf-8').read()
-del pk['music']; json.dump(pk, open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+assert pm_['loudness'] == -15, pm_['loudness']
+# "voice": {"volume": 1.4} (owner 19/11: the voice 40% louder): the music 1.4× under the voice, the final target +2.9 dB
+pk['voice'] = {'volume': 1.4}; json.dump(pk, open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+run(sys.executable, os.path.join(S, 'build.py'), job, pub, N, imgsrc, os.path.join(tmp, 'outv'))
+pv_ = json.load(open(os.path.join(tmp, 'outv', 'plan.json'), encoding='utf-8'))
+assert pv_['loudness'] == -12.1 and abs(pv_['musicVolume'] * 1.4 - pm_['musicVolume']) < 1e-9, (pv_['loudness'], pv_['musicVolume'])
+del pk['music'], pk['voice']; json.dump(pk, open(os.path.join(job, 'picks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
 if os.environ.get('FONTSOURCE'):
     plan = json.load(open(plan_p, encoding='utf-8')); assert len(plan['fonts']) >= 2 and all(os.path.exists(os.path.join(pub, f['file'])) for f in plan['fonts'])
 

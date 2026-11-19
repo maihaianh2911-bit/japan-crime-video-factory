@@ -292,13 +292,20 @@ def main(job, pub, N, imgsrc, out):
         bed = music / (np.abs(music).max() or 1) * 0.8
         mg.write_wav(f'{pub}/{base}/bed.wav', bed)
         music_file, music_vol, music_loop = f'{base}/bed.wav', spec.get('music_volume', 0.16), False
+    # ---- voice volume (owner, 19/11/2026: "cho voice tăng 40%" = louder, not faster): picks.json "voice": {"volume": 1.4}
+    # makes the voice 1.4× louder in the finished video while the music keeps its level: the music goes 1.4× under the
+    # voice in the mix, and the final loudness target (run.py encode) goes up by 20·log10(1.4) ≈ 2.9 dB from -15 LUFS
+    vv = float((picks.get('voice') or {}).get('volume', 1))
+    if not 0.5 <= vv <= 2: fail('"voice": "volume" phải từ 0.5 đến 2 (1.4 = to hơn 40%)')
+    music_vol, loudness = music_vol / vv, round(-15 + 20 * float(np.log10(vv)), 1)
     tone = 'normal' if picks.get('tone') == 'normal' else 'dark'
     board.desk(f'{pub}/{base}/bg.jpg', light=tone == 'normal'); board.grain(f'{pub}/{base}/grain.png')
 
     plan = {'duration': total, 'lang': LANG, 'title': spec.get('title', ''), 'aiTag': AI_TAG,
             'bg': f'{base}/bg.jpg', 'grain': f'{base}/grain.png', 'scenes': scenes, 'subs': subs, 'voice': voice,
             'music': music_file, 'musicVolume': music_vol, 'musicLoop': music_loop, 'fonts': [], 'families': {},
-            'fx': {k: bool(fx.get(k)) for k in ('motion', 'depth', 'text')}, 'quotes': quotes, 'tone': tone}
+            'fx': {k: bool(fx.get(k)) for k in ('motion', 'depth', 'text')}, 'quotes': quotes, 'tone': tone,
+            'loudness': loudness}
     json.dump(plan, open(f'{out}/plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
     def ts(v):

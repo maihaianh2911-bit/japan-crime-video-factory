@@ -281,6 +281,10 @@ Commit `[crime #<N>] kịch bản`, push. Remove `crime-busy`. (Voice + pictures
      `print`), dark ink for the words laid straight on the desk (`big`, `text`), and only a trace of film grain (no
      dust, hair, flicker or heavy vignette). Without it (videos #1–#10) the dark case file of the sample stays. A
      picture may still ask `"look": "print"` / `"aged"` / `"aged-bw"` / `"clean"`.
+   - **Louder voice** (owner, 19/11/2026: "cho voice tăng 40%", asked again: louder, not faster): every new `picks.json`
+     carries `"voice": {"volume": 1.4}`: the voice 1.4× louder in the finished video while the music keeps its level
+     (the music goes 1.4× further under the voice; the final loudness target of `run.py` goes from -15 to -12.1 LUFS,
+     plan.json `"loudness"`). 0.5–2; without it, as before.
    - **Picture effects and hook line** (owner, 18/11/2026: "cập nhật tất cả" what japan-news-video-factory has):
      every new `picks.json` carries `"tone": "normal"`, `"fx": {"motion": true, "depth": true, "text": true}` and `"quotes": [1]`:
      - `motion`: pictures and desk move quickly at first, then settle;
