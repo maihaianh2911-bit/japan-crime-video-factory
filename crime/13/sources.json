@@ -1,0 +1,687 @@
+{
+ "pictures": [
+  {
+   "name": "toi",
+   "src": "own/toi.jpg",
+   "title": "Mutsuo Toi.jpg",
+   "artist": "Unknown author",
+   "date": "",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Mutsuo_Toi.jpg",
+   "ai": false
+  },
+  {
+   "name": "shiraishi",
+   "src": "own/shiraishi.jpg",
+   "title": "白石隆浩 顔写真",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/articles/AST6W02FST6WUTIL046M.html",
+   "ai": false
+  },
+  {
+   "name": "katsuta",
+   "src": "own/katsuta.jpg",
+   "title": "勝田清孝 写真",
+   "artist": "newsdig.tbs.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://newsdig.tbs.co.jp/articles/gallery/2171956",
+   "ai": false
+  },
+  {
+   "name": "okubo",
+   "src": "own/okubo.jpg",
+   "title": "大久保清 写真",
+   "artist": "www.kosho.or.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.kosho.or.jp/products/detail.php?product_id=572024148",
+   "ai": false
+  },
+  {
+   "name": "phone",
+   "src": "1/15-1.jpg",
+   "title": "ついついやってしまう、就寝前のスマホの使用。 今日は「スマホ ...",
+   "artist": "trico-kawaguchi.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://trico-kawaguchi.jp/shop/00000373992/news?d=3095712",
+   "ai": false
+  },
+  {
+   "name": "apt",
+   "src": "1/1-1.jpg",
+   "title": "Zama Suicide Pact Slayings (murder scene) 2017-11-05.jpg",
+   "artist": "Asanagi",
+   "date": "2017-11-05 16:00:35",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Zama_Suicide_Pact_Slayings_(murder_scene)_2017-11-05.jpg",
+   "ai": false
+  },
+  {
+   "name": "aerial",
+   "src": "1/7-6.jpg",
+   "title": "白石隆浩死刑囚の死刑執行、鈴木法相「慎重な上にも慎重な検討を ...",
+   "artist": "www.yomiuri.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.yomiuri.co.jp/national/20250627-OYT1T50076/",
+   "ai": false
+  },
+  {
+   "name": "flowers",
+   "src": "1/11-1.jpg",
+   "title": "朝日新聞デジタル：（4）座間の男女殺害事件 - 東京 - 地域",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "http://www.asahi.com/area/tokyo/articles/MTW20201217131750001.html",
+   "ai": false
+  },
+  {
+   "name": "kabuki",
+   "src": "1/12-5.jpg",
+   "title": "夜の歌舞伎町一番街、ネオンサインが煌めく繁華街の写真素材 ...",
+   "artist": "www.pakutaso.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.pakutaso.com/20191111308post-24040.html",
+   "ai": false
+  },
+  {
+   "name": "phoneman",
+   "src": "1/15-4.jpg",
+   "title": "暗い部屋でスマホを見ると目は悪くなる？｜Menicon Miru 亀有店 ...",
+   "artist": "www.menicon-shop.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.menicon-shop.jp/kameari/2026/08/post-690.html",
+   "ai": false
+  },
+  {
+   "name": "road",
+   "src": "1/1-2.jpg",
+   "title": "Zama Suicide Pact Slayings 2017-11-14.jpg",
+   "artist": "市井の人",
+   "date": "2017-11-14",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Zama_Suicide_Pact_Slayings_2017-11-14.jpg",
+   "ai": false
+  },
+  {
+   "name": "tape",
+   "src": "1/8-2.jpg",
+   "title": "八王子の23歳女性と確認 座間9遺体 被害者で初の特定 - 日本経済新聞",
+   "artist": "www.nikkei.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.nikkei.com/article/DGKKZO23134670W7A101C1CC0000/",
+   "ai": false
+  },
+  {
+   "name": "zama",
+   "src": "1/2-22.jpg",
+   "title": "ひばりが丘小学校上空.jpg",
+   "artist": "相馬次郎師常 (kenjiro soma)",
+   "date": "2020-10-20",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E3%81%B2%E3%81%B0%E3%82%8A%E3%81%8C%E4%B8%98%E5%B0%8F%E5%AD%A6%E6%A0%A1%E4%B8%8A%E7%A9%BA.jpg",
+   "ai": false
+  },
+  {
+   "name": "sketch1",
+   "src": "1/22-6.jpg",
+   "title": "報道番組用法廷画06（TOKYO MX/TOKYO MX NEWS）-榎本よしたか ...",
+   "artist": "yoshitakaworks.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://yoshitakaworks.com/houteiga06/",
+   "ai": false
+  },
+  {
+   "name": "hachioji",
+   "src": "1/17-1.jpg",
+   "title": "JR八王子駅 北口2F - 八王子の点景",
+   "artist": "www.ari-web.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "http://www.ari-web.com/ari/hachioji/A/110/E001-015.htm",
+   "ai": false
+  },
+  {
+   "name": "hands",
+   "src": "1/15-2.jpg",
+   "title": "スマホを置いて夜を整える。暗闇で光るスマホ型デバイス【蓄光 ...",
+   "artist": "www.creema-springs.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.creema-springs.jp/projects/noctphone",
+   "ai": false
+  },
+  {
+   "name": "police",
+   "src": "1/7-2.jpg",
+   "title": "座間9人殺害事件の白石死刑囚に刑を執行 | 朝日ウイークリー ...",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/awd/news-topics/31259",
+   "ai": false
+  },
+  {
+   "name": "boxes",
+   "src": "1/9-2.jpg",
+   "title": "9人遺体「全員殺害」 座間、1人遺棄容疑者供述 「8月転居後に ...",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/articles/DA3S13207941.html",
+   "ai": false
+  },
+  {
+   "name": "search",
+   "src": "1/9-4.jpg",
+   "title": "座間9遺体：死体遺棄容疑で送検 [写真特集9/12] | 毎日新聞",
+   "artist": "mainichi.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://mainichi.jp/graphs/20171101/hpj/00m/040/001000g/20171101hpj00m040007000q",
+   "ai": false
+  },
+  {
+   "name": "rule",
+   "src": "1/16-2.jpg",
+   "title": "Twitterルールが更新、“写実的な暴力描写”“成年向けコンテンツ ...",
+   "artist": "forest.watch.impress.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://forest.watch.impress.co.jp/docs/news/1089882.html",
+   "ai": false
+  },
+  {
+   "name": "policy",
+   "src": "1/16-3.jpg",
+   "title": "SNSで誰かを傷つけていませんか？Twitterからの連絡がきました ...",
+   "artist": "go2senkyo.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://go2senkyo.com/seijika/165759/posts/358070",
+   "ai": false
+  },
+  {
+   "name": "court",
+   "src": "1/20-2.jpg",
+   "title": "東京地方・家庭裁判所立川支部庁舎 | 高橋カーテンウォール工業",
+   "artist": "t-cw.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://t-cw.co.jp/project/%E6%9D%B1%E4%BA%AC%E5%9C%B0%E6%96%B9%EF%BD%A5%E5%AE%B6%E5%BA%AD%E8%A3%81%E5%88%A4%E6%89%80%E7%AB%8B%E5%B7%9D%E6%94%AF%E9%83%A8%E5%BA%81%E8%88%8E/",
+   "ai": false
+  },
+  {
+   "name": "sketch2",
+   "src": "1/22-1.jpg",
+   "title": "週イチ＞ 座間9人殺害 死刑求刑：中日新聞Web",
+   "artist": "www.chunichi.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.chunichi.co.jp/article/161094",
+   "ai": false
+  },
+  {
+   "name": "sketch3",
+   "src": "1/22-4.jpg",
+   "title": "法廷で見つめた9人殺害事件 非日常の3カ月、感じた日常との紙 ...",
+   "artist": "www.asahi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/articles/ASQC24F2CQBLUTIL020.html",
+   "ai": false
+  },
+  {
+   "name": "kousho",
+   "src": "1/23-4.jpg",
+   "title": "一般社団法人 葛飾区観光協会web[公式サイト]｜堀切・小菅エリア ...",
+   "artist": "katsushika-kanko.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://katsushika-kanko.jp/hori-kosu/006kouchisyo.html",
+   "ai": false
+  },
+  {
+   "name": "minister",
+   "src": "1/24-1.jpg",
+   "title": "鈴木法相「慎重な上にも慎重な検討」 座間9人殺害事件で死刑執行 ...",
+   "artist": "mainichi.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://mainichi.jp/articles/20250627/k00/00m/040/107000c",
+   "ai": false
+  },
+  {
+   "name": "car",
+   "src": "1/5-6.jpg",
+   "title": "送検される白石隆浩容疑者＝東京都…：神奈川・座間アパートから ...",
+   "artist": "www.jiji.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.jiji.com/jc/d4?p=zfi131-jpp025377439&d=d4_ftee",
+   "ai": false
+  },
+  {
+   "name": "dawn",
+   "src": "1/2-11.jpg",
+   "title": "Zama residential neighborhood.JPG",
+   "artist": "Alexander Mirochnik",
+   "date": "2007-01",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Zama_residential_neighborhood.JPG",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 5.458,
+   "said": [
+    "犠牲者の数で見る、",
+    "日本の凶悪殺人犯。",
+    "第2位は、27歳の男、",
+    "白石隆浩。"
+   ],
+   "edit": "roster",
+   "photos": [],
+   "texts": []
+  },
+  {
+   "scene": 2,
+   "start": 5.458,
+   "end": 13.228,
+   "said": [
+    "2017年10月の終わり、",
+    "神奈川県座間市の、",
+    "小さなアパート。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "phone",
+     "ai": false,
+     "credit": "trico-kawaguchi.jp / Web（出典ページ）",
+     "page": "https://trico-kawaguchi.jp/shop/00000373992/news?d=3095712"
+    },
+    {
+     "image": "apt",
+     "ai": false,
+     "credit": "Asanagi / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Zama_Suicide_Pact_Slayings_(murder_scene)_2017-11-05.jpg"
+    }
+   ],
+   "texts": [
+    "座間9人殺害事件",
+    "神奈川県・座間市",
+    "2017年10月"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 13.228,
+   "end": 20.155,
+   "said": [
+    "その一室から、9人の",
+    "遺体が見つかった。",
+    "被害者は15歳から26歳。",
+    "女性8人と、男性1人だった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "aerial",
+     "ai": false,
+     "credit": "www.yomiuri.co.jp / Web（出典ページ）",
+     "page": "https://www.yomiuri.co.jp/national/20250627-OYT1T50076/"
+    },
+    {
+     "image": "flowers",
+     "ai": false,
+     "credit": "www.asahi.com / Web（出典ページ）",
+     "page": "http://www.asahi.com/area/tokyo/articles/MTW20201217131750001.html"
+    }
+   ],
+   "texts": [
+    "人の遺体",
+    "15歳〜26歳",
+    "女性8人・男性1人"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 20.155,
+   "end": 23.439,
+   "said": [
+    "白石はかつて、",
+    "東京・歌舞伎町で、",
+    "スカウトの仕事をしていた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "kabuki",
+     "ai": false,
+     "credit": "www.pakutaso.com / Web（出典ページ）",
+     "page": "https://www.pakutaso.com/20191111308post-24040.html"
+    }
+   ],
+   "texts": [
+    "新宿・歌舞伎町",
+    "スカウト"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 23.439,
+   "end": 30.668,
+   "said": [
+    "その年の春から、",
+    "彼はTwitterで、",
+    "自殺を考える人たちに近づいていく。",
+    "「一緒に死のう」。",
+    "そう誘いながら、",
+    "自分は死ぬつもりなどなかった。"
+   ],
+   "edit": "figure",
+   "photos": [
+    {
+     "image": "phoneman",
+     "ai": false,
+     "credit": "www.menicon-shop.jp / Web（出典ページ）",
+     "page": "https://www.menicon-shop.jp/kameari/2026/08/post-690.html"
+    },
+    {
+     "image": "face",
+     "ai": false,
+     "credit": "www.asahi.com / Web（出典ページ）",
+     "page": ""
+    }
+   ],
+   "texts": [
+    "Twitterで接近",
+    "「一緒に死のう」",
+    "死ぬつもりはなかった"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 30.668,
+   "end": 37.245,
+   "said": [
+    "8月、彼は座間市の",
+    "アパートに引っ越した。",
+    "そしてその翌日から、",
+    "わずか2か月のあいだに、",
+    "9人が次々と殺害された。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "road",
+     "ai": false,
+     "credit": "市井の人 / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Zama_Suicide_Pact_Slayings_2017-11-14.jpg"
+    },
+    {
+     "image": "tape",
+     "ai": false,
+     "credit": "www.nikkei.com / Web（出典ページ）",
+     "page": "https://www.nikkei.com/article/DGKKZO23134670W7A101C1CC0000/"
+    }
+   ],
+   "texts": [
+    "2017年8月",
+    "2か月で9人"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 37.245,
+   "end": 43.841,
+   "said": [
+    "3人目の男性は、最初の",
+    "被害者の知り合いで、",
+    "彼女を捜していた。",
+    "裁判で認められた動機は、金と、",
+    "性的な目的だった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "zama",
+     "ai": false,
+     "credit": "相馬次郎師常 (kenjiro soma) / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E3%81%B2%E3%81%B0%E3%82%8A%E3%81%8C%E4%B8%98%E5%B0%8F%E5%AD%A6%E6%A0%A1%E4%B8%8A%E7%A9%BA.jpg"
+    },
+    {
+     "image": "sketch1",
+     "ai": false,
+     "credit": "yoshitakaworks.com / Web（出典ページ）",
+     "page": "https://yoshitakaworks.com/houteiga06/"
+    }
+   ],
+   "texts": [
+    "彼女を捜していた",
+    "動機は金と性的目的"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 43.841,
+   "end": 51.57,
+   "said": [
+    "事件が明るみに",
+    "出たきっかけは、",
+    "八王子市の23歳の",
+    "女性の失踪だった。",
+    "女性の兄が、",
+    "妹の行方を捜して、",
+    "Twitterで情報を求めた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "hachioji",
+     "ai": false,
+     "credit": "www.ari-web.com / Web（出典ページ）",
+     "page": "http://www.ari-web.com/ari/hachioji/A/110/E001-015.htm"
+    },
+    {
+     "image": "hands",
+     "ai": false,
+     "credit": "www.creema-springs.jp / Web（出典ページ）",
+     "page": "https://www.creema-springs.jp/projects/noctphone"
+    }
+   ],
+   "texts": [
+    "八王子市・23歳女性",
+    "兄がTwitterで捜す"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 51.57,
+   "end": 62.005,
+   "said": [
+    "寄せられた情報をもとに、",
+    "警察は白石を突き止め、",
+    "アパートに踏み込んだ。",
+    "部屋には、",
+    "クーラーボックスなど、",
+    "8つの箱が置かれていた。",
+    "そのうち1つは空で、警察は、",
+    "10人目のための",
+    "箱だったとみている。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "police",
+     "ai": false,
+     "credit": "www.asahi.com / Web（出典ページ）",
+     "page": "https://www.asahi.com/awd/news-topics/31259"
+    },
+    {
+     "image": "boxes",
+     "ai": false,
+     "credit": "www.asahi.com / Web（出典ページ）",
+     "page": "https://www.asahi.com/articles/DA3S13207941.html"
+    },
+    {
+     "image": "search",
+     "ai": false,
+     "credit": "mainichi.jp / Web（出典ページ）",
+     "page": "https://mainichi.jp/graphs/20171101/hpj/00m/040/001000g/20171101hpj00m040007000q"
+    }
+   ],
+   "texts": [
+    "警察が踏み込む",
+    "つの箱",
+    "1つは空…10人目?"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 62.005,
+   "end": 65.375,
+   "said": [
+    "事件のあと、Twitterは、",
+    "自殺や自傷をあおる投稿を禁止した。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "rule",
+     "ai": false,
+     "credit": "forest.watch.impress.co.jp / Web（出典ページ）",
+     "page": "https://forest.watch.impress.co.jp/docs/news/1089882.html"
+    },
+    {
+     "image": "policy",
+     "ai": false,
+     "credit": "go2senkyo.com / Web（出典ページ）",
+     "page": "https://go2senkyo.com/seijika/165759/posts/358070"
+    }
+   ],
+   "texts": [
+    "Twitterがルール変更",
+    "自殺・自傷の助長を禁止"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 65.375,
+   "end": 73.882,
+   "said": [
+    "2020年12月、",
+    "東京地裁立川支部は、",
+    "白石に死刑を言い渡した。",
+    "弁護側は「被害者の",
+    "同意があった」と訴えたが、",
+    "裁判所は認めなかった。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "court",
+     "ai": false,
+     "credit": "t-cw.co.jp / Web（出典ページ）",
+     "page": "https://t-cw.co.jp/project/%E6%9D%B1%E4%BA%AC%E5%9C%B0%E6%96%B9%EF%BD%A5%E5%AE%B6%E5%BA%AD%E8%A3%81%E5%88%A4%E6%89%80%E7%AB%8B%E5%B7%9D%E6%94%AF%E9%83%A8%E5%BA%81%E8%88%8E/"
+    },
+    {
+     "image": "sketch2",
+     "ai": false,
+     "credit": "www.chunichi.co.jp / Web（出典ページ）",
+     "page": "https://www.chunichi.co.jp/article/161094"
+    }
+   ],
+   "texts": [
+    "2020年12月",
+    "判決",
+    "「同意」は認めず"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 73.882,
+   "end": 83.988,
+   "said": [
+    "白石は自ら控訴を取り下げ、",
+    "死刑が確定した。",
+    "そして2025年6月、",
+    "死刑が執行された。",
+    "34歳だった。",
+    "日本での死刑執行は、",
+    "およそ3年ぶりのことだった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "sketch3",
+     "ai": false,
+     "credit": "www.asahi.com / Web（出典ページ）",
+     "page": "https://www.asahi.com/articles/ASQC24F2CQBLUTIL020.html"
+    },
+    {
+     "image": "kousho",
+     "ai": false,
+     "credit": "katsushika-kanko.jp / Web（出典ページ）",
+     "page": "https://katsushika-kanko.jp/hori-kosu/006kouchisyo.html"
+    },
+    {
+     "image": "minister",
+     "ai": false,
+     "credit": "mainichi.jp / Web（出典ページ）",
+     "page": "https://mainichi.jp/articles/20250627/k00/00m/040/107000c"
+    }
+   ],
+   "texts": [
+    "控訴取り下げ・死刑確定",
+    "2025年6月 執行",
+    "約3年ぶり"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 83.988,
+   "end": 93.385,
+   "said": [
+    "白石自身、",
+    "「本当に死のうと",
+    "考えている人はいなかった」と",
+    "話している。",
+    "「死にたい」とつぶやいた9人は、本当は、",
+    "生きたかったのかもしれない。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "car",
+     "ai": false,
+     "credit": "www.jiji.com / Web（出典ページ）",
+     "page": "https://www.jiji.com/jc/d4?p=zfi131-jpp025377439&d=d4_ftee"
+    },
+    {
+     "image": "dawn",
+     "ai": false,
+     "credit": "Alexander Mirochnik / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Zama_residential_neighborhood.JPG"
+    }
+   ],
+   "texts": [
+    "「本当に死のうと考えている人はいなかった」",
+    "本当は、生きたかった"
+   ]
+  }
+ ]
+}
