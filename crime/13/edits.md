@@ -1,7 +1,7 @@
 | Cảnh | Lúc | Câu đầu | Kiểu edit | Vì sao |
 |---|---|---|---|---|
 | 1 | 0–5 s | 犠牲者の数で見る、日本の凶悪殺人犯。 | `roster` — mở đầu loạt Top: lưới chân dung | câu 1–2 nêu tên loạt Top và gọi người của tập này: hạng 2, Shiraishi Takahiro (Toi đã có tập 1, gạch chéo) |
-| 2 | 5–13 s | 「死にたい」とつぶやいた若者たちを誘い出し、9人の命を奪った男だ。 | `where` — tiêu đề + ảnh nơi xảy ra | câu 3 là câu hook (in to) trên ảnh điện thoại sáng trong bóng tối; câu 4 nói nơi và lúc: căn hộ ở Zama, cuối tháng 10/2017 |
+| 2 | 5–13 s | 「死にたい」とつぶやいた若者たちを誘い出し、9人の命を奪った男だ。 | `where` — tiêu đề + ảnh nơi xảy ra | câu 3 là câu hook (in to, ngắt thành 4 dòng cho chữ to) trên ảnh điện thoại sáng trong bóng tối; câu 4 nói nơi và lúc: căn hộ ở Zama, cuối tháng 10/2017 |
 | 3 | 13–20 s | その一室から、9人の遺体が見つかった。 | `fact` — bằng chứng + chữ lớn | câu 5–6 nêu kết quả: 9 thi thể (ảnh từ trên cao, cảnh sát ở căn hộ), rồi tuổi và số nạn nhân (hoa tưởng niệm trước căn hộ) |
 | 4 | 20–23 s | 白石はかつて、東京・歌舞伎町で、スカウトの仕事をしていた。 | `place` — ảnh hiện trường + giờ | câu 7: nơi hắn từng làm "cò" dụ người, khu Kabukicho về đêm |
 | 5 | 23–31 s | その年の春から、彼はTwitterで、自殺を考える人たちに近づいていく。 | `figure` — bóng người | câu 8–9 nói về con người hắn: tiếp cận người muốn chết qua Twitter, rủ "cùng chết" mà không định chết (ảnh điện thoại ban đêm, rồi ảnh hắn) |
