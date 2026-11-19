@@ -1,0 +1,606 @@
+{
+ "tone": "normal",
+ "voice": {
+  "volume": 1.4
+ },
+ "fx": {
+  "motion": true,
+  "depth": true,
+  "text": true
+ },
+ "quotes": [
+  3
+ ],
+ "music": {
+  "pick": "1/26-1.ogg",
+  "volume": 1
+ },
+ "images": {
+  "toi": {
+   "src": "own/toi.jpg",
+   "title": "Mutsuo Toi.jpg",
+   "artist": "Unknown author",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Mutsuo_Toi.jpg"
+  },
+  "shiraishi": {
+   "src": "own/shiraishi.jpg",
+   "title": "白石隆浩 顔写真",
+   "artist": "www.asahi.com",
+   "license": "Web（出典ページ）",
+   "page": "https://www.asahi.com/articles/AST6W02FST6WUTIL046M.html"
+  },
+  "katsuta": {
+   "src": "own/katsuta.jpg",
+   "title": "勝田清孝 写真",
+   "artist": "newsdig.tbs.co.jp",
+   "license": "Web（出典ページ）",
+   "page": "https://newsdig.tbs.co.jp/articles/gallery/2171956",
+   "crop": [
+    0.22,
+    0.0,
+    0.78,
+    0.8
+   ]
+  },
+  "okubo": {
+   "src": "own/okubo.jpg",
+   "title": "大久保清 写真",
+   "artist": "www.kosho.or.jp",
+   "license": "Web（出典ページ）",
+   "page": "https://www.kosho.or.jp/products/detail.php?product_id=572024148",
+   "crop": [
+    0.16,
+    0.0,
+    0.84,
+    0.66
+   ],
+   "look": "aged-bw"
+  },
+  "phone": {
+   "src": "1/15-1.jpg"
+  },
+  "apt": {
+   "src": "1/1-1.jpg"
+  },
+  "aerial": {
+   "src": "1/7-6.jpg"
+  },
+  "flowers": {
+   "src": "1/11-1.jpg"
+  },
+  "kabuki": {
+   "src": "1/12-5.jpg"
+  },
+  "phoneman": {
+   "src": "1/15-4.jpg"
+  },
+  "face": {
+   "src": "1/6-1.jpg"
+  },
+  "road": {
+   "src": "1/1-2.jpg"
+  },
+  "tape": {
+   "src": "1/8-2.jpg"
+  },
+  "zama": {
+   "src": "1/2-22.jpg"
+  },
+  "sketch1": {
+   "src": "1/22-6.jpg",
+   "depth": false
+  },
+  "hachioji": {
+   "src": "1/17-1.jpg"
+  },
+  "hands": {
+   "src": "1/15-2.jpg"
+  },
+  "police": {
+   "src": "1/7-2.jpg"
+  },
+  "boxes": {
+   "src": "1/9-2.jpg"
+  },
+  "search": {
+   "src": "1/9-4.jpg"
+  },
+  "rule": {
+   "src": "1/16-2.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "policy": {
+   "src": "1/16-3.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "court": {
+   "src": "1/20-2.jpg"
+  },
+  "sketch2": {
+   "src": "1/22-1.jpg",
+   "depth": false
+  },
+  "sketch3": {
+   "src": "1/22-4.jpg",
+   "depth": false
+  },
+  "kousho": {
+   "src": "1/23-4.jpg"
+  },
+  "minister": {
+   "src": "1/24-1.jpg"
+  },
+  "car": {
+   "src": "1/5-6.jpg"
+  },
+  "dawn": {
+   "src": "1/2-11.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "roster",
+   "why": "câu 1–2 nêu tên loạt Top và gọi người của tập này: hạng 2, Shiraishi Takahiro (Toi đã có tập 1, gạch chéo)",
+   "items": [
+    {
+     "roster": [
+      {
+       "name": "都井睦雄",
+       "sub": "1938",
+       "img": "toi",
+       "focus": [
+        0.5,
+        0.32
+       ]
+      },
+      {
+       "name": "白石隆浩",
+       "sub": "2017",
+       "img": "shiraishi",
+       "focus": [
+        0.5,
+        0.4
+       ]
+      },
+      {
+       "name": "勝田清孝",
+       "sub": "1972–82",
+       "img": "katsuta",
+       "focus": [
+        0.5,
+        0.35
+       ]
+      },
+      {
+       "name": "大久保清",
+       "sub": "1971",
+       "img": "okubo",
+       "focus": [
+        0.5,
+        0.5
+       ]
+      }
+     ],
+     "title": "犠牲者の数で見る\n日本の凶悪殺人犯",
+     "kicker": "TOP 4",
+     "note": "※実際の事件に基づく内容です",
+     "pick": 1,
+     "rank": "第2位",
+     "pick_at": "2:第2位",
+     "done": [
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "at": 3,
+   "edit": "where",
+   "why": "câu 3 là câu hook (in to) trên ảnh điện thoại sáng trong bóng tối; câu 4 nói nơi và lúc: căn hộ ở Zama, cuối tháng 10/2017",
+   "items": [
+    {
+     "header": "座間9人殺害事件",
+     "kicker": "ファイル 2017"
+    },
+    {
+     "photo": [
+      {
+       "img": "phone",
+       "move": "push-in"
+      },
+      {
+       "img": "apt",
+       "at": "4:2017",
+       "move": "pan-right"
+      }
+     ]
+    },
+    {
+     "tag": "神奈川県・座間市",
+     "at": "4:神奈川",
+     "color": "black"
+    },
+    {
+     "tag": "2017年10月",
+     "at": "4:2017",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 5,
+   "edit": "fact",
+   "why": "câu 5–6 nêu kết quả: 9 thi thể (ảnh từ trên cao, cảnh sát ở căn hộ), rồi tuổi và số nạn nhân (hoa tưởng niệm trước căn hộ)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "aerial",
+       "move": "push-in"
+      },
+      {
+       "img": "flowers",
+       "at": "6:被害者",
+       "move": "pan-left",
+       "view": [
+        0.0,
+        0.1,
+        1.0,
+        0.75
+       ]
+      }
+     ]
+    },
+    {
+     "big": "9",
+     "text": "人の遺体",
+     "at": "5:9人"
+    },
+    {
+     "tag": "15歳〜26歳",
+     "at": "6:15歳",
+     "color": "red"
+    },
+    {
+     "tag": "女性8人・男性1人",
+     "at": "6:女性",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 7,
+   "edit": "place",
+   "why": "câu 7: nơi hắn từng làm \"cò\" dụ người, khu Kabukicho về đêm",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "kabuki",
+       "move": "pan-right"
+      }
+     ]
+    },
+    {
+     "tag": "新宿・歌舞伎町",
+     "at": "7:歌舞伎町",
+     "color": "white"
+    },
+    {
+     "tag": "スカウト",
+     "at": "7:スカウト",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 8,
+   "edit": "figure",
+   "why": "câu 8–9 nói về con người hắn: tiếp cận người muốn chết qua Twitter, rủ \"cùng chết\" mà không định chết (ảnh điện thoại ban đêm, rồi ảnh hắn)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "phoneman",
+       "move": "push-in",
+       "view": [
+        0.38,
+        0.0,
+        1.0,
+        1.0
+       ]
+      },
+      {
+       "img": "face",
+       "at": "9:一緒",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "Twitterで接近",
+     "at": "8:Twitter",
+     "color": "black"
+    },
+    {
+     "tag": "「一緒に死のう」",
+     "at": "9:一緒",
+     "color": "white"
+    },
+    {
+     "tag": "死ぬつもりはなかった",
+     "at": "9:死ぬ",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 10,
+   "edit": "place",
+   "why": "câu 10–11: căn hộ cạnh đường tàu Odakyu ở Zama, rồi 9 người bị giết trong 2 tháng (căn hộ bị phong tỏa)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "road",
+       "move": "pan-left"
+      },
+      {
+       "img": "tape",
+       "at": "11:そして",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "2017年8月",
+     "at": "10:8月",
+     "color": "white"
+    },
+    {
+     "tag": "2か月で9人",
+     "at": "11:2か月",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "question",
+   "why": "câu 12–13: nạn nhân nam đi tìm cô gái quanh Zama; rồi động cơ tòa xác định (tranh vẽ ở tòa)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "zama",
+       "move": "pan-right"
+      },
+      {
+       "img": "sketch1",
+       "at": "13:裁判",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "彼女を捜していた",
+     "at": "12:捜して",
+     "color": "white"
+    },
+    {
+     "tag": "動機は金と性的目的",
+     "at": "13:金",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "place",
+   "why": "câu 14–15: vụ lộ ra từ một phụ nữ ở Hachioji mất tích (ga Hachioji), anh trai tìm em trên Twitter (tay cầm điện thoại)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "hachioji",
+       "move": "pan-right"
+      },
+      {
+       "img": "hands",
+       "at": "15:女性の兄",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "八王子市・23歳女性",
+     "at": "14:八王子",
+     "color": "white"
+    },
+    {
+     "tag": "兄がTwitterで捜す",
+     "at": "15:兄",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "fact",
+   "why": "câu 16–18: cảnh sát ập vào căn hộ, khiêng thùng ra; 8 chiếc thùng, một thùng trống cho nạn nhân thứ 10",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "police",
+       "move": "push-in"
+      },
+      {
+       "img": "boxes",
+       "at": "17:部屋",
+       "move": "pan-left"
+      },
+      {
+       "img": "search",
+       "at": "18:そのうち",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "警察が踏み込む",
+     "at": "16:踏み込",
+     "color": "red"
+    },
+    {
+     "big": "8",
+     "text": "つの箱",
+     "at": "17:8つ"
+    },
+    {
+     "tag": "1つは空…10人目?",
+     "at": "18:空",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 19,
+   "edit": "pair",
+   "why": "câu 19 nêu hai thứ: thông báo của Twitter Japan về quy định mới, và trang chính sách cấm cổ vũ tự tử, tự hại",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "rule",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "photo": "policy",
+     "at": "19:自殺"
+    },
+    {
+     "tag": "Twitterがルール変更",
+     "at": "19:Twitter"
+    },
+    {
+     "tag": "自殺・自傷の助長を禁止",
+     "at": "19:禁止",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "fact",
+   "why": "câu 20–21: bản án tử hình ở Tòa Tachikawa (ảnh tòa), luật sư nói nạn nhân đồng ý, tòa bác (tranh vẽ ở tòa)",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "court",
+       "move": "pan-right"
+      },
+      {
+       "img": "sketch2",
+       "at": "21:弁護側",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "2020年12月",
+     "at": "20:2020",
+     "color": "red"
+    },
+    {
+     "big": "死刑",
+     "text": "判決",
+     "at": "20:死刑",
+     "size": 140
+    },
+    {
+     "tag": "「同意」は認めず",
+     "at": "21:認め",
+     "color": "white"
+    }
+   ]
+  },
+  {
+   "at": 22,
+   "edit": "place",
+   "why": "câu 22–24: tự rút kháng cáo (tranh vẽ), thi hành án ở Nhà giam Tokyo, bộ trưởng Tư pháp họp báo — lần đầu sau gần 3 năm",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "sketch3",
+       "move": "push-in"
+      },
+      {
+       "img": "kousho",
+       "at": "23:そして",
+       "move": "pan-left"
+      },
+      {
+       "img": "minister",
+       "at": "24:日本",
+       "move": "push-in"
+      }
+     ]
+    },
+    {
+     "tag": "控訴取り下げ・死刑確定",
+     "at": "22:控訴",
+     "color": "white"
+    },
+    {
+     "tag": "2025年6月 執行",
+     "at": "23:2025",
+     "color": "red"
+    },
+    {
+     "tag": "約3年ぶり",
+     "at": "24:3年"
+    }
+   ]
+  },
+  {
+   "at": 25,
+   "edit": "question",
+   "why": "câu 25–26 quay lại câu mở (\"muốn chết\"): lời của chính hắn (ảnh hắn trên xe cảnh sát), rồi phố Zama trong nắng: có lẽ họ vẫn muốn sống",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "car",
+       "move": "push-in"
+      },
+      {
+       "img": "dawn",
+       "at": "26:死にたい",
+       "move": "pull-back"
+      }
+     ]
+    },
+    {
+     "tag": "「本当に死のうと考えている人はいなかった」",
+     "at": "25:本当",
+     "color": "white",
+     "size": 40
+    },
+    {
+     "tag": "本当は、生きたかった",
+     "at": "26:生き",
+     "color": "red"
+    }
+   ]
+  }
+ ]
+}
