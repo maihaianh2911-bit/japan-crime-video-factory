@@ -40,6 +40,30 @@ def fail(msg):
     raise SystemExit(f'picks.json: {msg}')
 
 
+QUOTE_ROW = 13                       # characters a row of a big quote holds before it wraps
+QUOTE_BREAK = set('」』）)をにはがでとへも')   # a row may end after these (a particle or a closing bracket)
+
+
+def quote_rows(text):
+    """The rows of a quote printed big: one row per clause (after 、), a clause longer than QUOTE_ROW wrapped after the
+    last particle or closing bracket that fits and leaves at least 4 characters on both sides (a clause only a little
+    too long, with no such place, stays whole; a long one without it is cut at QUOTE_ROW), short rows joined."""
+    rows = []
+    for r in (x for x in re.split(r'(?<=[、，,])', text.strip()) if x):
+        while len(r) > QUOTE_ROW:
+            cut = max((i + 1 for i, ch in enumerate(r[:QUOTE_ROW]) if ch in QUOTE_BREAK and i + 1 >= 4 and len(r) - i - 1 >= 4), default=0)
+            if not cut:
+                if len(r) <= QUOTE_ROW + 3: break
+                cut = QUOTE_ROW
+            rows.append(r[:cut]); r = r[cut:]
+        rows.append(r)
+    joined = []
+    for r in rows:
+        if joined and len(joined[-1]) + len(r) <= QUOTE_ROW: joined[-1] += r
+        else: joined.append(r)
+    return joined
+
+
 def main(job, pub, N, imgsrc, out):
     base = f'crime/{N}'
     spec = json.load(open(f'{job}/script.json', encoding='utf-8'))
@@ -117,12 +141,7 @@ def main(job, pub, N, imgsrc, out):
         if qn not in starts: fail(f'"quotes": không có câu {qn}')
         qs, qe = starts[qn], starts[qn] + dur[qn]
         qt = text[qn].strip()
-        rows = [r for r in re.split(r'(?<=[、，,])', qt) if r]   # one row per clause, short clauses joined (≤ 13 characters)
-        joined = []
-        for r in rows:
-            if joined and len(joined[-1]) + len(r) <= 13: joined[-1] += r
-            else: joined.append(r)
-        qt = '\n'.join(joined)
+        qt = '\n'.join(quote_rows(qt))
         quotes.append({'s': round(qs - 0.1, 3), 'e': round(qe + 0.35, 3), 'text': qt})
         subs = [c for c in subs if c['line'] != qn]
 

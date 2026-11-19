@@ -441,4 +441,9 @@ RUN.caption_only(); assert sent == [['caption.txt']] and 'caption.txt' in said[-
 open(os.path.join(RUN.JOB, 'caption.txt'), 'w', encoding='utf-8').write('kurz')
 try: RUN.caption_only(); raise AssertionError('a bad caption must be refused')
 except SystemExit: assert len(sent) == 1 and 'hashtag' in said[-1], said
+# a big quote wraps a long clause after a particle, never leaving a scrap row (owner 19/11: the hook of #13 came out small)
+import build as BLD
+assert BLD.quote_rows('「死にたい」とつぶやいた若者たちを誘い出し、9人の命を奪った男だ。') == ['「死にたい」と', 'つぶやいた若者たちを', '誘い出し、', '9人の命を奪った男だ。']
+assert BLD.quote_rows('たった一晩で、小さな村の30人が、命を奪われた。') == ['たった一晩で、', '小さな村の30人が、', '命を奪われた。']
+assert BLD.quote_rows('夫の葬儀にさえ、参列を許されなかった妃がいる。') == ['夫の葬儀にさえ、', '参列を許されなかった妃がいる。']
 print('crime unit checks OK')

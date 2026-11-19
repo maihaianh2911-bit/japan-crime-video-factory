@@ -459,12 +459,14 @@ export const CrimeV: React.FC<PlanC> = (plan) => {
         // a key line printed big on the foot of the frame over a soft dark band while it is spoken (hook, from japan-news)
         const a = easeOut((t - q.s) / 0.35) * (1 - easeOut((t - (q.e - 0.3)) / 0.3));
         const shown = FX.text ? typed(q.text, t, q.s, Math.max(6, [...q.text].length / Math.max(0.6, (q.e - q.s) * 0.8))) : q.text;
+        const qRows = q.text.split('\n'), qSize = Math.min(76, Math.floor(920 / Math.max(...qRows.map((r) => [...r].length))));
         return (
           <AbsoluteFill key={i} style={{ pointerEvents: 'none', opacity: a }}>
-            <div style={{ position: 'absolute', left: 0, right: 0, top: 1150, height: 560,
-              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 38%, rgba(0,0,0,.82) 100%)' }} />
-            <div style={{ position: 'absolute', left: 70, right: 70, top: 1380, transform: `translateY(${(1 - a) * 20}px)`, textAlign: 'center',
-              fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: Math.min(76, Math.floor(920 / Math.max(...q.text.split('\n').map((r) => [...r].length)))), lineHeight: 1.35, color: '#f4efe6', whiteSpace: 'pre-line',
+            {/* the band reaches the foot of the frame, so a quote of four rows stays on it (on the light desk too) */}
+            <div style={{ position: 'absolute', left: 0, right: 0, top: 1150, height: 770,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 30%, rgba(0,0,0,.82) 100%)' }} />
+            <div style={{ position: 'absolute', left: 70, right: 70, top: Math.min(1380, 1820 - qRows.length * qSize * 1.35), transform: `translateY(${(1 - a) * 20}px)`, textAlign: 'center',
+              fontFamily: `"${F.serif}", "${F.sans}"`, fontWeight: 900, fontSize: qSize, lineHeight: 1.35, color: '#f4efe6', whiteSpace: 'pre-line',
               textShadow: '0 4px 18px rgba(0,0,0,.85)' }}>{shown}</div>
           </AbsoluteFill>
         );
