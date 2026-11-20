@@ -1,0 +1,645 @@
+{
+ "pictures": [
+  {
+   "name": "surrender",
+   "src": "1/5-22.jpg",
+   "title": "Surrender of Japan - USS Missouri (restored).jpg",
+   "artist": "Army Signal Corps",
+   "date": "1945-09-02",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Surrender_of_Japan_-_USS_Missouri_(restored).jpg",
+   "ai": false
+  },
+  {
+   "name": "young",
+   "src": "1/1-1.jpg",
+   "title": "Hiroo and shigeo onoda 1944.jpg",
+   "artist": "Published by Mainichi Shimbun in 1974.",
+   "date": "Circa December 1944",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Hiroo_and_shigeo_onoda_1944.jpg",
+   "ai": false
+  },
+  {
+   "name": "jungle1",
+   "src": "1/19-1.jpg",
+   "title": "Jungle",
+   "artist": "Accretion Disc",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/23642145@N00/1334533356",
+   "ai": false
+  },
+  {
+   "name": "leaflet1",
+   "src": "1/16-2.jpg",
+   "title": "沖縄戦：1945年6月12日】「生命を助けるビラ」─米軍の ...",
+   "artist": "note.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://note.com/bouheitai1958/n/n04753bc55c06",
+   "ai": false
+  },
+  {
+   "name": "leaflet2",
+   "src": "1/16-3.jpg",
+   "title": "米軍伝単□兵隊に告ぐ□沖縄 対日宣伝ビラ 難有 送料450円 ...",
+   "artist": "www.trimarine.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.trimarine.com/tier/construction/ee3logri40rp0d8.shtml",
+   "ai": false
+  },
+  {
+   "name": "drop",
+   "src": "1/20-2.jpg",
+   "title": "6th Psyops Battalion leaflet drop from a C-47.jpg",
+   "artist": "SP5 Richard S. Durrance",
+   "date": "1966-04-07",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:6th_Psyops_Battalion_leaflet_drop_from_a_C-47.jpg",
+   "ai": false
+  },
+  {
+   "name": "jungle2",
+   "src": "1/19-3.jpg",
+   "title": "Jungle",
+   "artist": "Accretion Disc",
+   "date": "",
+   "license": "CC BY 2.0",
+   "page": "https://www.flickr.com/photos/23642145@N00/1333637265",
+   "ai": false
+  },
+  {
+   "name": "island",
+   "src": "1/2-4.jpg",
+   "title": "Lubang Group of Islands, 2023 (01).jpg",
+   "artist": "Bahnfrend",
+   "date": "Taken on 26 October 2023, 15:00:14",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Lubang_Group_of_Islands,_2023_(01).jpg",
+   "ai": false
+  },
+  {
+   "name": "beach",
+   "src": "1/2-1.jpg",
+   "title": "Lubang Island Beach.jpg",
+   "artist": "Elmer B. Domingo",
+   "date": "2014-03-15 09:25:45",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Lubang_Island_Beach.jpg",
+   "ai": false
+  },
+  {
+   "name": "boats",
+   "src": "1/2-2.jpg",
+   "title": "Lubang Island 2013.jpg",
+   "artist": "Elmer B. Domingo",
+   "date": "2014-03-14 16:59:01",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Lubang_Island_2013.jpg",
+   "ai": false
+  },
+  {
+   "name": "meeting",
+   "src": "1/12-1.jpg",
+   "title": "ONODA 一万夜を越えて』...小野田寛郎さんと鈴木紀夫さん｜本日 ...",
+   "artist": "www.taolab.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.taolab.com/magazine/2024/02/onoda.html",
+   "ai": false
+  },
+  {
+   "name": "rifle_tree",
+   "src": "1/17-5.jpg",
+   "title": "九九式小銃【無可動実銃ミュージアム】 | ニュース | アームズ ...",
+   "artist": "armsweb.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://armsweb.jp/report/2480.html",
+   "ai": false
+  },
+  {
+   "name": "salute",
+   "src": "1/9-1.jpg",
+   "title": "不撓不屈 小野田少尉知って 戦後29年間フィリピンで潜伏 足利市 ...",
+   "artist": "www.tokyo-np.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.tokyo-np.co.jp/article/425237",
+   "ai": false
+  },
+  {
+   "name": "rifle",
+   "src": "1/17-3.jpg",
+   "title": "九九式短小銃 末期型 (名古屋製、代表ページ): 無可動実銃| 無 ...",
+   "artist": "www.regimentals.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.regimentals.jp/shop/g/g8844/",
+   "ai": false
+  },
+  {
+   "name": "marcos",
+   "src": "1/1-2.jpg",
+   "title": "President Marcos and Hiroo Onoda.jpg",
+   "artist": "Malacañang Palace",
+   "date": "2015-09-17",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:President_Marcos_and_Hiroo_Onoda.jpg",
+   "ai": false
+  },
+  {
+   "name": "wave",
+   "src": "1/11-5.jpg",
+   "title": "あのころ＞小野田さんが帰国 1974年3月12日|47NEWS（よんなな ...",
+   "artist": "www.47news.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.47news.jp/12291737.html",
+   "ai": false
+  },
+  {
+   "name": "ranch",
+   "src": "1/15-1.jpg",
+   "title": "13）小野田さんから学んだ教訓｜熊本日日新聞社",
+   "artist": "kumanichi.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://kumanichi.com/articles/1177230",
+   "ai": false
+  },
+  {
+   "name": "meeting_bw",
+   "src": "1/12-3.jpg",
+   "title": "最後の日本兵」を発見した「好青年」はヒマラヤ山中に消えた ...",
+   "artist": "news.yahoo.co.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://news.yahoo.co.jp/articles/0bf2ca81742a3903a7c1f2a3e90770dceb54e160",
+   "ai": false
+  },
+  {
+   "name": "dhaula",
+   "src": "1/7-2.jpg",
+   "title": "Dhaulagiri - view from aircraft.jpg",
+   "artist": "Sergey Ashmarin",
+   "date": "2011-04-27 10:11",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Dhaulagiri_-_view_from_aircraft.jpg",
+   "ai": false
+  },
+  {
+   "name": "avalanche",
+   "src": "1/21-1.jpg",
+   "title": "Avalanche on Everest.jpg",
+   "artist": "Chagai at English Wikipedia",
+   "date": "15 September 2006 (original upload date)",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Avalanche_on_Everest.jpg",
+   "ai": false
+  },
+  {
+   "name": "footprint",
+   "src": "1/8-3.jpg",
+   "title": "1937 yeti footprints.png",
+   "artist": "Gardner Soule",
+   "date": "1952",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:1937_yeti_footprints.png",
+   "ai": false
+  },
+  {
+   "name": "order",
+   "src": "1/9-4.jpg",
+   "title": "最後の日本兵」が私たちに伝えること 親族が語る素顔の小野田 ...",
+   "artist": "www.47news.jp",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.47news.jp/6949868.html",
+   "ai": false
+  },
+  {
+   "name": "walkout",
+   "src": "1/9-8.jpg",
+   "title": "これは、第2次世界大戦が終わったあと29年間も降伏しなかった ...",
+   "artist": "www.reddit.com",
+   "date": "",
+   "license": "Web（出典ページ）",
+   "page": "https://www.reddit.com/r/interestingasfuck/comments/1u6ui8b/this_is_lt_hiroo_onoda_who_didnt_surrender_for_29/?tl=ja",
+   "ai": false
+  }
+ ],
+ "scenes": [
+  {
+   "scene": 1,
+   "start": 0.0,
+   "end": 10.602,
+   "said": [
+    "だが、小野田寛郎という兵士は、",
+    "それを信じなかった。",
+    "彼はフィリピンのジャングルで、",
+    "さらに29年も戦い続けた。"
+   ],
+   "edit": "hook",
+   "photos": [
+    {
+     "image": "surrender",
+     "ai": false,
+     "credit": "Army Signal Corps / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Surrender_of_Japan_-_USS_Missouri_(restored).jpg"
+    },
+    {
+     "image": "young",
+     "ai": false,
+     "credit": "Published by Mainichi Shimbun in 1974. / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Hiroo_and_shigeo_onoda_1944.jpg"
+    },
+    {
+     "image": "jungle1",
+     "ai": false,
+     "credit": "Accretion Disc / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/23642145@N00/1334533356"
+    }
+   ],
+   "texts": [
+    "日本、降伏",
+    "信じなかった",
+    "29年"
+   ]
+  },
+  {
+   "scene": 2,
+   "start": 10.602,
+   "end": 14.679,
+   "said": [
+    "上官の最後の命令は、",
+    "「玉砕は一切まかりならぬ。",
+    "必ず迎えに行く」。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "必ず迎えに行く"
+   ]
+  },
+  {
+   "scene": 3,
+   "start": 14.679,
+   "end": 18.142,
+   "said": [
+    "終戦を知らせるビラがまかれても、",
+    "彼は敵の謀略だと考えた。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "leaflet1",
+     "ai": false,
+     "credit": "note.com / Web（出典ページ）",
+     "page": "https://note.com/bouheitai1958/n/n04753bc55c06"
+    },
+    {
+     "image": "leaflet2",
+     "ai": false,
+     "credit": "www.trimarine.com / Web（出典ページ）",
+     "page": "https://www.trimarine.com/tier/construction/ee3logri40rp0d8.shtml"
+    }
+   ],
+   "texts": [
+    "米軍がまいたビラ",
+    "敵の謀略"
+   ]
+  },
+  {
+   "scene": 4,
+   "start": 18.142,
+   "end": 21.247,
+   "said": [
+    "空から新聞や家族の",
+    "手紙が落とされても、",
+    "信じなかった。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "drop",
+     "ai": false,
+     "credit": "SP5 Richard S. Durrance / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:6th_Psyops_Battalion_leaflet_drop_from_a_C-47.jpg"
+    }
+   ],
+   "texts": [
+    "空から",
+    "新聞と家族の手紙"
+   ]
+  },
+  {
+   "scene": 5,
+   "start": 21.247,
+   "end": 30.002,
+   "said": [
+    "3人の部下は、一人が投降し、",
+    "二人が撃たれて死んだ。",
+    "日本では、",
+    "彼の死亡が宣告された。",
+    "そして島では、",
+    "およそ30人の住民が、",
+    "彼らの手で命を落とした。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "jungle2",
+     "ai": false,
+     "credit": "Accretion Disc / CC BY 2.0",
+     "page": "https://www.flickr.com/photos/23642145@N00/1333637265"
+    },
+    {
+     "image": "island",
+     "ai": false,
+     "credit": "Bahnfrend / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Lubang_Group_of_Islands,_2023_(01).jpg"
+    }
+   ],
+   "texts": [
+    "島民 およそ30人"
+   ]
+  },
+  {
+   "scene": 6,
+   "start": 30.002,
+   "end": 38.272,
+   "said": [
+    "1974年、大学を中退した",
+    "24歳の青年が、一人で",
+    "島へやって来た。",
+    "旅の目的は、",
+    "「小野田さん、パンダ、",
+    "雪男に会うこと」だった。"
+   ],
+   "edit": "list",
+   "photos": [
+    {
+     "image": "beach",
+     "ai": false,
+     "credit": "Elmer B. Domingo / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Lubang_Island_Beach.jpg"
+    },
+    {
+     "image": "boats",
+     "ai": false,
+     "credit": "Elmer B. Domingo / CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Lubang_Island_2013.jpg"
+    }
+   ],
+   "texts": [
+    "小野田さん",
+    "パンダ",
+    "雪男",
+    "24歳・大学を中退"
+   ]
+  },
+  {
+   "scene": 7,
+   "start": 38.272,
+   "end": 44.092,
+   "said": [
+    "青年はついに小野田を見つけた。",
+    "だが、彼は銃を置かなかった。",
+    "任務を解けるのは、",
+    "上官の命令だけだったからだ。"
+   ],
+   "edit": "pair",
+   "photos": [
+    {
+     "image": "meeting",
+     "ai": false,
+     "credit": "www.taolab.com / Web（出典ページ）",
+     "page": "https://www.taolab.com/magazine/2024/02/onoda.html"
+    },
+    {
+     "image": "order",
+     "ai": false,
+     "credit": "www.47news.jp / Web（出典ページ）",
+     "page": "https://www.47news.jp/6949868.html"
+    },
+    {
+     "image": "rifle_tree",
+     "ai": false,
+     "credit": "armsweb.jp / Web（出典ページ）",
+     "page": "https://armsweb.jp/report/2480.html"
+    }
+   ],
+   "texts": [
+    "ついに見つけた",
+    "上官の命令だけ",
+    "銃を置かなかった"
+   ]
+  },
+  {
+   "scene": 8,
+   "start": 44.092,
+   "end": 46.595,
+   "said": [
+    "かつての上官は、",
+    "そのころ書店を営んでいた。"
+   ],
+   "edit": "statement",
+   "photos": [],
+   "texts": [
+    "書店を営んでいた"
+   ]
+  },
+  {
+   "scene": 9,
+   "start": 46.595,
+   "end": 49.726,
+   "said": [
+    "その元上官が島へ渡り、",
+    "任務解除の命令を読み上げた。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "walkout",
+     "ai": false,
+     "credit": "www.reddit.com / Web（出典ページ）",
+     "page": "https://www.reddit.com/r/interestingasfuck/comments/1u6ui8b/this_is_lt_hiroo_onoda_who_didnt_surrender_for_29/?tl=ja"
+    }
+   ],
+   "texts": [
+    "島へ渡った",
+    "任務解除の命令"
+   ]
+  },
+  {
+   "scene": 10,
+   "start": 49.726,
+   "end": 53.344,
+   "said": [
+    "51歳の小野田が",
+    "差し出した小銃は、",
+    "まだ撃てる状態だった。"
+   ],
+   "edit": "object",
+   "photos": [
+    {
+     "image": "salute",
+     "ai": false,
+     "credit": "www.tokyo-np.co.jp / Web（出典ページ）",
+     "page": "https://www.tokyo-np.co.jp/article/425237"
+    }
+   ],
+   "texts": [
+    "51歳",
+    "まだ撃てる状態"
+   ]
+  },
+  {
+   "scene": 11,
+   "start": 53.344,
+   "end": 55.416,
+   "said": [
+    "実弾も、およそ500発残っていた。"
+   ],
+   "edit": "fact",
+   "photos": [
+    {
+     "image": "rifle",
+     "ai": false,
+     "credit": "www.regimentals.jp / Web（出典ページ）",
+     "page": "https://www.regimentals.jp/shop/g/g8844/"
+    }
+   ],
+   "texts": [
+    "発\n実弾",
+    "九九式短小銃"
+   ]
+  },
+  {
+   "scene": 12,
+   "start": 55.416,
+   "end": 58.072,
+   "said": [
+    "フィリピンのマルコス大統領は、",
+    "彼の罪を赦した。"
+   ],
+   "edit": "place",
+   "photos": [
+    {
+     "image": "marcos",
+     "ai": false,
+     "credit": "Malacañang Palace / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:President_Marcos_and_Hiroo_Onoda.jpg"
+    }
+   ],
+   "texts": [
+    "マルコス大統領",
+    "罪を赦した"
+   ]
+  },
+  {
+   "scene": 13,
+   "start": 58.072,
+   "end": 61.17,
+   "said": [
+    "帰ってきた日本は豊かになり、",
+    "もう彼の知る国ではなかった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "wave",
+     "ai": false,
+     "credit": "www.47news.jp / Web（出典ページ）",
+     "page": "https://www.47news.jp/12291737.html"
+    }
+   ],
+   "texts": [
+    "29年ぶりの日本",
+    "知らない国だった"
+   ]
+  },
+  {
+   "scene": 14,
+   "start": 61.17,
+   "end": 63.79,
+   "said": [
+    "翌年、小野田はブラジルへ",
+    "渡り、牧場を開いた。"
+   ],
+   "edit": "where",
+   "photos": [
+    {
+     "image": "ranch",
+     "ai": false,
+     "credit": "kumanichi.com / Web（出典ページ）",
+     "page": "https://kumanichi.com/articles/1177230"
+    }
+   ],
+   "texts": [
+    "ブラジルへ",
+    "牧場を開いた"
+   ]
+  },
+  {
+   "scene": 15,
+   "start": 63.79,
+   "end": 69.44,
+   "said": [
+    "そして、彼を見つけた青年、",
+    "鈴木紀夫。",
+    "12年後、鈴木はヒマラヤで",
+    "雪崩に巻き込まれ、",
+    "命を落とした。"
+   ],
+   "edit": "timeline",
+   "photos": [
+    {
+     "image": "meeting_bw",
+     "ai": false,
+     "credit": "news.yahoo.co.jp / Web（出典ページ）",
+     "page": "https://news.yahoo.co.jp/articles/0bf2ca81742a3903a7c1f2a3e90770dceb54e160"
+    },
+    {
+     "image": "dhaula",
+     "ai": false,
+     "credit": "Sergey Ashmarin / CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Dhaulagiri_-_view_from_aircraft.jpg"
+    },
+    {
+     "image": "avalanche",
+     "ai": false,
+     "credit": "Chagai at English Wikipedia / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Avalanche_on_Everest.jpg"
+    }
+   ],
+   "texts": [
+    "鈴木紀夫"
+   ]
+  },
+  {
+   "scene": 16,
+   "start": 69.44,
+   "end": 73.265,
+   "said": [
+    "雪男を探している途中だった。"
+   ],
+   "edit": "question",
+   "photos": [
+    {
+     "image": "footprint",
+     "ai": false,
+     "credit": "Gardner Soule / Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:1937_yeti_footprints.png"
+    }
+   ],
+   "texts": [
+    "雪男を探して",
+    "その途中だった"
+   ]
+  }
+ ]
+}
