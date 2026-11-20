@@ -1,0 +1,563 @@
+{
+ "tone": "normal",
+ "voice": {
+  "volume": 1.4
+ },
+ "fx": {
+  "motion": true,
+  "depth": true,
+  "text": true
+ },
+ "quotes": [
+  1
+ ],
+ "music": {
+  "pick": "1/23-1.ogg",
+  "volume": 1,
+  "start": 0
+ },
+ "images": {
+  "surrender": {
+   "src": "1/5-22.jpg"
+  },
+  "young": {
+   "src": "1/1-1.jpg"
+  },
+  "jungle1": {
+   "src": "1/19-1.jpg"
+  },
+  "leaflet1": {
+   "src": "1/16-2.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "leaflet2": {
+   "src": "1/16-3.jpg",
+   "look": "clean",
+   "depth": false
+  },
+  "drop": {
+   "src": "1/20-2.jpg"
+  },
+  "jungle2": {
+   "src": "1/19-3.jpg"
+  },
+  "island": {
+   "src": "1/2-4.jpg"
+  },
+  "beach": {
+   "src": "1/2-1.jpg"
+  },
+  "boats": {
+   "src": "1/2-2.jpg"
+  },
+  "meeting": {
+   "src": "1/12-1.jpg"
+  },
+  "rifle_tree": {
+   "src": "1/17-5.jpg"
+  },
+  "salute": {
+   "src": "1/9-1.jpg"
+  },
+  "rifle": {
+   "src": "1/17-3.jpg",
+   "depth": false
+  },
+  "marcos": {
+   "src": "1/1-2.jpg"
+  },
+  "wave": {
+   "src": "1/11-5.jpg"
+  },
+  "ranch": {
+   "src": "1/15-1.jpg"
+  },
+  "meeting_bw": {
+   "src": "1/12-3.jpg"
+  },
+  "dhaula": {
+   "src": "1/7-2.jpg"
+  },
+  "avalanche": {
+   "src": "1/21-1.jpg"
+  },
+  "footprint": {
+   "src": "1/8-3.jpg"
+  },
+  "order": {
+   "src": "1/9-4.jpg"
+  },
+  "walkout": {
+   "src": "1/9-8.jpg"
+  }
+ },
+ "scenes": [
+  {
+   "at": 1,
+   "edit": "hook",
+   "why": "ba câu đầu: Nhật đầu hàng, một người lính không tin, đánh tiếp 29 năm",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "surrender",
+       "move": "push-in"
+      },
+      {
+       "img": "young",
+       "move": "push-in",
+       "view": [
+        0.3,
+        0.0,
+        1.0,
+        0.95
+       ],
+       "at": "2:小野田"
+      },
+      {
+       "img": "jungle1",
+       "move": "pan-right",
+       "at": "3:ジャングル"
+      }
+     ]
+    },
+    {
+     "tag": "日本、降伏",
+     "at": "1:降伏"
+    },
+    {
+     "tag": "信じなかった",
+     "color": "red",
+     "at": "2:信じ"
+    },
+    {
+     "tag": "29年",
+     "color": "white",
+     "at": "3:29年"
+    }
+   ]
+  },
+  {
+   "at": 4,
+   "edit": "statement",
+   "why": "câu 4 là lời ra lệnh của cấp trên, không có vật gì để cho xem",
+   "items": [
+    {
+     "tag": "必ず迎えに行く",
+     "at": "4:必ず"
+    }
+   ]
+  },
+  {
+   "at": 5,
+   "edit": "pair",
+   "why": "câu 5 nói về truyền đơn báo chiến tranh đã hết và cách ông hiểu nó",
+   "items": [
+    {
+     "photo": {
+      "img": "leaflet1",
+      "move": "hold"
+     }
+    },
+    {
+     "photo": {
+      "img": "leaflet2",
+      "move": "hold"
+     },
+     "at": "5:ビラ"
+    },
+    {
+     "tag": "米軍がまいたビラ",
+     "at": "5:ビラ"
+    },
+    {
+     "tag": "敵の謀略",
+     "color": "red",
+     "at": "5:謀略"
+    }
+   ]
+  },
+  {
+   "at": 6,
+   "edit": "place",
+   "why": "câu 6: báo và thư nhà được thả xuống từ máy bay",
+   "items": [
+    {
+     "photo": {
+      "img": "drop",
+      "move": "pull-back"
+     }
+    },
+    {
+     "tag": "空から",
+     "color": "white",
+     "at": "6:空から"
+    },
+    {
+     "tag": "新聞と家族の手紙",
+     "color": "black",
+     "at": "6:新聞"
+    }
+   ]
+  },
+  {
+   "at": 7,
+   "edit": "timeline",
+   "why": "câu 7–9 kể lần lượt số phận ba người lính và người dân trên đảo",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "jungle2",
+       "move": "pan-left"
+      },
+      {
+       "img": "island",
+       "move": "push-in",
+       "at": "9:島では"
+      }
+     ]
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "部下 3人",
+        "right": "1人は投降",
+        "at": "7:投降"
+       },
+       {
+        "text": "残る2人",
+        "right": "撃たれて死亡",
+        "at": "7:撃たれて"
+       },
+       {
+        "text": "日本では",
+        "right": "死亡を宣告",
+        "at": "8:死亡"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "島民 およそ30人",
+     "color": "red",
+     "at": "9:30人"
+    }
+   ]
+  },
+  {
+   "at": 10,
+   "edit": "list",
+   "why": "câu 11 đọc ra ba thứ chàng trai muốn gặp trong chuyến đi",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "beach",
+       "move": "pan-right"
+      },
+      {
+       "img": "boats",
+       "move": "push-in",
+       "at": "11:旅"
+      }
+     ]
+    },
+    {
+     "tag": "小野田さん",
+     "at": "11:小野田"
+    },
+    {
+     "tag": "パンダ",
+     "at": "11:パンダ"
+    },
+    {
+     "tag": "雪男",
+     "at": "11:雪男"
+    },
+    {
+     "tag": "24歳・大学を中退",
+     "color": "white",
+     "at": "10:24歳"
+    }
+   ]
+  },
+  {
+   "at": 12,
+   "edit": "pair",
+   "why": "câu 12–13: gặp được người, súng vẫn không rời tay, chỉ lệnh của cấp trên mới gỡ được nhiệm vụ",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "meeting",
+       "move": "push-in"
+      },
+      {
+       "img": "order",
+       "move": "pan-left",
+       "at": "13:命令"
+      }
+     ]
+    },
+    {
+     "photo": {
+      "img": "rifle_tree",
+      "move": "hold"
+     },
+     "at": "12:銃"
+    },
+    {
+     "tag": "ついに見つけた",
+     "at": "12:見つけた"
+    },
+    {
+     "tag": "上官の命令だけ",
+     "at": "13:命令"
+    },
+    {
+     "tag": "銃を置かなかった",
+     "color": "red",
+     "at": "12:銃"
+    }
+   ]
+  },
+  {
+   "at": 14,
+   "edit": "statement",
+   "why": "câu 14 là một câu chuyển: vị cấp trên năm xưa giờ là chủ hiệu sách",
+   "items": [
+    {
+     "tag": "書店を営んでいた",
+     "at": "14:書店"
+    }
+   ]
+  },
+  {
+   "at": 15,
+   "edit": "place",
+   "why": "câu 15: chính người đó ra đảo và đọc lệnh giải nhiệm",
+   "items": [
+    {
+     "photo": {
+      "img": "walkout",
+      "move": "push-in"
+     },
+     "w": 620,
+     "h": 640
+    },
+    {
+     "tag": "島へ渡った",
+     "color": "white",
+     "at": "15:島へ"
+    },
+    {
+     "tag": "任務解除の命令",
+     "color": "black",
+     "at": "15:任務解除"
+    }
+   ]
+  },
+  {
+   "at": 16,
+   "edit": "object",
+   "why": "câu 16 nói về khẩu súng ông giao nộp",
+   "items": [
+    {
+     "photo": {
+      "img": "salute",
+      "move": "push-in"
+     },
+     "w": 560,
+     "h": 840
+    },
+    {
+     "tag": "51歳",
+     "at": "16:小銃",
+     "color": "white"
+    },
+    {
+     "tag": "まだ撃てる状態",
+     "color": "red",
+     "at": "16:撃てる"
+    }
+   ]
+  },
+  {
+   "at": 17,
+   "edit": "fact",
+   "why": "câu 17 là một con số: khoảng 500 viên đạn thật",
+   "items": [
+    {
+     "photo": {
+      "img": "rifle",
+      "move": "pan-left"
+     }
+    },
+    {
+     "big": "500",
+     "text": "発\n実弾",
+     "at": "17:500"
+    },
+    {
+     "tag": "九九式短小銃",
+     "color": "white",
+     "at": "17:残って"
+    }
+   ]
+  },
+  {
+   "at": 18,
+   "edit": "place",
+   "why": "câu 18: tổng thống Marcos tha tội, ảnh ông trao kiếm",
+   "items": [
+    {
+     "photo": {
+      "img": "marcos",
+      "move": "push-in"
+     }
+    },
+    {
+     "tag": "マルコス大統領",
+     "color": "black",
+     "at": "18:マルコス"
+    },
+    {
+     "tag": "罪を赦した",
+     "color": "red",
+     "at": "18:赦した"
+    }
+   ]
+  },
+  {
+   "at": 19,
+   "edit": "question",
+   "why": "câu 19 lật ngược: về được nước Nhật, nhưng không còn là nước ông biết",
+   "items": [
+    {
+     "photo": {
+      "img": "wave",
+      "move": "pull-back"
+     }
+    },
+    {
+     "tag": "29年ぶりの日本",
+     "color": "white",
+     "at": "19:帰って"
+    },
+    {
+     "tag": "知らない国だった",
+     "color": "red",
+     "at": "19:知る国"
+    }
+   ]
+  },
+  {
+   "at": 20,
+   "edit": "where",
+   "why": "câu 20 nói nơi ông đến sau đó: trang trại ở Brazil",
+   "items": [
+    {
+     "header": "ブラジルへ",
+     "kicker": "翌年"
+    },
+    {
+     "photo": {
+      "img": "ranch",
+      "move": "push-in",
+      "view": [
+       0.0,
+       0.0,
+       1.0,
+       0.33
+      ]
+     }
+    },
+    {
+     "tag": "牧場を開いた",
+     "color": "black",
+     "at": "20:牧場"
+    }
+   ]
+  },
+  {
+   "at": 21,
+   "edit": "timeline",
+   "why": "câu 21–22 có hai mốc: 1974 tìm ra ông, 12 năm sau chết ở Himalaya",
+   "items": [
+    {
+     "photo": [
+      {
+       "img": "meeting_bw",
+       "move": "push-in",
+       "view": [
+        0.05,
+        0.0,
+        0.7,
+        1.0
+       ]
+      },
+      {
+       "img": "dhaula",
+       "move": "rise",
+       "at": "22:12年後"
+      },
+      {
+       "img": "avalanche",
+       "move": "fall",
+       "at": "22:雪崩"
+      }
+     ]
+    },
+    {
+     "card": {
+      "rows": [
+       {
+        "text": "1974年",
+        "right": "小野田を発見",
+        "at": "21:見つけた"
+       },
+       {
+        "text": "12年後",
+        "right": "ヒマラヤで遭難",
+        "at": "22:12年後"
+       }
+      ]
+     }
+    },
+    {
+     "tag": "鈴木紀夫",
+     "color": "red",
+     "at": "21:鈴木"
+    }
+   ]
+  },
+  {
+   "at": 23,
+   "edit": "question",
+   "why": "câu cuối: anh đang đi tìm người tuyết",
+   "items": [
+    {
+     "photo": {
+      "img": "footprint",
+      "move": "pan-right"
+     },
+     "w": 820,
+     "h": 411
+    },
+    {
+     "tag": "雪男を探して",
+     "color": "white",
+     "at": "23:雪男"
+    },
+    {
+     "tag": "その途中だった",
+     "color": "red",
+     "at": "23:途中"
+    }
+   ]
+  }
+ ]
+}
