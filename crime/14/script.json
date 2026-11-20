@@ -1,0 +1,93 @@
+{
+ "title": "小野田寛郎",
+ "voice": "clone_190",
+ "speed": 1.2,
+ "lines": [
+  "1945年8月、日本は戦争に負け、降伏した。",
+  "だが、小野田寛郎という兵士は、それを信じなかった。",
+  "彼はフィリピンのジャングルで、さらに29年も戦い続けた。",
+  "上官の最後の命令は、「玉砕は一切まかりならぬ。必ず迎えに行く」。",
+  "終戦を知らせるビラがまかれても、彼は敵の謀略だと考えた。",
+  "空から新聞や家族の手紙が落とされても、信じなかった。",
+  "3人の部下は、一人が投降し、二人が撃たれて死んだ。",
+  "日本では、彼の死亡が宣告された。",
+  "そして島では、およそ30人の住民が、彼らの手で命を落とした。",
+  "1974年、大学を中退した24歳の青年が、一人で島へやって来た。",
+  "旅の目的は、「小野田さん、パンダ、雪男に会うこと」だった。",
+  "青年はついに小野田を見つけた。だが、彼は銃を置かなかった。",
+  "任務を解けるのは、上官の命令だけだったからだ。",
+  "かつての上官は、そのころ書店を営んでいた。",
+  "その元上官が島へ渡り、任務解除の命令を読み上げた。",
+  "51歳の小野田が差し出した小銃は、まだ撃てる状態だった。",
+  "実弾も、およそ500発残っていた。",
+  "フィリピンのマルコス大統領は、彼の罪を赦した。",
+  "帰ってきた日本は豊かになり、もう彼の知る国ではなかった。",
+  "翌年、小野田はブラジルへ渡り、牧場を開いた。",
+  "そして、彼を見つけた青年、鈴木紀夫。",
+  "12年後、鈴木はヒマラヤで雪崩に巻き込まれ、命を落とした。",
+  "雪男を探している途中だった。"
+ ],
+ "tts": {
+  "1": "せんきゅうひゃくよんじゅうごねん、はちがつ、日本は戦争に負け、降伏した。",
+  "2": "だが、おのだひろお、という兵士は、それを信じなかった。",
+  "3": "彼はフィリピンのジャングルで、さらに、にじゅうきゅうねんも戦い続けた。",
+  "4": "上官の最後の命令は、「ぎょくさいは、いっさい、まかりならぬ。必ず迎えに行く」。",
+  "5": "終戦を知らせるビラがまかれても、彼は敵のぼうりゃくだと考えた。",
+  "7": "さんにんの部下は、ひとりが投降し、ふたりが撃たれて死んだ。",
+  "9": "そして島では、およそさんじゅうにんの住民が、彼らの手で命を落とした。",
+  "10": "せんきゅうひゃくななじゅうよねん、大学を中退した、にじゅうよんさいの青年が、ひとりで島へやって来た。",
+  "11": "旅の目的は、「おのださん、パンダ、ゆきおとこに会うこと」だった。",
+  "12": "青年はついに、おのだを見つけた。だが、彼は銃を置かなかった。",
+  "15": "その、もと上官が島へ渡り、任務解除の命令を読み上げた。",
+  "16": "ごじゅういっさいの、おのだが差し出した小銃は、まだ撃てる状態だった。",
+  "17": "実弾も、およそごひゃっぱつ残っていた。",
+  "18": "フィリピンのマルコス大統領は、彼の罪をゆるした。",
+  "20": "よくねん、おのだはブラジルへ渡り、牧場を開いた。",
+  "21": "そして、彼を見つけた青年、すずきのりお。",
+  "22": "じゅうにねんご、すずきはヒマラヤで雪崩に巻き込まれ、命を落とした。",
+  "23": "ゆきおとこを探している途中だった。"
+ },
+ "music": {
+  "style": "documentary",
+  "key": "D",
+  "mode": "minor",
+  "bpm": 68,
+  "energy": 0.3
+ },
+ "queries": [
+  "wiki: 小野田寛郎",
+  "wiki: ルバング島",
+  "wiki: 陸軍中野学校",
+  "wiki: 鈴木紀夫 (冒険家)",
+  "wiki: 日本の降伏",
+  "wiki: フェルディナンド・マルコス",
+  "wiki: ダウラギリ",
+  "wiki: イエティ",
+  "web: 小野田寛郎 投降 1974 => an old Japanese soldier in a worn army uniform in the Philippines",
+  "web: 小野田寛郎 少尉 軍服 若い頃 => a portrait of a young Japanese army officer in uniform",
+  "web: 小野田寛郎 帰国 羽田 1974 => a Japanese man in a suit arriving at an airport with reporters",
+  "web: 小野田寛郎 鈴木紀夫 ジャングル 写真 => two men posing in a jungle, one holding a rifle",
+  "web: 谷口義美 小野田 任務解除 => an old Japanese man reading an order to a soldier",
+  "web: 小野田寛郎 マルコス 軍刀 => a Japanese soldier handing a sword to the Philippine president",
+  "web: 小野田寛郎 ブラジル 牧場 => an old Japanese man on a cattle ranch in Brazil",
+  "web: 投降勧告 ビラ 日本兵 フィリピン => a wartime leaflet in Japanese dropped from an aircraft",
+  "web: 九九式小銃 => a Japanese Type 99 Arisaka rifle",
+  "web: 鈴木紀夫 雪男 ヒマラヤ => a young Japanese man in mountain gear in the Himalayas",
+  {
+   "q": "jungle",
+   "want": "dense tropical jungle in the Philippines, mountains and trees"
+  },
+  {
+   "q": "leaflet aircraft",
+   "want": "leaflets dropped from a military aircraft over land"
+  },
+  {
+   "q": "avalanche",
+   "want": "an avalanche on a snowy Himalayan mountain"
+  },
+  "music:Satie Gnossienne piano",
+  "music:dark ambient piano"
+ ],
+ "urls": [],
+ "gen": []
+}
