@@ -5,17 +5,15 @@
    on-screen text are in Japanese (tiếng Nhật). A script that arrives in another language is translated faithfully into Japanese (tiếng Nhật)
    first. Never a voice or text of another language: check the language of `lines` and the voice before the voice
    step, and again on the finished video. A video in the wrong language is not delivered: fix it and render again.
-2. **No video under 60 seconds.** Before the voice step, estimate the length from the script (use the seconds per
+2. **No video under 61 seconds** (owner, 19/11/2026: "ra lại luật mới, chỉ còn luật tối thiểu 61s": the only length rule, no upper limit). Before the voice step, estimate the length from the script (use the seconds per
    line of this channel's earlier videos); after the voice step, read the real length of the speech (the machine
-   comment gives it). If the video would be under 60 seconds, **write the script longer** (more true facts and
-   detail on the same subject, in the owner's tone, nothing invented) until it passes 60 seconds, tell the owner on
+   comment gives it). If the video would be under 61 seconds, **write the script longer** (more true facts and
+   detail on the same subject, in the owner's tone, nothing invented) until it reaches 61 seconds, tell the owner on
    the issue what was added, and only then go on. This is the one exception to "never change the owner's script".
-   Never render or deliver a video under 60 seconds. Only exception: a trial or sample video — the owner says so,
+   Never render or deliver a video under 61 seconds. Only exception: a trial or sample video — the owner says so,
    or the issue title or notes say `thử`, `mẫu`, `test` or `demo`.
-3. **Every video is vertical (1080×1920); on this channel (kênh 5, Vụ án) 61–160 seconds long** (owner, 18/11/2026:
-   "tất cả các kênh đều làm dạng dọc, 80-160s thôi", then for this channel: "kênh 5 rút xuống ít nhất 61s là đc").
-   Write the script for that length: under 61 s add true scenes and details of the same story (never padding), over
-   160 s cut repetition. Trial or sample videos are the exception, as in rule 2.
+3. **Every video is vertical (1080×1920)** (owner, 18/11/2026). Its length has only rule 2, at least 61 seconds: the
+   80–160 s range of 18/11/2026 is lifted (owner, 19/11/2026: "ra lại luật mới, chỉ còn luật tối thiểu 61s").
 
 Read `docs/HANDOVER.md` first (the owner, their standing decisions, the current state), then `AGENT_CRIME.md` (how
 a video is made). The owner is Vietnamese and not technical: answer in short, simple Vietnamese, no jargon.

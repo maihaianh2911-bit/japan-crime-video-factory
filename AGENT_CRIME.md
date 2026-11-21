@@ -2,12 +2,11 @@
 
 > **Iron rules (owner, 16/11/2026; full text at the top of `CLAUDE.md`).** (1) Voice, script lines, subtitles and
 > on-screen text are in **Japanese**, never another language; check before the voice step and on the finished video.
-> (2) **No video under 60 seconds**: estimate before the voice step and read the real speech length after it; if it
-> would be under 60 seconds, write the script longer (true facts on the same subject, nothing invented), say on the
-> issue what was added, then go on. Never render or deliver under 60 seconds, except a trial or sample video (the
+> (2) **No video under 61 seconds** (the only length rule, no upper limit; owner, 19/11/2026): estimate before the voice step and read the real speech length after it; if it
+> would be under 61 seconds, write the script longer (true facts on the same subject, nothing invented), say on the
+> issue what was added, then go on. Never render or deliver under 61 seconds, except a trial or sample video (the
 > owner says so, or the title or notes say `thử`, `mẫu`, `test`, `demo`).
-> (3) **Vertical, 61–160 seconds** (owner, 18/11/2026: every channel vertical; this channel at least 61 s): write the
-> script for that length.
+> (3) **Vertical** (1080×1920). The only length rule is (2), at least 61 s; the 80–160 s range is lifted (owner, 19/11/2026).
 
 The owner (Vietnamese, not technical) opens an issue `[Vụ án] …` with a script (Vietnamese, or already in the
 channel's language). The result is a vertical short (1080×1920, 30 fps) laid out as the owner's sample
@@ -72,15 +71,14 @@ Read the issue form (Vụ án, Kịch bản, Giọng đọc, Ghi chú) and the o
   flowing narration, sentences linked by connectives (だが, そして, その夜, それから), no chopped fragments such as
   「1938年。岡山。」; end on a line that comes back to the opening (not a question to the viewer every time). Show the
   owner a script as one continuous text (the Japanese in one piece, then its Vietnamese meaning in one piece), never
-  cut into numbered scenes or bullet points. Under 60 seconds: add true scenes and facts of the same story, never
+  cut into numbered scenes or bullet points. Under 61 seconds: add true scenes and facts of the same story, never
   padding. The first line goes into `picks.json` `"quotes": [1]`.
-- Length: **61–160 s** (owner, 18/11/2026: every channel vertical; this channel at least 61 s, "kênh 5 rút xuống ít
-  nhất 61s là đc"; iron rule 3 of CLAUDE.md). The voice reads
-  ~8 characters/s; each line adds ~0.3 s. A script that would run longer: cut repetition, never facts the story needs.
+- Length: **at least 61 s, no upper limit** (owner, 19/11/2026: "chỉ còn luật tối thiểu 61s"; iron rule 2 of
+  CLAUDE.md). The voice reads ~8 characters/s; each line adds ~0.3 s.
 - `speed`: the pace of the voice (0.8–1.3, default 1.0): every line is sped up after it is read (pitch kept) and the
   pauses between lines shrink in step. The owner asked on 17/11/2026 for a **20 % faster pace**: write `"speed": 1.2`
   unless the owner says otherwise. Faster speech means a shorter video: estimate the length at ~9.5 characters/s
-  (8 × 1.2) and keep it within 61–160 s (iron rules 2–3 of CLAUDE.md).
+  (8 × 1.2) and keep it at 61 s or more (iron rule 2 of CLAUDE.md).
 - `tts`: kana for names and rare readings the voice may misread (`{"3": "その途中、しろバイの警察官が車を止めた。"}`) (`prompts/readings.json` is applied to every line).
 - `music`: dark, quiet bed under the voice. `style` `tension` (default) or `documentary`, minor key, `energy`
   0.2–0.4. `music_volume` (default 0.16) only if the owner asks.
